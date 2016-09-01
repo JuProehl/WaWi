@@ -37,7 +37,7 @@ public class ArtiList {
                 rowData[2] = Artikel.getBESTANDSMENGE();
                 rowData[3] = Artikel.getKrit_Menge();
                 rowData[4] = Artikel.getF_LNR();
-                model.addRow(rowData);
+                model.addRow(rowData);             
                 }
  } 
     
