@@ -63,6 +63,7 @@ public class Lagerort {
         this.maxmenge = maxmenge;
     }
         
+   
         
 
         
