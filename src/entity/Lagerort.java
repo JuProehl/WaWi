@@ -21,11 +21,11 @@ public class Lagerort {
 	@Column(name = "LNr")
 	int LNr;
 	@Column(name = "Regal")
-	String Regal;
+	int Regal;
 	@Column(name = "Fach")
-	String Fach;
+	int Fach;
 	@Column(name = "maxmenge")
-	String maxmenge;
+	int maxmenge;
         
         public Lagerort() {
 		super();
@@ -39,27 +39,27 @@ public class Lagerort {
         this.LNr = LNr;
     }
 
-    public String getRegal() {
+    public int getRegal() {
         return Regal;
     }
 
-    public void setRegal(String Regal) {
+    public void setRegal(int Regal) {
         this.Regal = Regal;
     }
 
-    public String getFach() {
+    public int getFach() {
         return Fach;
     }
 
-    public void setFach(String Fach) {
+    public void setFach(int Fach) {
         this.Fach = Fach;
     }
 
-    public String getMaxmenge() {
+    public int getMaxmenge() {
         return maxmenge;
     }
 
-    public void setMaxmenge(String maxmenge) {
+    public void setMaxmenge(int maxmenge) {
         this.maxmenge = maxmenge;
     }
         
