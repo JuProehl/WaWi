@@ -76,6 +76,7 @@ public class Arti {
         this.F_LNR = F_LNR;
     }
         
+
     public int UpdateArtikel(int amount, int nummer){
         DB_Connect con = new DB_Connect();
         //List result = con.Connect("FROM ARTI WHERE ANR = " + Integer.toString(nummer));
@@ -87,8 +88,10 @@ public class Arti {
         
         
         
-        }   
-       
-        
+       }
+    
 }
+
+  
+
 	

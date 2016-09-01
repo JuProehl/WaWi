@@ -6,9 +6,6 @@
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[725, 500]"/>
     </Property>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="null"/>
-    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -34,13 +31,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="buttonDelete" alignment="0" max="32767" attributes="0"/>
                           <Component id="buttonEinlagern" max="32767" attributes="0"/>
                           <Component id="buttonPicklist" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jButton2" max="32767" attributes="0"/>
+                          <Component id="buttonAnlegen" max="32767" attributes="0"/>
                           <Component id="buttonKorrektur" alignment="0" max="32767" attributes="0"/>
                           <Component id="buttonBestand" alignment="0" max="32767" attributes="0"/>
                       </Group>
@@ -78,8 +75,8 @@
               </Group>
               <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonAnlegen" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonDelete" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="272" max="32767" attributes="0"/>
           </Group>
@@ -159,15 +156,21 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonBackActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="buttonDelete">
       <Properties>
         <Property name="text" type="java.lang.String" value="Artikel/Lagerpl&#xe4;tze l&#xf6;schen"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonDeleteActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="buttonAnlegen">
       <Properties>
         <Property name="text" type="java.lang.String" value="Artikel/Lagerpl&#xe4;tze anlegen"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAnlegenActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

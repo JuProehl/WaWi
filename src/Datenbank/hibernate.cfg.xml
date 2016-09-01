@@ -26,6 +26,7 @@
         <!-- Map Entity Class -->
     <mapping class="entity.Kund"></mapping>
     <mapping class="entity.Arti"></mapping>
+    <mapping class="entity.Lagerort"></mapping>
 
 </session-factory>
 </hibernate-configuration>
