@@ -44,6 +44,11 @@ public class AnlegenGUI extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(725, 500));
 
         buttonBack.setText("Zurück");
+        buttonBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonBackActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Artikel anlegen");
 
@@ -120,6 +125,12 @@ public class AnlegenGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buttonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBackActionPerformed
+        setVisible(false);
+        LagerverwaltungGUI lagerGUI = new LagerverwaltungGUI();
+        lagerGUI.setVisible(true);
+    }//GEN-LAST:event_buttonBackActionPerformed
 
     /**
      * @param args the command line arguments
