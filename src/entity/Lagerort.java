@@ -24,6 +24,48 @@ public class Lagerort {
 	String Regal;
 	@Column(name = "Fach")
 	String Fach;
-	@Column(name = "maxlagermenge")
-	String maxlagermenge;
+	@Column(name = "maxmenge")
+	String maxmenge;
+        
+        public Lagerort() {
+		super();
+	}
+
+    public int getLNr() {
+        return LNr;
+    }
+
+    public void setLNr(int LNr) {
+        this.LNr = LNr;
+    }
+
+    public String getRegal() {
+        return Regal;
+    }
+
+    public void setRegal(String Regal) {
+        this.Regal = Regal;
+    }
+
+    public String getFach() {
+        return Fach;
+    }
+
+    public void setFach(String Fach) {
+        this.Fach = Fach;
+    }
+
+    public String getMaxmenge() {
+        return maxmenge;
+    }
+
+    public void setMaxmenge(String maxmenge) {
+        this.maxmenge = maxmenge;
+    }
+        
+        
+
+        
 }
+
+
