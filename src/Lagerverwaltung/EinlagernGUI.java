@@ -117,12 +117,8 @@ public class EinlagernGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonBackActionPerformed
 
     private void buttonEinlagernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEinlagernActionPerformed
-        Datenbank.DB_Connect con = new Datenbank.DB_Connect();
         Arti artikel = new Arti();
-        int iamount = Integer.parseInt(tfAmount.toString());
-        int iArtNr = Integer.parseInt(tfArtNr.toString());
-        int i = artikel.UpdateArtikel(iamount, iArtNr);
-        tfArtNr.setText(""+i);
+        int i = artikel.UpdateArtikel(Integer.parseInt(tfAmount.getText()), Integer.parseInt(tfArtNr.getText()));
     }//GEN-LAST:event_buttonEinlagernActionPerformed
  
     

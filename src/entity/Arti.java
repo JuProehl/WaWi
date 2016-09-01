@@ -81,10 +81,7 @@ public class Arti {
 
     public int UpdateArtikel(int amount, int nummer){
         DB_Connect con = new DB_Connect();
-        //List result = con.Connect("FROM ARTI WHERE ANR = " + Integer.toString(nummer));
-        //Arti artikel = (Arti) result.get(0);
-        //amount += artikel.getBESTANDSMENGE();
-        return con.simpleConnect("UPDATE ARTI SET BESTANDSMENGE = " + Integer.toString(amount)+ "WHERE ANR = ANR + " + Integer.toString(nummer));
+        return con.simpleConnect("UPDATE Arti SET BESTANDSMENGE = BESTANDSMENGE + " + Integer.toString(amount)+ " WHERE ANR = " + Integer.toString(nummer));
 
         
         
