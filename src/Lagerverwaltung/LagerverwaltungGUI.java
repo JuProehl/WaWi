@@ -171,6 +171,7 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
       setVisible(false);
       ArtikelbestandGUI bestandGUI = new ArtikelbestandGUI();
         bestandGUI.setVisible(true);
+        bestandGUI.Tabelleausgeben();
     }//GEN-LAST:event_buttonBestandActionPerformed
 
     private void buttonEinlagernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEinlagernActionPerformed
