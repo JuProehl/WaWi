@@ -23,7 +23,7 @@ public class ArtiList {
    
     
     
-     public void Tabelleausgeben(JTable Table1){
+     public void ArtikelInTabelleAusgeben(JTable Table1){
      Datenbank.DB_Connect con = new Datenbank.DB_Connect();
         List result = con.Connect("FROM Arti");
         DefaultTableModel model = (DefaultTableModel) Table1.getModel();

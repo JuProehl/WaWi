@@ -124,7 +124,7 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
 
     
    public void Tabelleausgeben(){
-       ArtikelListe.Tabelleausgeben(tableArtikelbestand);
+       ArtikelListe.ArtikelInTabelleAusgeben(tableArtikelbestand);
    }
     
     
