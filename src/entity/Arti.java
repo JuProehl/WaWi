@@ -1,9 +1,13 @@
 package entity;
 
+import java.util.Iterator;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 @Entity
 @Table(name = "Arti")
@@ -66,7 +70,9 @@ public class Arti {
         this.F_LNR = F_LNR;
     }
         
-        
+  
+    
+  
        
         
 }
