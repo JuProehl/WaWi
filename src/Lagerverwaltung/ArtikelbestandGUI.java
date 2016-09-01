@@ -6,6 +6,7 @@
 
 package Lagerverwaltung;
 
+import Listen.ArtiList;
 import entity.Arti;
 import entity.Kund;
 import java.util.*;
@@ -113,21 +114,10 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonBackActionPerformed
 
     private void buttonAktualisierenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAktualisierenActionPerformed
-        Datenbank.DB_Connect con = new Datenbank.DB_Connect();
-        List result = con.Connect("FROM Arti");
-        DefaultTableModel model = (DefaultTableModel) tableArtikelbestand.getModel();
-        Object rowData[] = new Object[5];
-        model.setRowCount(0);
         
-        	for ( Iterator iterator = result.iterator(); iterator.hasNext();){
-		Arti Artikel = (Arti) iterator.next();
-                rowData[0] = Artikel.getANR();
-                rowData[1] = Artikel.getBEZEICHNUNG();
-                rowData[2] = Artikel.getBESTANDSMENGE();
-                rowData[3] = Artikel.getKrit_Menge();
-                rowData[4] = Artikel.getF_LNR();
-                model.addRow(rowData);
-                }
+        ArtiList ArtikelListe = new ArtiList();
+        ArtikelListe.Tabelleausgeben(tableArtikelbestand);
+        
     }//GEN-LAST:event_buttonAktualisierenActionPerformed
 
     /**
