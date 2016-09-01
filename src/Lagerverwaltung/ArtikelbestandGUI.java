@@ -16,6 +16,8 @@ import javax.swing.table.DefaultTableModel;
  * @author Markus
  */
 public class ArtikelbestandGUI extends javax.swing.JFrame {
+    
+     ArtiList ArtikelListe = new ArtiList();
 
     /**
      * Creates new form ArtikelbestandGUI
@@ -115,11 +117,17 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
 
     private void buttonAktualisierenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAktualisierenActionPerformed
         
-        ArtiList ArtikelListe = new ArtiList();
-        ArtikelListe.Tabelleausgeben(tableArtikelbestand);
+       Tabelleausgeben();
+        
         
     }//GEN-LAST:event_buttonAktualisierenActionPerformed
 
+    
+   public void Tabelleausgeben(){
+       ArtikelListe.Tabelleausgeben(tableArtikelbestand);
+   }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -152,7 +160,7 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ArtikelbestandGUI().setVisible(true);
-            }        
+            }  
         });
     }
 

@@ -16,8 +16,8 @@ public class Kund {
 	String Nachname;
 	@Column(name = "VORNAME")
 	String Vorname;
-	@Column(name = "STRAßE")
-	String Staße;
+	@Column(name = "STRASSE")
+	String Strasse;
 	@Column(name = "HAUSNUMMER")
 	int Hausnummer;
 	@Column(name = "PLZ")
@@ -69,14 +69,14 @@ public class Kund {
 
 
 
-	public String getStaße() {
-		return Staße;
+	public String getStrasse() {
+		return Strasse;
 	}
 
 
 
-	public void setStaße(String staße) {
-		Staße = staße;
+	public void setStrasse(String strasse) {
+		Strasse = strasse;
 	}
 
 
