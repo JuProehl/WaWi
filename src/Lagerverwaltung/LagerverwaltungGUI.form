@@ -40,7 +40,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jButton2" max="32767" attributes="0"/>
+                          <Component id="buttonAnlegen" max="32767" attributes="0"/>
                           <Component id="buttonKorrektur" alignment="0" max="32767" attributes="0"/>
                           <Component id="buttonBestand" alignment="0" max="32767" attributes="0"/>
                       </Group>
@@ -78,7 +78,7 @@
               </Group>
               <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonAnlegen" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="272" max="32767" attributes="0"/>
@@ -164,10 +164,13 @@
         <Property name="text" type="java.lang.String" value="Artikel/Lagerpl&#xe4;tze l&#xf6;schen"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="buttonAnlegen">
       <Properties>
         <Property name="text" type="java.lang.String" value="Artikel/Lagerpl&#xe4;tze anlegen"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAnlegenActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
