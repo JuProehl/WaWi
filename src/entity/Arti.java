@@ -4,6 +4,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.boot.Metadata;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.query.Query;
+import Datenbank.DB_Connect;
+import java.util.*;
 
 @Entity
 @Table(name = "Arti")
@@ -15,9 +25,9 @@ public class Arti {
 	@Column(name = "BEZEICHNUNG")
 	String BEZEICHNUNG;
 	@Column(name = "BESTANDSMENGE")
-	String BESTANDSMENGE;
+	int BESTANDSMENGE;
 	@Column(name = "krit_Menge")
-	String krit_Menge;
+	int krit_Menge;
 	@Column(name = "F_LNR")
 	int F_LNR;
         
@@ -42,19 +52,19 @@ public class Arti {
         this.BEZEICHNUNG = BEZEICHNUNG;
     }
 
-    public String getBESTANDSMENGE() {
+    public int getBESTANDSMENGE() {
         return BESTANDSMENGE;
     }
 
-    public void setBESTANDSMENGE(String BESTANDSMENGE) {
+    public void setBESTANDSMENGE(int BESTANDSMENGE) {
         this.BESTANDSMENGE = BESTANDSMENGE;
     }
 
-    public String getKrit_Menge() {
+    public int getKrit_Menge() {
         return krit_Menge;
     }
 
-    public void setKrit_Menge(String krit_Menge) {
+    public void setKrit_Menge(int krit_Menge) {
         this.krit_Menge = krit_Menge;
     }
 
@@ -66,7 +76,18 @@ public class Arti {
         this.F_LNR = F_LNR;
     }
         
+    public int UpdateArtikel(int amount, int nummer){
+        DB_Connect con = new DB_Connect();
+        //List result = con.Connect("FROM ARTI WHERE ANR = " + Integer.toString(nummer));
+        //Arti artikel = (Arti) result.get(0);
+        //amount += artikel.getBESTANDSMENGE();
+        return con.simpleConnect("UPDATE ARTI SET BESTANDSMENGE = " + Integer.toString(amount)+ "WHERE ANR = ANR + " + Integer.toString(nummer));
+
         
+        
+        
+        
+        }   
        
         
 }

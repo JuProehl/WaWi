@@ -168,7 +168,6 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
       setVisible(false);
       EinlagernGUI einlGUI = new EinlagernGUI();
       einlGUI.setVisible(true);
-      einlGUI.getjTextField1().setText("Test");
     }//GEN-LAST:event_buttonEinlagernActionPerformed
 
     private void buttonKorrekturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonKorrekturActionPerformed

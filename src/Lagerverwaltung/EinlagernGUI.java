@@ -6,6 +6,7 @@
 package Lagerverwaltung;
 
 import javax.swing.JTextField;
+import entity.Arti;
 
 /**
  *
@@ -36,7 +37,6 @@ public class EinlagernGUI extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         tfAmount = new javax.swing.JTextField();
         buttonEinlagern = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,16 +81,13 @@ public class EinlagernGUI extends javax.swing.JFrame {
                         .addGap(56, 56, 56)
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(tfArtNr, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40)
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(tfAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(32, 32, 32)
-                                .addComponent(buttonEinlagern))
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(tfArtNr, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(tfAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(buttonEinlagern)))
                 .addContainerGap(101, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -107,9 +104,7 @@ public class EinlagernGUI extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(tfAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonEinlagern))
-                .addGap(38, 38, 38)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(335, Short.MAX_VALUE))
+                .addContainerGap(393, Short.MAX_VALUE))
         );
 
         pack();
@@ -123,18 +118,13 @@ public class EinlagernGUI extends javax.swing.JFrame {
 
     private void buttonEinlagernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEinlagernActionPerformed
         Datenbank.DB_Connect con = new Datenbank.DB_Connect();
-        
+        Arti artikel = new Arti();
         int iamount = Integer.parseInt(tfAmount.toString());
         int iArtNr = Integer.parseInt(tfArtNr.toString());
-        int i = con.UpdateArtikel("UPDATE Arti set BESTANDSMENGE = :bestand "+ "WHERE ANR = :artikel", iamount, iArtNr );
+        int i = artikel.UpdateArtikel(iamount, iArtNr);
         tfArtNr.setText(""+i);
     }//GEN-LAST:event_buttonEinlagernActionPerformed
-
-    public JTextField getjTextField1() {
-        return jTextField1;
-    }
-
-    
+ 
     
     private void tfArtNrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfArtNrActionPerformed
         // TODO add your handling code here:
@@ -181,7 +171,6 @@ public class EinlagernGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField tfAmount;
     private javax.swing.JTextField tfArtNr;
     // End of variables declaration//GEN-END:variables

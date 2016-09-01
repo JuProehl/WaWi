@@ -43,30 +43,28 @@ public class DB_Connect {
                 return result;
 	}
         
+        	public int simpleConnect(String statement){
+		
+		StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder().configure("Datenbank/hibernate.cfg.xml").build();	
+		Metadata metadata = new MetadataSources(standardRegistry).buildMetadata();		
+		SessionFactory sf = metadata.getSessionFactoryBuilder().build();		
+		Session session = sf.openSession();		
+		Transaction tx = session.beginTransaction();
+		
+
+                Query updateQuery = session.createQuery(statement);
+                int result = updateQuery.executeUpdate();
+		
+		//for ( Iterator iterator = kunden.iterator(); iterator.hasNext();){
+		//Kund kunde = (Kund) iterator.next();
+		//System.out.println(kunde.getVorname() + " " + kunde.getNachname() );
+		tx.commit();         		
+		session.close();
+		sf.close();
+                return result;
+	}
    
-        public int UpdateArtikel(String statement, int amount, int nummer){
-            StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder().configure("Datenbank/hibernate.cfg.xml").build();
-            Metadata metadata = new MetadataSources(standardRegistry).buildMetadata();		
-            SessionFactory sf = metadata.getSessionFactoryBuilder().build();
-            Session session = sf.openSession();		
-            Transaction tx = session.beginTransaction();      
-            
-            Query updateQuery = session.createQuery(statement);
-            //con.UpdateArtikel("UPDATE Arti set BESTANDSMENGE = :bestand "+ "WHERE ANR = :artikel");
-            Arti artikel = new entity.Arti();
-            int i = Integer.parseInt(artikel.getBESTANDSMENGE() + amount);
-            //Lagerverwaltung.EinlagernGUI.getjTextField1().setText(String.valueOf(i));
-            updateQuery.setParameter("bestand", 5 );
-            updateQuery.setParameter("artikel", 5);
-                                          
-            
-            int result = updateQuery.executeUpdate();
-            
-            tx.commit();
-            session.close();
-            sf.close();
-            return result;
-        }
+
         	
 	
 }
