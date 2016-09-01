@@ -37,6 +37,7 @@ public class EinlagernGUI extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         tfAmount = new javax.swing.JTextField();
         buttonEinlagern = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,6 +67,8 @@ public class EinlagernGUI extends javax.swing.JFrame {
             }
         });
 
+        jTextField1.setText("jTextField1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,7 +90,10 @@ public class EinlagernGUI extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(tfAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
-                        .addComponent(buttonEinlagern)))
+                        .addComponent(buttonEinlagern))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(354, 354, 354)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(101, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -104,7 +110,9 @@ public class EinlagernGUI extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(tfAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonEinlagern))
-                .addContainerGap(393, Short.MAX_VALUE))
+                .addGap(96, 96, 96)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(271, Short.MAX_VALUE))
         );
 
         pack();
@@ -117,10 +125,11 @@ public class EinlagernGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonBackActionPerformed
 
     private void buttonEinlagernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEinlagernActionPerformed
+     
         Datenbank.DB_Connect con = new Datenbank.DB_Connect();
         Arti artikel = new Arti();
-        int iamount = Integer.parseInt(tfAmount.toString());
-        int iArtNr = Integer.parseInt(tfArtNr.toString());
+        int iamount = Integer.parseInt(tfAmount.getText());
+        int iArtNr = Integer.parseInt(tfArtNr.getText());
         int i = artikel.UpdateArtikel(iamount, iArtNr);
         tfArtNr.setText(""+i);
     }//GEN-LAST:event_buttonEinlagernActionPerformed
@@ -171,6 +180,7 @@ public class EinlagernGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField tfAmount;
     private javax.swing.JTextField tfArtNr;
     // End of variables declaration//GEN-END:variables
