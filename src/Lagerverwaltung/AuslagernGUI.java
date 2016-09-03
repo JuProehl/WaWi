@@ -5,19 +5,18 @@
  */
 package Lagerverwaltung;
 
-import javax.swing.JTextField;
 import entity.Arti;
 
 /**
  *
  * @author Markus
  */
-public class EinlagernGUI extends javax.swing.JFrame {
+public class AuslagernGUI extends javax.swing.JFrame {
 
     /**
-     * Creates new form EinlagernGUI
+     * Creates new form AuslagernGUI
      */
-    public EinlagernGUI() {
+    public AuslagernGUI() {
         initComponents();
     }
 
@@ -32,13 +31,14 @@ public class EinlagernGUI extends javax.swing.JFrame {
 
         buttonBack = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        tfArtNr = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        tfAmount = new javax.swing.JTextField();
-        buttonEinlagern = new javax.swing.JButton();
+        tfMenge = new javax.swing.JTextField();
+        tfANR = new javax.swing.JTextField();
+        buttonAuslagern = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(725, 500));
 
         buttonBack.setText("Zurück");
         buttonBack.addActionListener(new java.awt.event.ActionListener() {
@@ -47,22 +47,22 @@ public class EinlagernGUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Artikel einlagern");
-
-        tfArtNr.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfArtNrActionPerformed(evt);
-            }
-        });
+        jLabel1.setText("Artikel auslagern");
 
         jLabel2.setText("Artikelnummer:");
 
-        jLabel3.setText("Eingelagerte Menge:");
+        jLabel3.setText("Entnommene Menge:");
 
-        buttonEinlagern.setText("Einlagern");
-        buttonEinlagern.addActionListener(new java.awt.event.ActionListener() {
+        tfANR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonEinlagernActionPerformed(evt);
+                tfANRActionPerformed(evt);
+            }
+        });
+
+        buttonAuslagern.setText("Auslagern");
+        buttonAuslagern.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAuslagernActionPerformed(evt);
             }
         });
 
@@ -71,61 +71,59 @@ public class EinlagernGUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(buttonBack)
-                        .addGap(70, 70, 70)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
                         .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(tfArtNr, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tfANR, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58)
                         .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tfMenge, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(tfAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(buttonEinlagern)))
-                .addContainerGap(101, Short.MAX_VALUE))
+                        .addComponent(buttonAuslagern)))
+                .addContainerGap(198, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(buttonBack))
-                .addGap(29, 29, 29)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfArtNr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonBack)
+                    .addComponent(jLabel1))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
-                    .addComponent(tfAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonEinlagern))
-                .addContainerGap(393, Short.MAX_VALUE))
+                    .addComponent(tfMenge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfANR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonAuslagern))
+                .addContainerGap(392, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    //kann weg
+    private void tfANRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfANRActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfANRActionPerformed
+
+    private void buttonAuslagernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAuslagernActionPerformed
+      Arti artikel = new Arti();
+      int i = artikel.Auslagern(Integer.parseInt(tfMenge.getText()), Integer.parseInt(tfANR.getText()));
+    }//GEN-LAST:event_buttonAuslagernActionPerformed
 
     private void buttonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBackActionPerformed
         setVisible(false);
         LagerverwaltungGUI lagerGUI = new LagerverwaltungGUI();
         lagerGUI.setVisible(true);
     }//GEN-LAST:event_buttonBackActionPerformed
-
-    private void buttonEinlagernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEinlagernActionPerformed
-        Arti artikel = new Arti();
-        int i = artikel.UpdateArtikel(Integer.parseInt(tfAmount.getText()), Integer.parseInt(tfArtNr.getText()));
-    }//GEN-LAST:event_buttonEinlagernActionPerformed
- 
-    
-    //kann weg
-    private void tfArtNrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfArtNrActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfArtNrActionPerformed
 
     /**
      * @param args the command line arguments
@@ -144,31 +142,31 @@ public class EinlagernGUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EinlagernGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AuslagernGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EinlagernGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AuslagernGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EinlagernGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AuslagernGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EinlagernGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AuslagernGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EinlagernGUI().setVisible(true);
+                new AuslagernGUI().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonAuslagern;
     private javax.swing.JButton buttonBack;
-    private javax.swing.JButton buttonEinlagern;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField tfAmount;
-    private javax.swing.JTextField tfArtNr;
+    private javax.swing.JTextField tfANR;
+    private javax.swing.JTextField tfMenge;
     // End of variables declaration//GEN-END:variables
 }

@@ -38,6 +38,7 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
         buttonBack = new javax.swing.JButton();
         buttonDelete = new javax.swing.JButton();
         buttonAnlegen = new javax.swing.JButton();
+        buttonAuslagern = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(725, 500));
@@ -96,6 +97,13 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
             }
         });
 
+        buttonAuslagern.setText("Artikel auslagern");
+        buttonAuslagern.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAuslagernActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -104,21 +112,22 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(buttonDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonEinlagern, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonPicklist, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(buttonAnlegen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonKorrektur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonBestand, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(buttonBack)
                         .addGap(62, 62, 62)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel2)))
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(buttonAuslagern, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buttonDelete, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buttonEinlagern, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buttonPicklist, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(buttonAnlegen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buttonKorrektur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buttonBestand, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(23, 385, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -137,11 +146,13 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonPicklist)
                     .addComponent(buttonBestand))
-                .addGap(59, 59, 59)
+                .addGap(18, 18, 18)
+                .addComponent(buttonAuslagern)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonAnlegen)
-                    .addComponent(buttonDelete))
-                .addContainerGap(272, Short.MAX_VALUE))
+                    .addComponent(buttonDelete)
+                    .addComponent(buttonAnlegen))
+                .addContainerGap(254, Short.MAX_VALUE))
         );
 
         jLabel1.getAccessibleContext().setAccessibleName("labelLagerHaupt");
@@ -198,6 +209,12 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
       loeschGUI.setVisible(true);
     }//GEN-LAST:event_buttonDeleteActionPerformed
 
+    private void buttonAuslagernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAuslagernActionPerformed
+      setVisible(false);
+      AuslagernGUI auslagerGUI = new AuslagernGUI();
+      auslagerGUI.setVisible(true);
+    }//GEN-LAST:event_buttonAuslagernActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -237,6 +254,7 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAnlegen;
+    private javax.swing.JButton buttonAuslagern;
     private javax.swing.JButton buttonBack;
     private javax.swing.JButton buttonBestand;
     private javax.swing.JButton buttonDelete;

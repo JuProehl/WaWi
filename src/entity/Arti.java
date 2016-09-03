@@ -88,6 +88,12 @@ public class Arti {
         DB_Connect con = new DB_Connect();
         return con.simpleConnect("UPDATE Arti SET BESTANDSMENGE = " + Integer.toString(bestandsmenge)+ " WHERE ANR = " + Integer.toString(nummer));
     }
+    
+    public int Auslagern(int amount, int nummer){
+         DB_Connect con = new DB_Connect();
+         return con.simpleConnect("UPDATE Arti SET BESTANDSMENGE = BESTANDSMENGE - " + Integer.toString(amount)+ " WHERE ANR = " + Integer.toString(nummer));
+         
+    }
         
 }
 
