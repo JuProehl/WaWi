@@ -5,6 +5,8 @@
  */
 package Lagerverwaltung;
 
+import entity.Arti;
+
 /**
  *
  * @author Markus
@@ -29,6 +31,11 @@ public class KorrekturGUI extends javax.swing.JFrame {
 
         buttonBack = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        buttonKorrektur = new javax.swing.JButton();
+        tfANR = new javax.swing.JTextField();
+        tfBestandsmenge = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,6 +48,17 @@ public class KorrekturGUI extends javax.swing.JFrame {
 
         jLabel1.setText("Bestandskorrektur");
 
+        buttonKorrektur.setText("Bestand korrigieren");
+        buttonKorrektur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonKorrekturActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Artikelnummer:");
+
+        jLabel3.setText("Bestandsmenge:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -51,6 +69,18 @@ public class KorrekturGUI extends javax.swing.JFrame {
                 .addGap(48, 48, 48)
                 .addComponent(jLabel1)
                 .addContainerGap(514, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tfANR, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tfBestandsmenge, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
+                .addComponent(buttonKorrektur)
+                .addGap(163, 163, 163))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -59,7 +89,14 @@ public class KorrekturGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonBack)
                     .addComponent(jLabel1))
-                .addContainerGap(443, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonKorrektur)
+                    .addComponent(tfBestandsmenge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfANR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addContainerGap(402, Short.MAX_VALUE))
         );
 
         pack();
@@ -70,6 +107,11 @@ public class KorrekturGUI extends javax.swing.JFrame {
         LagerverwaltungGUI lagerGUI = new LagerverwaltungGUI();
         lagerGUI.setVisible(true);
     }//GEN-LAST:event_buttonBackActionPerformed
+
+    private void buttonKorrekturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonKorrekturActionPerformed
+        Arti artikel = new Arti();
+        int i = artikel.Bestandskorrektur(Integer.parseInt(tfBestandsmenge.getText()), Integer.parseInt(tfANR.getText()));
+    }//GEN-LAST:event_buttonKorrekturActionPerformed
 
     /**
      * @param args the command line arguments
@@ -108,6 +150,11 @@ public class KorrekturGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonBack;
+    private javax.swing.JButton buttonKorrektur;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JTextField tfANR;
+    private javax.swing.JTextField tfBestandsmenge;
     // End of variables declaration//GEN-END:variables
 }
