@@ -81,13 +81,13 @@ public class Arti {
 
     public int UpdateArtikel(int amount, int nummer){
         DB_Connect con = new DB_Connect();
-        return con.simpleConnect("UPDATE Arti SET BESTANDSMENGE = BESTANDSMENGE + " + Integer.toString(amount)+ " WHERE ANR = " + Integer.toString(nummer));
-
-        
-        
-        
-        
+        return con.simpleConnect("UPDATE Arti SET BESTANDSMENGE = BESTANDSMENGE + " + Integer.toString(amount)+ " WHERE ANR = " + Integer.toString(nummer));                
        }
+    
+    public int Bestandskorrektur(int bestandsmenge, int nummer){
+        DB_Connect con = new DB_Connect();
+        return con.simpleConnect("UPDATE Arti SET BESTANDSMENGE = " + Integer.toString(bestandsmenge)+ " WHERE ANR = " + Integer.toString(nummer));
+    }
     
 }
 
