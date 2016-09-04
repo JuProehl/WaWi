@@ -107,6 +107,9 @@ public class EinlagernGUI extends javax.swing.JFrame {
                 .addContainerGap(393, Short.MAX_VALUE))
         );
 
+        tfArtNr.getAccessibleContext().setAccessibleName("");
+        tfArtNr.getAccessibleContext().setAccessibleDescription("");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -117,8 +120,12 @@ public class EinlagernGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonBackActionPerformed
 
     private void buttonEinlagernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEinlagernActionPerformed
+        try {
         Arti artikel = new Arti();
         int i = artikel.UpdateArtikel(Integer.parseInt(tfAmount.getText()), Integer.parseInt(tfArtNr.getText()));
+        } catch (NumberFormatException e) {
+            general.Message.showError("Eingabefehler", "Eingaben überprüfen!");
+        }
     }//GEN-LAST:event_buttonEinlagernActionPerformed
  
     

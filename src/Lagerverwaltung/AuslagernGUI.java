@@ -115,8 +115,12 @@ public class AuslagernGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_tfANRActionPerformed
 
     private void buttonAuslagernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAuslagernActionPerformed
-      Arti artikel = new Arti();
-      int i = artikel.Auslagern(Integer.parseInt(tfMenge.getText()), Integer.parseInt(tfANR.getText()));
+        try {
+            Arti artikel = new Arti();
+            int i = artikel.Auslagern(Integer.parseInt(tfMenge.getText()), Integer.parseInt(tfANR.getText()));
+        } catch (NumberFormatException e) {
+            general.Message.showError("Eingabefehler", "Eingaben überprüfen!");
+        }
     }//GEN-LAST:event_buttonAuslagernActionPerformed
 
     private void buttonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBackActionPerformed

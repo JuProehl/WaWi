@@ -109,8 +109,13 @@ public class KorrekturGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonBackActionPerformed
 
     private void buttonKorrekturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonKorrekturActionPerformed
-        Arti artikel = new Arti();
-        int i = artikel.Bestandskorrektur(Integer.parseInt(tfBestandsmenge.getText()), Integer.parseInt(tfANR.getText()));
+        try {
+            Arti artikel = new Arti();
+            int test = Integer.parseInt(tfBestandsmenge.getText());
+            int i = artikel.Bestandskorrektur(Integer.parseInt(tfBestandsmenge.getText()), Integer.parseInt(tfANR.getText()));
+        } catch (NumberFormatException e) {
+            general.Message.showError("Eingabefehler", "Eingaben überprüfen!");
+        }
     }//GEN-LAST:event_buttonKorrekturActionPerformed
 
     /**
