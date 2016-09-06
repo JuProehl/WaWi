@@ -5,6 +5,9 @@
  */
 package Lagerverwaltung;
 
+import entity.Arti;
+import entity.Lage;
+
 /**
  *
  * @author Markus
@@ -71,7 +74,7 @@ public class AnlegenGUI extends javax.swing.JFrame {
 
         labelKrit.setText("kritische Menge:");
 
-        labelA_LNR.setText("Lieferantennummer:");
+        labelA_LNR.setText("Lagerortnummer:");
 
         labelL_anlegen.setText("Lagerort anlegen");
 
@@ -84,6 +87,11 @@ public class AnlegenGUI extends javax.swing.JFrame {
         labelMaxM.setText("Max. Menge:");
 
         buttonArtikelAnlegen.setText("Artikel anlegen");
+        buttonArtikelAnlegen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonArtikelAnlegenActionPerformed(evt);
+            }
+        });
 
         buttonLagerAnlegen.setText("Lagerort anlegen");
         buttonLagerAnlegen.addActionListener(new java.awt.event.ActionListener() {
@@ -99,7 +107,7 @@ public class AnlegenGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
+                        .addGap(17, 17, 17)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(labelANR)
@@ -107,12 +115,14 @@ public class AnlegenGUI extends javax.swing.JFrame {
                                 .addComponent(tfANR, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(labelA_anlegen)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelBEZ)
-                                    .addComponent(labelMenge)
-                                    .addComponent(labelKrit)
-                                    .addComponent(labelA_LNR))
-                                .addGap(14, 14, 14)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(labelA_LNR, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(labelKrit, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(labelMenge)
+                                        .addGap(5, 5, 5)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(tfBestandsmenge, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
                                     .addComponent(tfKrit)
@@ -121,7 +131,8 @@ public class AnlegenGUI extends javax.swing.JFrame {
                                     .addComponent(tfLagernummer)
                                     .addComponent(tfRegal)
                                     .addComponent(tfFach)
-                                    .addComponent(tfmaxMenge)))))
+                                    .addComponent(tfmaxMenge)))
+                            .addComponent(labelBEZ)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(labelLagerort))
@@ -137,7 +148,7 @@ public class AnlegenGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(buttonArtikelAnlegen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonLagerAnlegen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(303, Short.MAX_VALUE))
+                .addContainerGap(305, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,9 +214,18 @@ public class AnlegenGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonBackActionPerformed
 
     private void buttonLagerAnlegenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLagerAnlegenActionPerformed
-        entity.Lagerort lager = new entity.Lagerort();
+        Lage ort = new Lage();
+        int i = ort.InsertLagerort(Integer.parseInt(tfLagernummer.getText()),Integer.parseInt(tfRegal.getText()),
+                Integer.parseInt(tfFach.getText()), Integer.parseInt(tfmaxMenge.getText()));
         
     }//GEN-LAST:event_buttonLagerAnlegenActionPerformed
+
+    private void buttonArtikelAnlegenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonArtikelAnlegenActionPerformed
+        Arti artikel = new Arti();
+        int i = artikel.InsertArtikel(Integer.parseInt(tfANR.getText()),tfBez.getText(),
+                Integer.parseInt(tfBestandsmenge.getText()), Integer.parseInt(tfKrit.getText()),
+                Integer.parseInt(tfLNR.getText()));
+    }//GEN-LAST:event_buttonArtikelAnlegenActionPerformed
 
     /**
      * @param args the command line arguments

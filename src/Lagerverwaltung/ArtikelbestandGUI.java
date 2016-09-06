@@ -55,7 +55,7 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Artikelnummer", "Bezeichnung", "Bestandsmenge", "krit. Menge", "Lieferantennummer"
+                "Artikelnummer", "Bezeichnung", "Bestandsmenge", "krit. Menge", "Lagernummer"
             }
         ) {
             boolean[] canEdit = new boolean [] {

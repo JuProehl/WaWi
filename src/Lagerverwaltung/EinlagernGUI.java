@@ -120,11 +120,14 @@ public class EinlagernGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonBackActionPerformed
 
     private void buttonEinlagernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEinlagernActionPerformed
-        try {
+       try {
         Arti artikel = new Arti();
         int i = artikel.UpdateArtikel(Integer.parseInt(tfAmount.getText()), Integer.parseInt(tfArtNr.getText()));
-        } catch (NumberFormatException e) {
-            general.Message.showError("Eingabefehler", "Eingaben überprüfen!");
+        if(i == 0){
+         general.Message.showError("Eingabefehler", "Artikel existiert nicht!");
+        }
+       } catch (NumberFormatException e) {
+          general.Message.showError("Eingabefehler", "Eingaben überprüfen!");
         }
     }//GEN-LAST:event_buttonEinlagernActionPerformed
  

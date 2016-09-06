@@ -118,6 +118,9 @@ public class AuslagernGUI extends javax.swing.JFrame {
         try {
             Arti artikel = new Arti();
             int i = artikel.Auslagern(Integer.parseInt(tfMenge.getText()), Integer.parseInt(tfANR.getText()));
+            if (i == 0) {
+                general.Message.showError("Eingabefehler", "Artikel existiert nicht!");
+            }
         } catch (NumberFormatException e) {
             general.Message.showError("Eingabefehler", "Eingaben überprüfen!");
         }
