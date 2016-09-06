@@ -5,44 +5,36 @@
  */
 package general;
 
-import javax.swing.JOptionPane;
+import com.sun.javafx.geom.transform.TransformHelper;
 import java.util.ArrayList;
-import java.util.Iterator;
 
+/**
+ *
+ * @author matthias
+ */
 public class Check {
     
-    
-    
-    public static boolean showErrorNegative(int value) {
-        boolean r = false;
-        r = !general.Check.checkNegative(value);
-        if (r) {
-            general.Message.showError("Eingabefehler", "Negative Werte sind unzulässig");
+    public static Boolean istNegativ(int wert){
+        if (wert < 0){
+            general.Message.showError("Eingabefehler", "Die Eingabe ist Negativ!");
+            return true;
+        } else {
+            return false;
         }
-        return r;
-    }
-    public static void showErrorNegative(ArrayList value) {
-        if (!general.Check.checkNegative(value)) {
-            general.Message.showError("Eingabefehler", "Negative Werte sind unzulässig");
-        }
+        
     }
     
-    public static boolean checkNegative(int value) {
-        boolean back = false;
-        if (value < 0) {
-            back = true;
-        }
-        return back;
-    }
-
-    public static boolean checkNegative(ArrayList<Integer> value) {
-        boolean back = false;
-        for (Integer i : value) {
+    public static Boolean istNegativ(ArrayList<Integer> List){
+        Boolean b = false;
+            for (Integer i : List) {
             if (i < 0) {
-                back = true;
+                b = true;
+                }   
             }
+        if (b){
+            general.Message.showError("Eingabefehler", "Die Eingabe ist Negativ!");
         }
-        return back;
-    }
+            return b;
+} 
+    
 }
-

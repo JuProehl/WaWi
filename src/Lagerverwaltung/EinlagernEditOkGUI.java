@@ -9,6 +9,7 @@ import Datenbank.DB_Connect;
 import Listen.LageList;
 import entity.Arti;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 
@@ -147,24 +148,24 @@ public class EinlagernEditOkGUI extends javax.swing.JFrame {
 
     private void einlagern(){
         Integer MaxMenge = LagerListe.getMaxMenge(0);
-        Integer PlusMenge = Integer.parseInt(JTF_Menge.getText()); 
-       //if(!general.Check.showErrorNonPositive(Integer.parseInt(JTF_Menge.getText(),10))){
+        ArrayList<Integer> Zahlen = new ArrayList<Integer>();
         try {
-         if(PlusMenge+AktMenge <= MaxMenge){   
-        Arti artikel = new Arti();
-        int i = artikel.UpdateArtikel(Integer.parseInt(JTF_Menge.getText()), ANR);
-        Artikelbestand.Tabelleausgeben();
-        setVisible(false);
-        if(i == 0){
-         general.Message.showError("Eingabefehler", "Artikel existiert nicht!");
-        }
-         } else{
+        Integer PlusMenge = Integer.parseInt(JTF_Menge.getText()); 
+        Zahlen.add(PlusMenge);
+        if (!general.Check.istNegativ(Zahlen)){ 
+            if(PlusMenge+AktMenge <= MaxMenge){   
+                Arti artikel = new Arti();
+                int i = artikel.UpdateArtikel(Integer.parseInt(JTF_Menge.getText()), ANR);
+                Artikelbestand.Tabelleausgeben();
+                setVisible(false);
+            } else {
              general.Message.showError("Eingabefehler", "Maximale Menge überschritten");
-         }
+                }
+            }
        } catch (NumberFormatException e) {
           general.Message.showError("Eingabefehler", "Eingaben überprüfen!");
         }
-       //}
+       
     }
     
     /**
