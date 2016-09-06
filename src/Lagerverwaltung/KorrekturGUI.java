@@ -111,8 +111,10 @@ public class KorrekturGUI extends javax.swing.JFrame {
     private void buttonKorrekturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonKorrekturActionPerformed
         try {
             Arti artikel = new Arti();
-            int test = Integer.parseInt(tfBestandsmenge.getText());
             int i = artikel.Bestandskorrektur(Integer.parseInt(tfBestandsmenge.getText()), Integer.parseInt(tfANR.getText()));
+            if (i == 0) {
+                general.Message.showError("Eingabefehler", "Artikel existiert nicht!");
+            }
         } catch (NumberFormatException e) {
             general.Message.showError("Eingabefehler", "Eingaben überprüfen!");
         }

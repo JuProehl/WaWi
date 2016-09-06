@@ -16,16 +16,19 @@ import javax.swing.table.DefaultTableModel;
  * @author matthias
  */
 public class ArtiList {
+    
+    List result;
 
     public ArtiList() {
+
     }
     
    
     
     
      public void ArtikelInTabelleAusgeben(JTable Table1){
-     Datenbank.DB_Connect con = new Datenbank.DB_Connect();
-        List result = con.Connect("FROM Arti");
+        Datenbank.DB_Connect con = new Datenbank.DB_Connect();
+        result = con.Connect("FROM Arti");
         DefaultTableModel model = (DefaultTableModel) Table1.getModel();
         Object rowData[] = new Object[5];
         model.setRowCount(0);
@@ -40,5 +43,42 @@ public class ArtiList {
                 model.addRow(rowData);             
                 }
  } 
+     
+     public Integer getANR(int row){
+        
+         
+         Arti Artikel = (Arti) result.get(row);
+         int ANR = Artikel.getANR();
+         
+         return ANR ;
+     }
+     
+     public String getBezeichnung(int row){
+         
+         
+         Arti Artikel = (Arti) result.get(row);
+         return Artikel.getBEZEICHNUNG();
+     }
+     
+     public Integer getBESTANDSMENGE(int row){
+         
+         
+         Arti Artikel = (Arti) result.get(row);
+         return Artikel.getBESTANDSMENGE();
+     }
     
+     public Integer getKrit_Menge(int row){
+         
+         
+         Arti Artikel = (Arti) result.get(row);
+         return Artikel.getKrit_Menge();
+     }
+     
+     public Integer getF_LNR(int row){
+         
+         
+         Arti Artikel = (Arti) result.get(row);
+         return Artikel.getF_LNR();
+     }
+     
 }

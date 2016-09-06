@@ -94,6 +94,11 @@ public class Arti {
          return con.simpleConnect("UPDATE Arti SET BESTANDSMENGE = BESTANDSMENGE - " + Integer.toString(amount)+ " WHERE ANR = " + Integer.toString(nummer));
          
     }
+    public int InsertArtikel(int anr, String bez, int bestand, int krit, int LNR ){
+        DB_Connect con = new DB_Connect();
+        return con.simpleConnect("INSERT INTO Arti (ANR, BEZEICHNUNG, BESTANDSMENGE, krit_Menge, F_LNR) VALUES ('"+Integer.toString(anr)+"', '"+
+                bez+"','"+Integer.toString(bestand)+"', '"+Integer.toString(krit)+"', '"+ Integer.toString(LNR)+"')");
+    }
         
 }
 

@@ -5,20 +5,20 @@
  */
 package entity;
 
+import Datenbank.DB_Connect;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Lagerort")
 /**
  *
  * @author Markus
  */
-public class Lagerort {
+public class Lage {
     	@Id
-	@Column(name = "LNr")
+	@Column(name = "LNr")    
 	int LNr;
 	@Column(name = "Regal")
 	int Regal;
@@ -27,7 +27,7 @@ public class Lagerort {
 	@Column(name = "maxmenge")
 	int maxmenge;
         
-        public Lagerort() {
+        public Lage() {
 		super();
 	}
 
@@ -62,7 +62,12 @@ public class Lagerort {
     public void setMaxmenge(int maxmenge) {
         this.maxmenge = maxmenge;
     }
-        
+    
+    public int InsertLagerort(int LNR, int regal, int fach, int max){
+        DB_Connect con = new DB_Connect();
+        return con.simpleConnect("INSERT INTO Lage (LNr, Regal, Fach, maxmenge) VALUES ('"+Integer.toString(LNR)+
+                "', '"+Integer.toString(regal)+"', '"+Integer.toString(fach)+"', '"+ Integer.toString(max)+"')");              
+    }
    
         
 

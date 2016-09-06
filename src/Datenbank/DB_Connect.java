@@ -52,7 +52,8 @@ public class DB_Connect {
 		Transaction tx = session.beginTransaction();
 		
 
-                Query updateQuery = session.createQuery(statement);
+               // Query updateQuery = session.createQuery(statement);
+               Query updateQuery = session.createNativeQuery(statement);
                 int result = updateQuery.executeUpdate();
 		
 		//for ( Iterator iterator = kunden.iterator(); iterator.hasNext();){
