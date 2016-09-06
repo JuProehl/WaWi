@@ -20,6 +20,8 @@ public class ArtiList {
     List result;
 
     public ArtiList() {
+        
+     TabelleHolen();
 
     }
     
@@ -27,8 +29,7 @@ public class ArtiList {
     
     
      public void ArtikelInTabelleAusgeben(JTable Table1){
-        Datenbank.DB_Connect con = new Datenbank.DB_Connect();
-        result = con.Connect("FROM Arti");
+        
         DefaultTableModel model = (DefaultTableModel) Table1.getModel();
         Object rowData[] = new Object[5];
         model.setRowCount(0);
@@ -43,6 +44,11 @@ public class ArtiList {
                 model.addRow(rowData);             
                 }
  } 
+     
+     public void TabelleHolen(){
+            Datenbank.DB_Connect con = new Datenbank.DB_Connect();
+        result = con.Connect("FROM Arti");
+     }
      
      public Integer getANR(int row){
         
