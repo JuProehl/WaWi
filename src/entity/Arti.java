@@ -21,22 +21,22 @@ import java.util.*;
 @Table(name = "Arti")
 
 public class Arti {
-	@Id
-	@Column(name = "ANR")
-	int ANR;
-	@Column(name = "BEZEICHNUNG")
-	String BEZEICHNUNG;
-	@Column(name = "BESTANDSMENGE")
-	int BESTANDSMENGE;
-	@Column(name = "krit_Menge")
-	int krit_Menge;
-	@Column(name = "F_LNR")
-	int F_LNR;
-        
-        	
-	public Arti() {
-		super();
-	}
+
+    @Id
+    @Column(name = "ANR")
+    int ANR;
+    @Column(name = "BEZEICHNUNG")
+    String BEZEICHNUNG;
+    @Column(name = "BESTANDSMENGE")
+    int BESTANDSMENGE;
+    @Column(name = "krit_Menge")
+    int krit_Menge;
+    @Column(name = "F_LNR")
+    int F_LNR;
+
+    public Arti() {
+        super();
+    }
 
     public int getANR() {
         return ANR;
@@ -77,31 +77,43 @@ public class Arti {
     public void setF_LNR(int F_LNR) {
         this.F_LNR = F_LNR;
     }
-        
 
-    public int UpdateArtikel(int amount, int nummer){
+    public int UpdateArtikel(int amount, int nummer) {
         DB_Connect con = new DB_Connect();
-        return con.simpleConnect("UPDATE Arti SET BESTANDSMENGE = BESTANDSMENGE + " + Integer.toString(amount)+ " WHERE ANR = " + Integer.toString(nummer));                
-       }
-    
-    public int Bestandskorrektur(int bestandsmenge, int nummer){
+        return con.simpleConnect("UPDATE Arti SET BESTANDSMENGE = BESTANDSMENGE + " + Integer.toString(amount) + " WHERE ANR = " + Integer.toString(nummer));
+    }
+
+    public int Bestandskorrektur(int bestandsmenge, int nummer) {
         DB_Connect con = new DB_Connect();
-        return con.simpleConnect("UPDATE Arti SET BESTANDSMENGE = " + Integer.toString(bestandsmenge)+ " WHERE ANR = " + Integer.toString(nummer));
+        return con.simpleConnect("UPDATE Arti SET BESTANDSMENGE = " + Integer.toString(bestandsmenge) + " WHERE ANR = " + Integer.toString(nummer));
     }
-    
-    public int Auslagern(int amount, int nummer){
-         DB_Connect con = new DB_Connect();
-         return con.simpleConnect("UPDATE Arti SET BESTANDSMENGE = BESTANDSMENGE - " + Integer.toString(amount)+ " WHERE ANR = " + Integer.toString(nummer));
-         
-    }
-    public int InsertArtikel(int anr, String bez, int bestand, int krit, int LNR ){
+
+    public int Auslagern(int amount, int nummer) {
         DB_Connect con = new DB_Connect();
-        return con.simpleConnect("INSERT INTO Arti (ANR, BEZEICHNUNG, BESTANDSMENGE, krit_Menge, F_LNR) VALUES ('"+Integer.toString(anr)+"', '"+
-                bez+"','"+Integer.toString(bestand)+"', '"+Integer.toString(krit)+"', '"+ Integer.toString(LNR)+"')");
+        return con.simpleConnect("UPDATE Arti SET BESTANDSMENGE = BESTANDSMENGE - " + Integer.toString(amount) + " WHERE ANR = " + Integer.toString(nummer));
+
     }
-        
+
+    public int InsertArtikel(int anr, String bez, int bestand, int krit, int LNR) {
+        DB_Connect con = new DB_Connect();
+        int i = con.simpleConnect("Select ANR FROM Arti WHERE ANR = " + Integer.toString(anr));
+        if (i == 0) {
+            i = con.simpleConnect("Select LNR FROM Lage WHERE LNR = " + Integer.toString(LNR));
+            if (i == 1) {
+                i = con.simpleConnect("Select ANR FROM Arti WHERE F_LNR = " + Integer.toString(LNR));
+                if (i == 0) {
+                    con.simpleConnect("INSERT INTO Arti (ANR, BEZEICHNUNG, BESTANDSMENGE, krit_Menge, F_LNR) VALUES ('" + Integer.toString(anr) + "', '"
+                            + bez + "','" + Integer.toString(bestand) + "', '" + Integer.toString(krit) + "', '" + Integer.toString(LNR) + "')");
+                    return 1;
+                } else {
+                    return 4;
+                }
+            } else {
+                return 3;
+            }
+        } else {
+            return 2;
+        }
+    }
+
 }
-
-  
-
-	

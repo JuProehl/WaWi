@@ -214,23 +214,60 @@ public class AnlegenGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonBackActionPerformed
 
     private void buttonLagerAnlegenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLagerAnlegenActionPerformed
-        Lage ort = new Lage();
-        int i = ort.InsertLagerort(Integer.parseInt(tfLagernummer.getText()),Integer.parseInt(tfRegal.getText()),
-                Integer.parseInt(tfFach.getText()), Integer.parseInt(tfmaxMenge.getText()));
-        
+        try {
+            Lage ort = new Lage();
+            int i = ort.InsertLagerort(Integer.parseInt(tfLagernummer.getText()), Integer.parseInt(tfRegal.getText()),
+                    Integer.parseInt(tfFach.getText()), Integer.parseInt(tfmaxMenge.getText()));
+            switch (i) {
+                case 1:
+                    general.Message.showSuccess("", "Anlage erfolgreich!");
+                    break;
+                case 2:
+                    general.Message.showError("", "Lagerort existiert bereits!");
+                    break;
+                case 3:
+                    general.Message.showError("", "Regal-Fach-Kombination bereits vergeben!");
+                    break;
+            }
+        } catch (NumberFormatException e) {
+            general.Message.showError("Eingabefehler", "Eingaben überprüfen!");
+        } catch (org.hibernate.exception.ConstraintViolationException i) {
+            general.Message.showError("", "Anlage nicht erfolgreich!");
+        }
     }//GEN-LAST:event_buttonLagerAnlegenActionPerformed
 
     private void buttonArtikelAnlegenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonArtikelAnlegenActionPerformed
-        Arti artikel = new Arti();
-        int i = artikel.InsertArtikel(Integer.parseInt(tfANR.getText()),tfBez.getText(),
-                Integer.parseInt(tfBestandsmenge.getText()), Integer.parseInt(tfKrit.getText()),
-                Integer.parseInt(tfLNR.getText()));
+        try {
+            Arti artikel = new Arti();
+            int i = artikel.InsertArtikel(Integer.parseInt(tfANR.getText()), tfBez.getText(),
+                    Integer.parseInt(tfBestandsmenge.getText()), Integer.parseInt(tfKrit.getText()),
+                    Integer.parseInt(tfLNR.getText()));
+            switch (i) {
+                case 1:
+                    general.Message.showSuccess("", "Anlage erfolgreich!");
+                    break;
+                case 2:
+                    general.Message.showError("", "Artikel existiert bereits!");
+                    break;
+                case 3:
+                     general.Message.showError("", "Lagerort existiert nicht!");                   
+                    break;
+                case 4:
+                    general.Message.showError("", "Lagerort bereits vergeben!");
+                    break;
+            }
+
+        } catch (NumberFormatException e) {
+            general.Message.showError("", "Eingaben überprüfen!");
+        } catch (org.hibernate.exception.ConstraintViolationException i) {
+            general.Message.showError("", "Artikel existiert bereits!");
+        }
     }//GEN-LAST:event_buttonArtikelAnlegenActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]){
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

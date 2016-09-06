@@ -130,7 +130,7 @@ public class EinlagernGUI extends javax.swing.JFrame {
           general.Message.showError("Eingabefehler", "Eingaben überprüfen!");
         }
     }//GEN-LAST:event_buttonEinlagernActionPerformed
- 
+
     
     //kann weg
     private void tfArtNrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfArtNrActionPerformed
