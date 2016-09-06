@@ -148,7 +148,7 @@ public class EinlagernEditOkGUI extends javax.swing.JFrame {
     private void einlagern(){
         Integer MaxMenge = LagerListe.getMaxMenge(0);
         Integer PlusMenge = Integer.parseInt(JTF_Menge.getText()); 
-       
+       //if(!general.Check.showErrorNonPositive(Integer.parseInt(JTF_Menge.getText(),10))){
         try {
          if(PlusMenge+AktMenge <= MaxMenge){   
         Arti artikel = new Arti();
@@ -164,6 +164,7 @@ public class EinlagernEditOkGUI extends javax.swing.JFrame {
        } catch (NumberFormatException e) {
           general.Message.showError("Eingabefehler", "Eingaben überprüfen!");
         }
+       //}
     }
     
     /**
