@@ -12,8 +12,12 @@ import javax.swing.JOptionPane;
  * @author Marc Czolbe
  */
 public class Message {
-    
-    public static void showError(String errortitle, String errortext){
+
+    public static void showError(String errortitle, String errortext) {
         JOptionPane.showMessageDialog(null, errortext, errortitle, JOptionPane.ERROR_MESSAGE);
+    }
+
+    public static void showSuccess(String successtitle, String successtext) {
+        JOptionPane.showMessageDialog(null, successtext, successtitle , JOptionPane.INFORMATION_MESSAGE);
     }
 }
