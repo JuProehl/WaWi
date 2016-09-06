@@ -93,7 +93,7 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
             }
         });
 
-        jButton_Einlagern.setText("Einlagern");
+        jButton_Einlagern.setText("Einlagern (F1)");
         jButton_Einlagern.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_EinlagernActionPerformed(evt);
