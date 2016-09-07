@@ -156,6 +156,7 @@ public class EinlagernEditOkGUI extends javax.swing.JFrame {
             if(PlusMenge+AktMenge <= MaxMenge){   
                 Arti artikel = new Arti();
                 int i = artikel.UpdateArtikel(Integer.parseInt(JTF_Menge.getText()), ANR);
+                Artikelbestand.TabelleHolen();
                 Artikelbestand.Tabelleausgeben();
                 setVisible(false);
             } else {

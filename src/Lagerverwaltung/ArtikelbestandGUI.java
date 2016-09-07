@@ -168,7 +168,7 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonBackActionPerformed
 
     private void buttonAktualisierenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAktualisierenActionPerformed
-
+        TabelleHolen();
        Tabelleausgeben();
         
         
@@ -190,8 +190,11 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
 
     
    public void Tabelleausgeben(){
-       ArtikelListe.TabelleHolen();
        ArtikelListe.ArtikelInTabelleAusgeben(tableArtikelbestand);
+   }
+   
+   public void TabelleHolen(){
+       ArtikelListe.TabelleHolen();
    }
    
    private void einlagernAufrufen(){
