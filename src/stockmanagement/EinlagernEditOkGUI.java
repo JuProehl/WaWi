@@ -56,8 +56,6 @@ public class EinlagernEditOkGUI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         JTF_Menge = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jButtonBack.setText("Abbrechen");
         jButtonBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -206,7 +204,12 @@ public class EinlagernEditOkGUI extends javax.swing.JFrame {
             public void run() {
                 new EinlagernEditOkGUI().setVisible(true);
             }
+           
         });
+        
+        
+       
+   
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

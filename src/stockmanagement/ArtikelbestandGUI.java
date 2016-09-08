@@ -44,7 +44,7 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
         jButton_Einlagern = new javax.swing.JButton();
         jButton_Auslagern = new javax.swing.JButton();
         jButton_Korrektur = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jButton_MetaDaten = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -114,7 +114,12 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Metadaten bearbeiten");
+        jButton_MetaDaten.setText("Metadaten bearbeiten");
+        jButton_MetaDaten.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_MetaDatenActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Löschen");
 
@@ -139,7 +144,7 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
                             .addComponent(jButton_Korrektur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton_Auslagern, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton_Einlagern, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton_MetaDaten, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -161,7 +166,7 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton_Korrektur)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4)
+                        .addComponent(jButton_MetaDaten)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton5)
                         .addGap(0, 644, Short.MAX_VALUE)))
@@ -212,6 +217,10 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
         korriegierenAufrufen();
     }//GEN-LAST:event_jButton_KorrekturActionPerformed
 
+    private void jButton_MetaDatenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_MetaDatenActionPerformed
+    bearbeitenAufrufen();
+    }//GEN-LAST:event_jButton_MetaDatenActionPerformed
+
     
    public void Tabelleausgeben(){
        ArtikelListe.ArtikelInTabelleAusgeben(tableArtikelbestand);
@@ -257,7 +266,24 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
        } catch (ArrayIndexOutOfBoundsException e) {
            general.Message.showError("Fehler", "Bitte Zeile auswählen!");
        }
-   }   
+   }  
+      
+   private void bearbeitenAufrufen(){
+       
+          try{
+        int row = tableArtikelbestand.getSelectedRow();
+        int ANR = ArtikelListe.getANR(row);
+        int LNr = ArtikelListe.getF_LNR(row);
+        String Bez = ArtikelListe.getBezeichnung(row);
+        int kritMenge = ArtikelListe.getKrit_Menge(row);
+        MetaDatenEditOKGUI MetaDatenGUI = new MetaDatenEditOKGUI(ANR,LNr,Bez,kritMenge);
+         MetaDatenGUI.setVisible(true);
+       } catch (ArrayIndexOutOfBoundsException e) {
+           general.Message.showError("Fehler", "Bitte Zeile auswählen!");
+       }
+       
+      
+   }
     
     /**
      * @param args the command line arguments
@@ -298,11 +324,11 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAktualisieren;
     private javax.swing.JButton buttonBack;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton_Auslagern;
     private javax.swing.JButton jButton_Einlagern;
     private javax.swing.JButton jButton_Korrektur;
+    private javax.swing.JButton jButton_MetaDaten;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tableArtikelbestand;
