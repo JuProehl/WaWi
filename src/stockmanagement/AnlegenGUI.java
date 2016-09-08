@@ -7,6 +7,7 @@ package stockmanagement;
 
 import entity.Arti;
 import entity.Lage;
+import java.util.ArrayList;
 
 /**
  *
@@ -214,54 +215,73 @@ public class AnlegenGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonBackActionPerformed
 
     private void buttonLagerAnlegenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLagerAnlegenActionPerformed
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        boolean success = true;
         try {
-            Lage ort = new Lage();
-            int i = ort.InsertLagerort(Integer.parseInt(tfLagernummer.getText()), Integer.parseInt(tfRegal.getText()),
-                    Integer.parseInt(tfFach.getText()), Integer.parseInt(tfmaxMenge.getText()));
-            switch (i) {
-                case 1:
-                    general.Message.showSuccess("", "Anlage erfolgreich!");
-                    break;
-                case 2:
-                    general.Message.showError("", "Lagerort existiert bereits!");
-                    break;
-                case 3:
-                    general.Message.showError("", "Regal-Fach-Kombination bereits vergeben!");
-                    break;
-            }
+            list.add(Integer.parseInt(tfLagernummer.getText()));
+            list.add(Integer.parseInt(tfRegal.getText()));
+            list.add(Integer.parseInt(tfFach.getText()));
+            list.add(Integer.parseInt(tfmaxMenge.getText()));
         } catch (NumberFormatException e) {
             general.Message.showError("Eingabefehler", "Eingaben überprüfen!");
-        } catch (org.hibernate.exception.ConstraintViolationException i) {
-            general.Message.showError("", "Anlage nicht erfolgreich!");
+            success = false;
+        }
+        if (success) {
+            if (!general.Check.istNegativ(list)) {
+                Lage ort = new Lage();
+                int i = ort.InsertLagerort(Integer.parseInt(tfLagernummer.getText()), Integer.parseInt(tfRegal.getText()),
+                        Integer.parseInt(tfFach.getText()), Integer.parseInt(tfmaxMenge.getText()));
+                switch (i) {
+                    case 1:
+                        general.Message.showSuccess("", "Anlage erfolgreich!");
+                        break;
+                    case 2:
+                        general.Message.showError("", "Lagerort existiert bereits!");
+                        break;
+                    case 3:
+                        general.Message.showError("", "Regal-Fach-Kombination bereits vergeben!");
+                        break;
+                }
+            }
         }
     }//GEN-LAST:event_buttonLagerAnlegenActionPerformed
 
     private void buttonArtikelAnlegenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonArtikelAnlegenActionPerformed
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        boolean success = true;
         try {
-            Arti artikel = new Arti();
-            int i = artikel.InsertArtikel(Integer.parseInt(tfANR.getText()), tfBez.getText(),
-                    Integer.parseInt(tfBestandsmenge.getText()), Integer.parseInt(tfKrit.getText()),
-                    Integer.parseInt(tfLNR.getText()));
-            switch (i) {
-                case 1:
-                    general.Message.showSuccess("", "Anlage erfolgreich!");
-                    break;
-                case 2:
-                    general.Message.showError("", "Artikel existiert bereits!");
-                    break;
-                case 3:
-                     general.Message.showError("", "Lagerort existiert nicht!");                   
-                    break;
-                case 4:
-                    general.Message.showError("", "Lagerort bereits vergeben!");
-                    break;
-            }
-
+            list.add(Integer.parseInt(tfANR.getText()));
+            list.add(Integer.parseInt(tfBestandsmenge.getText()));
+            list.add(Integer.parseInt(tfKrit.getText()));
+            list.add(Integer.parseInt(tfLNR.getText()));
         } catch (NumberFormatException e) {
-            general.Message.showError("", "Eingaben überprüfen!");
-        } catch (org.hibernate.exception.ConstraintViolationException i) {
-            general.Message.showError("", "Artikel existiert bereits!");
+            general.Message.showError("Eingabefehler", "Eingaben überprüfen!");
+            success = false;
+
         }
+        if (success) {
+            if (!general.Check.istNegativ(list)) {
+                Arti artikel = new Arti();
+                int i = artikel.InsertArtikel(Integer.parseInt(tfANR.getText()), tfBez.getText(),
+                        Integer.parseInt(tfBestandsmenge.getText()), Integer.parseInt(tfKrit.getText()),
+                        Integer.parseInt(tfLNR.getText()));
+                switch (i) {
+                    case 1:
+                        general.Message.showSuccess("", "Anlage erfolgreich!");
+                        break;
+                    case 2:
+                        general.Message.showError("", "Artikel existiert bereits!");
+                        break;
+                    case 3:
+                        general.Message.showError("", "Lagerort existiert nicht!");
+                        break;
+                    case 4:
+                        general.Message.showError("", "Lagerort bereits vergeben!");
+                        break;
+                }
+            }
+        }
+
     }//GEN-LAST:event_buttonArtikelAnlegenActionPerformed
 
     /**

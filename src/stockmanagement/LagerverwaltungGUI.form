@@ -38,18 +38,13 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="buttonAuslagern" alignment="0" max="32767" attributes="0"/>
                           <Component id="buttonDelete" alignment="0" max="32767" attributes="0"/>
-                          <Component id="buttonEinlagern" alignment="0" max="32767" attributes="0"/>
                           <Component id="buttonPicklist" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="buttonAnlegen" max="32767" attributes="0"/>
-                          <Component id="buttonKorrektur" alignment="0" max="32767" attributes="0"/>
-                          <Component id="buttonBestand" alignment="0" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="buttonAnlegen" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="buttonBestand" alignment="0" min="-2" pref="218" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="23" pref="385" max="32767" attributes="0"/>
           </Group>
@@ -64,19 +59,11 @@
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="buttonEinlagern" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="buttonKorrektur" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="buttonPicklist" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="buttonBestand" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="buttonAuslagern" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+              <Component id="buttonBestand" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="buttonPicklist" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="buttonDelete" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="buttonAnlegen" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -103,17 +90,6 @@
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="labelLager"/>
       </AccessibilityProperties>
     </Component>
-    <Component class="javax.swing.JButton" name="buttonEinlagern">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Artikel einlagern"/>
-      </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="buttonEinlagern"/>
-      </AccessibilityProperties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonEinlagernActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="buttonPicklist">
       <Properties>
         <Property name="text" type="java.lang.String" value="Neue Pickinglist"/>
@@ -124,17 +100,6 @@
       </AccessibilityProperties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonPicklistActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="buttonKorrektur">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Bestandskorrektur"/>
-      </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="buttonKorrektur"/>
-      </AccessibilityProperties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonKorrekturActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="buttonBestand">
@@ -173,14 +138,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAnlegenActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="buttonAuslagern">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Artikel auslagern"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAuslagernActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

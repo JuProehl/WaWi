@@ -24,9 +24,9 @@ public class Check {
         
     }
     
-    public static Boolean istNegativ(ArrayList<Integer> List){
+    public static Boolean istNegativ(ArrayList<Integer> list){
         Boolean b = false;
-            for (Integer i : List) {
+            for (Integer i : list) {
             if (i < 0) {
                 b = true;
                 }   
