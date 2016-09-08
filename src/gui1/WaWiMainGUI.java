@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package gui1;
 
 //test
 
-import Reports.ReportMainGUI;
-import Lagerverwaltung.LagerverwaltungGUI;
+import reports1.ReportMainGUI;
+import lagerverwaltung1.LagerverwaltungGUI;
 
 /**
  *
@@ -40,7 +40,6 @@ public class WaWiMainGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(725, 500));
-        setPreferredSize(null);
         setSize(new java.awt.Dimension(800, 600));
 
         buttonLager.setText("Lagerverwaltung");

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Reports;
+package reports1;
 
-import GUI.WaWiMainGUI;
+import gui1.WaWiMainGUI;
 
 /**
  *

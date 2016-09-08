@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package general;
+package general1;
 
 import com.sun.javafx.geom.transform.TransformHelper;
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ public class Check {
     
     public static Boolean istNegativ(int wert){
         if (wert < 0){
-            general.Message.showError("Eingabefehler", "Die Eingabe ist Negativ!");
+            general1.Message.showError("Eingabefehler", "Die Eingabe ist Negativ!");
             return true;
         } else {
             return false;
@@ -32,7 +32,7 @@ public class Check {
                 }   
             }
         if (b){
-            general.Message.showError("Eingabefehler", "Die Eingabe ist Negativ!");
+            general1.Message.showError("Eingabefehler", "Die Eingabe ist Negativ!");
         }
             return b;
 } 

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package entity;
+package entity1;
 
-import Datenbank.DB_Connect;
+import datenbank1.DB_Connect;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;

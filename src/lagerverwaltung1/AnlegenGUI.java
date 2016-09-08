@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Lagerverwaltung;
+package lagerverwaltung1;
 
-import entity.Arti;
-import entity.Lage;
+import entity1.Arti;
+import entity1.Lage;
 
 /**
  *
@@ -220,19 +220,19 @@ public class AnlegenGUI extends javax.swing.JFrame {
                     Integer.parseInt(tfFach.getText()), Integer.parseInt(tfmaxMenge.getText()));
             switch (i) {
                 case 1:
-                    general.Message.showSuccess("", "Anlage erfolgreich!");
+                    general1.Message.showSuccess("", "Anlage erfolgreich!");
                     break;
                 case 2:
-                    general.Message.showError("", "Lagerort existiert bereits!");
+                    general1.Message.showError("", "Lagerort existiert bereits!");
                     break;
                 case 3:
-                    general.Message.showError("", "Regal-Fach-Kombination bereits vergeben!");
+                    general1.Message.showError("", "Regal-Fach-Kombination bereits vergeben!");
                     break;
             }
         } catch (NumberFormatException e) {
-            general.Message.showError("Eingabefehler", "Eingaben überprüfen!");
+            general1.Message.showError("Eingabefehler", "Eingaben überprüfen!");
         } catch (org.hibernate.exception.ConstraintViolationException i) {
-            general.Message.showError("", "Anlage nicht erfolgreich!");
+            general1.Message.showError("", "Anlage nicht erfolgreich!");
         }
     }//GEN-LAST:event_buttonLagerAnlegenActionPerformed
 
@@ -244,23 +244,23 @@ public class AnlegenGUI extends javax.swing.JFrame {
                     Integer.parseInt(tfLNR.getText()));
             switch (i) {
                 case 1:
-                    general.Message.showSuccess("", "Anlage erfolgreich!");
+                    general1.Message.showSuccess("", "Anlage erfolgreich!");
                     break;
                 case 2:
-                    general.Message.showError("", "Artikel existiert bereits!");
+                    general1.Message.showError("", "Artikel existiert bereits!");
                     break;
                 case 3:
-                     general.Message.showError("", "Lagerort existiert nicht!");                   
+                     general1.Message.showError("", "Lagerort existiert nicht!");                   
                     break;
                 case 4:
-                    general.Message.showError("", "Lagerort bereits vergeben!");
+                    general1.Message.showError("", "Lagerort bereits vergeben!");
                     break;
             }
 
         } catch (NumberFormatException e) {
-            general.Message.showError("", "Eingaben überprüfen!");
+            general1.Message.showError("", "Eingaben überprüfen!");
         } catch (org.hibernate.exception.ConstraintViolationException i) {
-            general.Message.showError("", "Artikel existiert bereits!");
+            general1.Message.showError("", "Artikel existiert bereits!");
         }
     }//GEN-LAST:event_buttonArtikelAnlegenActionPerformed
 

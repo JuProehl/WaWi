@@ -1,4 +1,4 @@
-package Datenbank;
+package datenbank1;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -13,7 +13,7 @@ import java.util.*;
 
 
 //import entity.Kund;
-import entity.Arti;
+import entity1.Arti;
 
 public class DB_Connect {
     

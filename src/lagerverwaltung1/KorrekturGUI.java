@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Lagerverwaltung;
+package lagerverwaltung1;
 
-import entity.Arti;
+import entity1.Arti;
 
 /**
  *
@@ -113,10 +113,10 @@ public class KorrekturGUI extends javax.swing.JFrame {
             Arti artikel = new Arti();
             int i = artikel.Bestandskorrektur(Integer.parseInt(tfBestandsmenge.getText()), Integer.parseInt(tfANR.getText()));
             if (i == 0) {
-                general.Message.showError("Eingabefehler", "Artikel existiert nicht!");
+                general1.Message.showError("Eingabefehler", "Artikel existiert nicht!");
             }
         } catch (NumberFormatException e) {
-            general.Message.showError("Eingabefehler", "Eingaben überprüfen!");
+            general1.Message.showError("Eingabefehler", "Eingaben überprüfen!");
         }
     }//GEN-LAST:event_buttonKorrekturActionPerformed
 
