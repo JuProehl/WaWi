@@ -7,7 +7,7 @@ package gui;
 
 //test
 
-import reports.ReportMainGUI;
+import report.ReportMainGUI;
 import stockmanagement.LagerverwaltungGUI;
 
 /**
