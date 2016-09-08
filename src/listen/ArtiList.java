@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package listen1;
+package listen;
 
-import entity1.Arti;
+import entity.Arti;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.JTable;
@@ -46,7 +46,7 @@ public class ArtiList {
  } 
      
      public void TabelleHolen(){
-            datenbank1.DB_Connect con = new datenbank1.DB_Connect();
+            datenbank.DB_Connect con = new datenbank.DB_Connect();
         result = con.Connect("FROM Arti");
      }
      

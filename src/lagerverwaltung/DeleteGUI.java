@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package reports1;
+package lagerverwaltung;
 
 /**
  *
  * @author Markus
  */
-public class ArtikellisteGUI extends javax.swing.JFrame {
+public class DeleteGUI extends javax.swing.JFrame {
 
     /**
-     * Creates new form ArtikellisteGUI
+     * Creates new form DeleteGUI
      */
-    public ArtikellisteGUI() {
+    public DeleteGUI() {
         initComponents();
     }
 
@@ -28,9 +28,9 @@ public class ArtikellisteGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonBack = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(725, 500));
 
         buttonBack.setText("Zurück");
         buttonBack.addActionListener(new java.awt.event.ActionListener() {
@@ -39,8 +39,6 @@ public class ArtikellisteGUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Artikelliste");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -48,18 +46,14 @@ public class ArtikellisteGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(buttonBack)
-                .addGap(74, 74, 74)
-                .addComponent(jLabel1)
-                .addContainerGap(527, Short.MAX_VALUE))
+                .addContainerGap(650, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonBack)
-                    .addComponent(jLabel1))
-                .addContainerGap(442, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(buttonBack)
+                .addContainerGap(466, Short.MAX_VALUE))
         );
 
         pack();
@@ -67,8 +61,8 @@ public class ArtikellisteGUI extends javax.swing.JFrame {
 
     private void buttonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBackActionPerformed
         setVisible(false);
-        ReportMainGUI reportmain = new ReportMainGUI();
-        reportmain.setVisible(true);
+        LagerverwaltungGUI lagerGUI = new LagerverwaltungGUI();
+        lagerGUI.setVisible(true);
     }//GEN-LAST:event_buttonBackActionPerformed
 
     /**
@@ -88,26 +82,25 @@ public class ArtikellisteGUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ArtikellisteGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ArtikellisteGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ArtikellisteGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ArtikellisteGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ArtikellisteGUI().setVisible(true);
+                new DeleteGUI().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonBack;
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

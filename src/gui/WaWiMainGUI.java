@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui1;
+package gui;
 
 //test
 
-import reports1.ReportMainGUI;
-import lagerverwaltung1.LagerverwaltungGUI;
+import reports.ReportMainGUI;
+import lagerverwaltung.LagerverwaltungGUI;
 
 /**
  *

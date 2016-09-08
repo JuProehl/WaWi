@@ -4,11 +4,11 @@
  * and open the template in the editor.
  */
 
-package lagerverwaltung1;
+package lagerverwaltung;
 
-import listen1.ArtiList;
-import entity1.Arti;
-import entity1.Kund;
+import listen.ArtiList;
+import entity.Arti;
+import entity.Kund;
 import java.awt.event.KeyEvent;
 import java.util.*;
 import javax.swing.table.DefaultTableModel;
@@ -206,7 +206,7 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
         EinlagernEditOkGUI EinlagernGUI = new EinlagernEditOkGUI(ANR,LNr,AktMenge, this);
         EinlagernGUI.setVisible(true);
        } catch (ArrayIndexOutOfBoundsException e) {
-           general1.Message.showError("Fehler", "Bitte Zeile auswählen!");
+           general.Message.showError("Fehler", "Bitte Zeile auswählen!");
        }
    }
     

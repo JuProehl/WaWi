@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lagerverwaltung1;
+package lagerverwaltung;
 
 import java.util.ArrayList;
 import javax.swing.JTextField;
-import entity1.Arti;
+import entity.Arti;
 
 /**
  *
@@ -129,10 +129,10 @@ public class EinlagernGUI extends javax.swing.JFrame {
                Arti artikel = new Arti();
                int i = artikel.UpdateArtikel(Integer.parseInt(tfAmount.getText(),10), Integer.parseInt(tfArtNr.getText(),10));
                if(i == 0){
-                   general1.Message.showError("Eingabefehler", "Artikel existiert nicht!");
+                   general.Message.showError("Eingabefehler", "Artikel existiert nicht!");
                }
            } catch (NumberFormatException e) {
-               general1.Message.showError("Eingabefehler", "Eingaben überprüfen!");
+               general.Message.showError("Eingabefehler", "Eingaben überprüfen!");
            }
        //}
     }//GEN-LAST:event_buttonEinlagernActionPerformed

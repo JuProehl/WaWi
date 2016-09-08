@@ -1,4 +1,4 @@
-package entity1;
+package entity;
 
 import java.util.Iterator;
 import java.util.List;
@@ -14,7 +14,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.Query;
-import datenbank1.DB_Connect;
+import datenbank.DB_Connect;
 import java.util.*;
 
 @Entity
