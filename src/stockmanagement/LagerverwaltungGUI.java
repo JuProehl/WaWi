@@ -31,14 +31,11 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        buttonEinlagern = new javax.swing.JButton();
         buttonPicklist = new javax.swing.JButton();
-        buttonKorrektur = new javax.swing.JButton();
         buttonBestand = new javax.swing.JButton();
         buttonBack = new javax.swing.JButton();
         buttonDelete = new javax.swing.JButton();
         buttonAnlegen = new javax.swing.JButton();
-        buttonAuslagern = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(725, 500));
@@ -47,25 +44,11 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
 
         jLabel2.setText("Lagerverwaltung");
 
-        buttonEinlagern.setText("Artikel einlagern");
-        buttonEinlagern.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonEinlagernActionPerformed(evt);
-            }
-        });
-
         buttonPicklist.setText("Neue Pickinglist");
         buttonPicklist.setName(""); // NOI18N
         buttonPicklist.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonPicklistActionPerformed(evt);
-            }
-        });
-
-        buttonKorrektur.setText("Bestandskorrektur");
-        buttonKorrektur.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonKorrekturActionPerformed(evt);
             }
         });
 
@@ -97,13 +80,6 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
             }
         });
 
-        buttonAuslagern.setText("Artikel auslagern");
-        buttonAuslagern.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAuslagernActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -119,15 +95,11 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(buttonAuslagern, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(buttonDelete, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonEinlagern, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(buttonPicklist, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(buttonAnlegen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonKorrektur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonBestand, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(buttonAnlegen))
+                    .addComponent(buttonBestand, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 385, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -138,17 +110,11 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
                     .addComponent(buttonBack)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonEinlagern)
-                    .addComponent(buttonKorrektur))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonPicklist)
-                    .addComponent(buttonBestand))
-                .addGap(18, 18, 18)
-                .addComponent(buttonAuslagern)
-                .addGap(36, 36, 36)
+                .addGap(50, 50, 50)
+                .addComponent(buttonBestand)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonPicklist)
+                .addGap(83, 83, 83)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonDelete)
                     .addComponent(buttonAnlegen))
@@ -157,9 +123,7 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
 
         jLabel1.getAccessibleContext().setAccessibleName("labelLagerHaupt");
         jLabel2.getAccessibleContext().setAccessibleName("labelLager");
-        buttonEinlagern.getAccessibleContext().setAccessibleName("buttonEinlagern");
         buttonPicklist.getAccessibleContext().setAccessibleName("buttonPicklist");
-        buttonKorrektur.getAccessibleContext().setAccessibleName("buttonKorrektur");
         buttonBestand.getAccessibleContext().setAccessibleName("buttonBestand");
         buttonBack.getAccessibleContext().setAccessibleName("buttonBack");
 
@@ -185,18 +149,6 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
         bestandGUI.Tabelleausgeben();
     }//GEN-LAST:event_buttonBestandActionPerformed
 
-    private void buttonEinlagernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEinlagernActionPerformed
-      setVisible(false);
-      EinlagernGUI einlGUI = new EinlagernGUI();
-      einlGUI.setVisible(true);
-    }//GEN-LAST:event_buttonEinlagernActionPerformed
-
-    private void buttonKorrekturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonKorrekturActionPerformed
-      setVisible(false);
-      KorrekturGUI korrGUI = new KorrekturGUI();
-      korrGUI.setVisible(true);
-    }//GEN-LAST:event_buttonKorrekturActionPerformed
-
     private void buttonAnlegenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAnlegenActionPerformed
       setVisible(false);
       AnlegenGUI anlegGUI = new AnlegenGUI();
@@ -208,12 +160,6 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
       DeleteGUI loeschGUI = new DeleteGUI();
       loeschGUI.setVisible(true);
     }//GEN-LAST:event_buttonDeleteActionPerformed
-
-    private void buttonAuslagernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAuslagernActionPerformed
-      setVisible(false);
-      AuslagernGUI auslagerGUI = new AuslagernGUI();
-      auslagerGUI.setVisible(true);
-    }//GEN-LAST:event_buttonAuslagernActionPerformed
 
     /**
      * @param args the command line arguments
@@ -254,12 +200,9 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAnlegen;
-    private javax.swing.JButton buttonAuslagern;
     private javax.swing.JButton buttonBack;
     private javax.swing.JButton buttonBestand;
     private javax.swing.JButton buttonDelete;
-    private javax.swing.JButton buttonEinlagern;
-    private javax.swing.JButton buttonKorrektur;
     private javax.swing.JButton buttonPicklist;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

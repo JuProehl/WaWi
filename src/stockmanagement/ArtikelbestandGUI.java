@@ -100,9 +100,9 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Auslagern");
+        jButton2.setText("Auslagern (F2)");
 
-        jButton3.setText("Bestand Korrektur");
+        jButton3.setText("Bestandskorrektur");
 
         jButton4.setText("Metadaten bearbeiten");
 
