@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lagerverwaltung;
+package stockmanagement;
 
 import entity.Arti;
 
@@ -11,12 +11,12 @@ import entity.Arti;
  *
  * @author Markus
  */
-public class KorrekturGUI extends javax.swing.JFrame {
+public class AuslagernGUI extends javax.swing.JFrame {
 
     /**
-     * Creates new form KorrekturGUI
+     * Creates new form AuslagernGUI
      */
-    public KorrekturGUI() {
+    public AuslagernGUI() {
         initComponents();
     }
 
@@ -31,13 +31,14 @@ public class KorrekturGUI extends javax.swing.JFrame {
 
         buttonBack = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        buttonKorrektur = new javax.swing.JButton();
-        tfANR = new javax.swing.JTextField();
-        tfBestandsmenge = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        tfMenge = new javax.swing.JTextField();
+        tfANR = new javax.swing.JTextField();
+        buttonAuslagern = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(725, 500));
 
         buttonBack.setText("Zurück");
         buttonBack.addActionListener(new java.awt.event.ActionListener() {
@@ -46,18 +47,24 @@ public class KorrekturGUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Bestandskorrektur");
-
-        buttonKorrektur.setText("Bestand korrigieren");
-        buttonKorrektur.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonKorrekturActionPerformed(evt);
-            }
-        });
+        jLabel1.setText("Artikel auslagern");
 
         jLabel2.setText("Artikelnummer:");
 
-        jLabel3.setText("Bestandsmenge:");
+        jLabel3.setText("Entnommene Menge:");
+
+        tfANR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfANRActionPerformed(evt);
+            }
+        });
+
+        buttonAuslagern.setText("Auslagern");
+        buttonAuslagern.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAuslagernActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -65,60 +72,65 @@ public class KorrekturGUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(buttonBack)
-                .addGap(48, 48, 48)
-                .addComponent(jLabel1)
-                .addContainerGap(514, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tfANR, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tfBestandsmenge, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
-                .addComponent(buttonKorrektur)
-                .addGap(163, 163, 163))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(buttonBack)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tfANR, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tfMenge, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonAuslagern)))
+                .addContainerGap(198, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonBack)
                     .addComponent(jLabel1))
-                .addGap(18, 18, 18)
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonKorrektur)
-                    .addComponent(tfBestandsmenge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfANR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addContainerGap(402, Short.MAX_VALUE))
+                    .addComponent(jLabel3)
+                    .addComponent(tfMenge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfANR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonAuslagern))
+                .addContainerGap(392, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBackActionPerformed
-        setVisible(false);
-        LagerverwaltungGUI lagerGUI = new LagerverwaltungGUI();
-        lagerGUI.setVisible(true);
-    }//GEN-LAST:event_buttonBackActionPerformed
+    //kann weg
+    private void tfANRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfANRActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfANRActionPerformed
 
-    private void buttonKorrekturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonKorrekturActionPerformed
+    private void buttonAuslagernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAuslagernActionPerformed
         try {
             Arti artikel = new Arti();
-            int i = artikel.Bestandskorrektur(Integer.parseInt(tfBestandsmenge.getText()), Integer.parseInt(tfANR.getText()));
+            int i = artikel.Auslagern(Integer.parseInt(tfMenge.getText()), Integer.parseInt(tfANR.getText()));
             if (i == 0) {
                 general.Message.showError("Eingabefehler", "Artikel existiert nicht!");
             }
         } catch (NumberFormatException e) {
             general.Message.showError("Eingabefehler", "Eingaben überprüfen!");
         }
-    }//GEN-LAST:event_buttonKorrekturActionPerformed
+    }//GEN-LAST:event_buttonAuslagernActionPerformed
+
+    private void buttonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBackActionPerformed
+        setVisible(false);
+        LagerverwaltungGUI lagerGUI = new LagerverwaltungGUI();
+        lagerGUI.setVisible(true);
+    }//GEN-LAST:event_buttonBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,31 +149,31 @@ public class KorrekturGUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(KorrekturGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AuslagernGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(KorrekturGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AuslagernGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(KorrekturGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AuslagernGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(KorrekturGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AuslagernGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new KorrekturGUI().setVisible(true);
+                new AuslagernGUI().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonAuslagern;
     private javax.swing.JButton buttonBack;
-    private javax.swing.JButton buttonKorrektur;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField tfANR;
-    private javax.swing.JTextField tfBestandsmenge;
+    private javax.swing.JTextField tfMenge;
     // End of variables declaration//GEN-END:variables
 }

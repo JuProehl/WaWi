@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 
-package lagerverwaltung;
+package stockmanagement;
 
-import listen.ArtiList;
+import lists.ArtiList;
 import entity.Arti;
 import entity.Kund;
 import java.awt.event.KeyEvent;

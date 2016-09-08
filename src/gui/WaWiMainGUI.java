@@ -8,7 +8,7 @@ package gui;
 //test
 
 import reports.ReportMainGUI;
-import lagerverwaltung.LagerverwaltungGUI;
+import stockmanagement.LagerverwaltungGUI;
 
 /**
  *

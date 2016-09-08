@@ -1,4 +1,4 @@
-package datenbank;
+package database;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package listen;
+package lists;
 
 import entity.Arti;
 import java.util.Iterator;
@@ -46,7 +46,7 @@ public class ArtiList {
  } 
      
      public void TabelleHolen(){
-            datenbank.DB_Connect con = new datenbank.DB_Connect();
+            database.DB_Connect con = new database.DB_Connect();
         result = con.Connect("FROM Arti");
      }
      

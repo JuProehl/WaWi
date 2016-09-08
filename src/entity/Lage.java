@@ -5,7 +5,7 @@
  */
 package entity;
 
-import datenbank.DB_Connect;
+import database.DB_Connect;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;

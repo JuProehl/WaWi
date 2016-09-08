@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lagerverwaltung;
+package stockmanagement;
 
-import datenbank.DB_Connect;
-import listen.LageList;
+import database.DB_Connect;
+import lists.LageList;
 import entity.Arti;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;

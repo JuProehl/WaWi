@@ -14,7 +14,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.Query;
-import datenbank.DB_Connect;
+import database.DB_Connect;
 import java.util.*;
 
 @Entity
