@@ -17,7 +17,7 @@ public class AuslagernEditOkGUI extends javax.swing.JFrame {
 
     
     int ANR;
-    int AktMenge;
+    Integer AktMenge;
     ArtikelbestandGUI Artikelbestand;
     /**
      * Creates new form AuslagernEditOkGUI_
@@ -145,12 +145,12 @@ public class AuslagernEditOkGUI extends javax.swing.JFrame {
         if (!general.Check.istNegativ(MinusMenge)){ 
             if(MinusMenge <= AktMenge){   
                 Arti artikel = new Arti();
-                int i = artikel.UpdateArtikel(-Integer.parseInt(JTF_Menge.getText()), ANR);
+                int i = artikel.UpdateArtikelAdd(-Integer.parseInt(JTF_Menge.getText()), ANR);
                 Artikelbestand.TabelleHolen();
                 Artikelbestand.Tabelleausgeben();
                 setVisible(false);
             } else {
-             general.Message.showError("Eingabefehler", "Maximale Menge überschritten");
+             general.Message.showError("Eingabefehler", "Zu wenig Einheiten vorhanden! Es sind nur " + AktMenge.toString() + " Einheiten vorhanden!" );
                 }
             }
        } catch (NumberFormatException e) {

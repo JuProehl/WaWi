@@ -43,7 +43,7 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
         buttonAktualisieren = new javax.swing.JButton();
         jButton_Einlagern = new javax.swing.JButton();
         jButton_Auslagern = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jButton_Korrektur = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
@@ -107,7 +107,12 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Bestandskorrektur");
+        jButton_Korrektur.setText("Bestandskorrektur (F3)");
+        jButton_Korrektur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_KorrekturActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Metadaten bearbeiten");
 
@@ -131,7 +136,7 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton_Korrektur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton_Auslagern, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton_Einlagern, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -154,7 +159,7 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton_Auslagern)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3)
+                        .addComponent(jButton_Korrektur)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -190,6 +195,9 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
          if(evt.getKeyCode()==KeyEvent.VK_F2){
             auslagernAufrufen();
         }
+         if(evt.getKeyCode()==KeyEvent.VK_F3){
+            korriegierenAufrufen();
+        }
     }//GEN-LAST:event_tableArtikelbestandKeyPressed
 
     private void buttonAktualisierenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buttonAktualisierenKeyPressed
@@ -199,6 +207,10 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
     private void jButton_AuslagernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AuslagernActionPerformed
         auslagernAufrufen();
     }//GEN-LAST:event_jButton_AuslagernActionPerformed
+
+    private void jButton_KorrekturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_KorrekturActionPerformed
+        korriegierenAufrufen();
+    }//GEN-LAST:event_jButton_KorrekturActionPerformed
 
     
    public void Tabelleausgeben(){
@@ -234,6 +246,18 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
        }
    }
     
+      private void korriegierenAufrufen(){
+        try{
+        int row = tableArtikelbestand.getSelectedRow();
+        int ANR = ArtikelListe.getANR(row);
+        int LNr = ArtikelListe.getF_LNR(row);
+        int AktMenge = ArtikelListe.getBESTANDSMENGE(row);
+        KorrekturEditOKGUI KorrekturGUI = new KorrekturEditOKGUI(ANR,LNr, this);
+        KorrekturGUI.setVisible(true);
+       } catch (ArrayIndexOutOfBoundsException e) {
+           general.Message.showError("Fehler", "Bitte Zeile auswählen!");
+       }
+   }   
     
     /**
      * @param args the command line arguments
@@ -274,11 +298,11 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAktualisieren;
     private javax.swing.JButton buttonBack;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton_Auslagern;
     private javax.swing.JButton jButton_Einlagern;
+    private javax.swing.JButton jButton_Korrektur;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tableArtikelbestand;
