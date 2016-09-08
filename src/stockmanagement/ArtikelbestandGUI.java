@@ -101,6 +101,11 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
         });
 
         jButton2.setText("Auslagern (F2)");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Bestandskorrektur");
 
@@ -182,11 +187,18 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
          if(evt.getKeyCode()==KeyEvent.VK_F1){
             einlagernAufrufen();
         }
+         if(evt.getKeyCode()==KeyEvent.VK_F2){
+            auslagernAufrufen();
+        }
     }//GEN-LAST:event_tableArtikelbestandKeyPressed
 
     private void buttonAktualisierenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buttonAktualisierenKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonAktualisierenKeyPressed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     
    public void Tabelleausgeben(){
@@ -205,6 +217,18 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
         int AktMenge = ArtikelListe.getBESTANDSMENGE(row);
         EinlagernEditOkGUI EinlagernGUI = new EinlagernEditOkGUI(ANR,LNr,AktMenge, this);
         EinlagernGUI.setVisible(true);
+       } catch (ArrayIndexOutOfBoundsException e) {
+           general.Message.showError("Fehler", "Bitte Zeile auswählen!");
+       }
+   }
+   
+     private void auslagernAufrufen(){
+        try{
+        int row = tableArtikelbestand.getSelectedRow();
+        int ANR = ArtikelListe.getANR(row);
+        int AktMenge = ArtikelListe.getBESTANDSMENGE(row);
+        AuslagernEditOkGUI AuslagernGUI = new AuslagernEditOkGUI(ANR,AktMenge, this);
+        AuslagernGUI.setVisible(true);
        } catch (ArrayIndexOutOfBoundsException e) {
            general.Message.showError("Fehler", "Bitte Zeile auswählen!");
        }
