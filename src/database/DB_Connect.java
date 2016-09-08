@@ -24,7 +24,7 @@ public class DB_Connect {
 
 	public List Connect(String statement){
 		
-		StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder().configure("Datenbank/hibernate.cfg.xml").build();	
+		StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder().configure("database/hibernate.cfg.xml").build();	
 		Metadata metadata = new MetadataSources(standardRegistry).buildMetadata();		
 		SessionFactory sf = metadata.getSessionFactoryBuilder().build();		
 		Session session = sf.openSession();		
