@@ -5,7 +5,11 @@
  */
 package stockmanagement;
 
+import entity.Arti;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import lists.LageList;
 
 /**
  *
@@ -18,6 +22,8 @@ public class MetaDatenEditOKGUI extends javax.swing.JFrame {
     Integer LNr;
     String Bezeichnung;
     Integer kritMenge;
+    ArtikelbestandGUI Artikelbestand;
+    LageList LagerListe;
          
     /**
      * Creates new form MetaDatenEditOKGUI
@@ -26,12 +32,16 @@ public class MetaDatenEditOKGUI extends javax.swing.JFrame {
         initComponents();
     }
     
-    public MetaDatenEditOKGUI(int ANr, int LNr, String Bezeichnung, int kritMenge) {
+    public MetaDatenEditOKGUI(int ANr, int LNr, String Bezeichnung, int kritMenge,ArtikelbestandGUI Artikelbestand) {
         initComponents();
         this.ANR = ANr;
         this.LNr = LNr;
         this.Bezeichnung = Bezeichnung;
         this.kritMenge = kritMenge;
+        this.Artikelbestand = Artikelbestand;
+        String str = "FROM Lage Where LNr = " + LNr;
+        LagerListe = new LageList(str);
+        
         
         Label_ANR_Set.setText(this.ANR.toString());
         JTF_Bezeichnung.setText(Bezeichnung);
@@ -149,7 +159,7 @@ public class MetaDatenEditOKGUI extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addComponent(jLabel1)
                 .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(Label_ANR_Set))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -180,7 +190,7 @@ public class MetaDatenEditOKGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBackActionPerformed
 
     private void JButton_OKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButton_OKActionPerformed
-        Label_ANR_Set.setText("2");
+       bearbeiten();
     }//GEN-LAST:event_JButton_OKActionPerformed
 
     private void JButton_OKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JButton_OKKeyPressed
@@ -197,15 +207,100 @@ public class MetaDatenEditOKGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_JTF_BezeichnungKeyPressed
 
     private void JTF_kritMengeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTF_kritMengeKeyPressed
-        // TODO add your handling code here:
+       if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            bearbeiten();
+        }
+        if(evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+            setVisible(false);
+        }
     }//GEN-LAST:event_JTF_kritMengeKeyPressed
 
     private void JTF_LagerOrtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTF_LagerOrtKeyPressed
-        // TODO add your handling code here:
+         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            bearbeiten();
+        }
+        if(evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+            setVisible(false);
+        }
     }//GEN-LAST:event_JTF_LagerOrtKeyPressed
 
-       private void bearbeiten(){
+    private void bearbeiten(){
+        Integer EditLNr = 0;
+        Integer EditkritMenge = 0;
+        Boolean succes = true;
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        Arti artikel = new Arti();
+        Boolean LNRCHECK = false;
         
+        
+        try{
+        EditLNr = Integer.parseInt(JTF_LagerOrt.getText());
+        EditkritMenge = Integer.parseInt(JTF_kritMenge.getText());
+        } 
+        catch (NumberFormatException e){
+            general.Message.showError("Fehler!", "Bitte nur für Lagernummer und kritische Menge nur Zahlen eingeben");
+            succes = false;
+        }
+        
+        if(succes){
+            list.add(EditLNr);
+            list.add(EditkritMenge);
+            
+            if(!general.Check.istNegativ(list)){
+        
+                String EditBezeichnung = JTF_Bezeichnung.getText();
+                String UpdateString = "UPDATE Arti SET";
+                String ShowString;
+                
+                if(EditkritMenge <= LagerListe.getMaxMenge(0)){
+        
+                    if ( this.LNr == EditLNr && this.Bezeichnung.equals(EditBezeichnung) && this.kritMenge == EditkritMenge ){
+                        setVisible(false);
+                           general.Message.showSuccess("Keine Änderungen", "Kein Änderungen durchgeführt!");
+                        } else {
+                    
+                        
+                    
+                    if (!(this.LNr == EditLNr)){
+                        if(!(artikel.UpdateLNrCheck(EditLNr)==0)){
+                            UpdateString = UpdateString + " F_LNR=" + EditLNr;
+                            LNRCHECK = true;
+                        } 
+                   }
+                    if (!(this.Bezeichnung.equals(EditBezeichnung))){
+                        if (LNRCHECK){
+                            UpdateString = UpdateString + ",BEZEICHNUNG='" + EditBezeichnung + "'";
+                        } else {
+                            UpdateString = UpdateString + " BEZEICHNUNG='" + EditBezeichnung + "'";
+                        }
+                    }
+                    if (!(this.kritMenge == EditkritMenge)){
+                       if (LNRCHECK || !(this.Bezeichnung.equals(EditBezeichnung)) ){
+                            UpdateString = UpdateString + ",krit_Menge=" + EditkritMenge;
+                        } else {
+                            UpdateString = UpdateString + " krit_Menge=" + EditkritMenge;
+                        } 
+                    }
+                    
+                    if(!UpdateString.equals("UPDATE Arti SET")){
+        
+                    UpdateString = UpdateString + " WHERE ANr=" + this.ANR.toString();
+                    Integer returnwert = artikel.UpdateArtikelFree(UpdateString);
+                    setVisible(false);
+                    Artikelbestand.TabelleHolen();
+                    Artikelbestand.Tabelleausgeben();
+                    }
+        
+                     
+                }
+                }else { 
+                    general.Message.showError("Fehler", "Die kritische Menge darf nicht höher als die Fachgröße sein!");
+                }
+            
+            }
+        }
+       
+           
     } 
        
     /**

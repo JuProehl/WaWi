@@ -114,14 +114,19 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
             }
         });
 
-        jButton_MetaDaten.setText("Metadaten bearbeiten");
+        jButton_MetaDaten.setText("Metadaten bearbeiten (F4)");
         jButton_MetaDaten.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_MetaDatenActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Löschen");
+        jButton5.setText("Löschen (F6)");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -203,6 +208,9 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
          if(evt.getKeyCode()==KeyEvent.VK_F3){
             korriegierenAufrufen();
         }
+          if(evt.getKeyCode()==KeyEvent.VK_F4){
+            bearbeitenAufrufen();
+        }
     }//GEN-LAST:event_tableArtikelbestandKeyPressed
 
     private void buttonAktualisierenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buttonAktualisierenKeyPressed
@@ -220,6 +228,10 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
     private void jButton_MetaDatenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_MetaDatenActionPerformed
     bearbeitenAufrufen();
     }//GEN-LAST:event_jButton_MetaDatenActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+       deleteaufrufen();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     
    public void Tabelleausgeben(){
@@ -276,13 +288,31 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
         int LNr = ArtikelListe.getF_LNR(row);
         String Bez = ArtikelListe.getBezeichnung(row);
         int kritMenge = ArtikelListe.getKrit_Menge(row);
-        MetaDatenEditOKGUI MetaDatenGUI = new MetaDatenEditOKGUI(ANR,LNr,Bez,kritMenge);
+        MetaDatenEditOKGUI MetaDatenGUI = new MetaDatenEditOKGUI(ANR,LNr,Bez,kritMenge,this);
          MetaDatenGUI.setVisible(true);
        } catch (ArrayIndexOutOfBoundsException e) {
            general.Message.showError("Fehler", "Bitte Zeile auswählen!");
        }
        
       
+   }
+   
+   private void deleteaufrufen(){
+       try{
+        int row = tableArtikelbestand.getSelectedRow();
+        int ANR = ArtikelListe.getANR(row);
+        Arti artikel = new Arti();
+        int i = artikel.UpdateArtikelFree("DELETE FROM ARTI WHERE ANR=" + ANR);
+        if(i == 1){
+            general.Message.showSuccess("Erfolgreich!", "Dantensatz mit der Artikelnummer " + ANR + " wurde gelöscht!");
+        } else {
+            general.Message.showError("Fehler", "Datensatz konnte nicht gelöscht werden!");
+        }
+        TabelleHolen();
+        Tabelleausgeben();
+       } catch (ArrayIndexOutOfBoundsException e) {
+           general.Message.showError("Fehler", "Bitte Zeile auswählen!");
+       }
    }
     
     /**

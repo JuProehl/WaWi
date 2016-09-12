@@ -86,7 +86,12 @@ public class Arti {
     public int UpdateArtikelSetNew(int amount, int nummer) {
         DB_Connect con = new DB_Connect();
         return con.simpleConnect("UPDATE Arti SET BESTANDSMENGE = " + Integer.toString(amount) + " WHERE ANR = " + Integer.toString(nummer));
-    }    
+    }   
+    
+    public int UpdateArtikelFree(String str) {
+        DB_Connect con = new DB_Connect();
+        return con.simpleConnect(str);
+    }
 
     public int Bestandskorrektur(int bestandsmenge, int nummer) {
         DB_Connect con = new DB_Connect();
@@ -120,5 +125,33 @@ public class Arti {
             return 2;
         }
     }
+    
+    public int UpdateLNrCheck(int LNR) {
+       DB_Connect con = new DB_Connect();
+        int i = 0;
+        int j = 0;
+        int ret = 0;
+         i = con.simpleConnect("Select LNR FROM Lage WHERE LNR = " + Integer.toString(LNR));
+         j = con.simpleConnect("Select ANR FROM Arti WHERE F_LNR = " + Integer.toString(LNR));
+          
+          
+         if(i == 0 && j == 0){
+             general.Message.showError("Fehler", "Der Lagerplatz existiert nicht. Bitte anlegen!");
+             ret = 0;
+         } else {
+             if(i==1 && j==1){
+             general.Message.showError("Fehler", "Der Lagerplatz ist schon durch ein anderes Produkt belegt!") ;
+             ret = 0;
+             }
+             else {
+                 if(i==1 && j==0){
+                     ret=1;
+                 }
+             }
+           
+             
+         }
+        return ret;
+          } 
 
 }
