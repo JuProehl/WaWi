@@ -5,12 +5,16 @@
  */
 package stockmanagement;
 
+import lists.PickingList;
+
 /**
  *
  * @author Markus
  */
 public class picklistGUI extends javax.swing.JFrame {
 
+    PickingList pickinglist = new PickingList();
+    
     /**
      * Creates new form picklistGUIShow
      */
@@ -106,6 +110,11 @@ public class picklistGUI extends javax.swing.JFrame {
         lagerGUI.setVisible(true);
     }//GEN-LAST:event_buttonBackActionPerformed
 
+       public void showTable(){
+       pickinglist.showTable(tablePicklist);
+   }
+   
+    
     /**
      * @param args the command line arguments
      */

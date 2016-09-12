@@ -1,9 +1,14 @@
 package entity;
 
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.hibernate.annotations.IndexColumn;
 
 @Entity
 @Table(name = "Kund")
@@ -24,7 +29,9 @@ public class Kund {
 	int PLZ;
 	@Column(name = "ORT")
 	String Ort;
-	
+	@OneToMany
+	@JoinColumn(name="KNr")
+	private List<Best> best;
 	
 	
 	public Kund() {
@@ -114,6 +121,20 @@ public class Kund {
 	public void setOrt(String ort) {
 		Ort = ort;
 	}
+
+    /**
+     * @return the best
+     */
+    public List<Best> getBest() {
+        return best;
+    }
+
+    /**
+     * @param best the best to set
+     */
+    public void setBest(List<Best> best) {
+        this.best = best;
+    }
 
 	
 	
