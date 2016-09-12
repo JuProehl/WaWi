@@ -27,6 +27,7 @@
     <mapping class="entity.Kund"></mapping>
     <mapping class="entity.Arti"></mapping>
     <mapping class="entity.Lage"></mapping>
+    <mapping class="entity.Best"></mapping>
 
 </session-factory>
 </hibernate-configuration>
