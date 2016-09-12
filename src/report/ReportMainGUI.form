@@ -31,14 +31,14 @@
                       <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                       <Component id="labelReports" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="buttonShowBestellvolumen" alignment="0" max="32767" attributes="0"/>
-                      <Component id="buttonShowOpenOrders" alignment="0" max="32767" attributes="0"/>
-                      <Component id="buttonShowArticlelist" alignment="0" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="buttonShowArticlelist" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="buttonShowCritStock" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonShowOrders" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
+                  <Component id="buttonWorstSelling" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonBestSelling" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonShowOpenOrders" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="41" max="32767" attributes="0"/>
+              <EmptySpace pref="31" max="32767" attributes="0"/>
               <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
           </Group>
@@ -56,12 +56,16 @@
                       </Group>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Component id="buttonShowArticlelist" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="buttonShowOpenOrders" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="buttonShowBestellvolumen" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="buttonShowCritStock" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="buttonShowOpenOrders" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                      <Component id="buttonBestSelling" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="buttonWorstSelling" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="buttonShowOrders" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
@@ -115,7 +119,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonShowOpenOrdersActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="buttonShowBestellvolumen">
+    <Component class="javax.swing.JButton" name="buttonShowOrders">
       <Properties>
         <Property name="text" type="java.lang.String" value="Bestellvolumen"/>
       </Properties>
@@ -123,7 +127,7 @@
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="buttonShowBestellvolumen"/>
       </AccessibilityProperties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonShowBestellvolumenActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonShowOrdersActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -154,6 +158,22 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonShowCritStockActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="buttonBestSelling">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Meistverkaufte Artikel"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonBestSellingActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="buttonWorstSelling">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Schlechtverkaufteste Artikel"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonWorstSellingActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

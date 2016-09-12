@@ -4,15 +4,15 @@
 
 <hibernate-configuration>
 
-<session-factory>
+    <session-factory>
         <!-- Database connection settings -->
         <property name="hibernate.connection.driver_class">
-                  oracle.jdbc.driver.OracleDriver
+            oracle.jdbc.driver.OracleDriver
         </property>
         <property name="hibernate.connection.username">omaescher</property>
         <property name="hibernate.connection.password">omaescher</property>
         <property name="hibernate.connection.url">
-                   jdbc:oracle:thin:@oracle-srv.edvsz.hs-osnabrueck.de:1521/oraclestud
+            jdbc:oracle:thin:@oracle-srv.edvsz.hs-osnabrueck.de:1521/oraclestud
         </property>
 
         <!-- SQL dialect -->
@@ -24,10 +24,11 @@
         <!-- Drop and re-create the database schema on startup -->
         <property name="hibernate.hbm2ddl.auto">update</property>
         <!-- Map Entity Class -->
-    <mapping class="entity.Kund"></mapping>
-    <mapping class="entity.Arti"></mapping>
-    <mapping class="entity.Lage"></mapping>
-    <mapping class="entity.Best"></mapping>
+        <mapping class="entity.Kund"></mapping>
+        <mapping class="entity.Arti"></mapping>
+        <mapping class="entity.Lage"></mapping>
+        <mapping class="entity.Best"></mapping>
+        <mapping class="entity.K_BA"></mapping>
 
-</session-factory>
+    </session-factory>
 </hibernate-configuration>

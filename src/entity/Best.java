@@ -4,6 +4,9 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,8 +18,9 @@ public class Best {
 	private int BNR;
 	@Column(name = "BESTELLDATUM")
 	private Date BESTELLDATUM;
-        @Column(name = "F_KNR")
-	private int F_KNR;
+        @ManyToOne
+	@JoinColumn(name="F_KNR")
+	private Kund kund;
         @Column(name = "STATUS")
 	private String STATUS;
         @Column(name = "ABSCHULUSSDATUM")
@@ -59,15 +63,15 @@ public class Best {
     /**
      * @return the F_KNR
      */
-    public int getF_KNR() {
-        return F_KNR;
+    public Kund getkund() {
+        return kund;
     }
 
     /**
      * @param F_KNR the F_KNR to set
      */
-    public void setF_KNR(int F_KNR) {
-        this.F_KNR = F_KNR;
+    public void setkund(Kund kund) {
+        this.kund = kund;
     }
 
     /**

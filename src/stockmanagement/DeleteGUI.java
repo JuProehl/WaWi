@@ -28,6 +28,16 @@ public class DeleteGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonBack = new javax.swing.JButton();
+        buttonDeleteStorage = new javax.swing.JButton();
+        buttonDeleteArt = new javax.swing.JButton();
+        labelLagerort = new javax.swing.JLabel();
+        tfLNR = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        labelANR = new javax.swing.JLabel();
+        tfANR = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(725, 500));
@@ -39,21 +49,92 @@ public class DeleteGUI extends javax.swing.JFrame {
             }
         });
 
+        buttonDeleteStorage.setText("Lagerort löschen");
+        buttonDeleteStorage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonDeleteStorageActionPerformed(evt);
+            }
+        });
+
+        buttonDeleteArt.setText("Artikel löschen");
+        buttonDeleteArt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonDeleteArtActionPerformed(evt);
+            }
+        });
+
+        labelLagerort.setText("Lagerortnummer:");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Lagernummer", "Regal", "Fach", "Max. Menge"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Artikelnummer", "Bezeichnung", "Bestandsmenge"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
+        labelANR.setText("Artikelnummer:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(buttonBack)
-                .addContainerGap(650, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(buttonBack)
+                        .addGap(575, 575, 575))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(labelLagerort)
+                            .addComponent(tfLNR)
+                            .addComponent(buttonDeleteStorage, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                            .addComponent(buttonDeleteArt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tfANR)
+                            .addComponent(labelANR, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(buttonBack)
-                .addContainerGap(466, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelANR)
+                        .addGap(18, 18, 18)
+                        .addComponent(tfANR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buttonDeleteArt))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelLagerort)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tfLNR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonDeleteStorage))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         pack();
@@ -64,6 +145,14 @@ public class DeleteGUI extends javax.swing.JFrame {
         LagerverwaltungGUI lagerGUI = new LagerverwaltungGUI();
         lagerGUI.setVisible(true);
     }//GEN-LAST:event_buttonBackActionPerformed
+
+    private void buttonDeleteArtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteArtActionPerformed
+
+    }//GEN-LAST:event_buttonDeleteArtActionPerformed
+
+    private void buttonDeleteStorageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteStorageActionPerformed
+ 
+    }//GEN-LAST:event_buttonDeleteStorageActionPerformed
 
     /**
      * @param args the command line arguments
@@ -102,5 +191,15 @@ public class DeleteGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonBack;
+    private javax.swing.JButton buttonDeleteArt;
+    private javax.swing.JButton buttonDeleteStorage;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JLabel labelANR;
+    private javax.swing.JLabel labelLagerort;
+    private javax.swing.JTextField tfANR;
+    private javax.swing.JTextField tfLNR;
     // End of variables declaration//GEN-END:variables
 }
