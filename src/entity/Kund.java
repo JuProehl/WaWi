@@ -14,113 +14,85 @@ import org.hibernate.annotations.IndexColumn;
 @Table(name = "Kund")
 
 public class Kund {
-	@Id
-	@Column(name = "KNR")
-	int KNr;
-	@Column(name = "NACHNAME")
-	String Nachname;
-	@Column(name = "VORNAME")
-	String Vorname;
-	@Column(name = "STRASSE")
-	String Strasse;
-	@Column(name = "HAUSNUMMER")
-	int Hausnummer;
-	@Column(name = "PLZ")
-	int PLZ;
-	@Column(name = "ORT")
-	String Ort;
-	@OneToMany
-	@JoinColumn(name="KNr")
-	private List<Best> best;
-	
-	
-	public Kund() {
-		super();
-	}
 
+    @Id
+    @Column(name = "KNR")
+    private int KNr;
+    @Column(name = "NACHNAME")
+    private String Nachname;
+    @Column(name = "VORNAME")
+    private String Vorname;
+    @Column(name = "STRASSE")
+    private String Strasse;
+    @Column(name = "HAUSNUMMER")
+    private int Hausnummer;
+    @Column(name = "PLZ")
+    private int PLZ;
+    @Column(name = "ORT")
+    private String Ort;
+    @OneToMany
+    @JoinColumn(name = "F_KNR")
+    private List<Best> best;
 
+    public Kund() {
+        super();
+    }
 
-	public int getKNr() {
-		return KNr;
-	}
+    public int getKNr() {
+        return KNr;
+    }
 
+    public void setKNr(int kNr) {
+        KNr = kNr;
+    }
 
+    public String getNachname() {
+        return Nachname;
+    }
 
-	public void setKNr(int kNr) {
-		KNr = kNr;
-	}
+    public void setNachname(String nachname) {
+        Nachname = nachname;
+    }
 
+    public String getVorname() {
+        return Vorname;
+    }
 
+    public void setVorname(String vorname) {
+        Vorname = vorname;
+    }
 
-	public String getNachname() {
-		return Nachname;
-	}
+    public String getStrasse() {
+        return Strasse;
+    }
 
+    public void setStrasse(String strasse) {
+        Strasse = strasse;
+    }
 
+    public int getHausnummer() {
+        return Hausnummer;
+    }
 
-	public void setNachname(String nachname) {
-		Nachname = nachname;
-	}
+    public void setHausnummer(int hausnummer) {
+        Hausnummer = hausnummer;
+    }
 
+    public int getPLZ() {
+        return PLZ;
+    }
 
+    public void setPLZ(int pLZ) {
+        PLZ = pLZ;
+    }
 
-	public String getVorname() {
-		return Vorname;
-	}
+    public String getOrt() {
+        return Ort;
+    }
 
-
-
-	public void setVorname(String vorname) {
-		Vorname = vorname;
-	}
-
-
-
-	public String getStrasse() {
-		return Strasse;
-	}
-
-
-
-	public void setStrasse(String strasse) {
-		Strasse = strasse;
-	}
-
-
-
-	public int getHausnummer() {
-		return Hausnummer;
-	}
-
-
-
-	public void setHausnummer(int hausnummer) {
-		Hausnummer = hausnummer;
-	}
-
-
-
-	public int getPLZ() {
-		return PLZ;
-	}
-
-
-
-	public void setPLZ(int pLZ) {
-		PLZ = pLZ;
-	}
-
-
-
-	public String getOrt() {
-		return Ort;
-	}
-
-
-
-	public void setOrt(String ort) {
-		Ort = ort;
-	}
+    public void setOrt(String ort) {
+        Ort = ort;
+    }
 
     /**
      * @return the best
@@ -136,6 +108,4 @@ public class Kund {
         this.best = best;
     }
 
-	
-	
 }
