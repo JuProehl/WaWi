@@ -7,6 +7,7 @@ package report;
 
 import entity.Arti;
 import entity.Best;
+import entity.K_BA;
 import entity.Kund;
 import gui.WaWiMainGUI;
 import java.util.Iterator;
@@ -43,10 +44,12 @@ public class ReportMainGUI extends javax.swing.JFrame {
         buttonBack = new javax.swing.JButton();
         buttonShowArticlelist = new javax.swing.JButton();
         buttonShowOpenOrders = new javax.swing.JButton();
-        buttonShowBestellvolumen = new javax.swing.JButton();
+        buttonShowOrders = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableAusgabe = new javax.swing.JTable();
         buttonShowCritStock = new javax.swing.JButton();
+        buttonBestSelling = new javax.swing.JButton();
+        buttonWorstSelling = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,10 +76,10 @@ public class ReportMainGUI extends javax.swing.JFrame {
             }
         });
 
-        buttonShowBestellvolumen.setText("Bestellvolumen");
-        buttonShowBestellvolumen.addActionListener(new java.awt.event.ActionListener() {
+        buttonShowOrders.setText("Bestellvolumen");
+        buttonShowOrders.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonShowBestellvolumenActionPerformed(evt);
+                buttonShowOrdersActionPerformed(evt);
             }
         });
 
@@ -97,6 +100,20 @@ public class ReportMainGUI extends javax.swing.JFrame {
             }
         });
 
+        buttonBestSelling.setText("Meistverkaufte Artikel");
+        buttonBestSelling.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonBestSellingActionPerformed(evt);
+            }
+        });
+
+        buttonWorstSelling.setText("Schlechtverkaufteste Artikel");
+        buttonWorstSelling.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonWorstSellingActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -108,12 +125,13 @@ public class ReportMainGUI extends javax.swing.JFrame {
                         .addComponent(buttonBack)
                         .addGap(54, 54, 54)
                         .addComponent(labelReports))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(buttonShowBestellvolumen, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttonShowOpenOrders, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttonShowArticlelist, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(buttonShowCritStock))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                    .addComponent(buttonShowArticlelist)
+                    .addComponent(buttonShowCritStock)
+                    .addComponent(buttonShowOrders, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonWorstSelling)
+                    .addComponent(buttonBestSelling)
+                    .addComponent(buttonShowOpenOrders))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(65, 65, 65))
         );
@@ -128,12 +146,16 @@ public class ReportMainGUI extends javax.swing.JFrame {
                             .addComponent(labelReports))
                         .addGap(26, 26, 26)
                         .addComponent(buttonShowArticlelist)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buttonShowCritStock)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(buttonShowOpenOrders)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonShowBestellvolumen)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonShowCritStock))
+                        .addGap(74, 74, 74)
+                        .addComponent(buttonBestSelling)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buttonWorstSelling)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buttonShowOrders))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -144,7 +166,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
         buttonBack.getAccessibleContext().setAccessibleName("buttonBack");
         buttonShowArticlelist.getAccessibleContext().setAccessibleName("buttonShowArtikelliste");
         buttonShowOpenOrders.getAccessibleContext().setAccessibleName("buttonBestellungen");
-        buttonShowBestellvolumen.getAccessibleContext().setAccessibleName("buttonShowBestellvolumen");
+        buttonShowOrders.getAccessibleContext().setAccessibleName("buttonShowBestellvolumen");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -188,10 +210,10 @@ public class ReportMainGUI extends javax.swing.JFrame {
         setColumnnames(columnnames);
         result = connect("FROM Best where status = 'offen' order by BNR");
         Object rowData[] = new Object[3];
-        
+
         for (Iterator iterator = result.iterator(); iterator.hasNext();) {
             Best Bestellung = (Best) iterator.next();
-            
+
             rowData[0] = Bestellung.getBNR();
             rowData[1] = Bestellung.getBESTELLDATUM();
             rowData[2] = Bestellung.getSTATUS();
@@ -199,9 +221,9 @@ public class ReportMainGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buttonShowOpenOrdersActionPerformed
 
-    private void buttonShowBestellvolumenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonShowBestellvolumenActionPerformed
+    private void buttonShowOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonShowOrdersActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_buttonShowBestellvolumenActionPerformed
+    }//GEN-LAST:event_buttonShowOrdersActionPerformed
 
     private void buttonShowCritStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonShowCritStockActionPerformed
         String[] columnnames = {"Artikelnummer ", "Bezeichnung", "Bestandsmenge", "Krit_Menge"};
@@ -219,6 +241,20 @@ public class ReportMainGUI extends javax.swing.JFrame {
             model.addRow(rowData);
         }
     }//GEN-LAST:event_buttonShowCritStockActionPerformed
+
+    private void buttonBestSellingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBestSellingActionPerformed
+        String[] columnnames = {"Artikelnummer ", "Bezeichnung"};
+        setColumnnames(columnnames);
+        result = connect("select F_ANR, sum(anzahl) from K_BA group by F_ANR order by sum(anzahl) desc");
+
+    }//GEN-LAST:event_buttonBestSellingActionPerformed
+
+    private void buttonWorstSellingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonWorstSellingActionPerformed
+        String[] columnnames = {"Artikelnummer ", "Bezeichnung"};
+        setColumnnames(columnnames);
+        result = connect("select F_ANR, sum(anzahl) as summe from k_ba group by F_ANR order by summe asc");
+
+    }//GEN-LAST:event_buttonWorstSellingActionPerformed
 
     /**
      * @param args the command line arguments
@@ -258,10 +294,12 @@ public class ReportMainGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonBack;
+    private javax.swing.JButton buttonBestSelling;
     private javax.swing.JButton buttonShowArticlelist;
-    private javax.swing.JButton buttonShowBestellvolumen;
     private javax.swing.JButton buttonShowCritStock;
     private javax.swing.JButton buttonShowOpenOrders;
+    private javax.swing.JButton buttonShowOrders;
+    private javax.swing.JButton buttonWorstSelling;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelReports;
     private javax.swing.JTable tableAusgabe;
