@@ -19,7 +19,7 @@ public class Best {
 	@Column(name = "BESTELLDATUM")
 	private Date BESTELLDATUM;
         @ManyToOne
-	@JoinColumn(name="KNr")
+	@JoinColumn(name="F_KNR")
 	private Kund kund;
         @Column(name = "STATUS")
 	private String STATUS;
