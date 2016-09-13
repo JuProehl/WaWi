@@ -1,6 +1,7 @@
 package entity;
 
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -25,6 +26,9 @@ public class Best {
 	private String STATUS;
         @Column(name = "ABSCHULUSSDATUM")
 	private Date ABSCHULUSSDATUM;
+        @OneToMany
+        @JoinColumn(name = "F_BNR")
+        private List<K_BA> k_ba;
 	
 	
 	
@@ -100,6 +104,20 @@ public class Best {
      */
     public void setABSCHULUSSDATUM(Date ABSCHULUSSDATUM) {
         this.ABSCHULUSSDATUM = ABSCHULUSSDATUM;
+    }
+
+    /**
+     * @return the k_ba
+     */
+    public List<K_BA> getK_ba() {
+        return k_ba;
+    }
+
+    /**
+     * @param k_ba the k_ba to set
+     */
+    public void setK_ba(List<K_BA> k_ba) {
+        this.k_ba = k_ba;
     }
 
     

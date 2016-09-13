@@ -28,7 +28,7 @@ public class PickingList {
     public void getData() {
         database.DB_Connect con = new database.DB_Connect();
         /*result = con.Connect("FROM Kund k JOIN k.best best WHERE best.BNR = 1");*/
-        result = con.Connect("FROM Best");
+        result = con.Connect("FROM K_BA");
     }
 
     public void showTable(JTable Table1) {
@@ -36,10 +36,10 @@ public class PickingList {
         DefaultTableModel model = (DefaultTableModel) Table1.getModel();
         Object rowData[] = new Object[8];
         model.setRowCount(0);
-
+        System.out.println(result.size());
         for (Object o : result) {
-
-            Best best = (Best) o;
+            
+            //Best best = (Best) o;
            /* rowData[0] = best.getBNR();
             rowData[1] = best.getABSCHULUSSDATUM();
             rowData[2] = best.getBESTELLDATUM();

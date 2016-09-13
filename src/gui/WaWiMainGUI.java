@@ -97,7 +97,8 @@ public class WaWiMainGUI extends javax.swing.JFrame {
         buttonReport.getAccessibleContext().setAccessibleName("buttonReport");
         labelWaWi.getAccessibleContext().setAccessibleName("labelWaWi");
 
-        pack();
+        setSize(new java.awt.Dimension(249, 282));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonLagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLagerActionPerformed

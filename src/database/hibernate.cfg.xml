@@ -1,34 +1,27 @@
-<!DOCTYPE hibernate-configuration PUBLIC
-        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
-
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-
-    <session-factory>
-        <!-- Database connection settings -->
-        <property name="hibernate.connection.driver_class">
+  <session-factory>
+    <!-- Database connection settings -->
+    <property name="hibernate.connection.driver_class">
             oracle.jdbc.driver.OracleDriver
         </property>
-        <property name="hibernate.connection.username">omaescher</property>
-        <property name="hibernate.connection.password">omaescher</property>
-        <property name="hibernate.connection.url">
+    <property name="hibernate.connection.username">omaescher</property>
+    <property name="hibernate.connection.password">omaescher</property>
+    <property name="hibernate.connection.url">
             jdbc:oracle:thin:@oracle-srv.edvsz.hs-osnabrueck.de:1521/oraclestud
         </property>
-
-        <!-- SQL dialect -->
-        <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
-
-        <!-- Echo all executed SQL to sysout -->
-        <property name="show_sql">true</property>
-
-        <!-- Drop and re-create the database schema on startup -->
-        <property name="hibernate.hbm2ddl.auto">update</property>
-        <!-- Map Entity Class -->
-        <mapping class="entity.Kund"></mapping>
-        <mapping class="entity.Arti"></mapping>
-        <mapping class="entity.Lage"></mapping>
-        <mapping class="entity.Best"></mapping>
-        <mapping class="entity.K_BA"></mapping>
-
-    </session-factory>
+    <!-- SQL dialect -->
+    <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+    <!-- Echo all executed SQL to sysout -->
+    <property name="show_sql">true</property>
+    <!-- Drop and re-create the database schema on startup -->
+    <property name="hibernate.hbm2ddl.auto">update</property>
+    <!-- Map Entity Class -->
+    <mapping class="entity.Kund"/>
+    <mapping class="entity.Arti"/>
+    <mapping class="entity.Lage"/>
+    <mapping class="entity.Best" file="" jar="" package="" resource=""/>
+    <mapping class="entity.K_BA" file="" jar="" package="" resource=""/>
+  </session-factory>
 </hibernate-configuration>

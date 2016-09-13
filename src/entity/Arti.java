@@ -16,6 +16,8 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.Query;
 import database.DB_Connect;
 import java.util.*;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 @Table(name = "Arti")
@@ -33,6 +35,9 @@ public class Arti {
     int krit_Menge;
     @Column(name = "F_LNR")
     int F_LNR;
+    @OneToMany
+    @JoinColumn(name = "F_ANR")
+    private List<K_BA> k_ba;
 
     public Arti() {
         super();
@@ -153,5 +158,19 @@ public class Arti {
          }
         return ret;
           } 
+
+    /**
+     * @return the k_ba
+     */
+    public List<K_BA> getK_ba() {
+        return k_ba;
+    }
+
+    /**
+     * @param k_ba the k_ba to set
+     */
+    public void setK_ba(List<K_BA> k_ba) {
+        this.k_ba = k_ba;
+    }
 
 }
