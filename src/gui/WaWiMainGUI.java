@@ -143,6 +143,8 @@ public class WaWiMainGUI extends javax.swing.JFrame {
 
         /* Create and display the form */
         
+        database.DB_Connect.ConnectOpen();
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new WaWiMainGUI().setVisible(true);

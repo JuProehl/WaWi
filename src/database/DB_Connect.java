@@ -21,47 +21,49 @@ public class DB_Connect {
         {
             
         }
+        
+        static Session session;
+        static Transaction tx;
+        static SessionFactory sf;
 
+        
+        public static void ConnectOpen(){
+            
+            StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder().configure("database/hibernate.cfg.xml").build();	
+            Metadata metadata = new MetadataSources(standardRegistry).buildMetadata();		
+            sf = metadata.getSessionFactoryBuilder().build();		
+            		
+            
+            
+        }
+        
+        public static void ConnectClose(){         		
+		
+		sf.close();
+    }       
+        
 	public List Connect(String statement){
 		
-		StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder().configure("database/hibernate.cfg.xml").build();	
-		Metadata metadata = new MetadataSources(standardRegistry).buildMetadata();		
-		SessionFactory sf = metadata.getSessionFactoryBuilder().build();		
-		Session session = sf.openSession();		
-		Transaction tx = session.beginTransaction();
-		
-
+		session = sf.openSession();
+                tx = session.beginTransaction();
                 List result = session.createQuery(statement).list();
-                                               
-		
-		//for ( Iterator iterator = kunden.iterator(); iterator.hasNext();){
-		//Kund kunde = (Kund) iterator.next();
-		//System.out.println(kunde.getVorname() + " " + kunde.getNachname() );
-		tx.commit();         		
+                tx.commit();
 		session.close();
-		sf.close();
+		
                 return result;
 	}
         
+        
+        
         	public int simpleConnect(String statement){
-		
-		StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder().configure("database/hibernate.cfg.xml").build();	
-		Metadata metadata = new MetadataSources(standardRegistry).buildMetadata();		
-		SessionFactory sf = metadata.getSessionFactoryBuilder().build();		
-		Session session = sf.openSession();		
-		Transaction tx = session.beginTransaction();
-		
-
+		session = sf.openSession();
+                 tx = session.beginTransaction();
                // Query updateQuery = session.createQuery(statement);
                Query updateQuery = session.createNativeQuery(statement);
                 int result = updateQuery.executeUpdate();
-		
-		//for ( Iterator iterator = kunden.iterator(); iterator.hasNext();){
-		//Kund kunde = (Kund) iterator.next();
-		//System.out.println(kunde.getVorname() + " " + kunde.getNachname() );
-		tx.commit();         		
+		tx.commit();
 		session.close();
-		sf.close();
+		
                 return result;
 	}
    

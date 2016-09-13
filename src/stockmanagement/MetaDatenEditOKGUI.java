@@ -22,7 +22,7 @@ public class MetaDatenEditOKGUI extends javax.swing.JFrame {
     Integer LNr;
     String Bezeichnung;
     Integer kritMenge;
-    ArtikelbestandGUI Artikelbestand;
+    ArtikelbestandGUI artikelbestand;
     LageList LagerListe;
          
     /**
@@ -38,7 +38,7 @@ public class MetaDatenEditOKGUI extends javax.swing.JFrame {
         this.LNr = LNr;
         this.Bezeichnung = Bezeichnung;
         this.kritMenge = kritMenge;
-        this.Artikelbestand = Artikelbestand;
+        this.artikelbestand = Artikelbestand;
         String str = "FROM Lage Where LNr = " + LNr;
         LagerListe = new LageList(str);
         
@@ -287,8 +287,8 @@ public class MetaDatenEditOKGUI extends javax.swing.JFrame {
                     UpdateString = UpdateString + " WHERE ANr=" + this.ANR.toString();
                     Integer returnwert = artikel.UpdateArtikelFree(UpdateString);
                     setVisible(false);
-                    Artikelbestand.TabelleHolen();
-                    Artikelbestand.Tabelleausgeben();
+                    artikelbestand.TabelleHolen();
+                    artikelbestand.Tabelleausgeben();
                     }
         
                      

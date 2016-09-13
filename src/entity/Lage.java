@@ -63,6 +63,11 @@ public class Lage {
     public void setMaxmenge(int maxmenge) {
         this.maxmenge = maxmenge;
     }
+    
+    public int UpdateArtikelFree(String str) {
+        DB_Connect con = new DB_Connect();
+        return con.simpleConnect(str);
+    }
 
     public int InsertLagerort(int LNR, int regal, int fach, int max) {
         DB_Connect con = new DB_Connect();

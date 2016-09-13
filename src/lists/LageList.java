@@ -23,7 +23,7 @@ public class LageList {
     public LageList() {
         
         database.DB_Connect con = new database.DB_Connect();
-        result = con.Connect("FROM Lage");
+        result = con.Connect("FROM Lage ORDER BY LNR");
 
     }
     
@@ -36,6 +36,12 @@ public class LageList {
     
    
     
+     public void TabelleHolen() {
+        
+        database.DB_Connect con = new database.DB_Connect();
+        result = con.Connect("FROM Lage ORDER BY LNR");
+
+    }
     
      public void LagerInTabelleAusgeben(JTable Table1){
         

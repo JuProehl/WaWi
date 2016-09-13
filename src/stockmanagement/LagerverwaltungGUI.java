@@ -36,6 +36,7 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
         buttonBack = new javax.swing.JButton();
         buttonDelete = new javax.swing.JButton();
         buttonAnlegen = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(725, 500));
@@ -80,6 +81,13 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Lagerplätze anzeigen");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -94,13 +102,16 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(buttonDelete, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonPicklist, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(buttonDelete)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonAnlegen))
-                    .addComponent(buttonBestand, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(buttonAnlegen)))
                 .addGap(23, 385, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonPicklist, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonBestand, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,11 +121,13 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
                     .addComponent(buttonBack)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
-                .addGap(50, 50, 50)
+                .addGap(68, 68, 68)
                 .addComponent(buttonBestand)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonPicklist)
-                .addGap(83, 83, 83)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonDelete)
                     .addComponent(buttonAnlegen))
@@ -162,6 +175,13 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
       loeschGUI.setVisible(true);
     }//GEN-LAST:event_buttonDeleteActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         setVisible(false);
+      LagerGUI lagerGUI = new LagerGUI();
+        lagerGUI.setVisible(true);
+        lagerGUI.Tabelleausgeben();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -205,6 +225,7 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
     private javax.swing.JButton buttonBestand;
     private javax.swing.JButton buttonDelete;
     private javax.swing.JButton buttonPicklist;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
