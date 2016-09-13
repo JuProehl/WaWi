@@ -5,8 +5,10 @@
  */
 package stockmanagement;
 
+import database.DB_Connect;
 import entity.Lage;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -20,7 +22,16 @@ public class LagerortAnlagenEditOK extends javax.swing.JFrame {
      * Creates new form LagerortAnlagenEditOK
      */
     public LagerortAnlagenEditOK() {
+
         initComponents();
+        
+        DB_Connect con = new DB_Connect();
+        List list = con.Connect("SELECT max(LNr) AS LNr FROM Lage");
+        System.out.println(list);
+        Lage MaxLage = (Lage) list.get(0);
+        System.out.println(MaxLage);
+        Integer MaxLNR = MaxLage.getLNr();
+        System.out.println(MaxLNR);
     }
 
     /**
@@ -42,6 +53,7 @@ public class LagerortAnlagenEditOK extends javax.swing.JFrame {
         tfFach = new javax.swing.JTextField();
         tfmaxMenge = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        Label_Lagerortnummer = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,83 +92,60 @@ public class LagerortAnlagenEditOK extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(9, 9, 9)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelFach)
-                            .addComponent(labelMaxM)
-                            .addComponent(labelRegal)
-                            .addComponent(labelLagerort)
-                            .addComponent(labelL_anlegen))))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(buttonLagerAnlegen, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfRegal)
-                            .addComponent(tfFach, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(tfmaxMenge, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelLagerort)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Label_Lagerortnummer))
+                            .addComponent(labelL_anlegen)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelFach)
+                                    .addComponent(labelMaxM)
+                                    .addComponent(labelRegal))
+                                .addGap(26, 26, 26)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(tfFach, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(tfmaxMenge, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(buttonLagerAnlegen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(tfRegal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
+                .addComponent(labelL_anlegen)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(tfRegal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34))
-                            .addComponent(tfFach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(tfmaxMenge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelLagerort)
+                            .addComponent(Label_Lagerortnummer))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(buttonLagerAnlegen))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelL_anlegen)
-                        .addGap(18, 18, 18)
-                        .addComponent(labelLagerort)
-                        .addGap(18, 18, 18)
                         .addComponent(labelRegal)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(labelFach)
-                        .addGap(24, 24, 24)
-                        .addComponent(labelMaxM)
-                        .addGap(22, 22, 22)
-                        .addComponent(jButton1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(labelMaxM))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(tfRegal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfFach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfmaxMenge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(buttonLagerAnlegen))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonLagerAnlegenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLagerAnlegenActionPerformed
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        boolean success = true;
-        try {
-            list.add(Integer.parseInt(tfRegal.getText()));
-            list.add(Integer.parseInt(tfFach.getText()));
-            list.add(Integer.parseInt(tfmaxMenge.getText()));
-        } catch (NumberFormatException e) {
-            general.Message.showError("Eingabefehler", "Eingaben überprüfen!");
-            success = false;
-        }
-        if (success) {
-            if (!general.Check.istNegativ(list)) {
-                Lage ort = new Lage();
-                int i = ort.InsertLagerort(LNR, Integer.parseInt(tfRegal.getText()),
-                    Integer.parseInt(tfFach.getText()), Integer.parseInt(tfmaxMenge.getText()));
-                switch (i) {
-                    case 1:
-                    general.Message.showSuccess("", "Anlage erfolgreich!");
-                    break;
-                    case 2:
-                    general.Message.showError("", "Lagerort existiert bereits!");
-                    break;
-                    case 3:
-                    general.Message.showError("", "Regal-Fach-Kombination bereits vergeben!");
-                    break;
-                }
-            }
-        }
+
     }//GEN-LAST:event_buttonLagerAnlegenActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -197,8 +186,40 @@ public class LagerortAnlagenEditOK extends javax.swing.JFrame {
             }
         });
     }
+    
+   public void anlegen(){
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        boolean success = true;
+        try {
+            list.add(Integer.parseInt(tfRegal.getText()));
+            list.add(Integer.parseInt(tfFach.getText()));
+            list.add(Integer.parseInt(tfmaxMenge.getText()));
+        } catch (NumberFormatException e) {
+            general.Message.showError("Eingabefehler", "Eingaben überprüfen!");
+            success = false;
+        }
+        if (success) {
+            if (!general.Check.istNegativ(list)) {
+                Lage ort = new Lage();
+                int i = ort.InsertLagerort(LNR, Integer.parseInt(tfRegal.getText()),
+                    Integer.parseInt(tfFach.getText()), Integer.parseInt(tfmaxMenge.getText()));
+                switch (i) {
+                    case 1:
+                    general.Message.showSuccess("", "Anlage erfolgreich!");
+                    break;
+                    case 2:
+                    general.Message.showError("", "Lagerort existiert bereits!");
+                    break;
+                    case 3:
+                    general.Message.showError("", "Regal-Fach-Kombination bereits vergeben!");
+                    break;
+                }
+            }
+        }
+   }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Label_Lagerortnummer;
     private javax.swing.JButton buttonLagerAnlegen;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel labelFach;

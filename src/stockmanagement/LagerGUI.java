@@ -108,6 +108,11 @@ public class LagerGUI extends javax.swing.JFrame {
         });
 
         jButton_anlegen.setText("Lagerfach anlegen (F1)");
+        jButton_anlegen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_anlegenActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -185,6 +190,11 @@ public class LagerGUI extends javax.swing.JFrame {
     private void jButton_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_deleteActionPerformed
       deleteaufrufen();
     }//GEN-LAST:event_jButton_deleteActionPerformed
+
+    private void jButton_anlegenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_anlegenActionPerformed
+       LagerortAnlagenEditOK anlegenGUI = new LagerortAnlagenEditOK();
+       anlegenGUI.setVisible(true);
+    }//GEN-LAST:event_jButton_anlegenActionPerformed
 
     
    public void Tabelleausgeben(){
