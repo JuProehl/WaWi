@@ -3,16 +3,14 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[725, 500]"/>
-    </Property>
+    <Property name="title" type="java.lang.String" value="Men&#xfc;"/>
     <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[800, 600]"/>
     </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -30,18 +28,16 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="labelWaWi" min="-2" pref="137" max="-2" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="buttonLager" alignment="0" max="32767" attributes="0"/>
-                      <Component id="buttonKundenverwaltung" alignment="0" max="32767" attributes="0"/>
-                      <Component id="buttonReport" alignment="0" max="32767" attributes="0"/>
-                      <Component id="buttonBenutzerverwaltung" alignment="0" max="32767" attributes="0"/>
-                  </Group>
+              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="buttonKundenverwaltung" alignment="0" max="32767" attributes="0"/>
+                  <Component id="buttonReport" alignment="0" max="32767" attributes="0"/>
+                  <Component id="buttonBenutzerverwaltung" alignment="0" max="32767" attributes="0"/>
+                  <Component id="buttonLager" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="41" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
           </Group>
+          <Component id="labelWaWi" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -51,11 +47,11 @@
               <Component id="labelWaWi" min="-2" pref="22" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Component id="buttonLager" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Component id="buttonBenutzerverwaltung" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Component id="buttonKundenverwaltung" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Component id="buttonReport" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="48" max="32767" attributes="0"/>
           </Group>
@@ -66,6 +62,9 @@
     <Component class="javax.swing.JButton" name="buttonLager">
       <Properties>
         <Property name="text" type="java.lang.String" value="Lagerverwaltung"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Handcursor"/>
+        </Property>
       </Properties>
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="buttonLager"/>
@@ -77,6 +76,9 @@
     <Component class="javax.swing.JButton" name="buttonReport">
       <Properties>
         <Property name="text" type="java.lang.String" value="Report"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Handcursor"/>
+        </Property>
       </Properties>
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="buttonReport"/>
@@ -87,6 +89,10 @@
     </Component>
     <Component class="javax.swing.JLabel" name="labelWaWi">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="14" style="1"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Warenwirtschaftssystem"/>
       </Properties>
       <AccessibilityProperties>
@@ -96,11 +102,17 @@
     <Component class="javax.swing.JButton" name="buttonKundenverwaltung">
       <Properties>
         <Property name="text" type="java.lang.String" value="Kundenverwaltung"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Handcursor"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="buttonBenutzerverwaltung">
       <Properties>
         <Property name="text" type="java.lang.String" value="Benutzerverwaltung"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Handcursor"/>
+        </Property>
       </Properties>
     </Component>
   </SubComponents>

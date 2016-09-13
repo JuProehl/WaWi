@@ -24,17 +24,17 @@ public class Check {
         
     }
     
-    public static Boolean istNegativ(ArrayList<Integer> list){
+    public static Boolean istNegativ(ArrayList<Integer> list) {
         Boolean b = false;
-            for (Integer i : list) {
+        for (Integer i : list) {
             if (i < 0) {
                 b = true;
-                }   
             }
-        if (b){
+        }
+        if (b) {
             general.Message.showError("Eingabefehler", "Die Eingabe ist Negativ!");
         }
-            return b;
-} 
+        return b;
+    }
     
 }

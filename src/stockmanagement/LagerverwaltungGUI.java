@@ -34,12 +34,10 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
         buttonPicklist = new javax.swing.JButton();
         buttonBestand = new javax.swing.JButton();
         buttonBack = new javax.swing.JButton();
-        buttonDelete = new javax.swing.JButton();
         buttonAnlegen = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(725, 500));
 
         jLabel1.setText("Hauptdialog");
 
@@ -67,13 +65,9 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
             }
         });
 
-        buttonDelete.setText("Artikel/Lagerplätze löschen");
-        buttonDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonDeleteActionPerformed(evt);
-            }
-        });
-
+        buttonAnlegen.setBackground(new java.awt.Color(255, 0, 102));
+        buttonAnlegen.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        buttonAnlegen.setForeground(new java.awt.Color(51, 255, 51));
         buttonAnlegen.setText("Artikel/Lagerplätze anlegen");
         buttonAnlegen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,17 +94,18 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
                         .addGap(62, 62, 62)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(buttonDelete)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonAnlegen)))
-                .addGap(23, 385, Short.MAX_VALUE))
+                        .addComponent(jLabel2)
+                        .addGap(70, 106, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(buttonPicklist, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonBestand, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(90, 90, 90))))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonPicklist, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonBestand, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(52, 52, 52)
+                .addComponent(buttonAnlegen, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -121,17 +116,15 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
                     .addComponent(buttonBack)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
-                .addGap(68, 68, 68)
+                .addGap(56, 56, 56)
                 .addComponent(buttonBestand)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonPicklist)
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonDelete)
-                    .addComponent(buttonAnlegen))
-                .addContainerGap(254, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(buttonAnlegen, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         jLabel1.getAccessibleContext().setAccessibleName("labelLagerHaupt");
@@ -141,6 +134,7 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
         buttonBack.getAccessibleContext().setAccessibleName("buttonBack");
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonPicklistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPicklistActionPerformed
@@ -168,12 +162,6 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
       AnlegenGUI anlegGUI = new AnlegenGUI();
       anlegGUI.setVisible(true);
     }//GEN-LAST:event_buttonAnlegenActionPerformed
-
-    private void buttonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteActionPerformed
-      setVisible(false);
-      DeleteGUI loeschGUI = new DeleteGUI();
-      loeschGUI.setVisible(true);
-    }//GEN-LAST:event_buttonDeleteActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
          setVisible(false);
@@ -223,7 +211,6 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
     private javax.swing.JButton buttonAnlegen;
     private javax.swing.JButton buttonBack;
     private javax.swing.JButton buttonBestand;
-    private javax.swing.JButton buttonDelete;
     private javax.swing.JButton buttonPicklist;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
