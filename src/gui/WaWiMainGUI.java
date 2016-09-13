@@ -43,6 +43,7 @@ public class WaWiMainGUI extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(800, 600));
 
         buttonLager.setText("Lagerverwaltung");
+        buttonLager.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonLager.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonLagerActionPerformed(evt);
@@ -50,6 +51,7 @@ public class WaWiMainGUI extends javax.swing.JFrame {
         });
 
         buttonReport.setText("Report");
+        buttonReport.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonReportActionPerformed(evt);
@@ -61,8 +63,10 @@ public class WaWiMainGUI extends javax.swing.JFrame {
         labelWaWi.setText("Warenwirtschaftssystem");
 
         buttonKundenverwaltung.setText("Kundenverwaltung");
+        buttonKundenverwaltung.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         buttonBenutzerverwaltung.setText("Benutzerverwaltung");
+        buttonBenutzerverwaltung.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -70,12 +74,12 @@ public class WaWiMainGUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(buttonKundenverwaltung, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonReport, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonBenutzerverwaltung, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonLager, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addGap(60, 60, 60))
             .addComponent(labelWaWi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(

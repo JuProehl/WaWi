@@ -29,13 +29,13 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="buttonKundenverwaltung" alignment="0" max="32767" attributes="0"/>
                   <Component id="buttonReport" alignment="0" max="32767" attributes="0"/>
                   <Component id="buttonBenutzerverwaltung" alignment="0" max="32767" attributes="0"/>
                   <Component id="buttonLager" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="60" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
           </Group>
           <Component id="labelWaWi" alignment="1" max="32767" attributes="0"/>
       </Group>
@@ -47,11 +47,11 @@
               <Component id="labelWaWi" min="-2" pref="22" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Component id="buttonLager" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Component id="buttonBenutzerverwaltung" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Component id="buttonKundenverwaltung" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Component id="buttonReport" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="48" max="32767" attributes="0"/>
           </Group>
@@ -62,6 +62,9 @@
     <Component class="javax.swing.JButton" name="buttonLager">
       <Properties>
         <Property name="text" type="java.lang.String" value="Lagerverwaltung"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Handcursor"/>
+        </Property>
       </Properties>
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="buttonLager"/>
@@ -73,6 +76,9 @@
     <Component class="javax.swing.JButton" name="buttonReport">
       <Properties>
         <Property name="text" type="java.lang.String" value="Report"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Handcursor"/>
+        </Property>
       </Properties>
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="buttonReport"/>
@@ -96,11 +102,17 @@
     <Component class="javax.swing.JButton" name="buttonKundenverwaltung">
       <Properties>
         <Property name="text" type="java.lang.String" value="Kundenverwaltung"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Handcursor"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="buttonBenutzerverwaltung">
       <Properties>
         <Property name="text" type="java.lang.String" value="Benutzerverwaltung"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Handcursor"/>
+        </Property>
       </Properties>
     </Component>
   </SubComponents>
