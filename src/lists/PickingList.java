@@ -28,7 +28,7 @@ public class PickingList {
     public void getData() {
         database.DB_Connect con = new database.DB_Connect();
         /*result = con.Connect("FROM Kund k JOIN k.best best WHERE best.BNR = 1");*/
-        result = con.Connect("FROM Best b JOIN fetch b.kund");
+        result = con.Connect("FROM Best");
     }
 
     public void showTable(JTable Table1) {
@@ -36,19 +36,11 @@ public class PickingList {
         DefaultTableModel model = (DefaultTableModel) Table1.getModel();
         Object rowData[] = new Object[8];
         model.setRowCount(0);
-        System.out.print(result.size());
-        System.out.print(result);
-        for (Iterator iterator = result.iterator(); iterator.hasNext();) {
 
-            System.out.println(iterator.next());
+        for (Object o : result) {
 
-        }
-        
-
-        for (Iterator iterator = result.iterator(); iterator.hasNext();) {
-            
-            Best best = (Best) iterator.next();
-            rowData[0] = best.getBNR();
+            Best best = (Best) o;
+           /* rowData[0] = best.getBNR();
             rowData[1] = best.getABSCHULUSSDATUM();
             rowData[2] = best.getBESTELLDATUM();
             rowData[3] = best.getSTATUS();
@@ -56,7 +48,7 @@ public class PickingList {
             rowData[5] = best.getkund().getVorname();
             rowData[6] = best.getkund().getNachname();
             rowData[7] = best.getkund().getKNr();
-            model.addRow(rowData);
+            model.addRow(rowData);*/
         }
     }
 }
