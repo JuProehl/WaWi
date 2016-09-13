@@ -49,7 +49,7 @@
                                       <Component id="tfmaxMenge" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
                                       <Component id="buttonLagerAnlegen" alignment="1" min="-2" pref="87" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="tfRegal" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
+                                  <Component id="tfRegal" alignment="0" min="-2" pref="112" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -65,22 +65,22 @@
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               <Component id="labelL_anlegen" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="labelLagerort" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Label_Lagerortnummer" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="16" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="labelLagerort" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Label_Lagerortnummer" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="labelRegal" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Component id="labelFach" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="labelMaxM" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="tfRegal" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="tfFach" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="tfmaxMenge" min="-2" max="-2" attributes="0"/>
@@ -91,7 +91,7 @@
                   <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="buttonLagerAnlegen" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="16" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
