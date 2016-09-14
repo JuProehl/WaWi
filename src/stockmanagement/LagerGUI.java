@@ -6,6 +6,7 @@
 
 package stockmanagement;
 
+import database.DB_Connect;
 import lists.ArtiList;
 import entity.Arti;
 import entity.Kund;
@@ -193,7 +194,7 @@ public class LagerGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_deleteActionPerformed
 
     private void jButton_anlegenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_anlegenActionPerformed
-       LagerortAnlagenEditOK anlegenGUI = new LagerortAnlagenEditOK();
+       LagerortAnlagenEditOK anlegenGUI = new LagerortAnlagenEditOK(this);
        anlegenGUI.setVisible(true);
     }//GEN-LAST:event_jButton_anlegenActionPerformed
 
@@ -210,9 +211,16 @@ public class LagerGUI extends javax.swing.JFrame {
    
    
       private void deleteaufrufen(){
+          
+
+          
        try{
         int row = tableLagerbestand.getSelectedRow();
         int LNR = LagerListe.getLNr(row);
+        
+        DB_Connect con = new DB_Connect();
+        int j = con.simpleConnect("SELECT F_LNR FROM Arti WHERE F_LNR=" + LNR);
+       if(j == 0){
         Lage lager = new Lage();
         int i = lager.UpdateArtikelFree("DELETE FROM LAGE WHERE LNR=" + LNR);
         if(i == 1){
@@ -222,6 +230,13 @@ public class LagerGUI extends javax.swing.JFrame {
         }
         TabelleHolen();
         Tabelleausgeben();
+       } else {
+           
+           Arti arti = new Arti();
+           List artilist = con.Connect("FROM Arti WHERE F_LNR=" + LNR);
+           arti = (Arti) artilist.get(0);
+           general.Message.showError("Fehler!", "Es ist noch ein Artikel mit der Artikelnummer " + arti.getANR() + " und der Bezeichnung '" + arti.getBEZEICHNUNG() + "' dem Lagerort zugeordnet. ");
+       }
        } catch (ArrayIndexOutOfBoundsException e) {
            general.Message.showError("Fehler", "Bitte Zeile auswählen!");
        }

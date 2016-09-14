@@ -17,21 +17,24 @@ import java.util.List;
 public class LagerortAnlagenEditOK extends javax.swing.JFrame {
     
     int LNR;
+    LagerGUI lagergui;
 
     /**
      * Creates new form LagerortAnlagenEditOK
      */
+    
+    
     public LagerortAnlagenEditOK() {
 
+   
+    }
+    public LagerortAnlagenEditOK(LagerGUI lagergui) {
+
         initComponents();
-        
-        DB_Connect con = new DB_Connect();
-        List list = con.Connect("SELECT max(LNr) AS LNr FROM Lage");
-        System.out.println(list);
-        Lage MaxLage = (Lage) list.get(0);
-        System.out.println(MaxLage);
-        Integer MaxLNR = MaxLage.getLNr();
-        System.out.println(MaxLNR);
+        LNR = nextLNR();
+        this.lagergui = lagergui;
+        Label_Lagerortnummer.setText(nextLNR().toString());
+   
     }
 
     /**
@@ -108,7 +111,7 @@ public class LagerortAnlagenEditOK extends javax.swing.JFrame {
                                         .addComponent(tfFach, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(tfmaxMenge, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(buttonLagerAnlegen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(tfRegal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(tfRegal, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(99, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -117,20 +120,20 @@ public class LagerortAnlagenEditOK extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addComponent(labelL_anlegen)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelLagerort)
+                    .addComponent(Label_Lagerortnummer))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelLagerort)
-                            .addComponent(Label_Lagerortnummer))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(labelRegal)
-                        .addGap(18, 18, 18)
+                        .addGap(24, 24, 24)
                         .addComponent(labelFach)
                         .addGap(18, 18, 18)
                         .addComponent(labelMaxM))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(tfRegal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(tfFach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tfmaxMenge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -138,7 +141,7 @@ public class LagerortAnlagenEditOK extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(buttonLagerAnlegen))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -146,11 +149,11 @@ public class LagerortAnlagenEditOK extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonLagerAnlegenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLagerAnlegenActionPerformed
-
+            anlegen();
     }//GEN-LAST:event_buttonLagerAnlegenActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -206,7 +209,10 @@ public class LagerortAnlagenEditOK extends javax.swing.JFrame {
                     Integer.parseInt(tfFach.getText()), Integer.parseInt(tfmaxMenge.getText()));
                 switch (i) {
                     case 1:
+                    setVisible(false);
                     general.Message.showSuccess("", "Anlage erfolgreich!");
+                    lagergui.TabelleHolen();
+                    lagergui.Tabelleausgeben();
                     break;
                     case 2:
                     general.Message.showError("", "Lagerort existiert bereits!");
@@ -217,6 +223,19 @@ public class LagerortAnlagenEditOK extends javax.swing.JFrame {
                 }
             }
         }
+   }
+   
+   
+   public Integer nextLNR(){
+       
+            
+        DB_Connect con = new DB_Connect();
+        List list = con.Connect("SELECT max(L.LNr) FROM Lage L");
+        System.out.println(list);
+     
+        Integer MaxLNR = (Integer) list.get(0);
+        MaxLNR = MaxLNR + 1;
+        return MaxLNR;
    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
