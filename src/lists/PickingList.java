@@ -59,14 +59,11 @@ public class PickingList {
     
     public List buildPickinglist (List result){
         List picking = null;
-        int artikelinPickingList = 0;
+        
         for (Object o :result){
             K_BA k_ba = (K_BA) o;
             int anzahlPos = k_ba.getPOSITION();
-            for (int i = anzahlPos; i > 0; i--) {
-                artikelinPickingList += k_ba.getANZAHL();
-                
-            }
+            
             picking.add(k_ba);            
             //Hier muss noch eine Methode implementiert werden die den Status der Bestellungen auf inArbeit setzt
             k_ba.getBest().getBNR();
@@ -74,8 +71,16 @@ public class PickingList {
             
             
         }
-        
-        
         return picking;
     } 
+    
+    public int anzahlAtikelproBest (int BNR, List result){
+    int artikelinBest = 0;
+    int anzahlPos = k_ba.getPOSITION();
+        for (Object o :result){
+            K_BA k_ba = (K_BA) o;
+        }
+            
+        }
+    
 }
