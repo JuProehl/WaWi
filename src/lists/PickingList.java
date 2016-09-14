@@ -8,6 +8,7 @@ package lists;
 import entity.Arti;
 import entity.Best;
 import entity.Kund;
+import entity.K_BA;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.JTable;
@@ -37,9 +38,13 @@ public class PickingList {
         Object rowData[] = new Object[8];
         model.setRowCount(0);
         System.out.println(result.size());
+        
+        
+        
+        
         for (Object o : result) {
             
-            //Best best = (Best) o;
+            K_BA k_ba = (K_BA) o;
            /* rowData[0] = best.getBNR();
             rowData[1] = best.getABSCHULUSSDATUM();
             rowData[2] = best.getBESTELLDATUM();
@@ -51,4 +56,17 @@ public class PickingList {
             model.addRow(rowData);*/
         }
     }
+    
+    public List buildPickinglist (List result){
+        List picking = null;
+        for (Object o :result){
+            
+            
+            
+            
+        }
+        
+        
+        return picking;
+    } 
 }
