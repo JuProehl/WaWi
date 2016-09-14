@@ -29,7 +29,7 @@ public class PickingList {
     public void getData() {
         database.DB_Connect con = new database.DB_Connect();
         /*result = con.Connect("FROM Kund k JOIN k.best best WHERE best.BNR = 1");*/
-        result = con.Connect("FROM K_BA");
+        result = con.Connect("FROM K_BA kba WHERE kba.best.STATUS = 'offen'and ROWNUM <= 40 ORDER BY kba.best.BESTELLDATUM ASC ,kba.best.BNR DESC, kba.POSITION DESC");
     }
 
     public void showTable(JTable Table1) {
@@ -59,8 +59,17 @@ public class PickingList {
     
     public List buildPickinglist (List result){
         List picking = null;
+        int artikelinPickingList = 0;
         for (Object o :result){
-            
+            K_BA k_ba = (K_BA) o;
+            int anzahlPos = k_ba.getPOSITION();
+            for (int i = anzahlPos; i > 0; i--) {
+                artikelinPickingList += k_ba.getANZAHL();
+                
+            }
+            picking.add(k_ba);            
+            //Hier muss noch eine Methode implementiert werden die den Status der Bestellungen auf inArbeit setzt
+            k_ba.getBest().getBNR();
             
             
             
