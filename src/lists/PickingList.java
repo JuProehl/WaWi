@@ -38,14 +38,11 @@ public class PickingList {
         Object rowData[] = new Object[8];
         model.setRowCount(0);
         System.out.println(result.size());
-        
-        
-        
-        
+
         for (Object o : result) {
-            
+
             K_BA k_ba = (K_BA) o;
-           /* rowData[0] = best.getBNR();
+            /* rowData[0] = best.getBNR();
             rowData[1] = best.getABSCHULUSSDATUM();
             rowData[2] = best.getBESTELLDATUM();
             rowData[3] = best.getSTATUS();
@@ -57,30 +54,36 @@ public class PickingList {
         }
     }
     
-    public List buildPickinglist (List result){
+    public List buildPickinglist() {
         List picking = null;
-        
-        for (Object o :result){
-            K_BA k_ba = (K_BA) o;
-            int anzahlPos = k_ba.getPOSITION();
-            
-            picking.add(k_ba);            
-            //Hier muss noch eine Methode implementiert werden die den Status der Bestellungen auf inArbeit setzt
-            k_ba.getBest().getBNR();
-            
-            
+        int artikelinBest = 0;
+        int letzteBNR = 0;
+        for (Object o : result) {
+                K_BA k_ba = (K_BA) o;
+
+                if (k_ba.getBest().getBNR() != letzteBNR) {
+                    artikelinBest += anzahlAtikelproBest(k_ba.getBest().getBNR());
+                    System.out.println(artikelinBest);
+                    int nachImportBest = artikelinBest;
+                    if ()
+                }
+                letzteBNR = k_ba.getBest().getBNR();
+                //picking.add(o);
+                //Hier muss noch eine Methode implementiert werden die den Status der Bestellungen auf inArbeit setzt
             
         }
         return picking;
-    } 
-    
-    public int anzahlAtikelproBest (int BNR, List result){
-    int artikelinBest = 0;
-    int anzahlPos = k_ba.getPOSITION();
-        for (Object o :result){
+    }
+
+    public int anzahlAtikelproBest(int BNR) {
+        int artikelinBest = 0;
+        for (Object o : result) {
             K_BA k_ba = (K_BA) o;
+            if (BNR == k_ba.getBest().getBNR()) {
+                artikelinBest += k_ba.getANZAHL();
+            }
         }
-            
-        }
+        return artikelinBest;
+    }
     
 }
