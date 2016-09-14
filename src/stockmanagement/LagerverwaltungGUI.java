@@ -143,6 +143,7 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
         picklistGUI pickshowGUI = new picklistGUI();
         pickshowGUI.setVisible(true);
         pickshowGUI.showTable();
+        //pickshowGUI.buildPickingList();
     }//GEN-LAST:event_buttonPicklistActionPerformed
 
     private void buttonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBackActionPerformed

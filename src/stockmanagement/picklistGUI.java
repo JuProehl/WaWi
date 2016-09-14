@@ -5,15 +5,17 @@
  */
 package stockmanagement;
 
+import entity.K_BA;
 import lists.PickingList;
-
+import java.util.ArrayList;
 /**
  *
  * @author Markus
  */
 public class picklistGUI extends javax.swing.JFrame {
-
+    ArrayList<K_BA> pickingListArray = new ArrayList<>();
     PickingList pickinglist = new PickingList();
+    
     
     /**
      * Creates new form picklistGUIShow
@@ -110,9 +112,14 @@ public class picklistGUI extends javax.swing.JFrame {
         lagerGUI.setVisible(true);
     }//GEN-LAST:event_buttonBackActionPerformed
 
-       public void showTable(){
-       pickinglist.showTable(tablePicklist);
-   }
+    public void showTable() {
+        pickingListArray = pickinglist.buildPickinglist();
+        pickinglist.showTable(tablePicklist,pickingListArray);
+    }
+
+    public void buildPickingList() {
+        
+    }
    
     
     /**
