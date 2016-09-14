@@ -1,5 +1,6 @@
 package entity;
 
+import database.DB_Connect;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
@@ -36,6 +37,11 @@ public class Best {
 		super();
 	}
 
+        
+        public int UpdateStatus(int nummer) {
+        DB_Connect con = new DB_Connect();
+        return con.simpleConnect("UPDATE Best SET STATUS = 'inArbeit' WHERE BNR = " + Integer.toString(nummer));
+    } 
     /**
      * @return the BNR
      */

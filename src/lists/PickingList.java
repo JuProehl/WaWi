@@ -69,7 +69,10 @@ public class PickingList {
                     pickingListArray.add(k_ba);
                 }
                 letzteBNR = k_ba.getBest().getBNR();
-                //Hier muss noch eine Methode implementiert werden die den Status der Bestellungen auf inArbeit setzt
+                
+                Best bestellung = new Best();
+                bestellung.UpdateStatus(letzteBNR);
+
             
         }
         return pickingListArray;
