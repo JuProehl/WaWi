@@ -1,7 +1,8 @@
 package entity;
 
+
 import database.DB_Connect;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,8 +26,8 @@ public class Best {
 	private Kund kund;
         @Column(name = "STATUS")
 	private String STATUS;
-        @Column(name = "ABSCHULUSSDATUM")
-	private Date ABSCHULUSSDATUM;
+        @Column(name = "ABSCHLUSSDATUM")
+	private Date ABSCHLUSSDATUM;
         @OneToMany
         @JoinColumn(name = "F_BNR")
         private List<K_BA> k_ba;
@@ -101,15 +102,15 @@ public class Best {
     /**
      * @return the ABSCHULUSSDATUM
      */
-    public Date getABSCHULUSSDATUM() {
-        return ABSCHULUSSDATUM;
+    public Date getABSCHLUSSDATUM() {
+        return ABSCHLUSSDATUM;
     }
 
     /**
      * @param ABSCHULUSSDATUM the ABSCHULUSSDATUM to set
      */
-    public void setABSCHULUSSDATUM(Date ABSCHULUSSDATUM) {
-        this.ABSCHULUSSDATUM = ABSCHULUSSDATUM;
+    public void setABSCHLUSSDATUM(Date ABSCHULUSSDATUM) {
+        this.ABSCHLUSSDATUM = ABSCHULUSSDATUM;
     }
 
     /**
