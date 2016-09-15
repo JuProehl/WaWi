@@ -47,8 +47,6 @@ public class EditOKArtikelAuslagern extends javax.swing.JFrame {
         JButton_OK = new javax.swing.JButton();
         JTF_Menge = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jLabel1.setText("Auslagern");
 
         jLabel2.setText("Menge");
