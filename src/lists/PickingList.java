@@ -62,25 +62,36 @@ public class PickingList {
         int letzteBNR = 0;
         for (Object o : result) {
             K_BA k_ba = (K_BA) o;
-            if (artikelinPickingList == 0 && anzahlAtikelproBest(k_ba.getBest().getBNR()) > 100 && k_ba.getBest().getBNR() == letzteBNR) {
-                pickingListArray.add(k_ba);
-                großerAuftrag = true;
-            } else if (!großerAuftrag) {
-                if (k_ba.getBest().getBNR() != letzteBNR) {
-                    int nachImportBest = artikelinPickingList + anzahlAtikelproBest(k_ba.getBest().getBNR());
-                    if (nachImportBest <= 100) {
-                        artikelinPickingList += anzahlAtikelproBest(k_ba.getBest().getBNR());
-                        //System.out.println(artikelinBest);
-                        pickingListArray.add(k_ba);
-                        letzteBNR = k_ba.getBest().getBNR();
 
-                    } else if (nachImportBest > 100) {
-                        return pickingListArray;
+            if (k_ba.getBest().getBNR() != letzteBNR) {
+                //neue Bestellung
+                if (artikelinPickingList == 0 && anzahlAtikelproBest(k_ba.getBest().getBNR()) > 100) {
+                    //Einzelner großer ältester Auftrag 
+                    for (Object i : result) {
+                        K_BA tk_ba = (K_BA) i;
+                        if (k_ba.getBest().getBNR() == tk_ba.getBest().getBNR()) {
+                            pickingListArray.add(tk_ba);
+                        }
                     }
-                } else {
-                    pickingListArray.add(k_ba);
+                    return pickingListArray;
                 }
+                int nachImportBest = artikelinPickingList + anzahlAtikelproBest(k_ba.getBest().getBNR());
+                if (nachImportBest <= 199 && anzahlAtikelproBest(k_ba.getBest().getBNR()) <= 100) {
+                    //Ist nach dem Import dieses neuen Auftrags die Summe der Artikel in der PickingList kleiner als 100?
+                    artikelinPickingList += anzahlAtikelproBest(k_ba.getBest().getBNR());
+                    //Position zur PickingList hinzufügen
+                    pickingListArray.add(k_ba);
+                    letzteBNR = k_ba.getBest().getBNR();
+
+                } else if (nachImportBest > 100) {
+                    //Rückgabe des Arrays falls die neue Bestellung zu groß ist
+                    //return pickingListArray;
+                }
+            } else {
+                //Positionen einer geprüften Bestellung werden zum Array hinzugefügt
+                pickingListArray.add(k_ba);
             }
+
             Best bestellung = new Best();
             //bestellung.UpdateStatus(letzteBNR);
 
