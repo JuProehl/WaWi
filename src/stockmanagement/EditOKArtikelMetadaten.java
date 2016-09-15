@@ -70,8 +70,6 @@ public class EditOKArtikelMetadaten extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         JTF_LagerOrt = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jLabel1.setText("Metadaten bearbeiten");
 
         jLabel2.setText("Bezeichnung");

@@ -59,7 +59,6 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
         labelBEZ = new javax.swing.JLabel();
         Label_Artikelnummer = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         labelKrit.setText("kritische Menge:");

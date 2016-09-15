@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
-  <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
-  </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
@@ -23,113 +20,87 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jButton1" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="labelLagerort" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="Label_LNR" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="labelL_anlegen" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="labelFach" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="labelMaxM" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="labelRegal" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                      <Component id="tfFach" alignment="0" min="-2" pref="112" max="-2" attributes="0"/>
-                                      <Component id="tfmaxMenge" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
-                                      <Component id="buttonLagerAnlegen" alignment="1" min="-2" pref="87" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="tfRegal" alignment="0" min="-2" pref="112" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <Component id="labelRegal" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelLagerort" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelFach" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelMaxM" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelL_anlegen" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="tfRegal" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="buttonLagerAnlegen" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="tfFach" max="32767" attributes="0"/>
+                          <Component id="tfmaxMenge" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                      <Component id="Label_LNR" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+              <EmptySpace pref="8" max="32767" attributes="0"/>
               <Component id="labelL_anlegen" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="labelLagerort" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Label_LNR" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="labelLagerort" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="labelRegal" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfRegal" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="labelFach" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfFach" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="labelMaxM" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfmaxMenge" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="buttonLagerAnlegen" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                      <Component id="Label_LNR" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="labelRegal" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="labelFach" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="labelMaxM" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="tfRegal" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="tfFach" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="tfmaxMenge" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="buttonLagerAnlegen" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JTextField" name="tfmaxMenge">
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Abbrechen"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="buttonLagerAnlegen">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="OK"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonLagerAnlegenActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="labelL_anlegen">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Lagerort bearbeiten"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="labelLagerort">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Lagerortnummer:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="labelRegal">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Regal:"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="labelFach">
       <Properties>
         <Property name="text" type="java.lang.String" value="Fach:"/>
@@ -144,9 +115,36 @@
     </Component>
     <Component class="javax.swing.JTextField" name="tfFach">
     </Component>
+    <Component class="javax.swing.JTextField" name="tfmaxMenge">
+    </Component>
     <Component class="javax.swing.JLabel" name="Label_LNR">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabel1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Abbrechen"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="buttonLagerAnlegen">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="OK"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelL_anlegen">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Lagerort bearbeiten"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelLagerort">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Lagerortnummer:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelRegal">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Regal:"/>
       </Properties>
     </Component>
   </SubComponents>
