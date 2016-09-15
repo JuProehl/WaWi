@@ -50,7 +50,9 @@ public class PickingList {
             rowData[3] = k_ba.getArti().getBEZEICHNUNG();
             rowData[4] = k_ba.getANZAHL();
             rowData[5] = k_ba.getArti().getBESTANDSMENGE();
-            rowData[6] = k_ba.getArti().getF_LNR();
+            rowData[6] = k_ba.getArti().getLage().getRegal();
+            rowData[7] = k_ba.getArti().getLage().getFach();
+            
 
             model.addRow(rowData);
         }
@@ -62,7 +64,7 @@ public class PickingList {
         int letzteBNR = 0;
         for (Object o : result) {
             K_BA k_ba = (K_BA) o;
-
+            
             if (k_ba.getBest().getBNR() != letzteBNR) {
                 //neue Bestellung
                 if (artikelinPickingList == 0 && anzahlAtikelproBest(k_ba.getBest().getBNR()) > 100) {
@@ -109,6 +111,14 @@ public class PickingList {
             }
         }
         return artikelinBest;
+    }
+    
+    public boolean istAuftragmoglich (K_BA checkkba){
+        boolean check = false;
+        if (checkkba.getANZAHL()<= checkkba.getArti().getBESTANDSMENGE()){
+            check = true;
+        }
+        return check;
     }
 
 }

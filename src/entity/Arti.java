@@ -18,6 +18,7 @@ import database.DB_Connect;
 import java.util.*;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 @Table(name = "Arti")
@@ -33,11 +34,13 @@ public class Arti {
     int BESTANDSMENGE;
     @Column(name = "krit_Menge")
     int krit_Menge;
-    @Column(name = "F_LNR")
-    int F_LNR;
+    @OneToOne
+    @JoinColumn(name = "F_LNR")
+    private Lage lage;
     @OneToMany
     @JoinColumn(name = "F_ANR")
     private List<K_BA> k_ba;
+
 
     public Arti() {
         super();
@@ -75,13 +78,7 @@ public class Arti {
         this.krit_Menge = krit_Menge;
     }
 
-    public int getF_LNR() {
-        return F_LNR;
-    }
-
-    public void setF_LNR(int F_LNR) {
-        this.F_LNR = F_LNR;
-    }
+    
 
     public int UpdateArtikelAdd(int amount, int nummer) {
         DB_Connect con = new DB_Connect();
@@ -182,6 +179,20 @@ public class Arti {
      */
     public void setK_ba(List<K_BA> k_ba) {
         this.k_ba = k_ba;
+    }
+
+    /**
+     * @return the lage
+     */
+    public Lage getLage() {
+        return lage;
+    }
+
+    /**
+     * @param lage the lage to set
+     */
+    public void setLage(Lage lage) {
+        this.lage = lage;
     }
 
 }

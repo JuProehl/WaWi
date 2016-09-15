@@ -40,7 +40,7 @@ public class ArtiList {
                 rowData[1] = Artikel.getBEZEICHNUNG();
                 rowData[2] = Artikel.getBESTANDSMENGE();
                 rowData[3] = Artikel.getKrit_Menge();
-                rowData[4] = Artikel.getF_LNR();
+                rowData[4] = Artikel.getLage().getLNr();
                 model.addRow(rowData);             
                 }
  } 
@@ -84,7 +84,7 @@ public class ArtiList {
          
          
          Arti Artikel = (Arti) result.get(row);
-         return Artikel.getF_LNR();
+         return Artikel.getLage().getLNr();
      }
      
 }

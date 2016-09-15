@@ -6,6 +6,7 @@
 package stockmanagement;
 
 import entity.K_BA;
+import general.Print;
 import lists.PickingList;
 import java.util.ArrayList;
 /**
@@ -115,7 +116,12 @@ public class picklistGUI extends javax.swing.JFrame {
 
     private void buttonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPrintActionPerformed
         // TODO add your handling code here:
-        
+               Print drucken = new Print("PickingList");
+        if (tablePicklist.getColumnCount() > 0) {
+            drucken.CreatePages(tablePicklist);
+        } else {
+            general.Message.showError("", "Keine Daten!");
+        }
     }//GEN-LAST:event_buttonPrintActionPerformed
 
     public void showTable() {

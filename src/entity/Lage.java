@@ -6,9 +6,13 @@
 package entity;
 
 import database.DB_Connect;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -27,6 +31,9 @@ public class Lage {
     int Fach;
     @Column(name = "maxmenge")
     int maxmenge;
+    @OneToOne
+    @JoinColumn(name = "F_LNR")
+    private Arti arti;
 
     public Lage() {
         super();
@@ -86,6 +93,20 @@ public class Lage {
             return 2;
         }
 
+    }
+
+    /**
+     * @return the arti
+     */
+    public Arti getArti() {
+        return arti;
+    }
+
+    /**
+     * @param arti the arti to set
+     */
+    public void setArti(Arti arti) {
+        this.arti = arti;
     }
 
 }
