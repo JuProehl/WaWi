@@ -9,6 +9,7 @@ import entity.Arti;
 import entity.Best;
 import entity.K_BA;
 import entity.Kund;
+import general.Print;
 import gui.WaWiMainGUI;
 import java.util.Iterator;
 import java.util.List;
@@ -21,6 +22,8 @@ import javax.swing.table.DefaultTableModel;
 public class ReportMainGUI extends javax.swing.JFrame {
 
     List result;
+    List result2;
+    List result3;
     DefaultTableModel model;
 
     /**
@@ -50,6 +53,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
         buttonShowCritStock = new javax.swing.JButton();
         buttonBestSelling = new javax.swing.JButton();
         buttonWorstSelling = new javax.swing.JButton();
+        buttonPrint = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -114,6 +118,13 @@ public class ReportMainGUI extends javax.swing.JFrame {
             }
         });
 
+        buttonPrint.setText("Drucken");
+        buttonPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonPrintActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -130,7 +141,8 @@ public class ReportMainGUI extends javax.swing.JFrame {
                     .addComponent(buttonShowOrders, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonWorstSelling)
                     .addComponent(buttonBestSelling)
-                    .addComponent(buttonShowOpenOrders))
+                    .addComponent(buttonShowOpenOrders)
+                    .addComponent(buttonPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(65, 65, 65))
@@ -150,12 +162,14 @@ public class ReportMainGUI extends javax.swing.JFrame {
                         .addComponent(buttonShowCritStock)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(buttonShowOpenOrders)
-                        .addGap(74, 74, 74)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(buttonBestSelling)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(buttonWorstSelling)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(buttonShowOrders))
+                        .addGap(61, 61, 61)
+                        .addComponent(buttonShowOrders)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -243,18 +257,55 @@ public class ReportMainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonShowCritStockActionPerformed
 
     private void buttonBestSellingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBestSellingActionPerformed
-        String[] columnnames = {"Artikelnummer ", "Bezeichnung"};
+        String[] columnnames = {"Artikelnummer ", "Bezeichnung", "Menge"};
         setColumnnames(columnnames);
-        result = connect("select F_ANR, sum(anzahl) from K_BA group by F_ANR order by sum(anzahl) desc");
+        result = connect("select sum(ANZAHL) as summe from K_BA group by arti order by summe desc");
+        result2 = connect("select arti.ANR from K_BA group by arti order by sum(ANZAHL) desc");
 
+        Object rowData[] = new Object[3];
+        Iterator iterator = result.iterator();
+
+        for (Iterator iterator2 = result2.iterator(); iterator2.hasNext();) {
+            int artikel = (int) iterator2.next();
+            rowData[0] = artikel;
+
+            long sumArtikel = (long) iterator.next();
+            rowData[2] = sumArtikel;
+            model.addRow(rowData);
+
+        }
     }//GEN-LAST:event_buttonBestSellingActionPerformed
 
     private void buttonWorstSellingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonWorstSellingActionPerformed
-        String[] columnnames = {"Artikelnummer ", "Bezeichnung"};
+        String[] columnnames = {"Artikelnummer ", "Bezeichnung", "Menge"};
         setColumnnames(columnnames);
-        result = connect("select F_ANR, sum(anzahl) as summe from k_ba group by F_ANR order by summe asc");
+        result = connect("select sum(ANZAHL) as summe from K_BA group by arti order by summe asc");
+        result2 = connect("select arti.ANR from K_BA group by arti order by sum(ANZAHL) asc");
 
+        Object rowData[] = new Object[3];
+        Iterator iterator = result.iterator();
+
+        for (Iterator iterator2 = result2.iterator(); iterator2.hasNext();) {
+            int artikel = (int) iterator2.next();
+            rowData[0] = artikel;
+
+            long sumArtikel = (long) iterator.next();
+            rowData[2] = sumArtikel;
+
+            model.addRow(rowData);
+        }
     }//GEN-LAST:event_buttonWorstSellingActionPerformed
+
+    private void buttonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPrintActionPerformed
+        Print drucken = new Print();
+        if (tableAusgabe.getColumnCount() > 0) {
+            drucken.CreatePages(tableAusgabe);
+        } else {
+            general.Message.showError("", "Keine Daten!\nBitte Report auswählen.");
+        }
+
+
+    }//GEN-LAST:event_buttonPrintActionPerformed
 
     /**
      * @param args the command line arguments
@@ -295,6 +346,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonBack;
     private javax.swing.JButton buttonBestSelling;
+    private javax.swing.JButton buttonPrint;
     private javax.swing.JButton buttonShowArticlelist;
     private javax.swing.JButton buttonShowCritStock;
     private javax.swing.JButton buttonShowOpenOrders;

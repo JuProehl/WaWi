@@ -24,14 +24,10 @@ public class K_BA implements Serializable{
         private Arti arti;
         @Column(name = "ANZAHL")
 	private int ANZAHL;
-	
-	
-	
+			
 	public K_BA() {
 		super();
 	}
-
-
 
     /**
      * @return the POSITION
@@ -46,8 +42,6 @@ public class K_BA implements Serializable{
     public void setPOSITION(int POSITION) {
         this.POSITION = POSITION;
     }
-
-
 
     /**
      * @return the ANZAHL
@@ -91,10 +85,6 @@ public class K_BA implements Serializable{
         this.best = best;
     }
 
-
-
-	
-
-	
+    
 	
 }
