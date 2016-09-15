@@ -51,13 +51,14 @@ public class picklistGUI extends javax.swing.JFrame {
 
         tablePicklist.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "BestellNr", "Position", "Bestelldatum", "Bezeichnung", "Anzahl", "Bestand", "LagerNr", "Title 8"
+                "BestellNr", "Position", "Bezeichnung", "Anzahl", "Bestand", "Regal", "Fach"
             }
         ));
         jScrollPane1.setViewportView(tablePicklist);

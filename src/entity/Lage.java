@@ -31,9 +31,7 @@ public class Lage {
     int Fach;
     @Column(name = "maxmenge")
     int maxmenge;
-    @OneToOne
-    @JoinColumn(name = "F_LNR")
-    private Arti arti;
+
 
     public Lage() {
         super();
@@ -97,16 +95,14 @@ public class Lage {
 
     /**
      * @return the arti
-     */
+     
     public Arti getArti() {
         return arti;
     }
 
-    /**
-     * @param arti the arti to set
-     */
+
     public void setArti(Arti arti) {
         this.arti = arti;
     }
-
+*/
 }

@@ -46,12 +46,11 @@ public class PickingList {
             K_BA k_ba = (K_BA) kba;
             rowData[0] = k_ba.getBest().getBNR();
             rowData[1] = k_ba.getPOSITION();
-            rowData[2] = k_ba.getBest().getBESTELLDATUM();
-            rowData[3] = k_ba.getArti().getBEZEICHNUNG();
-            rowData[4] = k_ba.getANZAHL();
-            rowData[5] = k_ba.getArti().getBESTANDSMENGE();
-            rowData[6] = k_ba.getArti().getLage().getRegal();
-            rowData[7] = k_ba.getArti().getLage().getFach();
+            rowData[2] = k_ba.getArti().getBEZEICHNUNG();
+            rowData[3] = k_ba.getANZAHL();
+            rowData[4] = k_ba.getArti().getBESTANDSMENGE();
+            rowData[5] = k_ba.getArti().getLage().getRegal();
+            rowData[6] = k_ba.getArti().getLage().getFach();
             
 
             model.addRow(rowData);
@@ -64,7 +63,7 @@ public class PickingList {
         int letzteBNR = 0;
         for (Object o : result) {
             K_BA k_ba = (K_BA) o;
-            
+            if (istAuftragmoglich(k_ba)){
             if (k_ba.getBest().getBNR() != letzteBNR) {
                 //neue Bestellung
                 if (artikelinPickingList == 0 && anzahlAtikelproBest(k_ba.getBest().getBNR()) > 100) {
@@ -94,7 +93,7 @@ public class PickingList {
                 //Positionen einer geprüften Bestellung werden zum Array hinzugefügt
                 pickingListArray.add(k_ba);
             }
-
+            }
             Best bestellung = new Best();
             //bestellung.UpdateStatus(letzteBNR);
 

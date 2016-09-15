@@ -17,6 +17,7 @@ import org.hibernate.query.Query;
 import database.DB_Connect;
 import java.util.*;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
