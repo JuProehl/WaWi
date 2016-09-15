@@ -74,19 +74,20 @@ public class PickingList {
                         }
                     }
                     return pickingListArray;
-                }
-                int nachImportBest = artikelinPickingList + anzahlAtikelproBest(k_ba.getBest().getBNR());
-                if (nachImportBest <= 199 && anzahlAtikelproBest(k_ba.getBest().getBNR()) <= 100) {
-                    //Ist nach dem Import dieses neuen Auftrags die Summe der Artikel in der PickingList kleiner als 100?
-                    artikelinPickingList += anzahlAtikelproBest(k_ba.getBest().getBNR());
-                    //Position zur PickingList hinzufügen
-                    pickingListArray.add(k_ba);
-                    letzteBNR = k_ba.getBest().getBNR();
+                } else if (anzahlAtikelproBest(k_ba.getBest().getBNR()) <= 100) {
+                    int nachImportBest = artikelinPickingList + anzahlAtikelproBest(k_ba.getBest().getBNR());
+                    if (nachImportBest < 150) {
+                        //Ist nach dem Import dieses neuen Auftrags die Summe der Artikel in der PickingList kleiner als 100?
+                        artikelinPickingList += anzahlAtikelproBest(k_ba.getBest().getBNR());
+                        //Position zur PickingList hinzufügen
+                        pickingListArray.add(k_ba);
+                        letzteBNR = k_ba.getBest().getBNR();
 
-                } else if (nachImportBest > 100) {
-                    //Rückgabe des Arrays falls die neue Bestellung zu groß ist
-                    //return pickingListArray;
+                    } else if (artikelinPickingList > 120){
+                            return pickingListArray;
+                        }
                 }
+
             } else {
                 //Positionen einer geprüften Bestellung werden zum Array hinzugefügt
                 pickingListArray.add(k_ba);

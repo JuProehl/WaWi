@@ -62,6 +62,11 @@ public class picklistGUI extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tablePicklist);
 
         buttonPrint.setText("Drucken");
+        buttonPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonPrintActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -107,6 +112,11 @@ public class picklistGUI extends javax.swing.JFrame {
         LagerverwaltungGUI lagerGUI = new LagerverwaltungGUI();
         lagerGUI.setVisible(true);
     }//GEN-LAST:event_buttonBackActionPerformed
+
+    private void buttonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPrintActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_buttonPrintActionPerformed
 
     public void showTable() {
         pickingListArray = pickinglist.buildPickinglist();
