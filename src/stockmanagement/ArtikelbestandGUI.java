@@ -46,8 +46,14 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
         jButton_Korrektur = new javax.swing.JButton();
         jButton_MetaDaten = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        JButton_Anlegen = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         buttonBack.setText("Zurück");
         buttonBack.addActionListener(new java.awt.event.ActionListener() {
@@ -81,7 +87,7 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
 
         jLabel1.setText("Artikelbestand");
 
-        buttonAktualisieren.setText("Aktualisieren");
+        buttonAktualisieren.setText("Aktualisieren (F5)");
         buttonAktualisieren.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonAktualisierenActionPerformed(evt);
@@ -128,6 +134,13 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
             }
         });
 
+        JButton_Anlegen.setText("Anlegen (F7)");
+        JButton_Anlegen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JButton_AnlegenActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -150,7 +163,8 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
                             .addComponent(jButton_Auslagern, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton_Einlagern, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton_MetaDaten, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(JButton_Anlegen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -174,7 +188,9 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
                         .addComponent(jButton_MetaDaten)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton5)
-                        .addGap(0, 644, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(JButton_Anlegen)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -189,10 +205,7 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonBackActionPerformed
 
     private void buttonAktualisierenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAktualisierenActionPerformed
-        TabelleHolen();
-       Tabelleausgeben();
-        
-        
+        tabelleaktualisieren();
     }//GEN-LAST:event_buttonAktualisierenActionPerformed
 
     private void jButton_EinlagernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_EinlagernActionPerformed
@@ -200,18 +213,7 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_EinlagernActionPerformed
 
     private void tableArtikelbestandKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableArtikelbestandKeyPressed
-         if(evt.getKeyCode()==KeyEvent.VK_F1){
-            einlagernAufrufen();
-        }
-         if(evt.getKeyCode()==KeyEvent.VK_F2){
-            auslagernAufrufen();
-        }
-         if(evt.getKeyCode()==KeyEvent.VK_F3){
-            korriegierenAufrufen();
-        }
-          if(evt.getKeyCode()==KeyEvent.VK_F4){
-            bearbeitenAufrufen();
-        }
+        abfangenKey(evt);
     }//GEN-LAST:event_tableArtikelbestandKeyPressed
 
     private void buttonAktualisierenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buttonAktualisierenKeyPressed
@@ -234,13 +236,52 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
        deleteaufrufen();
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void JButton_AnlegenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButton_AnlegenActionPerformed
+      anlegenAufrufen();
+    }//GEN-LAST:event_JButton_AnlegenActionPerformed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        abfangenKey(evt);
+    }//GEN-LAST:event_formKeyPressed
+
     
-   public void Tabelleausgeben(){
+    
+   private void abfangenKey(java.awt.event.KeyEvent evt){
+         if(evt.getKeyCode()==KeyEvent.VK_F1){
+            einlagernAufrufen();
+        }
+         if(evt.getKeyCode()==KeyEvent.VK_F2){
+            auslagernAufrufen();
+        }
+         if(evt.getKeyCode()==KeyEvent.VK_F3){
+            korriegierenAufrufen();
+        }
+          if(evt.getKeyCode()==KeyEvent.VK_F4){
+            bearbeitenAufrufen();
+        }
+           if(evt.getKeyCode()==KeyEvent.VK_F5){
+           tabelleaktualisieren();
+        }
+            if(evt.getKeyCode()==KeyEvent.VK_F6){
+            deleteaufrufen();
+        }
+            if(evt.getKeyCode()==KeyEvent.VK_F7){
+            anlegenAufrufen();
+        }
+       
+   } 
+    
+   public void tabelleausgeben(){
        ArtikelListe.ArtikelInTabelleAusgeben(tableArtikelbestand);
    }
    
-   public void TabelleHolen(){
+   public void tabelleHolen(){
        ArtikelListe.TabelleHolen();
+   }
+   
+   public void tabelleaktualisieren(){
+       tabelleHolen();
+       tabelleausgeben();
    }
    
    private void einlagernAufrufen(){
@@ -249,7 +290,7 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
         int ANR = ArtikelListe.getANR(row);
         int LNr = ArtikelListe.getF_LNR(row);
         int AktMenge = ArtikelListe.getBESTANDSMENGE(row);
-        EinlagernEditOkGUI EinlagernGUI = new EinlagernEditOkGUI(ANR,LNr,AktMenge, this);
+        EditOKArtikelEinlagern EinlagernGUI = new EditOKArtikelEinlagern(ANR,LNr,AktMenge, this);
         EinlagernGUI.setVisible(true);
        } catch (ArrayIndexOutOfBoundsException e) {
            general.Message.showError("Fehler", "Bitte Zeile auswählen!");
@@ -261,7 +302,7 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
         int row = tableArtikelbestand.getSelectedRow();
         int ANR = ArtikelListe.getANR(row);
         int AktMenge = ArtikelListe.getBESTANDSMENGE(row);
-        AuslagernEditOkGUI AuslagernGUI = new AuslagernEditOkGUI(ANR,AktMenge, this);
+        EditOKArtikelAuslagern AuslagernGUI = new EditOKArtikelAuslagern(ANR,AktMenge, this);
         AuslagernGUI.setVisible(true);
        } catch (ArrayIndexOutOfBoundsException e) {
            general.Message.showError("Fehler", "Bitte Zeile auswählen!");
@@ -274,7 +315,7 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
         int ANR = ArtikelListe.getANR(row);
         int LNr = ArtikelListe.getF_LNR(row);
         int AktMenge = ArtikelListe.getBESTANDSMENGE(row);
-        KorrekturEditOKGUI KorrekturGUI = new KorrekturEditOKGUI(ANR,LNr, this);
+        EditOKArtikelKorrektur KorrekturGUI = new EditOKArtikelKorrektur(ANR,LNr, this);
         KorrekturGUI.setVisible(true);
        } catch (ArrayIndexOutOfBoundsException e) {
            general.Message.showError("Fehler", "Bitte Zeile auswählen!");
@@ -289,7 +330,7 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
         int LNr = ArtikelListe.getF_LNR(row);
         String Bez = ArtikelListe.getBezeichnung(row);
         int kritMenge = ArtikelListe.getKrit_Menge(row);
-        MetaDatenEditOKGUI MetaDatenGUI = new MetaDatenEditOKGUI(ANR,LNr,Bez,kritMenge,this);
+        EditOKArtikelMetadaten MetaDatenGUI = new EditOKArtikelMetadaten(ANR,LNr,Bez,kritMenge,this);
          MetaDatenGUI.setVisible(true);
        } catch (ArrayIndexOutOfBoundsException e) {
            general.Message.showError("Fehler", "Bitte Zeile auswählen!");
@@ -309,11 +350,16 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
         } else {
             general.Message.showError("Fehler", "Datensatz konnte nicht gelöscht werden!");
         }
-        TabelleHolen();
-        Tabelleausgeben();
+        tabelleHolen();
+        tabelleausgeben();
        } catch (ArrayIndexOutOfBoundsException e) {
            general.Message.showError("Fehler", "Bitte Zeile auswählen!");
        }
+   }
+   
+   private void anlegenAufrufen(){
+      EditOKArtikelAnlegen anlegen = new EditOKArtikelAnlegen(this);
+      anlegen.setVisible(true);
    }
     
     /**
@@ -353,6 +399,7 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JButton_Anlegen;
     private javax.swing.JButton buttonAktualisieren;
     private javax.swing.JButton buttonBack;
     private javax.swing.JButton jButton5;

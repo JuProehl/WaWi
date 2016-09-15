@@ -117,9 +117,20 @@ public class Arti {
             if (i == 1) {
                 i = con.simpleConnect("Select ANR FROM Arti WHERE F_LNR = " + Integer.toString(LNR));
                 if (i == 0) {
+                    List list = con.Connect("FROM Lage WHERE LNR = " + Integer.toString(LNR));
+                    Lage lagerplatz = (Lage) list.get(0);
+                    if(lagerplatz.getMaxmenge() >= krit){
+                        if(lagerplatz.getMaxmenge() >= bestand){
+                        
                     con.simpleConnect("INSERT INTO Arti (ANR, BEZEICHNUNG, BESTANDSMENGE, krit_Menge, F_LNR) VALUES ('" + Integer.toString(anr) + "', '"
                             + bez + "','" + Integer.toString(bestand) + "', '" + Integer.toString(krit) + "', '" + Integer.toString(LNR) + "')");
                     return 1;
+                    } else {
+                    return 6;
+                    } 
+                } else {
+                    return 5;
+                    } 
                 } else {
                     return 4;
                 }

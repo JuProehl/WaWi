@@ -5,35 +5,37 @@
  */
 package stockmanagement;
 
+import database.DB_Connect;
+import lists.LageList;
+import entity.Arti;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
+
 /**
  *
  * @author matthias
  */
-
-
-
-import entity.Arti;
-import java.awt.event.KeyEvent;
-import java.util.ArrayList;
-import lists.LageList;
-
-public class KorrekturEditOKGUI extends javax.swing.JFrame {
-
+public class EditOKArtikelEinlagern extends javax.swing.JFrame {
+    
     int ANR;
     int LNr;
+    int AktMenge;
     LageList LagerListe;
     ArtikelbestandGUI Artikelbestand;
     /**
-     * Creates new form KorrekturEditOKGUI
+     * Creates new form NewJFrame
      */
-    public KorrekturEditOKGUI() {
+    public EditOKArtikelEinlagern() {
         initComponents();
     }
     
-        public KorrekturEditOKGUI(int ANR, int LNr, ArtikelbestandGUI ArtikelBestand) {
+    public EditOKArtikelEinlagern(int ANR, int LNr, int AktMenge, ArtikelbestandGUI ArtikelBestand) {
         initComponents();
         this.ANR = ANR;
         this.LNr = LNr;
+        this.AktMenge = AktMenge;
         this.Artikelbestand = ArtikelBestand;
         String str = "FROM Lage Where LNr = " + LNr;
         LagerListe = new LageList(str);
@@ -48,22 +50,16 @@ public class KorrekturEditOKGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        JTF_Menge = new javax.swing.JTextField();
-        JButton_OK = new javax.swing.JButton();
         jButtonBack = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        JButton_OK = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        JTF_Menge = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        JTF_Menge.addActionListener(new java.awt.event.ActionListener() {
+        jButtonBack.setText("Abbrechen");
+        jButtonBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTF_MengeActionPerformed(evt);
-            }
-        });
-        JTF_Menge.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                JTF_MengeKeyPressed(evt);
+                jButtonBackActionPerformed(evt);
             }
         });
 
@@ -79,16 +75,15 @@ public class KorrekturEditOKGUI extends javax.swing.JFrame {
             }
         });
 
-        jButtonBack.setText("Abbrechen");
-        jButtonBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonBackActionPerformed(evt);
-            }
-        });
+        jLabel1.setText("Einlagern");
 
         jLabel2.setText("Menge");
 
-        jLabel1.setText("Artikelbestand korrigieren");
+        JTF_Menge.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                JTF_MengeKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -109,7 +104,7 @@ public class KorrekturEditOKGUI extends javax.swing.JFrame {
                                 .addGap(49, 49, 49)
                                 .addComponent(JTF_Menge))
                             .addComponent(jLabel1))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,63 +119,59 @@ public class KorrekturEditOKGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonBack)
                     .addComponent(JButton_OK))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void JButton_OKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButton_OKActionPerformed
+        einlagern();
+    }//GEN-LAST:event_JButton_OKActionPerformed
+
+    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
+        setVisible(false);
+       
+    }//GEN-LAST:event_jButtonBackActionPerformed
+
+    private void JButton_OKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JButton_OKKeyPressed
+       
+    }//GEN-LAST:event_JButton_OKKeyPressed
+
     private void JTF_MengeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTF_MengeKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            korrigieren();
-        }
-        
-           if(evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            einlagern();
+        } 
+         if(evt.getKeyCode()==KeyEvent.VK_ESCAPE){
              setVisible(false);
         }
     }//GEN-LAST:event_JTF_MengeKeyPressed
 
-    private void JButton_OKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButton_OKActionPerformed
-        korrigieren();
-    }//GEN-LAST:event_JButton_OKActionPerformed
-
-    private void JButton_OKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JButton_OKKeyPressed
-
-    }//GEN-LAST:event_JButton_OKKeyPressed
-
-    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
-        setVisible(false);
-
-    }//GEN-LAST:event_jButtonBackActionPerformed
-
-    private void JTF_MengeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTF_MengeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTF_MengeActionPerformed
-
-    
-    
-    private void korrigieren(){
+    private void einlagern(){
         Integer MaxMenge = LagerListe.getMaxMenge(0);
         ArrayList<Integer> Zahlen = new ArrayList<Integer>();
         try {
-        Integer NewMenge = Integer.parseInt(JTF_Menge.getText()); 
-        Zahlen.add(NewMenge);
+        Integer PlusMenge = Integer.parseInt(JTF_Menge.getText()); 
+        Zahlen.add(PlusMenge);
         if (!general.Check.istNegativ(Zahlen)){ 
-            if(NewMenge <= MaxMenge){   
+            if(PlusMenge+AktMenge <= MaxMenge){   
                 Arti artikel = new Arti();
-                int i = artikel.UpdateArtikelSetNew(Integer.parseInt(JTF_Menge.getText()), ANR);
-                Artikelbestand.TabelleHolen();
-                Artikelbestand.Tabelleausgeben();
+                int i = artikel.UpdateArtikelAdd(Integer.parseInt(JTF_Menge.getText()), ANR);
+                Artikelbestand.tabelleHolen();
+                Artikelbestand.tabelleausgeben();
                 setVisible(false);
             } else {
-             general.Message.showError("Eingabefehler", "Maximale Menge überschritten! Die maximale Menge beträgt " + MaxMenge + " Einheiten!");
+                int moeglicheMenge = MaxMenge-AktMenge;
+             general.Message.showError("Eingabefehler", "Maximale Menge überschritten! Es können nur " + moeglicheMenge + " Einheiten eingelagert werden!");
                 }
             }
        } catch (NumberFormatException e) {
           general.Message.showError("Eingabefehler", "Eingaben überprüfen!");
         }
+       
     }
+    
     /**
      * @param args the command line arguments
      */
@@ -198,22 +189,30 @@ public class KorrekturEditOKGUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(KorrekturEditOKGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditOKArtikelEinlagern.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(KorrekturEditOKGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditOKArtikelEinlagern.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(KorrekturEditOKGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditOKArtikelEinlagern.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(KorrekturEditOKGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditOKArtikelEinlagern.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new KorrekturEditOKGUI().setVisible(true);
+                new EditOKArtikelEinlagern().setVisible(true);
             }
+           
         });
+        
+        
+       
+   
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

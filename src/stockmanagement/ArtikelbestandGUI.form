@@ -8,6 +8,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="formKeyPressed"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -43,6 +46,7 @@
                           <Component id="jButton_Einlagern" alignment="0" max="32767" attributes="0"/>
                           <Component id="jButton_MetaDaten" alignment="0" max="32767" attributes="0"/>
                           <Component id="jButton5" alignment="0" max="32767" attributes="0"/>
+                          <Component id="JButton_Anlegen" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -72,7 +76,9 @@
                       <Component id="jButton_MetaDaten" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton5" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="644" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="JButton_Anlegen" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -153,7 +159,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="buttonAktualisieren">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Aktualisieren"/>
+        <Property name="text" type="java.lang.String" value="Aktualisieren (F5)"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAktualisierenActionPerformed"/>
@@ -198,6 +204,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="JButton_Anlegen">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Anlegen (F7)"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JButton_AnlegenActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

@@ -15,7 +15,7 @@ import lists.LageList;
  *
  * @author matthias
  */
-public class MetaDatenEditOKGUI extends javax.swing.JFrame {
+public class EditOKArtikelMetadaten extends javax.swing.JFrame {
 
         
     Integer ANR;
@@ -28,11 +28,11 @@ public class MetaDatenEditOKGUI extends javax.swing.JFrame {
     /**
      * Creates new form MetaDatenEditOKGUI
      */
-    public MetaDatenEditOKGUI() {
+    public EditOKArtikelMetadaten() {
         initComponents();
     }
     
-    public MetaDatenEditOKGUI(int ANr, int LNr, String Bezeichnung, int kritMenge,ArtikelbestandGUI Artikelbestand) {
+    public EditOKArtikelMetadaten(int ANr, int LNr, String Bezeichnung, int kritMenge,ArtikelbestandGUI Artikelbestand) {
         initComponents();
         this.ANR = ANr;
         this.LNr = LNr;
@@ -288,8 +288,8 @@ public class MetaDatenEditOKGUI extends javax.swing.JFrame {
                     UpdateString = UpdateString + " WHERE ANr=" + this.ANR.toString();
                     Integer returnwert = artikel.UpdateArtikelFree(UpdateString);
                     setVisible(false);
-                    artikelbestand.TabelleHolen();
-                    artikelbestand.Tabelleausgeben();
+                    artikelbestand.tabelleHolen();
+                    artikelbestand.tabelleausgeben();
                     }
         
                      
@@ -321,20 +321,21 @@ public class MetaDatenEditOKGUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MetaDatenEditOKGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditOKArtikelMetadaten.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MetaDatenEditOKGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditOKArtikelMetadaten.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MetaDatenEditOKGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditOKArtikelMetadaten.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MetaDatenEditOKGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditOKArtikelMetadaten.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MetaDatenEditOKGUI().setVisible(true);
+                new EditOKArtikelMetadaten().setVisible(true);
             }
         });
     }
