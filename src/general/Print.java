@@ -16,8 +16,8 @@ public class Print {
     
        MessageFormat header;
        MessageFormat footer;
-       public Print(){
-           this.header  = new MessageFormat("Report");
+       public Print(String Header){
+           this.header  = new MessageFormat(Header);
            this.footer  = new MessageFormat("Seite {0,number,integer}");
        }
        

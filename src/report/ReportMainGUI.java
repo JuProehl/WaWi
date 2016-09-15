@@ -297,7 +297,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonWorstSellingActionPerformed
 
     private void buttonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPrintActionPerformed
-        Print drucken = new Print();
+        Print drucken = new Print("Report");
         if (tableAusgabe.getColumnCount() > 0) {
             drucken.CreatePages(tableAusgabe);
         } else {
