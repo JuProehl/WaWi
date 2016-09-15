@@ -13,7 +13,7 @@ import java.awt.event.KeyEvent;
  *
  * @author matthias
  */
-public class AuslagernEditOkGUI extends javax.swing.JFrame {
+public class EditOKArtikelAuslagern extends javax.swing.JFrame {
 
     
     int ANR;
@@ -22,11 +22,11 @@ public class AuslagernEditOkGUI extends javax.swing.JFrame {
     /**
      * Creates new form AuslagernEditOkGUI_
      */
-    public AuslagernEditOkGUI() {
+    public EditOKArtikelAuslagern() {
         initComponents();
     }
     
-    public AuslagernEditOkGUI(int ANR, int AktMenge, ArtikelbestandGUI ArtikelBestand) {
+    public EditOKArtikelAuslagern(int ANR, int AktMenge, ArtikelbestandGUI ArtikelBestand) {
         initComponents();
         this.ANR = ANR;
         this.AktMenge = AktMenge;
@@ -147,8 +147,8 @@ public class AuslagernEditOkGUI extends javax.swing.JFrame {
             if(MinusMenge <= AktMenge){   
                 Arti artikel = new Arti();
                 int i = artikel.UpdateArtikelAdd(-Integer.parseInt(JTF_Menge.getText()), ANR);
-                Artikelbestand.TabelleHolen();
-                Artikelbestand.Tabelleausgeben();
+                Artikelbestand.tabelleHolen();
+                Artikelbestand.tabelleausgeben();
                 setVisible(false);
             } else {
              general.Message.showError("Eingabefehler", "Zu wenig Einheiten vorhanden! Es sind nur " + AktMenge.toString() + " Einheiten vorhanden!" );
@@ -176,21 +176,27 @@ public class AuslagernEditOkGUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AuslagernEditOkGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditOKArtikelAuslagern.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AuslagernEditOkGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditOKArtikelAuslagern.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AuslagernEditOkGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditOKArtikelAuslagern.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AuslagernEditOkGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditOKArtikelAuslagern.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AuslagernEditOkGUI().setVisible(true);
+                new EditOKArtikelAuslagern().setVisible(true);
             }
         });
     }

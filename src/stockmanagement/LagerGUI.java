@@ -186,7 +186,7 @@ public class LagerGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonAktualisierenKeyPressed
 
     private void jButton_bearbeitenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_bearbeitenActionPerformed
-
+            bearbeitenaufrufen();
     }//GEN-LAST:event_jButton_bearbeitenActionPerformed
 
     private void jButton_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_deleteActionPerformed
@@ -194,7 +194,7 @@ public class LagerGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_deleteActionPerformed
 
     private void jButton_anlegenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_anlegenActionPerformed
-       LagerortAnlagenEditOK anlegenGUI = new LagerortAnlagenEditOK(this);
+       EditOKLagerortAnlegen anlegenGUI = new EditOKLagerortAnlegen(this);
        anlegenGUI.setVisible(true);
     }//GEN-LAST:event_jButton_anlegenActionPerformed
 
@@ -208,6 +208,19 @@ public class LagerGUI extends javax.swing.JFrame {
    }
    
    
+   private void bearbeitenaufrufen(){
+         try{
+        int row = tableLagerbestand.getSelectedRow();
+        int LNR = LagerListe.getLNr(row);
+        int Fach = LagerListe.getFach(row);
+        int Regal = LagerListe.getRegal(row);
+        int MaxMenge = LagerListe.getMaxMenge(row);
+        EditOKLagerortMetadaten metadatengui = new EditOKLagerortMetadaten(this,LNR,Regal,Fach,MaxMenge);
+         metadatengui.setVisible(true);
+       } catch (ArrayIndexOutOfBoundsException e) {
+           general.Message.showError("Fehler", "Bitte Zeile auswählen!");
+       }
+   }
    
    
       private void deleteaufrufen(){

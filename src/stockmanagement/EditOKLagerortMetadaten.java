@@ -5,36 +5,41 @@
  */
 package stockmanagement;
 
-import database.DB_Connect;
-import entity.Lage;
+import entity.Arti;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
  * @author matthias
  */
-public class LagerortAnlagenEditOK extends javax.swing.JFrame {
+public class EditOKLagerortMetadaten extends javax.swing.JFrame {
+
     
-    int LNR;
+    
     LagerGUI lagergui;
-
+    Integer LNR;
+    Integer Regal;
+    Integer Fach;
+    Integer MaxMenge;
     /**
-     * Creates new form LagerortAnlagenEditOK
+     * Creates new form LagerfachEditGUI
      */
-    
-    
-    public LagerortAnlagenEditOK() {
-
-   
-    }
-    public LagerortAnlagenEditOK(LagerGUI lagergui) {
-
+    public EditOKLagerortMetadaten() {
         initComponents();
-        LNR = nextLNR();
+    }
+    
+    public EditOKLagerortMetadaten(LagerGUI lagergui, int LNR,int Regal,int Fach,int MaxMenge) {
+        initComponents();
         this.lagergui = lagergui;
-        Label_Lagerortnummer.setText(nextLNR().toString());
-   
+        this.LNR = LNR;
+        this.Regal = Regal;
+        this.Fach = Fach;
+        this.MaxMenge = MaxMenge;
+        
+        Label_LNR.setText(this.LNR.toString());
+        tfFach.setText(this.Fach.toString());
+        tfRegal.setText(this.Regal.toString());
+        tfmaxMenge.setText(this.MaxMenge.toString());
     }
 
     /**
@@ -46,6 +51,8 @@ public class LagerortAnlagenEditOK extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        tfmaxMenge = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         buttonLagerAnlegen = new javax.swing.JButton();
         labelL_anlegen = new javax.swing.JLabel();
         labelLagerort = new javax.swing.JLabel();
@@ -54,11 +61,16 @@ public class LagerortAnlagenEditOK extends javax.swing.JFrame {
         labelMaxM = new javax.swing.JLabel();
         tfRegal = new javax.swing.JTextField();
         tfFach = new javax.swing.JTextField();
-        tfmaxMenge = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        Label_Lagerortnummer = new javax.swing.JLabel();
+        Label_LNR = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jButton1.setText("Abbrechen");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         buttonLagerAnlegen.setText("OK");
         buttonLagerAnlegen.addActionListener(new java.awt.event.ActionListener() {
@@ -67,7 +79,7 @@ public class LagerortAnlagenEditOK extends javax.swing.JFrame {
             }
         });
 
-        labelL_anlegen.setText("Lagerort anlegen");
+        labelL_anlegen.setText("Lagerort bearbeiten");
 
         labelLagerort.setText("Lagerortnummer:");
 
@@ -77,12 +89,7 @@ public class LagerortAnlagenEditOK extends javax.swing.JFrame {
 
         labelMaxM.setText("Max. Menge:");
 
-        jButton1.setText("Abbrechen");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        Label_LNR.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,7 +105,7 @@ public class LagerortAnlagenEditOK extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(labelLagerort)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Label_Lagerortnummer))
+                                .addComponent(Label_LNR))
                             .addComponent(labelL_anlegen)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,18 +119,18 @@ public class LagerortAnlagenEditOK extends javax.swing.JFrame {
                                         .addComponent(tfmaxMenge, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(buttonLagerAnlegen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(tfRegal, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(15, 15, 15)
                 .addComponent(labelL_anlegen)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelLagerort)
-                    .addComponent(Label_Lagerortnummer))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                    .addComponent(Label_LNR))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labelRegal)
@@ -141,20 +148,20 @@ public class LagerortAnlagenEditOK extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(buttonLagerAnlegen))
-                .addContainerGap())
+                .addGap(127, 127, 127))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonLagerAnlegenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLagerAnlegenActionPerformed
-            anlegen();
-    }//GEN-LAST:event_buttonLagerAnlegenActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void buttonLagerAnlegenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLagerAnlegenActionPerformed
+       
+    }//GEN-LAST:event_buttonLagerAnlegenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,73 +180,27 @@ public class LagerortAnlagenEditOK extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LagerortAnlagenEditOK.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditOKLagerortMetadaten.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LagerortAnlagenEditOK.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditOKLagerortMetadaten.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LagerortAnlagenEditOK.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditOKLagerortMetadaten.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LagerortAnlagenEditOK.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditOKLagerortMetadaten.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LagerortAnlagenEditOK().setVisible(true);
+                new EditOKLagerortMetadaten().setVisible(true);
             }
         });
     }
-    
-   public void anlegen(){
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        boolean success = true;
-        try {
-            list.add(Integer.parseInt(tfRegal.getText()));
-            list.add(Integer.parseInt(tfFach.getText()));
-            list.add(Integer.parseInt(tfmaxMenge.getText()));
-        } catch (NumberFormatException e) {
-            general.Message.showError("Eingabefehler", "Eingaben überprüfen!");
-            success = false;
-        }
-        if (success) {
-            if (!general.Check.istNegativ(list)) {
-                Lage ort = new Lage();
-                int i = ort.InsertLagerort(LNR, Integer.parseInt(tfRegal.getText()),
-                    Integer.parseInt(tfFach.getText()), Integer.parseInt(tfmaxMenge.getText()));
-                switch (i) {
-                    case 1:
-                    setVisible(false);
-                    general.Message.showSuccess("", "Anlage erfolgreich!");
-                    lagergui.TabelleHolen();
-                    lagergui.Tabelleausgeben();
-                    break;
-                    case 2:
-                    general.Message.showError("", "Lagerort existiert bereits!");
-                    break;
-                    case 3:
-                    general.Message.showError("", "Regal-Fach-Kombination bereits vergeben!");
-                    break;
-                }
-            }
-        }
-   }
-   
-   
-   public Integer nextLNR(){
-       
-            
-        DB_Connect con = new DB_Connect();
-        List list = con.Connect("SELECT max(L.LNr) FROM Lage L");
-        System.out.println(list);
-     
-        Integer MaxLNR = (Integer) list.get(0);
-        MaxLNR = MaxLNR + 1;
-        return MaxLNR;
-   }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Label_Lagerortnummer;
+    private javax.swing.JLabel Label_LNR;
     private javax.swing.JButton buttonLagerAnlegen;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel labelFach;
