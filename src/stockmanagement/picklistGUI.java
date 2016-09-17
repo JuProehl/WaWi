@@ -127,6 +127,7 @@ public class picklistGUI extends javax.swing.JFrame {
 
     public void showTable() {
         pickingListArray = pickinglist.buildPickinglist();
+        pickingListArray = pickinglist.keineArtiImBestand(pickingListArray);
         pickinglist.showTable(tablePicklist,pickingListArray);
     }
 

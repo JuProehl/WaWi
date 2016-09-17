@@ -35,7 +35,9 @@ public class PickingList {
     }
 
     public void showTable(JTable Table1, ArrayList pickingListArrayget) {
-
+        
+        
+        
         DefaultTableModel model = (DefaultTableModel) Table1.getModel();
         Object rowData[] = new Object[8];
         model.setRowCount(0);
@@ -59,11 +61,9 @@ public class PickingList {
 
     public ArrayList buildPickinglist() {
         int artikelinPickingList = 0;
-        boolean großerAuftrag = false;
         int letzteBNR = 0;
         for (Object o : result) {
             K_BA k_ba = (K_BA) o;
-            if (istAuftragmoglich(k_ba)){
             if (k_ba.getBest().getBNR() != letzteBNR) {
                 //neue Bestellung
                 if (artikelinPickingList == 0 && anzahlAtikelproBest(k_ba.getBest().getBNR()) > 100) {
@@ -93,7 +93,7 @@ public class PickingList {
                 //Positionen einer geprüften Bestellung werden zum Array hinzugefügt
                 pickingListArray.add(k_ba);
             }
-            }
+            
             Best bestellung = new Best();
             //bestellung.UpdateStatus(letzteBNR);
 
@@ -111,13 +111,41 @@ public class PickingList {
         }
         return artikelinBest;
     }
-    
-    public boolean istAuftragmoglich (K_BA checkkba){
-        boolean check = false;
-        if (checkkba.getANZAHL()<= checkkba.getArti().getBESTANDSMENGE()){
-            check = true;
+
+    public ArrayList<K_BA> keineArtiImBestand(ArrayList<K_BA> pickingListArray) {
+        ArrayList<K_BA> pickingListArrayNew = new ArrayList<>();
+        for (Object i : pickingListArray) {
+            K_BA k_ba = (K_BA) i;
+            int anzahlAller = zaehleArtiinPL(pickingListArray,k_ba.getArti().getANR());
+            if (anzahlAller > k_ba.getArti().getBESTANDSMENGE()){
+               pickingListArrayNew = allePOSdieserBestloeschen(pickingListArray,k_ba.getBest().getBNR());
+            }
         }
-        return check;
+        return pickingListArrayNew;
+    }
+
+ 
+        
+    public int zaehleArtiinPL(ArrayList<K_BA> pickingListArray, int checkarti){
+        int anzahl = 0;
+        for (Object i : pickingListArray) {
+            K_BA k_ba = (K_BA) i;
+            if (checkarti == k_ba.getArti().getANR()){
+                anzahl += k_ba.getANZAHL();
+            }
+        }
+        return anzahl;
+    }
+
+    private ArrayList<K_BA> allePOSdieserBestloeschen(ArrayList<K_BA> pickingListArray, int bnr) {
+        ArrayList<K_BA> pickingListArrayNew = pickingListArray;
+        for (Object i : pickingListArray) {
+            K_BA k_ba = (K_BA) i;
+            if (bnr == k_ba.getBest().getBNR()){
+                pickingListArrayNew.remove(i);
+            }
+        }
+        return pickingListArrayNew;
     }
 
 }
