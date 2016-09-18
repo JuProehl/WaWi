@@ -11,6 +11,7 @@ import entity.K_BA;
 import entity.Kund;
 import general.Print;
 import gui.WaWiMainGUI;
+import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -24,7 +25,11 @@ public class ReportMainGUI extends javax.swing.JFrame {
     List result;
     List result2;
     List result3;
+            Iterator iterator;
+                        Iterator iterator2;
+                                    Iterator iterator3;
     DefaultTableModel model;
+    SimpleDateFormat dateFormat;
 
     /**
      * Creates new form ReportGUI
@@ -32,6 +37,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
     public ReportMainGUI() {
         initComponents();
         this.model = (DefaultTableModel) tableAusgabe.getModel();
+        this.dateFormat = new SimpleDateFormat("dd-MM-yyyy");
     }
 
     /**
@@ -54,6 +60,11 @@ public class ReportMainGUI extends javax.swing.JFrame {
         buttonBestSelling = new javax.swing.JButton();
         buttonWorstSelling = new javax.swing.JButton();
         buttonPrint = new javax.swing.JButton();
+        jDateChooserVon = new com.toedter.calendar.JDateChooser();
+        jDateChooserBis = new com.toedter.calendar.JDateChooser();
+        jLabelVon = new javax.swing.JLabel();
+        jLabelBis = new javax.swing.JLabel();
+        jButtonVolumenOK = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -125,6 +136,24 @@ public class ReportMainGUI extends javax.swing.JFrame {
             }
         });
 
+        jDateChooserVon.setEnabled(false);
+
+        jDateChooserBis.setEnabled(false);
+
+        jLabelVon.setText("Von:");
+        jLabelVon.setEnabled(false);
+
+        jLabelBis.setText("Bis:");
+        jLabelBis.setEnabled(false);
+
+        jButtonVolumenOK.setText("OK");
+        jButtonVolumenOK.setEnabled(false);
+        jButtonVolumenOK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVolumenOKActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -133,47 +162,70 @@ public class ReportMainGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(buttonBack)
-                        .addGap(54, 54, 54)
-                        .addComponent(labelReports))
-                    .addComponent(buttonShowArticlelist)
-                    .addComponent(buttonShowCritStock)
-                    .addComponent(buttonShowOrders, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonWorstSelling)
-                    .addComponent(buttonBestSelling)
-                    .addComponent(buttonShowOpenOrders)
-                    .addComponent(buttonPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(buttonBack)
+                                .addGap(54, 54, 54)
+                                .addComponent(labelReports))
+                            .addComponent(buttonWorstSelling, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buttonShowArticlelist, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buttonShowCritStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buttonShowOpenOrders, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buttonBestSelling, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buttonShowOrders, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buttonPrint, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 35, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonVolumenOK))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelVon)
+                            .addComponent(jLabelBis))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jDateChooserVon, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                            .addComponent(jDateChooserBis, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65))
+                .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonBack)
+                    .addComponent(labelReports))
+                .addGap(26, 26, 26)
+                .addComponent(buttonShowArticlelist)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(buttonShowCritStock)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(buttonShowOpenOrders)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(buttonBestSelling)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(buttonWorstSelling)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(buttonShowOrders)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(buttonBack)
-                            .addComponent(labelReports))
-                        .addGap(26, 26, 26)
-                        .addComponent(buttonShowArticlelist)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(buttonShowCritStock)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(buttonShowOpenOrders)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(buttonBestSelling)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(buttonWorstSelling)
-                        .addGap(61, 61, 61)
-                        .addComponent(buttonShowOrders)
-                        .addGap(18, 18, 18)
-                        .addComponent(buttonPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(71, Short.MAX_VALUE))
+                    .addComponent(jDateChooserVon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelVon, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelBis)
+                    .addComponent(jDateChooserBis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonVolumenOK)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(35, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         labelReports.getAccessibleContext().setAccessibleName("labelReports");
@@ -199,7 +251,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
 
         Object rowData[] = new Object[3];
 
-        for (Iterator iterator = result.iterator(); iterator.hasNext();) {
+        for (iterator = result.iterator(); iterator.hasNext();) {
             Arti Artikel = (Arti) iterator.next();
             rowData[0] = Artikel.getANR();
             rowData[1] = Artikel.getBEZEICHNUNG();
@@ -214,7 +266,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
     }
 
     private void setColumnnames(String[] names) {
-        DefaultTableModel model = (DefaultTableModel) tableAusgabe.getModel();
+        model = (DefaultTableModel) tableAusgabe.getModel();
         model.setColumnIdentifiers(names);
         model.setRowCount(0);
     }
@@ -225,7 +277,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
         result = connect("FROM Best where status = 'offen' order by BNR");
         Object rowData[] = new Object[3];
 
-        for (Iterator iterator = result.iterator(); iterator.hasNext();) {
+        for (iterator = result.iterator(); iterator.hasNext();) {
             Best Bestellung = (Best) iterator.next();
 
             rowData[0] = Bestellung.getBNR();
@@ -236,7 +288,11 @@ public class ReportMainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonShowOpenOrdersActionPerformed
 
     private void buttonShowOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonShowOrdersActionPerformed
-        // TODO add your handling code here:
+        jLabelVon.setEnabled(true);
+        jLabelBis.setEnabled(true);
+        jDateChooserVon.setEnabled(true);
+        jDateChooserBis.setEnabled(true);
+        jButtonVolumenOK.setEnabled(true);
     }//GEN-LAST:event_buttonShowOrdersActionPerformed
 
     private void buttonShowCritStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonShowCritStockActionPerformed
@@ -246,7 +302,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
 
         Object rowData[] = new Object[4];
 
-        for (Iterator iterator = result.iterator(); iterator.hasNext();) {
+        for ( iterator = result.iterator(); iterator.hasNext();) {
             Arti Artikel = (Arti) iterator.next();
             rowData[0] = Artikel.getANR();
             rowData[1] = Artikel.getBEZEICHNUNG();
@@ -263,16 +319,23 @@ public class ReportMainGUI extends javax.swing.JFrame {
         result2 = connect("select arti.ANR from K_BA group by arti order by sum(ANZAHL) desc");
 
         Object rowData[] = new Object[3];
-        Iterator iterator = result.iterator();
+        iterator = result.iterator();
 
-        for (Iterator iterator2 = result2.iterator(); iterator2.hasNext();) {
+        for ( iterator2 = result2.iterator(); iterator2.hasNext();) {
             int artikel = (int) iterator2.next();
             rowData[0] = artikel;
 
             long sumArtikel = (long) iterator.next();
             rowData[2] = sumArtikel;
             model.addRow(rowData);
+        }
+        for (int i = 0; i < model.getRowCount(); i++) {
 
+            int anr = Integer.parseInt(model.getValueAt(i, 0).toString());
+            result = connect("select BEZEICHNUNG from Arti Where ANR= " + anr);
+            for ( iterator2 = result.iterator(); iterator2.hasNext();) {
+                model.setValueAt(iterator2.next(), i, 1);
+            }
         }
     }//GEN-LAST:event_buttonBestSellingActionPerformed
 
@@ -283,9 +346,9 @@ public class ReportMainGUI extends javax.swing.JFrame {
         result2 = connect("select arti.ANR from K_BA group by arti order by sum(ANZAHL) asc");
 
         Object rowData[] = new Object[3];
-        Iterator iterator = result.iterator();
+        iterator = result.iterator();
 
-        for (Iterator iterator2 = result2.iterator(); iterator2.hasNext();) {
+        for ( iterator2 = result2.iterator(); iterator2.hasNext();) {
             int artikel = (int) iterator2.next();
             rowData[0] = artikel;
 
@@ -293,6 +356,14 @@ public class ReportMainGUI extends javax.swing.JFrame {
             rowData[2] = sumArtikel;
 
             model.addRow(rowData);
+        }
+        for (int i = 0; i < model.getRowCount(); i++) {
+
+            int anr = Integer.parseInt(model.getValueAt(i, 0).toString());
+            result = connect("select BEZEICHNUNG from Arti Where ANR= " + anr);
+            for (iterator2 = result.iterator(); iterator2.hasNext();) {
+                model.setValueAt(iterator2.next(), i, 1);
+            }
         }
     }//GEN-LAST:event_buttonWorstSellingActionPerformed
 
@@ -306,6 +377,30 @@ public class ReportMainGUI extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_buttonPrintActionPerformed
+
+    private void jButtonVolumenOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolumenOKActionPerformed
+
+        String von = dateFormat.format(jDateChooserVon.getDate());
+        String bis = dateFormat.format(jDateChooserBis.getDate());
+        String[] columnnames = {"Verkaufte Menge ", "Warenwert gesamt"};
+        setColumnnames(columnnames);
+        result = connect("select sum(ANZAHL) from K_BA WHERE best.BESTELLDATUM between '"+von+"' and '"+bis+"'");
+
+        Object rowData[] = new Object[2];
+
+        for ( iterator = result.iterator(); iterator.hasNext();) {
+            long BNR = (long) iterator.next();
+            rowData[0] = BNR;
+            model.addRow(rowData);
+        }
+
+        jLabelVon.setEnabled(false);
+        jLabelBis.setEnabled(false);
+        jDateChooserVon.setEnabled(false);
+        jDateChooserBis.setEnabled(false);
+        jButtonVolumenOK.setEnabled(false);
+
+    }//GEN-LAST:event_jButtonVolumenOKActionPerformed
 
     /**
      * @param args the command line arguments
@@ -352,6 +447,11 @@ public class ReportMainGUI extends javax.swing.JFrame {
     private javax.swing.JButton buttonShowOpenOrders;
     private javax.swing.JButton buttonShowOrders;
     private javax.swing.JButton buttonWorstSelling;
+    private javax.swing.JButton jButtonVolumenOK;
+    private com.toedter.calendar.JDateChooser jDateChooserBis;
+    private com.toedter.calendar.JDateChooser jDateChooserVon;
+    private javax.swing.JLabel jLabelBis;
+    private javax.swing.JLabel jLabelVon;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelReports;
     private javax.swing.JTable tableAusgabe;
