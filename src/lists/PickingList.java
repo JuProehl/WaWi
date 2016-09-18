@@ -21,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PickingList {
 
+    ArrayList<Integer> BestAusPList = new ArrayList<>();
     ArrayList<K_BA> pickingListArray = new ArrayList<>();
     List result;
 
@@ -35,9 +36,7 @@ public class PickingList {
     }
 
     public void showTable(JTable Table1, ArrayList pickingListArrayget) {
-        
-        
-        
+
         DefaultTableModel model = (DefaultTableModel) Table1.getModel();
         Object rowData[] = new Object[8];
         model.setRowCount(0);
@@ -53,7 +52,6 @@ public class PickingList {
             rowData[4] = k_ba.getArti().getBESTANDSMENGE();
             rowData[5] = k_ba.getArti().getLage().getRegal();
             rowData[6] = k_ba.getArti().getLage().getFach();
-            
 
             model.addRow(rowData);
         }
@@ -84,16 +82,16 @@ public class PickingList {
                         pickingListArray.add(k_ba);
                         letzteBNR = k_ba.getBest().getBNR();
 
-                    } else if (artikelinPickingList > 120){
-                            return pickingListArray;
-                        }
+                    } else if (artikelinPickingList > 120) {
+                        return pickingListArray;
+                    }
                 }
 
             } else {
                 //Positionen einer geprüften Bestellung werden zum Array hinzugefügt
                 pickingListArray.add(k_ba);
             }
-            
+
             Best bestellung = new Best();
             //bestellung.UpdateStatus(letzteBNR);
 
@@ -113,36 +111,38 @@ public class PickingList {
     }
 
     public ArrayList<K_BA> keineArtiImBestand(ArrayList<K_BA> pickingListArray) {
-        ArrayList<K_BA> pickingListArrayNew = new ArrayList<>();
         for (Object i : pickingListArray) {
             K_BA k_ba = (K_BA) i;
-            int anzahlAller = zaehleArtiinPL(pickingListArray,k_ba.getArti().getANR());
-            if (anzahlAller > k_ba.getArti().getBESTANDSMENGE()){
-               pickingListArrayNew = allePOSdieserBestloeschen(pickingListArray,k_ba.getBest().getBNR());
+            int anzahlAller = zaehleArtiinPL(pickingListArray, k_ba.getArti().getANR());
+            if (anzahlAller > k_ba.getArti().getBESTANDSMENGE()) {
+                BestAusPList.add(k_ba.getBest().getBNR());
             }
         }
-        return pickingListArrayNew;
+        return allePOSdieserBestloeschen(pickingListArray, BestAusPList);
     }
 
- 
-        
-    public int zaehleArtiinPL(ArrayList<K_BA> pickingListArray, int checkarti){
+    public int zaehleArtiinPL(ArrayList<K_BA> pickingListArray, int checkarti) {
         int anzahl = 0;
         for (Object i : pickingListArray) {
             K_BA k_ba = (K_BA) i;
-            if (checkarti == k_ba.getArti().getANR()){
+            if (checkarti == k_ba.getArti().getANR()) {
                 anzahl += k_ba.getANZAHL();
             }
         }
         return anzahl;
     }
 
-    private ArrayList<K_BA> allePOSdieserBestloeschen(ArrayList<K_BA> pickingListArray, int bnr) {
-        ArrayList<K_BA> pickingListArrayNew = pickingListArray;
+    private ArrayList<K_BA> allePOSdieserBestloeschen(ArrayList<K_BA> pickingListArray, ArrayList<Integer> BNRArray) {
+        ArrayList<K_BA> pickingListArrayNew = new ArrayList<>(pickingListArray);
         for (Object i : pickingListArray) {
             K_BA k_ba = (K_BA) i;
-            if (bnr == k_ba.getBest().getBNR()){
-                pickingListArrayNew.remove(i);
+            for (Object j : BNRArray) {
+                if (j.equals(k_ba.getBest().getBNR())) {
+                    pickingListArrayNew.remove(i);
+                    System.out.println(k_ba.getBest().getBNR() + ", " + k_ba.getArti().getBEZEICHNUNG() + ", " +  k_ba.getANZAHL()  + ", " + k_ba.getArti().getBESTANDSMENGE());
+
+                    
+                }
             }
         }
         return pickingListArrayNew;
