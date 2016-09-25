@@ -33,8 +33,7 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
         buttonPicklist = new javax.swing.JButton();
         buttonBestand = new javax.swing.JButton();
         buttonBack = new javax.swing.JButton();
-        buttonAnlegen = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        buttonLagerplatz = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,7 +52,7 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
         });
 
         buttonBestand.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        buttonBestand.setText("Bestand anzeigen");
+        buttonBestand.setText("Artikel und Bestände");
         buttonBestand.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonBestand.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,22 +69,12 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
             }
         });
 
-        buttonAnlegen.setBackground(new java.awt.Color(255, 0, 102));
-        buttonAnlegen.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        buttonAnlegen.setForeground(new java.awt.Color(51, 255, 51));
-        buttonAnlegen.setText("Artikel/Lagerplätze anlegen");
-        buttonAnlegen.addActionListener(new java.awt.event.ActionListener() {
+        buttonLagerplatz.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        buttonLagerplatz.setText("Lagerplätze");
+        buttonLagerplatz.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonLagerplatz.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAnlegenActionPerformed(evt);
-            }
-        });
-
-        jButton1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        jButton1.setText("Lagerplätze anzeigen");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonLagerplatzActionPerformed(evt);
             }
         });
 
@@ -93,40 +82,34 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(86, 86, 86)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(buttonBack))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(buttonPicklist, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonBestand, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(36, 36, 36))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(buttonAnlegen, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)))
-                .addGap(59, 59, 59))
+                    .addComponent(buttonPicklist, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonLagerplatz, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonBestand, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE))
+                .addGap(90, 90, 90))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(buttonBack)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(89, 89, 89))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel2)
-                .addGap(7, 7, 7)
-                .addComponent(buttonBack)
-                .addGap(15, 15, 15)
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonBack)
+                    .addComponent(jLabel2))
+                .addGap(41, 41, 41)
                 .addComponent(buttonBestand)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(buttonLagerplatz)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonPicklist)
-                .addGap(32, 32, 32)
-                .addComponent(buttonAnlegen, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                .addGap(128, 128, 128))
         );
 
         jLabel2.getAccessibleContext().setAccessibleName("labelLager");
@@ -159,18 +142,12 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
         bestandGUI.tabelleausgeben();
     }//GEN-LAST:event_buttonBestandActionPerformed
 
-    private void buttonAnlegenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAnlegenActionPerformed
-      setVisible(false);
-      AnlegenGUI anlegGUI = new AnlegenGUI();
-      anlegGUI.setVisible(true);
-    }//GEN-LAST:event_buttonAnlegenActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void buttonLagerplatzActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLagerplatzActionPerformed
          setVisible(false);
       LagerGUI lagerGUI = new LagerGUI();
         lagerGUI.setVisible(true);
         lagerGUI.Tabelleausgeben();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_buttonLagerplatzActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,11 +187,10 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonAnlegen;
     private javax.swing.JButton buttonBack;
     private javax.swing.JButton buttonBestand;
+    private javax.swing.JButton buttonLagerplatz;
     private javax.swing.JButton buttonPicklist;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
