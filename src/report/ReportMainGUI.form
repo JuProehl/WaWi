@@ -6,7 +6,7 @@
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -45,6 +45,8 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="buttonCancelVolumen" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jButtonVolumenOK" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -96,7 +98,10 @@
                   <Component id="jDateChooserBis" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jButtonVolumenOK" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jButtonVolumenOK" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonCancelVolumen" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="buttonPrint" min="-2" pref="56" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
@@ -121,6 +126,9 @@
     <Component class="javax.swing.JButton" name="buttonBack">
       <Properties>
         <Property name="text" type="java.lang.String" value="Zur&#xfc;ck"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Handcursor"/>
+        </Property>
       </Properties>
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="buttonBack"/>
@@ -132,6 +140,9 @@
     <Component class="javax.swing.JButton" name="buttonShowArticlelist">
       <Properties>
         <Property name="text" type="java.lang.String" value="Artikel und Best&#xe4;nde"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Handcursor"/>
+        </Property>
       </Properties>
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="buttonShowArtikelliste"/>
@@ -143,6 +154,9 @@
     <Component class="javax.swing.JButton" name="buttonShowOpenOrders">
       <Properties>
         <Property name="text" type="java.lang.String" value="Offene Bestellungen"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Handcursor"/>
+        </Property>
       </Properties>
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="buttonBestellungen"/>
@@ -154,6 +168,9 @@
     <Component class="javax.swing.JButton" name="buttonShowOrders">
       <Properties>
         <Property name="text" type="java.lang.String" value="Bestellvolumen"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Handcursor"/>
+        </Property>
       </Properties>
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="buttonShowBestellvolumen"/>
@@ -187,6 +204,9 @@
     <Component class="javax.swing.JButton" name="buttonShowCritStock">
       <Properties>
         <Property name="text" type="java.lang.String" value="Kritische Bestandsmengen"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Handcursor"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonShowCritStockActionPerformed"/>
@@ -195,6 +215,9 @@
     <Component class="javax.swing.JButton" name="buttonBestSelling">
       <Properties>
         <Property name="text" type="java.lang.String" value="Meistverkaufte Artikel"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Handcursor"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonBestSellingActionPerformed"/>
@@ -203,6 +226,9 @@
     <Component class="javax.swing.JButton" name="buttonWorstSelling">
       <Properties>
         <Property name="text" type="java.lang.String" value="Schlechtverkaufteste Artikel"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Handcursor"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonWorstSellingActionPerformed"/>
@@ -211,6 +237,9 @@
     <Component class="javax.swing.JButton" name="buttonPrint">
       <Properties>
         <Property name="text" type="java.lang.String" value="Drucken"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Handcursor"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonPrintActionPerformed"/>
@@ -241,10 +270,25 @@
     <Component class="javax.swing.JButton" name="jButtonVolumenOK">
       <Properties>
         <Property name="text" type="java.lang.String" value="OK"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Handcursor"/>
+        </Property>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonVolumenOKActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="buttonCancelVolumen">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Abbrechen"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Handcursor"/>
+        </Property>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCancelVolumenActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

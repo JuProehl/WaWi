@@ -25,9 +25,9 @@ public class ReportMainGUI extends javax.swing.JFrame {
     List result;
     List result2;
     List result3;
-            Iterator iterator;
-                        Iterator iterator2;
-                                    Iterator iterator3;
+    Iterator iterator;
+    Iterator iterator2;
+    Iterator iterator3;
     DefaultTableModel model;
     SimpleDateFormat dateFormat;
 
@@ -65,12 +65,14 @@ public class ReportMainGUI extends javax.swing.JFrame {
         jLabelVon = new javax.swing.JLabel();
         jLabelBis = new javax.swing.JLabel();
         jButtonVolumenOK = new javax.swing.JButton();
+        buttonCancelVolumen = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         labelReports.setText("Reports");
 
         buttonBack.setText("Zurück");
+        buttonBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonBackActionPerformed(evt);
@@ -78,6 +80,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
         });
 
         buttonShowArticlelist.setText("Artikel und Bestände");
+        buttonShowArticlelist.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonShowArticlelist.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonShowArticlelistActionPerformed(evt);
@@ -85,6 +88,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
         });
 
         buttonShowOpenOrders.setText("Offene Bestellungen");
+        buttonShowOpenOrders.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonShowOpenOrders.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonShowOpenOrdersActionPerformed(evt);
@@ -92,6 +96,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
         });
 
         buttonShowOrders.setText("Bestellvolumen");
+        buttonShowOrders.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonShowOrders.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonShowOrdersActionPerformed(evt);
@@ -109,6 +114,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tableAusgabe);
 
         buttonShowCritStock.setText("Kritische Bestandsmengen");
+        buttonShowCritStock.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonShowCritStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonShowCritStockActionPerformed(evt);
@@ -116,6 +122,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
         });
 
         buttonBestSelling.setText("Meistverkaufte Artikel");
+        buttonBestSelling.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonBestSelling.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonBestSellingActionPerformed(evt);
@@ -123,6 +130,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
         });
 
         buttonWorstSelling.setText("Schlechtverkaufteste Artikel");
+        buttonWorstSelling.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonWorstSelling.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonWorstSellingActionPerformed(evt);
@@ -130,6 +138,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
         });
 
         buttonPrint.setText("Drucken");
+        buttonPrint.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonPrintActionPerformed(evt);
@@ -147,10 +156,20 @@ public class ReportMainGUI extends javax.swing.JFrame {
         jLabelBis.setEnabled(false);
 
         jButtonVolumenOK.setText("OK");
+        jButtonVolumenOK.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonVolumenOK.setEnabled(false);
         jButtonVolumenOK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonVolumenOKActionPerformed(evt);
+            }
+        });
+
+        buttonCancelVolumen.setText("Abbrechen");
+        buttonCancelVolumen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonCancelVolumen.setEnabled(false);
+        buttonCancelVolumen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCancelVolumenActionPerformed(evt);
             }
         });
 
@@ -177,6 +196,8 @@ public class ReportMainGUI extends javax.swing.JFrame {
                         .addGap(0, 35, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(buttonCancelVolumen)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonVolumenOK))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -218,7 +239,9 @@ public class ReportMainGUI extends javax.swing.JFrame {
                     .addComponent(jLabelBis)
                     .addComponent(jDateChooserBis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonVolumenOK)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonVolumenOK)
+                    .addComponent(buttonCancelVolumen))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(buttonPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
@@ -235,6 +258,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
         buttonShowOrders.getAccessibleContext().setAccessibleName("buttonShowBestellvolumen");
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBackActionPerformed
@@ -244,7 +268,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonBackActionPerformed
 
     private void buttonShowArticlelistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonShowArticlelistActionPerformed
-        String[] columnnames = {"Artikelnummer ", "Bezeichnung"};
+        String[] columnnames = {"Artikelnummer ", "Bezeichnung", "Bestandsmenge"};
 
         setColumnnames(columnnames);
         result = connect("From Arti");
@@ -288,21 +312,24 @@ public class ReportMainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonShowOpenOrdersActionPerformed
 
     private void buttonShowOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonShowOrdersActionPerformed
+        buttonBack.setEnabled(false);
+
         jLabelVon.setEnabled(true);
         jLabelBis.setEnabled(true);
         jDateChooserVon.setEnabled(true);
         jDateChooserBis.setEnabled(true);
         jButtonVolumenOK.setEnabled(true);
+        buttonCancelVolumen.setEnabled(true);
     }//GEN-LAST:event_buttonShowOrdersActionPerformed
 
     private void buttonShowCritStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonShowCritStockActionPerformed
-        String[] columnnames = {"Artikelnummer ", "Bezeichnung", "Bestandsmenge", "Krit_Menge"};
+        String[] columnnames = {"Artikelnummer ", "Bezeichnung", "Bestandsmenge", "Krit. Menge"};
         setColumnnames(columnnames);
         result = connect("From Arti WHERE BESTANDSMENGE <= KRIT_MENGE");
 
         Object rowData[] = new Object[4];
 
-        for ( iterator = result.iterator(); iterator.hasNext();) {
+        for (iterator = result.iterator(); iterator.hasNext();) {
             Arti Artikel = (Arti) iterator.next();
             rowData[0] = Artikel.getANR();
             rowData[1] = Artikel.getBEZEICHNUNG();
@@ -315,13 +342,13 @@ public class ReportMainGUI extends javax.swing.JFrame {
     private void buttonBestSellingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBestSellingActionPerformed
         String[] columnnames = {"Artikelnummer ", "Bezeichnung", "Menge"};
         setColumnnames(columnnames);
-        result = connect("select sum(ANZAHL) as summe from K_BA group by arti order by summe desc");
-        result2 = connect("select arti.ANR from K_BA group by arti order by sum(ANZAHL) desc");
+        result = connect("select sum(ANZAHL) as summe from K_BA WHERE best.STATUS = 'abgeschlossen' group by arti order by summe desc");
+        result2 = connect("select arti.ANR from K_BA WHERE best.STATUS = 'abgeschlossen' group by arti order by sum(ANZAHL) desc");
 
         Object rowData[] = new Object[3];
         iterator = result.iterator();
 
-        for ( iterator2 = result2.iterator(); iterator2.hasNext();) {
+        for (iterator2 = result2.iterator(); iterator2.hasNext();) {
             int artikel = (int) iterator2.next();
             rowData[0] = artikel;
 
@@ -333,7 +360,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
 
             int anr = Integer.parseInt(model.getValueAt(i, 0).toString());
             result = connect("select BEZEICHNUNG from Arti Where ANR= " + anr);
-            for ( iterator2 = result.iterator(); iterator2.hasNext();) {
+            for (iterator2 = result.iterator(); iterator2.hasNext();) {
                 model.setValueAt(iterator2.next(), i, 1);
             }
         }
@@ -342,13 +369,13 @@ public class ReportMainGUI extends javax.swing.JFrame {
     private void buttonWorstSellingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonWorstSellingActionPerformed
         String[] columnnames = {"Artikelnummer ", "Bezeichnung", "Menge"};
         setColumnnames(columnnames);
-        result = connect("select sum(ANZAHL) as summe from K_BA group by arti order by summe asc");
-        result2 = connect("select arti.ANR from K_BA group by arti order by sum(ANZAHL) asc");
+        result = connect("select sum(ANZAHL) as summe from K_BA WHERE best.STATUS = 'abgeschlossen' group by arti order by summe asc");
+        result2 = connect("select arti.ANR from K_BA WHERE best.STATUS = 'abgeschlossen' group by arti order by sum(ANZAHL) asc");
 
         Object rowData[] = new Object[3];
         iterator = result.iterator();
 
-        for ( iterator2 = result2.iterator(); iterator2.hasNext();) {
+        for (iterator2 = result2.iterator(); iterator2.hasNext();) {
             int artikel = (int) iterator2.next();
             rowData[0] = artikel;
 
@@ -382,15 +409,22 @@ public class ReportMainGUI extends javax.swing.JFrame {
 
         String von = dateFormat.format(jDateChooserVon.getDate());
         String bis = dateFormat.format(jDateChooserBis.getDate());
-        String[] columnnames = {"Verkaufte Menge ", "Warenwert gesamt"};
+        String[] columnnames = {"Verkaufte Menge ", "Warenwert € gesamt"};
         setColumnnames(columnnames);
-        result = connect("select sum(ANZAHL) from K_BA WHERE best.BESTELLDATUM between '"+von+"' and '"+bis+"'");
+        result = connect("select sum(ANZAHL) from K_BA WHERE best.BESTELLDATUM between '" + von + "' and '" + bis + "'");
+      result2 = connect("select sum(arti.VK_Preis*ANZAHL) from K_BA WHERE best.BESTELLDATUM between '" + von + "' and '" + bis + "'");
 
         Object rowData[] = new Object[2];
-
-        for ( iterator = result.iterator(); iterator.hasNext();) {
+        iterator2 = result2.iterator();
+        
+        for (iterator = result.iterator(); iterator.hasNext();) {
             long BNR = (long) iterator.next();
             rowData[0] = BNR;
+            
+            iterator2.hasNext();
+            double SumEuro = (double) iterator2.next();
+            rowData[1] = SumEuro;
+            
             model.addRow(rowData);
         }
 
@@ -399,8 +433,21 @@ public class ReportMainGUI extends javax.swing.JFrame {
         jDateChooserVon.setEnabled(false);
         jDateChooserBis.setEnabled(false);
         jButtonVolumenOK.setEnabled(false);
+        buttonCancelVolumen.setEnabled(false);
+        buttonBack.setEnabled(true);
 
     }//GEN-LAST:event_jButtonVolumenOKActionPerformed
+
+    private void buttonCancelVolumenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelVolumenActionPerformed
+        buttonBack.setEnabled(true);
+
+        buttonCancelVolumen.setEnabled(false);
+        jLabelVon.setEnabled(false);
+        jLabelBis.setEnabled(false);
+        jDateChooserVon.setEnabled(false);
+        jDateChooserBis.setEnabled(false);
+        jButtonVolumenOK.setEnabled(false);
+    }//GEN-LAST:event_buttonCancelVolumenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -441,6 +488,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonBack;
     private javax.swing.JButton buttonBestSelling;
+    private javax.swing.JButton buttonCancelVolumen;
     private javax.swing.JButton buttonPrint;
     private javax.swing.JButton buttonShowArticlelist;
     private javax.swing.JButton buttonShowCritStock;

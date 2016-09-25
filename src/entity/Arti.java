@@ -41,7 +41,16 @@ public class Arti {
     @OneToMany
     @JoinColumn(name = "F_ANR")
     private List<K_BA> k_ba;
+    @Column(name = "VK_Preis")
+    double VK_Preis;
 
+    public double getVK_Preis() {
+        return VK_Preis;
+    }
+
+    public void setVK_Preis(double VK_Preis) {
+        this.VK_Preis = VK_Preis;
+    }
 
     public Arti() {
         super();
@@ -79,18 +88,16 @@ public class Arti {
         this.krit_Menge = krit_Menge;
     }
 
-    
-
     public int UpdateArtikelAdd(int amount, int nummer) {
         DB_Connect con = new DB_Connect();
         return con.simpleConnect("UPDATE Arti SET BESTANDSMENGE = BESTANDSMENGE + " + Integer.toString(amount) + " WHERE ANR = " + Integer.toString(nummer));
     }
-    
+
     public int UpdateArtikelSetNew(int amount, int nummer) {
         DB_Connect con = new DB_Connect();
         return con.simpleConnect("UPDATE Arti SET BESTANDSMENGE = " + Integer.toString(amount) + " WHERE ANR = " + Integer.toString(nummer));
-    }   
-    
+    }
+
     public int UpdateArtikelFree(String str) {
         DB_Connect con = new DB_Connect();
         return con.simpleConnect(str);
@@ -117,18 +124,18 @@ public class Arti {
                 if (i == 0) {
                     List list = con.Connect("FROM Lage WHERE LNR = " + Integer.toString(LNR));
                     Lage lagerplatz = (Lage) list.get(0);
-                    if(lagerplatz.getMaxmenge() >= krit){
-                        if(lagerplatz.getMaxmenge() >= bestand){
-                        
-                    con.simpleConnect("INSERT INTO Arti (ANR, BEZEICHNUNG, BESTANDSMENGE, krit_Menge, F_LNR) VALUES ('" + Integer.toString(anr) + "', '"
-                            + bez + "','" + Integer.toString(bestand) + "', '" + Integer.toString(krit) + "', '" + Integer.toString(LNR) + "')");
-                    return 1;
+                    if (lagerplatz.getMaxmenge() >= krit) {
+                        if (lagerplatz.getMaxmenge() >= bestand) {
+
+                            con.simpleConnect("INSERT INTO Arti (ANR, BEZEICHNUNG, BESTANDSMENGE, krit_Menge, F_LNR) VALUES ('" + Integer.toString(anr) + "', '"
+                                    + bez + "','" + Integer.toString(bestand) + "', '" + Integer.toString(krit) + "', '" + Integer.toString(LNR) + "')");
+                            return 1;
+                        } else {
+                            return 6;
+                        }
                     } else {
-                    return 6;
-                    } 
-                } else {
-                    return 5;
-                    } 
+                        return 5;
+                    }
                 } else {
                     return 4;
                 }
@@ -139,34 +146,26 @@ public class Arti {
             return 2;
         }
     }
-    
+
     public int UpdateLNrCheck(int LNR) {
-       DB_Connect con = new DB_Connect();
+        DB_Connect con = new DB_Connect();
         int i = 0;
         int j = 0;
         int ret = 0;
-         i = con.simpleConnect("Select LNR FROM Lage WHERE LNR = " + Integer.toString(LNR));
-         j = con.simpleConnect("Select ANR FROM Arti WHERE F_LNR = " + Integer.toString(LNR));
-          
-          
-         if(i == 0 && j == 0){
-             general.Message.showError("Fehler", "Der Lagerplatz existiert nicht. Bitte anlegen!");
-             ret = 0;
-         } else {
-             if(i==1 && j==1){
-             general.Message.showError("Fehler", "Der Lagerplatz ist schon durch ein anderes Produkt belegt!") ;
-             ret = 0;
-             }
-             else {
-                 if(i==1 && j==0){
-                     ret=1;
-                 }
-             }
-           
-             
-         }
+        i = con.simpleConnect("Select LNR FROM Lage WHERE LNR = " + Integer.toString(LNR));
+        j = con.simpleConnect("Select ANR FROM Arti WHERE F_LNR = " + Integer.toString(LNR));
+
+        if (i == 0 && j == 0) {
+            general.Message.showError("Fehler", "Der Lagerplatz existiert nicht. Bitte anlegen!");
+            ret = 0;
+        } else if (i == 1 && j == 1) {
+            general.Message.showError("Fehler", "Der Lagerplatz ist schon durch ein anderes Produkt belegt!");
+            ret = 0;
+        } else if (i == 1 && j == 0) {
+            ret = 1;
+        }
         return ret;
-          } 
+    }
 
     /**
      * @return the k_ba
