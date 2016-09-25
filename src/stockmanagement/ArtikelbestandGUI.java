@@ -67,11 +67,11 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Artikelnummer", "Bezeichnung", "Bestandsmenge", "krit. Menge", "Lagernummer"
+                "Artikelnummer", "Bezeichnung", "Bestandsmenge", "krit. Menge", "Lagernummer", "Verkaufspreis €"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
