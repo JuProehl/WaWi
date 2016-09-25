@@ -80,9 +80,4 @@ public class ArtiList {
         return Artikel.getLage().getLNr();
     }
 
-    public Double getVKPreis(int row) {
-
-        Arti Artikel = (Arti) result.get(row);
-        return Artikel.getVK_Preis();
-    }
 }
