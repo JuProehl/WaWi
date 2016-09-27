@@ -247,9 +247,9 @@ public class EditOKArtikelMetadaten extends javax.swing.JFrame {
         try {
             EditLNr = Integer.parseInt(JTF_LagerOrt.getText());
             EditkritMenge = Integer.parseInt(JTF_kritMenge.getText());
-            
-            //Checken ob ein . oder buchstaben verwendet wurden
             EditVKPreis = JTF_VkPreis.getText();
+            EditVKPreis = EditVKPreis.replace(".", ",");
+
         } catch (NumberFormatException e) {
             general.Message.showError("Fehler!", "Bitte nur Zahlen eingeben");
             succes = false;

@@ -18,6 +18,7 @@ import java.util.List;
 public class EditOKArtikelAnlegen extends javax.swing.JFrame {
 
     Integer ANR;
+    String checkPreis;
     ArtikelbestandGUI artikelbestand;
     
     /**
@@ -32,6 +33,7 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
         ANR = nextANR();
         this.artikelbestand = artikelbestand;
         Label_Artikelnummer.setText(ANR.toString());
+        this.checkPreis = "";
         
         
     }
@@ -228,7 +230,9 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
         try {
             list.add(Integer.parseInt(tfBestandsmenge.getText()));
             list.add(Integer.parseInt(tfKrit.getText()));
-            list.add(Integer.parseInt(tfLNR.getText()));
+            list.add(Integer.parseInt(tfLNR.getText()));  
+            
+            this.checkPreis = tfVKPreis.getText().replace(".", ",");
             
         } catch (NumberFormatException e) {
             general.Message.showError("Eingabefehler", "Eingaben überprüfen!");
@@ -240,7 +244,7 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
                 Arti artikel = new Arti();
                 int i = artikel.InsertArtikel(ANR, tfBez.getText(),
                     Integer.parseInt(tfBestandsmenge.getText()), Integer.parseInt(tfKrit.getText()),
-                    Integer.parseInt(tfLNR.getText()), tfVKPreis.getText());
+                    Integer.parseInt(tfLNR.getText()), this.checkPreis);
                 switch (i) {
                     case 1:
                     general.Message.showSuccess("", "Anlage erfolgreich!");
