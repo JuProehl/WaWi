@@ -25,12 +25,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="buttonAbbrechen" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="92" max="32767" attributes="0"/>
                       <Component id="buttonArtikelAnlegen" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="labelA_anlegen" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -48,14 +48,16 @@
                               </Group>
                           </Group>
                           <Component id="labelANR" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelVKPreis" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="29" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="Label_Artikelnummer" min="-2" max="-2" attributes="0"/>
-                          <Component id="tfBestandsmenge" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
-                          <Component id="tfKrit" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
-                          <Component id="tfBez" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
-                          <Component id="tfLNR" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="tfBestandsmenge" alignment="0" pref="110" max="32767" attributes="0"/>
+                          <Component id="tfKrit" alignment="0" pref="110" max="32767" attributes="0"/>
+                          <Component id="tfBez" alignment="0" pref="110" max="32767" attributes="0"/>
+                          <Component id="tfLNR" alignment="0" pref="110" max="32767" attributes="0"/>
+                          <Component id="tfVKPreis" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -93,12 +95,17 @@
                   <Component id="tfLNR" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="labelA_LNR" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="buttonArtikelAnlegen" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfVKPreis" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelVKPreis" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="21" max="32767" attributes="0"/>
+              <EmptySpace pref="7" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="buttonAbbrechen" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonArtikelAnlegen" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -109,12 +116,12 @@
         <Property name="text" type="java.lang.String" value="kritische Menge:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="buttonAbbrechen">
       <Properties>
         <Property name="text" type="java.lang.String" value="Abbrechen"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAbbrechenActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="buttonArtikelAnlegen">
@@ -171,6 +178,13 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="Label_Artikelnummer">
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelVKPreis">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Verkaufspreis:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfVKPreis">
     </Component>
   </SubComponents>
 </Form>

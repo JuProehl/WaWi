@@ -79,5 +79,10 @@ public class ArtiList {
         Arti Artikel = (Arti) result.get(row);
         return Artikel.getLage().getLNr();
     }
+        public double getVKPreis(int row) {
+
+        Arti Artikel = (Arti) result.get(row);
+        return Artikel.getVK_Preis();
+    }
 
 }

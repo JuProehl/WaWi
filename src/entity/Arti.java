@@ -114,7 +114,7 @@ public class Arti {
 
     }
 
-    public int InsertArtikel(int anr, String bez, int bestand, int krit, int LNR) {
+    public int InsertArtikel(int anr, String bez, int bestand, int krit, int LNR, String Preis) {
         DB_Connect con = new DB_Connect();
         int i = con.simpleConnect("Select ANR FROM Arti WHERE ANR = " + Integer.toString(anr));
         if (i == 0) {
@@ -127,8 +127,8 @@ public class Arti {
                     if (lagerplatz.getMaxmenge() >= krit) {
                         if (lagerplatz.getMaxmenge() >= bestand) {
 
-                            con.simpleConnect("INSERT INTO Arti (ANR, BEZEICHNUNG, BESTANDSMENGE, krit_Menge, F_LNR) VALUES ('" + Integer.toString(anr) + "', '"
-                                    + bez + "','" + Integer.toString(bestand) + "', '" + Integer.toString(krit) + "', '" + Integer.toString(LNR) + "')");
+                            con.simpleConnect("INSERT INTO Arti (ANR, BEZEICHNUNG, BESTANDSMENGE, krit_Menge, F_LNR, VK_Preis) VALUES ('" + Integer.toString(anr) + "', '"
+                                    + bez + "','" + Integer.toString(bestand) + "', '" + Integer.toString(krit) + "', '" + Integer.toString(LNR) + "', '" + Preis +  "')");
                             return 1;
                         } else {
                             return 6;

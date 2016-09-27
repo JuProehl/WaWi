@@ -46,7 +46,7 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
     private void initComponents() {
 
         labelKrit = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        buttonAbbrechen = new javax.swing.JButton();
         buttonArtikelAnlegen = new javax.swing.JButton();
         labelA_LNR = new javax.swing.JLabel();
         labelA_anlegen = new javax.swing.JLabel();
@@ -58,15 +58,17 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
         labelMenge = new javax.swing.JLabel();
         labelBEZ = new javax.swing.JLabel();
         Label_Artikelnummer = new javax.swing.JLabel();
+        labelVKPreis = new javax.swing.JLabel();
+        tfVKPreis = new javax.swing.JTextField();
 
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         labelKrit.setText("kritische Menge:");
 
-        jButton1.setText("Abbrechen");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonAbbrechen.setText("Abbrechen");
+        buttonAbbrechen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonAbbrechenActionPerformed(evt);
             }
         });
 
@@ -111,6 +113,8 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
 
         labelBEZ.setText("Bezeichnung:");
 
+        labelVKPreis.setText("Verkaufspreis:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -119,8 +123,8 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonAbbrechen)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
                         .addComponent(buttonArtikelAnlegen))
                     .addComponent(labelA_anlegen, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelBEZ, javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,14 +137,16 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(labelMenge)
                                     .addGap(5, 5, 5)))
-                            .addComponent(labelANR))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelANR)
+                            .addComponent(labelVKPreis))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Label_Artikelnummer)
-                            .addComponent(tfBestandsmenge, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfKrit, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfBez, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfLNR, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(tfBestandsmenge, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                            .addComponent(tfKrit, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                            .addComponent(tfBez, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                            .addComponent(tfLNR, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                            .addComponent(tfVKPreis))))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -168,11 +174,15 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfLNR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelA_LNR))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonArtikelAnlegen)
-                    .addComponent(jButton1))
-                .addContainerGap(21, Short.MAX_VALUE))
+                    .addComponent(tfVKPreis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelVKPreis))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonAbbrechen)
+                    .addComponent(buttonArtikelAnlegen))
+                .addGap(28, 28, 28))
         );
 
         pack();
@@ -183,9 +193,9 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
     anlegen();
     }//GEN-LAST:event_buttonArtikelAnlegenActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void buttonAbbrechenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAbbrechenActionPerformed
         setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_buttonAbbrechenActionPerformed
 
     private void tfLNRKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfLNRKeyPressed
         abfangenKey(evt);
@@ -202,10 +212,7 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
     private void tfBezKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfBezKeyPressed
         abfangenKey(evt);
     }//GEN-LAST:event_tfBezKeyPressed
-
-    
-    
-    
+     
     private void abfangenKey(java.awt.event.KeyEvent evt){
           if(evt.getKeyCode()==KeyEvent.VK_ESCAPE){
             setVisible(false);
@@ -222,6 +229,7 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
             list.add(Integer.parseInt(tfBestandsmenge.getText()));
             list.add(Integer.parseInt(tfKrit.getText()));
             list.add(Integer.parseInt(tfLNR.getText()));
+            
         } catch (NumberFormatException e) {
             general.Message.showError("Eingabefehler", "Eingaben überprüfen!");
             success = false;
@@ -232,7 +240,7 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
                 Arti artikel = new Arti();
                 int i = artikel.InsertArtikel(ANR, tfBez.getText(),
                     Integer.parseInt(tfBestandsmenge.getText()), Integer.parseInt(tfKrit.getText()),
-                    Integer.parseInt(tfLNR.getText()));
+                    Integer.parseInt(tfLNR.getText()), tfVKPreis.getText());
                 switch (i) {
                     case 1:
                     general.Message.showSuccess("", "Anlage erfolgreich!");
@@ -309,17 +317,19 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label_Artikelnummer;
+    private javax.swing.JButton buttonAbbrechen;
     private javax.swing.JButton buttonArtikelAnlegen;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel labelANR;
     private javax.swing.JLabel labelA_LNR;
     private javax.swing.JLabel labelA_anlegen;
     private javax.swing.JLabel labelBEZ;
     private javax.swing.JLabel labelKrit;
     private javax.swing.JLabel labelMenge;
+    private javax.swing.JLabel labelVKPreis;
     private javax.swing.JTextField tfBestandsmenge;
     private javax.swing.JTextField tfBez;
     private javax.swing.JTextField tfKrit;
     private javax.swing.JTextField tfLNR;
+    private javax.swing.JTextField tfVKPreis;
     // End of variables declaration//GEN-END:variables
 }

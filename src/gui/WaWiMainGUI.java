@@ -6,7 +6,7 @@
 package gui;
 
 //test
-
+import customermanagement.customerGUI;
 import report.ReportMainGUI;
 import stockmanagement.LagerverwaltungGUI;
 
@@ -67,6 +67,11 @@ public class WaWiMainGUI extends javax.swing.JFrame {
         buttonKundenverwaltung.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         buttonKundenverwaltung.setText("Kundenverwaltung");
         buttonKundenverwaltung.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonKundenverwaltung.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonKundenverwaltungActionPerformed(evt);
+            }
+        });
 
         buttonBenutzerverwaltung.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         buttonBenutzerverwaltung.setText("Benutzerverwaltung");
@@ -114,7 +119,7 @@ public class WaWiMainGUI extends javax.swing.JFrame {
         setVisible(false);
         LagerverwaltungGUI lGUI = new LagerverwaltungGUI();
         lGUI.setVisible(true);
-                
+
     }//GEN-LAST:event_buttonLagerActionPerformed
 
     private void buttonReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReportActionPerformed
@@ -122,6 +127,13 @@ public class WaWiMainGUI extends javax.swing.JFrame {
         ReportMainGUI rGUI = new ReportMainGUI();
         rGUI.setVisible(true);
     }//GEN-LAST:event_buttonReportActionPerformed
+
+    private void buttonKundenverwaltungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonKundenverwaltungActionPerformed
+        setVisible(false);
+        customerGUI cGUI = new customerGUI();
+        cGUI.setVisible(true);
+        cGUI.tabelleausgeben();
+    }//GEN-LAST:event_buttonKundenverwaltungActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,9 +164,8 @@ public class WaWiMainGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        
         database.DB_Connect.ConnectOpen();
-        
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new WaWiMainGUI().setVisible(true);

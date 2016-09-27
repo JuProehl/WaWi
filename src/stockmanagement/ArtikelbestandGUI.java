@@ -330,7 +330,8 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
         int LNr = ArtikelListe.getF_LNR(row);
         String Bez = ArtikelListe.getBezeichnung(row);
         int kritMenge = ArtikelListe.getKrit_Menge(row);
-        EditOKArtikelMetadaten MetaDatenGUI = new EditOKArtikelMetadaten(ANR,LNr,Bez,kritMenge,this);
+        double preis = ArtikelListe.getVKPreis(row);
+        EditOKArtikelMetadaten MetaDatenGUI = new EditOKArtikelMetadaten(ANR,LNr,Bez,kritMenge,this, preis);
          MetaDatenGUI.setVisible(true);
        } catch (ArrayIndexOutOfBoundsException e) {
            general.Message.showError("Fehler", "Bitte Zeile auswählen!");

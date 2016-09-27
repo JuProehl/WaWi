@@ -6,6 +6,7 @@
 package stockmanagement;
 
 import entity.Arti;
+import entity.Lage;
 import java.util.ArrayList;
 
 /**
@@ -14,28 +15,27 @@ import java.util.ArrayList;
  */
 public class EditOKLagerortMetadaten extends javax.swing.JFrame {
 
-    
-    
     LagerGUI lagergui;
     Integer LNR;
     Integer Regal;
     Integer Fach;
     Integer MaxMenge;
+
     /**
      * Creates new form LagerfachEditGUI
      */
     public EditOKLagerortMetadaten() {
         initComponents();
     }
-    
-    public EditOKLagerortMetadaten(LagerGUI lagergui, int LNR,int Regal,int Fach,int MaxMenge) {
+
+    public EditOKLagerortMetadaten(LagerGUI lagergui, int LNR, int Regal, int Fach, int MaxMenge) {
         initComponents();
         this.lagergui = lagergui;
         this.LNR = LNR;
         this.Regal = Regal;
         this.Fach = Fach;
         this.MaxMenge = MaxMenge;
-        
+
         Label_LNR.setText(this.LNR.toString());
         tfFach.setText(this.Fach.toString());
         tfRegal.setText(this.Regal.toString());
@@ -57,8 +57,8 @@ public class EditOKLagerortMetadaten extends javax.swing.JFrame {
         tfFach = new javax.swing.JTextField();
         tfmaxMenge = new javax.swing.JTextField();
         Label_LNR = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        buttonLagerAnlegen = new javax.swing.JButton();
+        buttonAbbrechen = new javax.swing.JButton();
+        buttonLagerAnlegenOK = new javax.swing.JButton();
         labelL_anlegen = new javax.swing.JLabel();
         labelLagerort = new javax.swing.JLabel();
         labelRegal = new javax.swing.JLabel();
@@ -69,9 +69,19 @@ public class EditOKLagerortMetadaten extends javax.swing.JFrame {
 
         Label_LNR.setText("jLabel1");
 
-        jButton1.setText("Abbrechen");
+        buttonAbbrechen.setText("Abbrechen");
+        buttonAbbrechen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAbbrechenActionPerformed(evt);
+            }
+        });
 
-        buttonLagerAnlegen.setText("OK");
+        buttonLagerAnlegenOK.setText("OK");
+        buttonLagerAnlegenOK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonLagerAnlegenOKActionPerformed(evt);
+            }
+        });
 
         labelL_anlegen.setText("Lagerort bearbeiten");
 
@@ -87,7 +97,7 @@ public class EditOKLagerortMetadaten extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1))
+                        .addComponent(buttonAbbrechen))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,7 +112,7 @@ public class EditOKLagerortMetadaten extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfRegal)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(buttonLagerAnlegen)
+                                .addComponent(buttonLagerAnlegenOK)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(tfFach)
                             .addComponent(tfmaxMenge))
@@ -115,7 +125,7 @@ public class EditOKLagerortMetadaten extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(8, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(labelL_anlegen)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -135,8 +145,8 @@ public class EditOKLagerortMetadaten extends javax.swing.JFrame {
                             .addComponent(tfmaxMenge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(13, 13, 13)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(buttonLagerAnlegen)))
+                            .addComponent(buttonAbbrechen)
+                            .addComponent(buttonLagerAnlegenOK)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(11, 11, 11)
                         .addComponent(Label_LNR)))
@@ -146,6 +156,19 @@ public class EditOKLagerortMetadaten extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buttonLagerAnlegenOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLagerAnlegenOKActionPerformed
+        bearbeiten();
+    }//GEN-LAST:event_buttonLagerAnlegenOKActionPerformed
+
+    private void buttonAbbrechenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAbbrechenActionPerformed
+        setVisible(false);
+    }//GEN-LAST:event_buttonAbbrechenActionPerformed
+
+    private void bearbeiten() {
+        
+
+    }
 
     /**
      * @param args the command line arguments
@@ -185,8 +208,8 @@ public class EditOKLagerortMetadaten extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label_LNR;
-    private javax.swing.JButton buttonLagerAnlegen;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton buttonAbbrechen;
+    private javax.swing.JButton buttonLagerAnlegenOK;
     private javax.swing.JLabel labelFach;
     private javax.swing.JLabel labelL_anlegen;
     private javax.swing.JLabel labelLagerort;
@@ -196,4 +219,5 @@ public class EditOKLagerortMetadaten extends javax.swing.JFrame {
     private javax.swing.JTextField tfRegal;
     private javax.swing.JTextField tfmaxMenge;
     // End of variables declaration//GEN-END:variables
+
 }
