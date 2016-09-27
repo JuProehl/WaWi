@@ -30,6 +30,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
     Iterator iterator3;
     DefaultTableModel model;
     SimpleDateFormat dateFormat;
+    Boolean Volumenauswahl;
 
     /**
      * Creates new form ReportGUI
@@ -38,6 +39,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
         initComponents();
         this.model = (DefaultTableModel) tableAusgabe.getModel();
         this.dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        this.Volumenauswahl = false;
     }
 
     /**
@@ -66,6 +68,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
         jLabelBis = new javax.swing.JLabel();
         jButtonVolumenOK = new javax.swing.JButton();
         buttonCancelVolumen = new javax.swing.JButton();
+        buttonVolumenCustomer = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -95,7 +98,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
             }
         });
 
-        buttonShowOrders.setText("Bestellvolumen");
+        buttonShowOrders.setText("Bestellvolumen insg.");
         buttonShowOrders.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonShowOrders.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,6 +176,13 @@ public class ReportMainGUI extends javax.swing.JFrame {
             }
         });
 
+        buttonVolumenCustomer.setText("Bestellvolumen nach Kunde");
+        buttonVolumenCustomer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonVolumenCustomerActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -181,74 +191,77 @@ public class ReportMainGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(buttonBack)
+                                    .addGap(54, 54, 54)
+                                    .addComponent(labelReports))
+                                .addComponent(buttonWorstSelling, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(buttonShowArticlelist, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(buttonShowCritStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(buttonShowOpenOrders, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(buttonBestSelling, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(buttonPrint, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(buttonBack)
-                                .addGap(54, 54, 54)
-                                .addComponent(labelReports))
-                            .addComponent(buttonWorstSelling, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonShowArticlelist, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonShowCritStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonShowOpenOrders, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonBestSelling, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonShowOrders, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonPrint, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 35, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(buttonCancelVolumen)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonVolumenOK))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(buttonCancelVolumen)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonVolumenOK))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(buttonVolumenCustomer, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                                .addComponent(buttonShowOrders, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelVon)
                             .addComponent(jLabelBis))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jDateChooserVon, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                            .addComponent(jDateChooserBis, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jDateChooserVon, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDateChooserBis, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addGap(32, 32, 32))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonBack)
-                    .addComponent(labelReports))
-                .addGap(26, 26, 26)
-                .addComponent(buttonShowArticlelist)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttonShowCritStock)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttonShowOpenOrders)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttonBestSelling)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttonWorstSelling)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttonShowOrders)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooserVon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelVon, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelBis)
-                    .addComponent(jDateChooserBis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonVolumenOK)
-                    .addComponent(buttonCancelVolumen))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(buttonPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buttonBack)
+                            .addComponent(labelReports))
+                        .addGap(26, 26, 26)
+                        .addComponent(buttonShowArticlelist)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buttonShowCritStock)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buttonShowOpenOrders)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buttonBestSelling)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buttonWorstSelling)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonVolumenCustomer)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                        .addComponent(buttonShowOrders)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jDateChooserVon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelVon, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelBis)
+                            .addComponent(jDateChooserBis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buttonCancelVolumen)
+                            .addComponent(jButtonVolumenOK))
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(39, 39, 39))
         );
 
         labelReports.getAccessibleContext().setAccessibleName("labelReports");
@@ -261,8 +274,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
+
     private void buttonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBackActionPerformed
         setVisible(false);
         WaWiMainGUI wawiGUI = new WaWiMainGUI();
@@ -314,7 +326,15 @@ public class ReportMainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonShowOpenOrdersActionPerformed
 
     private void buttonShowOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonShowOrdersActionPerformed
+        this.Volumenauswahl = true;
+        
         buttonBack.setEnabled(false);
+        buttonShowArticlelist.setEnabled(false);
+        buttonShowCritStock.setEnabled(false);
+        buttonShowOpenOrders.setEnabled(false);
+        buttonBestSelling.setEnabled(false);
+        buttonWorstSelling.setEnabled(false);
+        buttonVolumenCustomer.setEnabled(false);
 
         jLabelVon.setEnabled(true);
         jLabelBis.setEnabled(true);
@@ -322,6 +342,8 @@ public class ReportMainGUI extends javax.swing.JFrame {
         jDateChooserBis.setEnabled(true);
         jButtonVolumenOK.setEnabled(true);
         buttonCancelVolumen.setEnabled(true);
+
+
     }//GEN-LAST:event_buttonShowOrdersActionPerformed
 
     private void buttonShowCritStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonShowCritStockActionPerformed
@@ -403,45 +425,47 @@ public class ReportMainGUI extends javax.swing.JFrame {
         } else {
             general.Message.showError("", "Keine Daten!\nBitte Report auswählen.");
         }
-
-
     }//GEN-LAST:event_buttonPrintActionPerformed
 
     private void jButtonVolumenOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolumenOKActionPerformed
 
         String von = dateFormat.format(jDateChooserVon.getDate());
         String bis = dateFormat.format(jDateChooserBis.getDate());
-        String[] columnnames = {"Verkaufte Menge ", "Warenwert € gesamt"};
-        setColumnnames(columnnames);
-        result = connect("select sum(ANZAHL) from K_BA WHERE best.BESTELLDATUM between '" + von + "' and '" + bis + "'");
-      result2 = connect("select sum(arti.VK_Preis*ANZAHL) from K_BA WHERE best.BESTELLDATUM between '" + von + "' and '" + bis + "'");
-
-        Object rowData[] = new Object[2];
-        iterator2 = result2.iterator();
-        
-        for (iterator = result.iterator(); iterator.hasNext();) {
-            long BNR = (long) iterator.next();
-            rowData[0] = BNR;
-            
-            iterator2.hasNext();
-            double SumEuro = (double) iterator2.next();
-            rowData[1] = SumEuro;
-            
-            model.addRow(rowData);
+        // Wenn Gesamtes Bestellvolumen ermittelt werden soll
+        if (this.Volumenauswahl == true) {
+            ermittleBestellvolumen(von, bis);
+        } // Wenn das Bestellvolumen nach Kunden ermittelt werden soll
+        else {
+            ermittleBestellvolumenKunden(von, bis);
         }
 
+        buttonBack.setEnabled(true);
+        buttonShowArticlelist.setEnabled(true);
+        buttonShowCritStock.setEnabled(true);
+        buttonShowOpenOrders.setEnabled(true);
+        buttonBestSelling.setEnabled(true);
+        buttonWorstSelling.setEnabled(true);
+        buttonShowOrders.setEnabled(true);
+        buttonVolumenCustomer.setEnabled(true);
+
+        buttonCancelVolumen.setEnabled(false);
         jLabelVon.setEnabled(false);
         jLabelBis.setEnabled(false);
         jDateChooserVon.setEnabled(false);
         jDateChooserBis.setEnabled(false);
         jButtonVolumenOK.setEnabled(false);
-        buttonCancelVolumen.setEnabled(false);
-        buttonBack.setEnabled(true);
 
     }//GEN-LAST:event_jButtonVolumenOKActionPerformed
 
     private void buttonCancelVolumenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelVolumenActionPerformed
         buttonBack.setEnabled(true);
+        buttonShowArticlelist.setEnabled(true);
+        buttonShowCritStock.setEnabled(true);
+        buttonShowOpenOrders.setEnabled(true);
+        buttonBestSelling.setEnabled(true);
+        buttonWorstSelling.setEnabled(true);
+        buttonShowOrders.setEnabled(true);
+        buttonVolumenCustomer.setEnabled(true);
 
         buttonCancelVolumen.setEnabled(false);
         jLabelVon.setEnabled(false);
@@ -450,6 +474,79 @@ public class ReportMainGUI extends javax.swing.JFrame {
         jDateChooserBis.setEnabled(false);
         jButtonVolumenOK.setEnabled(false);
     }//GEN-LAST:event_buttonCancelVolumenActionPerformed
+
+    private void buttonVolumenCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVolumenCustomerActionPerformed
+        this.Volumenauswahl = false;
+
+        buttonBack.setEnabled(false);
+        buttonShowArticlelist.setEnabled(false);
+        buttonShowCritStock.setEnabled(false);
+        buttonShowOpenOrders.setEnabled(false);
+        buttonBestSelling.setEnabled(false);
+        buttonWorstSelling.setEnabled(false);
+        buttonShowOrders.setEnabled(false);
+
+        jLabelVon.setEnabled(true);
+        jLabelBis.setEnabled(true);
+        jDateChooserVon.setEnabled(true);
+        jDateChooserBis.setEnabled(true);
+        jButtonVolumenOK.setEnabled(true);
+        buttonCancelVolumen.setEnabled(true);
+    }//GEN-LAST:event_buttonVolumenCustomerActionPerformed
+
+    private void ermittleBestellvolumen(String von, String bis) {
+        String[] columnnames = {"Verkaufte Menge ", "Warenwert € gesamt"};
+
+        setColumnnames(columnnames);
+        result = connect("select sum(ANZAHL) from K_BA WHERE best.BESTELLDATUM between '" + von + "' and '" + bis + "'");
+        result2 = connect("select sum(arti.VK_Preis*ANZAHL) from K_BA WHERE best.BESTELLDATUM between '" + von + "' and '" + bis + "'");
+
+        Object rowData[] = new Object[2];
+        iterator2 = result2.iterator();
+
+        for (iterator = result.iterator(); iterator.hasNext();) {
+            long BNR = (long) iterator.next();
+            rowData[0] = BNR;
+
+            iterator2.hasNext();
+            double SumEuro = (double) iterator2.next();
+            rowData[1] = SumEuro;
+
+            model.addRow(rowData);
+        }
+    }
+
+    private void ermittleBestellvolumenKunden(String von, String bis) {
+        String[] columnnames = {"Kundennummer", "Verkaufte Menge ", "Warenwert € gesamt"};
+
+        setColumnnames(columnnames);
+        result = connect("select sum(ANZAHL) from K_BA WHERE best.BESTELLDATUM between"
+                + " '" + von + "' and '" + bis + "' "
+                + "group by best.kund.KNr order by best.kund.KNr asc");
+        result2 = connect("select sum(arti.VK_Preis*ANZAHL) from K_BA WHERE best.BESTELLDATUM "
+                + "between '" + von + "' and '" + bis + "' group by best.kund.KNr order by best.kund.KNr asc");
+        result3 = connect("select best.kund.KNr from K_BA WHERE best.BESTELLDATUM "
+                + "between '" + von + "' and '" + bis + "' "
+                + "group by best.kund.KNr order by best.kund.KNr asc");
+
+        Object rowData[] = new Object[3];
+        iterator2 = result2.iterator();
+        iterator3 = result3.iterator();
+
+        for (iterator = result.iterator(); iterator.hasNext();) {
+            int KNR = (int) iterator3.next();
+            rowData[0] = KNR;
+
+            long BNR = (long) iterator.next();
+            rowData[1] = BNR;
+
+            iterator2.hasNext();
+            double SumEuro = (double) iterator2.next();
+            rowData[2] = SumEuro;
+
+            model.addRow(rowData);
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -496,6 +593,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
     private javax.swing.JButton buttonShowCritStock;
     private javax.swing.JButton buttonShowOpenOrders;
     private javax.swing.JButton buttonShowOrders;
+    private javax.swing.JButton buttonVolumenCustomer;
     private javax.swing.JButton buttonWorstSelling;
     private javax.swing.JButton jButtonVolumenOK;
     private com.toedter.calendar.JDateChooser jDateChooserBis;
@@ -506,4 +604,5 @@ public class ReportMainGUI extends javax.swing.JFrame {
     private javax.swing.JLabel labelReports;
     private javax.swing.JTable tableAusgabe;
     // End of variables declaration//GEN-END:variables
+
 }
