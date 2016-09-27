@@ -17,36 +17,37 @@ import lists.LageList;
  */
 public class EditOKArtikelMetadaten extends javax.swing.JFrame {
 
-        
     Integer ANR;
     Integer LNr;
     String Bezeichnung;
     Integer kritMenge;
+    String VKPreis;
     ArtikelbestandGUI artikelbestand;
     LageList LagerListe;
-         
+
     /**
      * Creates new form MetaDatenEditOKGUI
      */
     public EditOKArtikelMetadaten() {
         initComponents();
     }
-    
-    public EditOKArtikelMetadaten(int ANr, int LNr, String Bezeichnung, int kritMenge,ArtikelbestandGUI Artikelbestand) {
+
+    public EditOKArtikelMetadaten(int ANr, int LNr, String Bezeichnung, int kritMenge, ArtikelbestandGUI Artikelbestand, double preis) {
         initComponents();
         this.ANR = ANr;
         this.LNr = LNr;
         this.Bezeichnung = Bezeichnung;
         this.kritMenge = kritMenge;
         this.artikelbestand = Artikelbestand;
+        this.VKPreis = "" + preis;
         String str = "FROM Lage Where LNr = " + LNr;
         LagerListe = new LageList(str);
-        
-        
+
         Label_ANR_Set.setText(this.ANR.toString());
         JTF_Bezeichnung.setText(Bezeichnung);
         JTF_kritMenge.setText(this.kritMenge.toString());
         JTF_LagerOrt.setText(this.LNr.toString());
+        JTF_VkPreis.setText(""+preis);
     }
 
     /**
@@ -69,6 +70,8 @@ public class EditOKArtikelMetadaten extends javax.swing.JFrame {
         JTF_kritMenge = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         JTF_LagerOrt = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        JTF_VkPreis = new javax.swing.JTextField();
 
         jLabel1.setText("Metadaten bearbeiten");
 
@@ -117,6 +120,8 @@ public class EditOKArtikelMetadaten extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setText("Verkaufspreis");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -143,12 +148,15 @@ public class EditOKArtikelMetadaten extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel5)
-                                    .addComponent(jLabel2))
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel6))
                                 .addGap(12, 12, 12)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(JTF_Bezeichnung, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(JTF_kritMenge, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(JTF_LagerOrt, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(JTF_VkPreis)
+                                    .addComponent(JTF_Bezeichnung, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+                                    .addComponent(JTF_kritMenge, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+                                    .addComponent(JTF_LagerOrt, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -172,11 +180,15 @@ public class EditOKArtikelMetadaten extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(JTF_LagerOrt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(JTF_VkPreis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonBack)
                     .addComponent(JButton_OK))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(40, 40, 40))
         );
 
         pack();
@@ -189,7 +201,7 @@ public class EditOKArtikelMetadaten extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBackActionPerformed
 
     private void JButton_OKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButton_OKActionPerformed
-       bearbeiten();
+        bearbeiten();
     }//GEN-LAST:event_JButton_OKActionPerformed
 
     private void JButton_OKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JButton_OKKeyPressed
@@ -197,111 +209,114 @@ public class EditOKArtikelMetadaten extends javax.swing.JFrame {
     }//GEN-LAST:event_JButton_OKKeyPressed
 
     private void JTF_BezeichnungKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTF_BezeichnungKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             bearbeiten();
         }
-        if(evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             setVisible(false);
         }
     }//GEN-LAST:event_JTF_BezeichnungKeyPressed
 
     private void JTF_kritMengeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTF_kritMengeKeyPressed
-       if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             bearbeiten();
         }
-        if(evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             setVisible(false);
         }
     }//GEN-LAST:event_JTF_kritMengeKeyPressed
 
     private void JTF_LagerOrtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTF_LagerOrtKeyPressed
-         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             bearbeiten();
         }
-        if(evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             setVisible(false);
         }
     }//GEN-LAST:event_JTF_LagerOrtKeyPressed
 
-    private void bearbeiten(){
+    private void bearbeiten() {
         Integer EditLNr = 0;
         Integer EditkritMenge = 0;
+        String EditVKPreis = "";
         Boolean succes = true;
         ArrayList<Integer> list = new ArrayList<Integer>();
         Arti artikel = new Arti();
         Boolean LNRCHECK = false;
-        
-        
-        try{
-        EditLNr = Integer.parseInt(JTF_LagerOrt.getText());
-        EditkritMenge = Integer.parseInt(JTF_kritMenge.getText());
-        } 
-        catch (NumberFormatException e){
+
+        try {
+            EditLNr = Integer.parseInt(JTF_LagerOrt.getText());
+            EditkritMenge = Integer.parseInt(JTF_kritMenge.getText());
+            EditVKPreis = JTF_VkPreis.getText();
+        } catch (NumberFormatException e) {
             general.Message.showError("Fehler!", "Bitte nur für Lagernummer und kritische Menge nur Zahlen eingeben");
             succes = false;
         }
-        
-        if(succes){
+
+        if (succes) {
             list.add(EditLNr);
             list.add(EditkritMenge);
-            
-            if(!general.Check.istNegativ(list)){
-        
+
+            if (!general.Check.istNegativ(list)) {
+
                 String EditBezeichnung = JTF_Bezeichnung.getText();
                 String UpdateString = "UPDATE Arti SET";
                 String ShowString;
-                
-                if(EditkritMenge <= LagerListe.getMaxMenge(0)){
-        
-                    if ( this.LNr == EditLNr && this.Bezeichnung.equals(EditBezeichnung) && this.kritMenge == EditkritMenge ){
+
+                if (EditkritMenge <= LagerListe.getMaxMenge(0)) {
+
+                    if (this.LNr == EditLNr && this.Bezeichnung.equals(EditBezeichnung) && this.kritMenge == EditkritMenge && this.VKPreis.equals(EditVKPreis)) {
                         setVisible(false);
-                           general.Message.showSuccess("Keine Änderungen", "Kein Änderungen durchgeführt!");
-                        } else {
-                    
-                        
-                    
-                    if (!(this.LNr == EditLNr)){
-                        if(!(artikel.UpdateLNrCheck(EditLNr)==0)){
-                            UpdateString = UpdateString + " F_LNR=" + EditLNr;
-                            LNRCHECK = true;
-                        } 
-                   }
-                    if (!(this.Bezeichnung.equals(EditBezeichnung))){
-                        if (LNRCHECK){
-                            UpdateString = UpdateString + ",BEZEICHNUNG='" + EditBezeichnung + "'";
-                        } else {
-                            UpdateString = UpdateString + " BEZEICHNUNG='" + EditBezeichnung + "'";
+                        general.Message.showSuccess("Keine Änderungen", "Kein Änderungen durchgeführt!");
+                    } else {
+
+                        if (!(this.LNr == EditLNr)) {
+                            if (!(artikel.UpdateLNrCheck(EditLNr) == 0)) {
+                                UpdateString = UpdateString + " F_LNR=" + EditLNr;
+                                LNRCHECK = true;
+                            }
                         }
+                        if (!(this.Bezeichnung.equals(EditBezeichnung))) {
+                            if (LNRCHECK) {
+                                UpdateString = UpdateString + ",BEZEICHNUNG='" + EditBezeichnung + "'";
+                            } else {
+                                UpdateString = UpdateString + " BEZEICHNUNG='" + EditBezeichnung + "'";
+                            }
+                        }
+                        if (!(this.kritMenge == EditkritMenge)) {
+                            if (LNRCHECK || !(this.Bezeichnung.equals(EditBezeichnung))) {
+                                UpdateString = UpdateString + ",krit_Menge=" + EditkritMenge;
+                            } else {
+                                UpdateString = UpdateString + " krit_Menge=" + EditkritMenge;
+                            }
+                        }
+
+                        if (!(this.VKPreis.equals(EditVKPreis))) {
+                            if (LNRCHECK) {
+                                UpdateString = UpdateString + ",VK_Preis='" + EditVKPreis + "'";
+                            } else {
+                                UpdateString = UpdateString + " VK_Preis='" + EditVKPreis + "'";
+                            }
+                        }
+                        if (!UpdateString.equals("UPDATE Arti SET")) {
+
+                            UpdateString = UpdateString + " WHERE ANr=" + this.ANR.toString();
+                            Integer returnwert = artikel.UpdateArtikelFree(UpdateString);
+                            setVisible(false);
+                            artikelbestand.tabelleHolen();
+                            artikelbestand.tabelleausgeben();
+                        }
+
                     }
-                    if (!(this.kritMenge == EditkritMenge)){
-                       if (LNRCHECK || !(this.Bezeichnung.equals(EditBezeichnung)) ){
-                            UpdateString = UpdateString + ",krit_Menge=" + EditkritMenge;
-                        } else {
-                            UpdateString = UpdateString + " krit_Menge=" + EditkritMenge;
-                        } 
-                    }
-                    
-                    if(!UpdateString.equals("UPDATE Arti SET")){
-        
-                    UpdateString = UpdateString + " WHERE ANr=" + this.ANR.toString();
-                    Integer returnwert = artikel.UpdateArtikelFree(UpdateString);
-                    setVisible(false);
-                    artikelbestand.tabelleHolen();
-                    artikelbestand.tabelleausgeben();
-                    }
-        
-                     
-                }
-                }else { 
+                } else {
                     general.Message.showError("Fehler", "Die kritische Menge darf nicht höher als die Fachgröße sein!");
                 }
-            
+
             }
         }
-       
-           
-    } 
-       
+
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -338,13 +353,12 @@ public class EditOKArtikelMetadaten extends javax.swing.JFrame {
         });
     }
 
-    
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JButton_OK;
     private javax.swing.JTextField JTF_Bezeichnung;
     private javax.swing.JTextField JTF_LagerOrt;
+    private javax.swing.JTextField JTF_VkPreis;
     private javax.swing.JTextField JTF_kritMenge;
     private javax.swing.JLabel Label_ANR_Set;
     private javax.swing.JButton jButtonBack;
@@ -353,5 +367,6 @@ public class EditOKArtikelMetadaten extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
 }
