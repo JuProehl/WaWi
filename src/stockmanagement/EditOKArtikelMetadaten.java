@@ -247,9 +247,11 @@ public class EditOKArtikelMetadaten extends javax.swing.JFrame {
         try {
             EditLNr = Integer.parseInt(JTF_LagerOrt.getText());
             EditkritMenge = Integer.parseInt(JTF_kritMenge.getText());
+            
+            //Checken ob ein . oder buchstaben verwendet wurden
             EditVKPreis = JTF_VkPreis.getText();
         } catch (NumberFormatException e) {
-            general.Message.showError("Fehler!", "Bitte nur für Lagernummer und kritische Menge nur Zahlen eingeben");
+            general.Message.showError("Fehler!", "Bitte nur Zahlen eingeben");
             succes = false;
         }
 
