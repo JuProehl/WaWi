@@ -13,7 +13,7 @@ import lists.KundList;
  * @author Markus
  */
 public class customerGUI extends javax.swing.JFrame {
-    
+
     // Erzeugt ein Objekt Kundenliste der Klasse KundList
     KundList Kundenliste;
 
@@ -129,6 +129,7 @@ public class customerGUI extends javax.swing.JFrame {
     // Methode buttonBackActionPerformed
     // Bei Klick auf den "Zurück-Button" wird die aktuelle Ansicht ausgeblendet
     // und Hauptmenü des Warenwirtschaftssystem einegeblendet.
+    // Übergabeparameter: Button Clickevent
     private void buttonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBackActionPerformed
         setVisible(false);
         // Objekt der Klasse WaWiMainGUI erzeugen
@@ -139,10 +140,11 @@ public class customerGUI extends javax.swing.JFrame {
     // Methode buttonAktualiserenActionPerformed
     // Bei Klick auf den Button "Aktualisieren" wird die Methode
     // tabelleaktualisieren aufgerufen
+    // Übergabeparameter: Button Clickevent
     private void buttonAktualisierenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAktualisierenActionPerformed
         tabelleaktualisieren();
     }//GEN-LAST:event_buttonAktualisierenActionPerformed
-    
+
     // Methode tabelleausgaben
     // Ruft die Methode KundenInTabelleAusgeben des Objektes Kundenliste auf
     // Der Methode wird die Tabelle tableKunden übergeben

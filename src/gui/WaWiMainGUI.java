@@ -5,7 +5,6 @@
  */
 package gui;
 
-//test
 import customermanagement.customerGUI;
 import report.ReportMainGUI;
 import stockmanagement.LagerverwaltungGUI;
@@ -115,23 +114,44 @@ public class WaWiMainGUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    // Methode buttonLagerActionPerformed
+    // Sobald der Button "Lagerverwaltung" gedrückt wird, wird ein Objekt der
+    // Klasse LagerverwaltungGUI erzeugt. Die aktuelle Ansicht wird ausgeblendet
+    // und die Ansicht zur Lagerverwaltung eingeblendet
+    // Übergabeparameter: Button Clickevent
     private void buttonLagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLagerActionPerformed
         setVisible(false);
+        // Objekt der Klasse LagerverwaltungGUI erzeugen
         LagerverwaltungGUI lGUI = new LagerverwaltungGUI();
         lGUI.setVisible(true);
 
     }//GEN-LAST:event_buttonLagerActionPerformed
 
+    // Methode buttonReportActionPerformed
+    // Sobald der Button "Report" gedrückt wird, wird ein Objekt der
+    // Klasse ReportMainGUI erzeugt. Die aktuelle Ansicht wird ausgeblendet
+    // und die Ansicht zum Anzeigen von Reports eingeblendet
+    // Übergabeparameter: Button Clickevent
     private void buttonReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReportActionPerformed
         setVisible(false);
+        // Objekt der Klasse ReportMainGUI erzeugen
         ReportMainGUI rGUI = new ReportMainGUI();
         rGUI.setVisible(true);
     }//GEN-LAST:event_buttonReportActionPerformed
 
+    // Methode buttonKundenverwaltungActionPerformed
+    // Sobald der Button "Kundenverwaltung" gedrückt wird, wird ein Objekt der
+    // Klasse customerGUI erzeugt. Die aktuelle Ansicht wird ausgeblendet
+    // und die Ansicht zur Kundenverwaltung eingeblendet
+    // Es wird die Methode "tabelleausgeben" aufgerufen, sodass die Kundendaten
+    // in der Kundenverwaltungsansicht angezeigt werden.
+    // Übergabeparameter: Button Clickevent
     private void buttonKundenverwaltungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonKundenverwaltungActionPerformed
         setVisible(false);
+        // Objekt der Klasse customerGUI erzeugen
         customerGUI cGUI = new customerGUI();
         cGUI.setVisible(true);
+        // Methode zum Ausgeben der Kundendaten aufrufen
         cGUI.tabelleausgeben();
     }//GEN-LAST:event_buttonKundenverwaltungActionPerformed
 
