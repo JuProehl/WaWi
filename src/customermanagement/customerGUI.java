@@ -13,14 +13,17 @@ import lists.KundList;
  * @author Markus
  */
 public class customerGUI extends javax.swing.JFrame {
-
-    KundList Kundenliste = new KundList();
+    
+    // Erzeugt ein Objekt Kundenliste der Klasse KundList
+    KundList Kundenliste;
 
     /**
      * Creates new form customerGUI
      */
+    // Konstruktor customerGUI
     public customerGUI() {
         initComponents();
+        this.Kundenliste = new KundList();
     }
 
     /**
@@ -123,27 +126,44 @@ public class customerGUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    // Methode buttonBackActionPerformed
+    // Bei Klick auf den "Zurück-Button" wird die aktuelle Ansicht ausgeblendet
+    // und Hauptmenü des Warenwirtschaftssystem einegeblendet.
     private void buttonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBackActionPerformed
         setVisible(false);
+        // Objekt der Klasse WaWiMainGUI erzeugen
         WaWiMainGUI wawiGUI = new WaWiMainGUI();
         wawiGUI.setVisible(true);
     }//GEN-LAST:event_buttonBackActionPerformed
 
+    // Methode buttonAktualiserenActionPerformed
+    // Bei Klick auf den Button "Aktualisieren" wird die Methode
+    // tabelleaktualisieren aufgerufen
     private void buttonAktualisierenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAktualisierenActionPerformed
         tabelleaktualisieren();
     }//GEN-LAST:event_buttonAktualisierenActionPerformed
-
+    
+    // Methode tabelleausgaben
+    // Ruft die Methode KundenInTabelleAusgeben des Objektes Kundenliste auf
+    // Der Methode wird die Tabelle tableKunden übergeben
+    // Kundenliste ist ein Objekt der Klasse KundList
     public void tabelleausgeben() {
-        Kundenliste.KundenInTabelleAusgeben(tableKunden);
+        this.Kundenliste.KundenInTabelleAusgeben(tableKunden);
     }
 
+    // Methode tabelleaktualisieren
+    // Ruft die Methoden tabelleHolen auf
+    // Ruft die Methoden tabelleausgeben auf
     private void tabelleaktualisieren() {
         tabelleHolen();
         tabelleausgeben();
     }
 
+    // Methode tabelleHolen
+    // Ruft die Methode TabelleHolen des Objektes Kundeliste auf
+    // Kundenliste ist ein Objekt der Klasse KundList
     private void tabelleHolen() {
-        Kundenliste.TabelleHolen();
+        this.Kundenliste.TabelleHolen();
     }
 
     /**
