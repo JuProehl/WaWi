@@ -24,11 +24,13 @@ public class K_BA implements Serializable{
         private Arti arti;
         @Column(name = "ANZAHL")
 	private int ANZAHL;
-			
+		
+        // Konstruktor der Klasse K_BA
 	public K_BA() {
 		super();
 	}
 
+    // Getter und Setter
     /**
      * @return the POSITION
      */
@@ -83,8 +85,5 @@ public class K_BA implements Serializable{
      */
     public void setBest(Best best) {
         this.best = best;
-    }
-
-    
-	
+    }   	
 }

@@ -13,6 +13,13 @@ import stockmanagement.LagerverwaltungGUI;
  *
  * @author Markus
  */
+
+// Klasse WaWiMainGUI
+// Hauptmenü des Warenwirtschaftssystems
+// Von diesem Hauptmenü gelangt man in die Unterbereiche:
+//      -Lagerverwaltung
+//      -Kundenverwaltung
+//      -Report
 public class WaWiMainGUI extends javax.swing.JFrame {
 
     /**

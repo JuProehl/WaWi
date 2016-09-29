@@ -38,6 +38,8 @@ public class Kund {
         super();
     }
 
+    
+    // Getter und Setter
     public int getKNr() {
         return KNr;
     }

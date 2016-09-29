@@ -12,15 +12,18 @@ import lists.KundList;
  *
  * @author Markus
  */
+// Klasse CustomerGUI
+// Enthält Methoden zum Anzeigen und Bearbeiten von Kundendaten
 public class customerGUI extends javax.swing.JFrame {
 
-    // Erzeugt ein Objekt Kundenliste der Klasse KundList
+    // Klassenvariablen
     KundList Kundenliste;
 
     /**
      * Creates new form customerGUI
      */
     // Konstruktor customerGUI
+    // Erzeugt ein Objekt Kundenliste der Klasse KundList
     public customerGUI() {
         initComponents();
         this.Kundenliste = new KundList();

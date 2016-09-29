@@ -32,8 +32,7 @@ public class Best {
         @JoinColumn(name = "F_BNR")
         private List<K_BA> k_ba;
 	
-	
-	
+        // Konstruktor der Klasse Best
 	public Best() {
 		super();
 	}
@@ -43,6 +42,8 @@ public class Best {
         DB_Connect con = new DB_Connect();
         return con.simpleConnect("UPDATE Best SET STATUS = 'inArbeit' WHERE BNR = " + Integer.toString(nummer));
     } 
+              
+    // Getter und Setter
     /**
      * @return the BNR
      */
@@ -125,14 +126,5 @@ public class Best {
      */
     public void setK_ba(List<K_BA> k_ba) {
         this.k_ba = k_ba;
-    }
-
-    
-
-
-
-	
-
-	
-	
+    }   		
 }

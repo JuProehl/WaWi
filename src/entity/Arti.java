@@ -13,8 +13,12 @@ import javax.persistence.OneToOne;
 @Entity
 @Table(name = "Arti")
 
+// Klasse Arti 
+// Repräsentiert die Tabelle Arti der Datenbank
+// Enthält Attribute und Methoden zum Abfragen und Bearbeiten der Tabelle
 public class Arti {
 
+    // Primärschlussel ANR der Tabelle Arti (Artikel)
     @Id
     @Column(name = "ANR")
     int ANR;
@@ -24,45 +28,116 @@ public class Arti {
     int BESTANDSMENGE;
     @Column(name = "krit_Menge")
     int krit_Menge;
+    // Fremdschlüssel F_LNR (Lagernummer)
     @OneToOne
     @JoinColumn(name = "F_LNR")
     private Lage lage;
+    // Fremdschlüssel F_ANR (Artikelnummer)
     @OneToMany
     @JoinColumn(name = "F_ANR")
     private List<K_BA> k_ba;
     @Column(name = "VK_Preis")
     double VK_Preis;
 
+    // Konstruktor der Klasse Arti
     public Arti() {
         super();
     }
 
+    // Methode UpdateArtikelAdd
+    // Artikel einlagern
+    // Stellt eine Verbindung zur Datenbabk her und
+    // lagert unter Ausführung eines SQL-Statements 
+    // eine übergebene Menge von Artikeln ein.
+    // Übergabeparameter: int amount, int nummer
+    // amount: einzulagernde Menge
+    // nummer: Artikelnummer des einzulagernden Artikels
+    // Rückgabewert int
+    // gibt die Anzahl betroffener Zeilen nach Ausführung des SQL-Statements zurück
     public int UpdateArtikelAdd(int amount, int nummer) {
         DB_Connect con = new DB_Connect();
         return con.simpleConnect("UPDATE Arti SET BESTANDSMENGE = BESTANDSMENGE + " + Integer.toString(amount) + " WHERE ANR = " + Integer.toString(nummer));
     }
 
+    // Methode UpdateArtikelSetNew
+    // Artikel Bestandskorrektur
+    // Stellt eine Verbindung zur Datenbabk her und
+    // setzt unter Ausführung eines SQL-Statements
+    // die Bestandsmenge eines Artikels.
+    // Übergabeparameter: int amount, int nummer
+    // amount: neue Bestandmenge
+    // nummer: Artikelnummer des zu korrigierenden Artikels
+    // Rückgabewert int
+    // gibt die Anzahl betroffener Zeilen nach Ausführung des SQL-Statements zurück
     public int UpdateArtikelSetNew(int amount, int nummer) {
         DB_Connect con = new DB_Connect();
         return con.simpleConnect("UPDATE Arti SET BESTANDSMENGE = " + Integer.toString(amount) + " WHERE ANR = " + Integer.toString(nummer));
     }
 
+    // Methode UpdateArtikelFree
+    // Artikel Bestandskorrektur
+    // Stellt eine Verbindung zur Datenbabk her und
+    // setzt unter Ausführung eines SQL-Statements die Bestandsmenge eines Artikels.
+    // Übergabeparameter: String str
+    // str: SQL-Statement, welches ausgeführt werden soll
+    // Rückgabewert int
+    // gibt die Anzahl betroffener Zeilen nach Ausführung des SQL-Statements zurück   
     public int UpdateArtikelFree(String str) {
         DB_Connect con = new DB_Connect();
         return con.simpleConnect(str);
     }
 
+    // Methode Bestandskorrektur
+    // Artikel Bestandskorrektur
+    // Stellt eine Verbindung zur Datenbabk her und
+    // setzt unter Ausführung eines SQL-Statements die Bestandsmenge eines Artikels.
+    // Übergabeparameter: int bestandsmenge, int nummer
+    // amount: neue Bestandmenge
+    // nummer: Artikelnummer des zu korrigierenden Artikels
+    // Rückgabewert int
+    // gibt die Anzahl betroffener Zeilen nach Ausführung des SQL-Statements zurück 
     public int Bestandskorrektur(int bestandsmenge, int nummer) {
         DB_Connect con = new DB_Connect();
         return con.simpleConnect("UPDATE Arti SET BESTANDSMENGE = " + Integer.toString(bestandsmenge) + " WHERE ANR = " + Integer.toString(nummer));
     }
 
+    // Methode Auslagern
+    // Artikel auslagern
+    // Stellt eine Verbindung zur Datenbabk her und
+    // lagert unter Ausführung eines SQL-Statements die übergebene Menge eines Artikels aus.
+    // Übergabeparameter: int amount, int nummer
+    // amount: auszulagernde Menge
+    // nummer: Artikelnummer des zu korrigierenden Artikels
+    // Rückgabewert int
+    // gibt die Anzahl betroffener Zeilen nach Ausführung des SQL-Statements zurück
     public int Auslagern(int amount, int nummer) {
         DB_Connect con = new DB_Connect();
         return con.simpleConnect("UPDATE Arti SET BESTANDSMENGE = BESTANDSMENGE - " + Integer.toString(amount) + " WHERE ANR = " + Integer.toString(nummer));
-
     }
 
+    // Methode InsertArtikel
+    // Artikel anlegen
+    // Stellt eine Verbindung zur Datenbabk her und
+    // legt unter Ausführung eines SQL-Statements einen neuen Artikel an.
+    // Es wird geprüft, ob die Artikelnummer bereits vergeben ist und ob der
+    // Lagerplatz existiert/ noch verfügbar ist.
+    // Die Bestandsmenge des Artikels darf nicht größer als das Fassungsvermögen
+    // des Lagerfaches sein.
+    // Übergabeparameter: int anr, String bez, int bestand, int krit, int LNR, String Preis
+    // anr: Artikelnummer
+    // bez: Bezeichnung
+    // bestand: Bestandsmenge
+    // krit: Kritische Bestandsmenge
+    // LNR: Lagernummer
+    // Preis: Verkaufspreis
+    // Rückgabewert int
+    // Gibt Fehlercodes/Informationscodes zurück
+    // 1: Anlegen erfolgreich
+    // 2: Artikel existiert bereits
+    // 3: Lagerplatz existiert nicht
+    // 4: Lagerplatz ist bereits vergeben
+    // 5: Kritische Menge des Artikels übersteigt/ist gleich die/der maximale Lagermenge
+    // 6: Bestandsmenge des Artikels übersteigt die max. Lagermenge
     public int InsertArtikel(int anr, String bez, int bestand, int krit, int LNR, String Preis) {
         DB_Connect con = new DB_Connect();
         int i = con.simpleConnect("Select ANR FROM Arti WHERE ANR = " + Integer.toString(anr));
@@ -122,7 +197,7 @@ public class Arti {
         } else if (i == 1 && j == 1) {
             general.Message.showError("Fehler", "Der Lagerplatz ist schon durch ein anderes Produkt belegt!");
             ret = 0;
-        // Sollten der Lagerplatz existieren (i=1) und dieser noch von keinem Artikel belegt sein(j=0)   
+            // Sollten der Lagerplatz existieren (i=1) und dieser noch von keinem Artikel belegt sein(j=0)   
         } else if (i == 1 && j == 0) {
             ret = 1;
         }
