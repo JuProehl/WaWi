@@ -5,25 +5,40 @@
  */
 package general;
 
-import com.sun.javafx.geom.transform.TransformHelper;
 import java.util.ArrayList;
 
 /**
  *
  * @author matthias
  */
+// Klasse Check
+// Entfält Methoden zur Überprüfung von Falscheingaben durch den Nutzer
 public class Check {
-    
-    public static Boolean istNegativ(int wert){
-        if (wert < 0){
+
+    // Methode istNegativ
+    // Überprüft den übergebenen Integer, ob dieser negativ ist
+    // Bei 
+    // Übergabeparameter: int wert
+    // wert: der zu überprüfende Wert
+    // Rückgabewert: boolean
+    // true: Übergebener Wert ist negativ
+    // false: Übergebener Wert ist positiv inkl. 0
+    public static Boolean istNegativ(int wert) {
+        if (wert < 0) {
             general.Message.showError("Eingabefehler", "Die Eingabe ist Negativ!");
             return true;
         } else {
             return false;
         }
-        
     }
-    
+
+    // Methode istNegativ
+    // Überprüft die übergebenen Integer der ArrayList, ob diese negativ sind
+    // Übergabeparameter: ArrayList<Integer> list
+    // list: ArrayList mit Integer, welche überprüft werden sollen
+    // Rückgabewert: boolean
+    // true: ein übergebener Integer in der ArrayList is negativ
+    // false: die übergebenen Integer in der ArrayList sind postiv
     public static Boolean istNegativ(ArrayList<Integer> list) {
         Boolean b = false;
         for (Integer i : list) {
@@ -36,5 +51,5 @@ public class Check {
         }
         return b;
     }
-    
+
 }

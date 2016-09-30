@@ -7,8 +7,6 @@ package report;
 
 import entity.Arti;
 import entity.Best;
-import entity.K_BA;
-import entity.Kund;
 import general.Print;
 import gui.WaWiMainGUI;
 import java.text.SimpleDateFormat;
@@ -20,8 +18,13 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Markus
  */
+// Klasse ReportMainGUI
+// Enthält Methoden zum Erstellen von Reports.
+// Die Reports sollen nützliche Informatioen für u. a. die Geschäftsführung
+// bereitstellen
 public class ReportMainGUI extends javax.swing.JFrame {
 
+    // Klassenvariablen
     List result;
     List result2;
     List result3;
@@ -35,6 +38,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
     /**
      * Creates new form ReportGUI
      */
+    // Konstruktor der Klasse ReportMainGUI;
     public ReportMainGUI() {
         initComponents();
         this.model = (DefaultTableModel) tableAusgabe.getModel();
@@ -274,17 +278,23 @@ public class ReportMainGUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-
+    // Methode buttonBackActionPerformed
+    // Bei Klick auf den "Zurück-Button" wird die aktuelle Ansicht ausgeblendet
+    // und Hauptmenü des Warenwirtschaftssystem eingeblendet.
+    // Übergabeparameter: Button Clickevent
     private void buttonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBackActionPerformed
         setVisible(false);
         WaWiMainGUI wawiGUI = new WaWiMainGUI();
         wawiGUI.setVisible(true);
     }//GEN-LAST:event_buttonBackActionPerformed
 
-    private void buttonShowArticlelistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonShowArticlelistActionPerformed
-        String[] columnnames = {"Artikelnummer ", "Bezeichnung", "Bestandsmenge"};
 
+    private void buttonShowArticlelistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonShowArticlelistActionPerformed
+        // Spaltennamen der Tabelle
+        String[] columnnames = {"Artikelnummer ", "Bezeichnung", "Bestandsmenge"};
+        // Methode zum Setzen der Spaltennamen der Tabelle aufrufen
         setColumnnames(columnnames);
+        // Methode connect aufrufen
         result = connect("From Arti");
 
         Object rowData[] = new Object[3];
@@ -298,17 +308,31 @@ public class ReportMainGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buttonShowArticlelistActionPerformed
 
+    // Methode Connect
+    // Methode zum Herstellen der Datenbankverbindung und Auführen der SQL-
+    // Statements
+    // Übergabeparameter: String statement
+    // statement: SQL-Statement, welches ausgeführt werden soll
+    // Rückgabewert: List
+    // Gibt das Ergebnis der SQL-Abfrage als List zurück
     private List connect(String statement) {
         database.DB_Connect con = new database.DB_Connect();
         return con.Connect(statement);
     }
 
+    // Methode setColumnnames
+    // Setzt die Spaltennamen der Tabelle auf die übergebenen Namen
+    // und setzt den Zeilenzähler auf 0 (keine Zeilen vorhanden)
+    // Übergabeparameter: String[] names
+    // names: Stringarray mit Spaltennamen
     private void setColumnnames(String[] names) {
         model = (DefaultTableModel) tableAusgabe.getModel();
         model.setColumnIdentifiers(names);
         model.setRowCount(0);
     }
 
+    // Methode buttonShowOpenOrdersActionPerformed
+    // Übergabeparameter: Button Clickevent
     private void buttonShowOpenOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonShowOpenOrdersActionPerformed
         String[] columnnames = {"BNR ", "BESTELLDATUM", "STATUS"};
         setColumnnames(columnnames);
@@ -325,9 +349,16 @@ public class ReportMainGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buttonShowOpenOrdersActionPerformed
 
+    // Methode buttonShowOrdersActionPerformed
+    // Methode zum Deaktivieren/Aktivieren aller nicht benötigter und
+    // benötigter Steuerelemente
+    // Die Variable Volumenauswahl wird true gesetzt. Das heißt, dass das Gesamt-
+    // volumen berechnet werden soll (über alle Kunden und Artikel)
+        // Übergabeparameter: Button Clickevent
     private void buttonShowOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonShowOrdersActionPerformed
+        // true: Das Gesamtvolumen soll berechnet werden(Über alle Kunden und Artikel)
         this.Volumenauswahl = true;
-        
+
         buttonBack.setEnabled(false);
         buttonShowArticlelist.setEnabled(false);
         buttonShowCritStock.setEnabled(false);
@@ -418,12 +449,23 @@ public class ReportMainGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buttonWorstSellingActionPerformed
 
-    
+    // Methode buttonPrintActionPerformed
+    // Bei Betätigung des "Drucken"-Buttons wird überprüft, ob Daten in der Tabelle
+    // vorhanden sind.
+    // Falls ja: Methode CreatePages ausführen
+    // Falls nein: Hinweis an den Anwender
+    // Übergabeparameter: Button-Clickevent
     private void buttonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPrintActionPerformed
+        // Objekt der Klasse Print erzeugen
         Print drucken = new Print("Report");
+        // Falls in der Tabelle mindestens 1 Zeile steht, wird die CreatePages-
+        // Methode des Objektes drucken ausgeführt
         if (tableAusgabe.getColumnCount() > 0) {
             drucken.CreatePages(tableAusgabe);
+        // Sollte keine Zeilen in der Tabelle vorhanden sein, erhält der Anwender einen
+        // Hinweis
         } else {
+            // Methode ShowError aufrufen um eine Error-Messagebox anzuzeigen
             general.Message.showError("", "Keine Daten!\nBitte Report auswählen.");
         }
     }//GEN-LAST:event_buttonPrintActionPerformed
@@ -458,6 +500,11 @@ public class ReportMainGUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonVolumenOKActionPerformed
 
+    // Methode buttonCancelVolumenActionPerformed
+    // Sollte die Auswahl die Zeitraum für die Bestellvolumen-Reports abgebrochen werden,
+    // werden die nicht mehr benötigte Steuerelemente(für die Zeitraumsauswahl) deaktiviert
+    // und die Steuerelemente für die anderen Reports aktiviert
+    // Übergabeparameter: Button Clickevent
     private void buttonCancelVolumenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelVolumenActionPerformed
         buttonBack.setEnabled(true);
         buttonShowArticlelist.setEnabled(true);
@@ -476,6 +523,11 @@ public class ReportMainGUI extends javax.swing.JFrame {
         jButtonVolumenOK.setEnabled(false);
     }//GEN-LAST:event_buttonCancelVolumenActionPerformed
 
+    // Methode buttonVolumenCustomerActionPerformed
+    // Methode zum Deaktivieren/Aktivieren aller nicht benötigter und
+    // benötigter Steuerelemente
+    // Die Variable Volumenauswahl wird false gesetzt. Das heißt, dass das 
+    // Bestellvolumen gruppiert ausgegeben werden soll.
     private void buttonVolumenCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVolumenCustomerActionPerformed
         this.Volumenauswahl = false;
 

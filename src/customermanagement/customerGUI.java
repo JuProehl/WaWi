@@ -131,7 +131,7 @@ public class customerGUI extends javax.swing.JFrame {
 
     // Methode buttonBackActionPerformed
     // Bei Klick auf den "Zurück-Button" wird die aktuelle Ansicht ausgeblendet
-    // und Hauptmenü des Warenwirtschaftssystem einegeblendet.
+    // und Hauptmenü des Warenwirtschaftssystem eingeblendet.
     // Übergabeparameter: Button Clickevent
     private void buttonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBackActionPerformed
         setVisible(false);
