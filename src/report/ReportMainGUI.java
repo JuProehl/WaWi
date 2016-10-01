@@ -293,7 +293,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
     //Bei Klick auf den "Artikel und Bestände"-Button wird diese
     //Methode zum Anzeigen einer Artikelliste mit aktueller Bestandsmenge aufgerufen.
     //Dazu werden die Spaltennamen der Ausgabetabelle dementsprechend gesetzt
-    //und SQL-Abfrage zur Ermittlung aller Artikel ausgeführt.
+    //und die nötigen SQL-Abfragen zur Ermittlung aller Artikel ausgeführt.
     //Das Ergebnis der Abfrage wird Zeile für Zeile in der Ausgabetabelle
     //aufgeführt.
     //Übergabeparameter: Button-Clickevent
@@ -350,7 +350,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
     //Bei Klick auf den "Offene Bestellungen"-Button wird diese 
     //Methode zum Anzeigen aller offenen Bestellungen aufgerufen.
     //Dazu werden die Spaltennamen der Ausgabetabelle dementsprechend gesetzt
-    //und SQL-Abfrage zur Ermittlung aller offenen Bestellungen ausgeführt.
+    //und die nötigen SQL-Abfragen zur Ermittlung aller offenen Bestellungen ausgeführt.
     //Das Ergebnis der Abfrage wird Zeile für Zeile in der Ausgabetabelle
     //aufgeführt.
     //Übergabeparameter: Button-Clickevent
@@ -409,7 +409,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
     //Methode zum Anzeigen aller Artikel, bei welchen eine kritische Bestandsmenge
     //vorliegt, aufgerufen.
     //Dazu werden die Spaltennamen der Ausgabetabelle dementsprechend gesetzt
-    //und SQL-Abfrage zur Ermittlung aller Artikel ausgeführt.
+    //und die nötigen SQL-Abfragen zur Ermittlung aller Artikel ausgeführt.
     //Das Ergebnis der Abfrage wird Zeile für Zeile in der Ausgabetabelle
     //aufgeführt.
     //Übergabeparameter: Button-Clickevent
@@ -442,7 +442,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
     //Methode zum Anzeigen aller Artikel mit verkauften Menge
     // , absteigend sortiert nach Menge der Verkäufe, aufgerufen.
     //Dazu werden die Spaltennamen der Ausgabetabelle dementsprechend gesetzt
-    //und SQL-Abfrage zur Ermittlung aller Artikel ausgeführt.
+    //und die nötigen SQL-Abfragen zur Ermittlung aller Artikel ausgeführt.
     //Das Ergebnis der Abfrage wird Zeile für Zeile in der Ausgabetabelle
     //aufgeführt.
     //Übergabeparameter: Button-Clickevent
@@ -491,7 +491,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
     //Methode zum Anzeigen aller Artikel mit verkauften Menge
     // , aufsteigend sortiert nach Menge der Verkäufe, aufgerufen.
     //Dazu werden die Spaltennamen der Ausgabetabelle dementsprechend gesetzt
-    //und SQL-Abfrage zur Ermittlung aller Artikel ausgeführt.
+    //und die nötigen SQL-Abfragen zur Ermittlung aller Artikel ausgeführt.
     //Das Ergebnis der Abfrage wird Zeile für Zeile in der Ausgabetabelle
     //aufgeführt.
     //Übergabeparameter: Button-Clickevent
@@ -641,7 +641,16 @@ public class ReportMainGUI extends javax.swing.JFrame {
         jButtonVolumenOK.setEnabled(true);
         buttonCancelVolumen.setEnabled(true);
     }//GEN-LAST:event_buttonVolumenCustomerActionPerformed
-
+    //Methode ermittleBestellvolumen 
+    //Methode zum Anzeigen/Ermitteln des Bestellvolumens(€ und Menge)über einen
+    //eingebenen Zeitraum.
+    //Dazu werden die Spaltennamen der Ausgabetabelle dementsprechend gesetzt
+    //und die nötigen SQL-Abfragen zur Ermittlung des Bestellvolumens ausgeführt.
+    //Das Ergebnis der Abfrage wird Zeile für Zeile in der Ausgabetabelle
+    //aufgeführt.
+    //Übergabeparameter: String von, String bis
+    //von: Datum; Beginn des Zeitraums
+    //bis: Datum; Ende des Zeitraums
     private void ermittleBestellvolumen(String von, String bis) {
         // Spaltennamen der Tabelle
         String[] columnnames = {"Verkaufte Menge ", "Warenwert € gesamt"};
@@ -669,7 +678,18 @@ public class ReportMainGUI extends javax.swing.JFrame {
             model.addRow(rowData);
         }
     }
-
+    //Methode ermittleBestellvolumenKunden 
+    //Methode zum Anzeigen/Ermitteln des Bestellvolumens(€ und Menge)über einen
+    //eingebenen Zeitraum. Dies wird nach den Kunden gruppiert, sodass ersichtlich
+    //wird, welcher Kunde welche Menge abgenommen und für wie viel Umsatz dieser 
+    //gesorgt hat.
+    //Dazu werden die Spaltennamen der Ausgabetabelle dementsprechend gesetzt
+    //und die nötigen SQL-Abfragen zur Ermittlung des Bestellvolumens ausgeführt.
+    //Das Ergebnis der Abfrage wird Zeile für Zeile in der Ausgabetabelle
+    //aufgeführt.
+    //Übergabeparameter: String von, String bis
+    //von: Datum; Beginn des Zeitraums
+    //bis: Datum; Ende des Zeitraums
     private void ermittleBestellvolumenKunden(String von, String bis) {
         // Spaltennamen der Tabelle
         String[] columnnames = {"Kundennummer", "Verkaufte Menge ", "Warenwert € gesamt"};
