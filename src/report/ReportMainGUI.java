@@ -284,26 +284,41 @@ public class ReportMainGUI extends javax.swing.JFrame {
     // Übergabeparameter: Button Clickevent
     private void buttonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBackActionPerformed
         setVisible(false);
+        // Objekt der Klasse WaWiMainGUI erzeugen
         WaWiMainGUI wawiGUI = new WaWiMainGUI();
         wawiGUI.setVisible(true);
     }//GEN-LAST:event_buttonBackActionPerformed
 
-
+    //Methode buttonShowArticlelistActionPerformed
+    //Bei Klick auf den "Artikel und Bestände"-Button wird diese
+    //Methode zum Anzeigen einer Artikelliste mit aktueller Bestandsmenge aufgerufen.
+    //Dazu werden die Spaltennamen der Ausgabetabelle dementsprechend gesetzt
+    //und SQL-Abfrage zur Ermittlung aller Artikel ausgeführt.
+    //Das Ergebnis der Abfrage wird Zeile für Zeile in der Ausgabetabelle
+    //aufgeführt.
+    //Übergabeparameter: Button-Clickevent
     private void buttonShowArticlelistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonShowArticlelistActionPerformed
         // Spaltennamen der Tabelle
         String[] columnnames = {"Artikelnummer ", "Bezeichnung", "Bestandsmenge"};
         // Methode zum Setzen der Spaltennamen der Tabelle aufrufen
         setColumnnames(columnnames);
-        // Methode connect aufrufen
+        // Aufruf der Methode Connect; Übergabe des SQL-Statements an die Methode
+        // RÜckgabewerte der Methode wird result zugewiesen
         result = connect("From Arti");
 
         Object rowData[] = new Object[3];
 
+        // result enthält Ergebnisse der SQL-Abfrage
+        // diese Ergebnisse werden nun Zeile für Zeile ausgegeben bis keine
+        // weiteren in der Liste(result) vorhanden sind)
         for (iterator = result.iterator(); iterator.hasNext();) {
+            // Bei den einzelnen Ergebnissen handelt es sich um Artikel
+            // Casten auf Arti
             Arti Artikel = (Arti) iterator.next();
             rowData[0] = Artikel.getANR();
             rowData[1] = Artikel.getBEZEICHNUNG();
             rowData[2] = Artikel.getBESTANDSMENGE();
+            // Zeile der Tabelle hinzufügen
             model.addRow(rowData);
         }
     }//GEN-LAST:event_buttonShowArticlelistActionPerformed
@@ -331,30 +346,44 @@ public class ReportMainGUI extends javax.swing.JFrame {
         model.setRowCount(0);
     }
 
-    // Methode buttonShowOpenOrdersActionPerformed
-    // Übergabeparameter: Button Clickevent
+    //Methode buttonShowOpenOrdersActionPerformed
+    //Bei Klick auf den "Offene Bestellungen"-Button wird diese 
+    //Methode zum Anzeigen aller offenen Bestellungen aufgerufen.
+    //Dazu werden die Spaltennamen der Ausgabetabelle dementsprechend gesetzt
+    //und SQL-Abfrage zur Ermittlung aller offenen Bestellungen ausgeführt.
+    //Das Ergebnis der Abfrage wird Zeile für Zeile in der Ausgabetabelle
+    //aufgeführt.
+    //Übergabeparameter: Button-Clickevent
     private void buttonShowOpenOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonShowOpenOrdersActionPerformed
+        // Spaltennamen der Tabelle
         String[] columnnames = {"BNR ", "BESTELLDATUM", "STATUS"};
+        // Methode zum Setzen der Spaltennamen der Tabelle aufrufen
         setColumnnames(columnnames);
+        // Aufruf der Methode Connect; Übergabe des SQL-Statements an die Methode
+        // Rückgabewerte der Methode wird result zugewiesen
         result = connect("FROM Best where status = 'offen' order by BNR");
         Object rowData[] = new Object[3];
-
+        // result enthält Ergebnisse der SQL-Abfrage
+        // diese Ergebnisse werden nun Zeile für Zeile ausgegeben bis keine
+        // weiteren in der Liste(result) vorhanden sind)
         for (iterator = result.iterator(); iterator.hasNext();) {
             Best Bestellung = (Best) iterator.next();
 
             rowData[0] = Bestellung.getBNR();
             rowData[1] = Bestellung.getBESTELLDATUM();
             rowData[2] = Bestellung.getSTATUS();
+            // Zeile der Tabelle hinzufügen
             model.addRow(rowData);
         }
     }//GEN-LAST:event_buttonShowOpenOrdersActionPerformed
 
     // Methode buttonShowOrdersActionPerformed
-    // Methode zum Deaktivieren/Aktivieren aller nicht benötigter und
-    // benötigter Steuerelemente
+    // Bei Klick auf den "Bestellvolumen insg."-Button wird diese Methode 
+    // zum Deaktivieren/Aktivieren aller nicht benötigten und
+    // benötigten Steuerelemente aufgerufen.
     // Die Variable Volumenauswahl wird true gesetzt. Das heißt, dass das Gesamt-
     // volumen berechnet werden soll (über alle Kunden und Artikel)
-        // Übergabeparameter: Button Clickevent
+    // Übergabeparameter: Button Clickevent
     private void buttonShowOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonShowOrdersActionPerformed
         // true: Das Gesamtvolumen soll berechnet werden(Über alle Kunden und Artikel)
         this.Volumenauswahl = true;
@@ -373,76 +402,134 @@ public class ReportMainGUI extends javax.swing.JFrame {
         jDateChooserBis.setEnabled(true);
         jButtonVolumenOK.setEnabled(true);
         buttonCancelVolumen.setEnabled(true);
-
-
     }//GEN-LAST:event_buttonShowOrdersActionPerformed
 
+    //Methode buttonShowCritStockActionPerformed
+    //Bei Klick auf den "Kritische Bestandsmengen"-Button wird diese
+    //Methode zum Anzeigen aller Artikel, bei welchen eine kritische Bestandsmenge
+    //vorliegt, aufgerufen.
+    //Dazu werden die Spaltennamen der Ausgabetabelle dementsprechend gesetzt
+    //und SQL-Abfrage zur Ermittlung aller Artikel ausgeführt.
+    //Das Ergebnis der Abfrage wird Zeile für Zeile in der Ausgabetabelle
+    //aufgeführt.
+    //Übergabeparameter: Button-Clickevent
     private void buttonShowCritStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonShowCritStockActionPerformed
+        // Spaltennamen der Tabelle
         String[] columnnames = {"Artikelnummer ", "Bezeichnung", "Bestandsmenge", "Krit. Menge"};
+        // Methode zum Setzen der Spaltennamen der Tabelle aufrufen
         setColumnnames(columnnames);
+        // Aufruf der Methode Connect; Übergabe des SQL-Statements an die Methode
+        // RÜckgabewerte der Methode wird result zugewiesen
         result = connect("From Arti WHERE BESTANDSMENGE <= KRIT_MENGE");
 
         Object rowData[] = new Object[4];
-
+        // result enthält Ergebnisse der SQL-Abfrage
+        // diese Ergebnisse werden nun Zeile für Zeile ausgegeben bis keine
+        // weiteren in der Liste(result) vorhanden sind)
         for (iterator = result.iterator(); iterator.hasNext();) {
             Arti Artikel = (Arti) iterator.next();
             rowData[0] = Artikel.getANR();
             rowData[1] = Artikel.getBEZEICHNUNG();
             rowData[2] = Artikel.getBESTANDSMENGE();
             rowData[3] = Artikel.getKrit_Menge();
+            // Zeile der Tabelle hinzufügen
             model.addRow(rowData);
         }
     }//GEN-LAST:event_buttonShowCritStockActionPerformed
 
+    //Methode buttonBestSellingActionPerformed
+    //Bei Klick auf den "Meistverkaufte Artikel"-Button wird diese
+    //Methode zum Anzeigen aller Artikel mit verkauften Menge
+    // , absteigend sortiert nach Menge der Verkäufe, aufgerufen.
+    //Dazu werden die Spaltennamen der Ausgabetabelle dementsprechend gesetzt
+    //und SQL-Abfrage zur Ermittlung aller Artikel ausgeführt.
+    //Das Ergebnis der Abfrage wird Zeile für Zeile in der Ausgabetabelle
+    //aufgeführt.
+    //Übergabeparameter: Button-Clickevent
     private void buttonBestSellingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBestSellingActionPerformed
+        // Spaltennamen der Tabelle
         String[] columnnames = {"Artikelnummer ", "Bezeichnung", "Menge"};
+        // Methode zum Setzen der Spaltennamen der Tabelle aufrufen
         setColumnnames(columnnames);
+        // Aufruf der Methode Connect; Übergabe des SQL-Statements an die Methode
+        // RÜckgabewerte der Methode wird result zugewiesen
         result = connect("select sum(ANZAHL) as summe from K_BA WHERE best.STATUS = 'abgeschlossen' group by arti order by summe desc");
+        // Aufruf der Methode Connect; Übergabe des SQL-Statements an die Methode
+        // RÜckgabewerte der Methode wird result2 zugewiesen
         result2 = connect("select arti.ANR from K_BA WHERE best.STATUS = 'abgeschlossen' group by arti order by sum(ANZAHL) desc");
 
         Object rowData[] = new Object[3];
-        iterator = result.iterator();
 
+        iterator = result.iterator();
+        // result enthält Ergebnisse der SQL-Abfrage
+        // diese Ergebnisse werden nun Zeile für Zeile ausgegeben bis keine
+        // weiteren in der Liste(result2) vorhanden sind)
         for (iterator2 = result2.iterator(); iterator2.hasNext();) {
             int artikel = (int) iterator2.next();
             rowData[0] = artikel;
 
             long sumArtikel = (long) iterator.next();
             rowData[2] = sumArtikel;
+            // Zeile der Tabelle hinzufügen
             model.addRow(rowData);
         }
         for (int i = 0; i < model.getRowCount(); i++) {
-
             int anr = Integer.parseInt(model.getValueAt(i, 0).toString());
+            // Aufruf der Methode Connect; Übergabe des SQL-Statements an die Methode
+            // RÜckgabewerte der Methode wird result zugewiesen
             result = connect("select BEZEICHNUNG from Arti Where ANR= " + anr);
+            // result enthält Ergebnisse der SQL-Abfrage
+            // diese Ergebnisse werden nun Zeile für Zeile ausgegeben bis keine
+            // weiteren in der Liste(result) vorhanden sind)
             for (iterator2 = result.iterator(); iterator2.hasNext();) {
                 model.setValueAt(iterator2.next(), i, 1);
             }
         }
     }//GEN-LAST:event_buttonBestSellingActionPerformed
-
+    //Methode buttonWorstSellingActionPerformed
+    //Bei Klick auf den "Schlechtverkaufteste Artikel"-Button wird diese
+    //Methode zum Anzeigen aller Artikel mit verkauften Menge
+    // , aufsteigend sortiert nach Menge der Verkäufe, aufgerufen.
+    //Dazu werden die Spaltennamen der Ausgabetabelle dementsprechend gesetzt
+    //und SQL-Abfrage zur Ermittlung aller Artikel ausgeführt.
+    //Das Ergebnis der Abfrage wird Zeile für Zeile in der Ausgabetabelle
+    //aufgeführt.
+    //Übergabeparameter: Button-Clickevent
     private void buttonWorstSellingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonWorstSellingActionPerformed
+        // Spaltennamen der Tabelle
         String[] columnnames = {"Artikelnummer ", "Bezeichnung", "Menge"};
+        // Methode zum Setzen der Spaltennamen der Tabelle aufrufen
         setColumnnames(columnnames);
+        // Aufruf der Methode Connect; Übergabe des SQL-Statements an die Methode
+        // RÜckgabewerte der Methode wird result zugewiesen
         result = connect("select sum(ANZAHL) as summe from K_BA WHERE best.STATUS = 'abgeschlossen' group by arti order by summe asc");
+        // Aufruf der Methode Connect; Übergabe des SQL-Statements an die Methode
+        // RÜckgabewerte der Methode wird result2 zugewiesen
         result2 = connect("select arti.ANR from K_BA WHERE best.STATUS = 'abgeschlossen' group by arti order by sum(ANZAHL) asc");
 
         Object rowData[] = new Object[3];
         iterator = result.iterator();
-
+        // result enthält Ergebnisse der SQL-Abfrage
+        // diese Ergebnisse werden nun Zeile für Zeile ausgegeben bis keine
+        // weiteren in der Liste(result2) vorhanden sind)
         for (iterator2 = result2.iterator(); iterator2.hasNext();) {
             int artikel = (int) iterator2.next();
             rowData[0] = artikel;
 
             long sumArtikel = (long) iterator.next();
             rowData[2] = sumArtikel;
-
+            // Zeile der Tabelle hinzufügen
             model.addRow(rowData);
         }
         for (int i = 0; i < model.getRowCount(); i++) {
 
             int anr = Integer.parseInt(model.getValueAt(i, 0).toString());
+            // Aufruf der Methode Connect; Übergabe des SQL-Statements an die Methode
+            // RÜckgabewerte der Methode wird result zugewiesen
             result = connect("select BEZEICHNUNG from Arti Where ANR= " + anr);
+            // result enthält Ergebnisse der SQL-Abfrage
+            // diese Ergebnisse werden nun Zeile für Zeile ausgegeben bis keine
+            // weiteren in der Liste(result) vorhanden sind)
             for (iterator2 = result.iterator(); iterator2.hasNext();) {
                 model.setValueAt(iterator2.next(), i, 1);
             }
@@ -462,16 +549,22 @@ public class ReportMainGUI extends javax.swing.JFrame {
         // Methode des Objektes drucken ausgeführt
         if (tableAusgabe.getColumnCount() > 0) {
             drucken.CreatePages(tableAusgabe);
-        // Sollte keine Zeilen in der Tabelle vorhanden sein, erhält der Anwender einen
-        // Hinweis
+            // Sollte keine Zeilen in der Tabelle vorhanden sein, erhält der Anwender einen
+            // Hinweis
         } else {
             // Methode ShowError aufrufen um eine Error-Messagebox anzuzeigen
             general.Message.showError("", "Keine Daten!\nBitte Report auswählen.");
         }
     }//GEN-LAST:event_buttonPrintActionPerformed
-
+    //Methode jButtonVolumenOKActionPerformed
+    //Bei Klick auf den "OK"-Button wird diese
+    //Methode ausgerufen. Das eingegebene Datum wird formatiert und je nachdem
+    //welches VOlumen ausgewählt wurde, wird die Methode ermittleBestellvolumen oder
+    //die Methode ermittleBestellvolumenKunden aufgerufen.
+    //Nicht mehr benötige Buttons werden deaktiviert und benötigte aktiviert
+    //Übergabeparameter: Button-Clickevent
     private void jButtonVolumenOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolumenOKActionPerformed
-
+        // Eingebenes Datum formatieren
         String von = dateFormat.format(jDateChooserVon.getDate());
         String bis = dateFormat.format(jDateChooserBis.getDate());
         // Wenn Gesamtes Bestellvolumen ermittelt werden soll
@@ -481,7 +574,8 @@ public class ReportMainGUI extends javax.swing.JFrame {
         else {
             ermittleBestellvolumenKunden(von, bis);
         }
-
+        //Buttons die nun wieder verfügbar sein sollen für den Anwender
+        //werden aktiviert
         buttonBack.setEnabled(true);
         buttonShowArticlelist.setEnabled(true);
         buttonShowCritStock.setEnabled(true);
@@ -490,7 +584,8 @@ public class ReportMainGUI extends javax.swing.JFrame {
         buttonWorstSelling.setEnabled(true);
         buttonShowOrders.setEnabled(true);
         buttonVolumenCustomer.setEnabled(true);
-
+        //Buttons die nicht mehr verfügbar sein sollen für den Anwender
+        //werden deaktiviert
         buttonCancelVolumen.setEnabled(false);
         jLabelVon.setEnabled(false);
         jLabelBis.setEnabled(false);
@@ -548,36 +643,49 @@ public class ReportMainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonVolumenCustomerActionPerformed
 
     private void ermittleBestellvolumen(String von, String bis) {
+        // Spaltennamen der Tabelle
         String[] columnnames = {"Verkaufte Menge ", "Warenwert € gesamt"};
-
+        // Methode zum Setzen der Spaltennamen der Tabelle aufrufen
         setColumnnames(columnnames);
+        // Aufruf der Methode Connect; Übergabe des SQL-Statements an die Methode
+        // RÜckgabewerte der Methode wird result zugewiesen
         result = connect("select sum(ANZAHL) from K_BA WHERE best.BESTELLDATUM between '" + von + "' and '" + bis + "'");
+        // Aufruf der Methode Connect; Übergabe des SQL-Statements an die Methode
+        // RÜckgabewerte der Methode wird result2 zugewiesen
         result2 = connect("select sum(arti.VK_Preis*ANZAHL) from K_BA WHERE best.BESTELLDATUM between '" + von + "' and '" + bis + "'");
 
         Object rowData[] = new Object[2];
         iterator2 = result2.iterator();
-
+        // result enthält Ergebnisse der SQL-Abfrage
+        // diese Ergebnisse werden nun Zeile für Zeile ausgegeben bis keine
+        // weiteren in der Liste(result) vorhanden sind)
         for (iterator = result.iterator(); iterator.hasNext();) {
             long BNR = (long) iterator.next();
             rowData[0] = BNR;
 
-            iterator2.hasNext();
             double SumEuro = (double) iterator2.next();
             rowData[1] = SumEuro;
-
+            // Zeile der Tabelle hinzufügen
             model.addRow(rowData);
         }
     }
 
     private void ermittleBestellvolumenKunden(String von, String bis) {
+        // Spaltennamen der Tabelle
         String[] columnnames = {"Kundennummer", "Verkaufte Menge ", "Warenwert € gesamt"};
-
+        // Methode zum Setzen der Spaltennamen der Tabelle aufrufen
         setColumnnames(columnnames);
+        // Aufruf der Methode Connect; Übergabe des SQL-Statements an die Methode
+        // RÜckgabewerte der Methode wird result zugewiesen
         result = connect("select sum(ANZAHL) from K_BA WHERE best.BESTELLDATUM between"
                 + " '" + von + "' and '" + bis + "' "
                 + "group by best.kund.KNr order by best.kund.KNr asc");
+        // Aufruf der Methode Connect; Übergabe des SQL-Statements an die Methode
+        // RÜckgabewerte der Methode wird result2 zugewiesen
         result2 = connect("select sum(arti.VK_Preis*ANZAHL) from K_BA WHERE best.BESTELLDATUM "
                 + "between '" + von + "' and '" + bis + "' group by best.kund.KNr order by best.kund.KNr asc");
+        // Aufruf der Methode Connect; Übergabe des SQL-Statements an die Methode
+        // RÜckgabewerte der Methode wird result3 zugewiesen
         result3 = connect("select best.kund.KNr from K_BA WHERE best.BESTELLDATUM "
                 + "between '" + von + "' and '" + bis + "' "
                 + "group by best.kund.KNr order by best.kund.KNr asc");
@@ -585,7 +693,9 @@ public class ReportMainGUI extends javax.swing.JFrame {
         Object rowData[] = new Object[3];
         iterator2 = result2.iterator();
         iterator3 = result3.iterator();
-
+        // result enthält Ergebnisse der SQL-Abfrage
+        // diese Ergebnisse werden nun Zeile für Zeile ausgegeben bis keine
+        // weiteren in der Liste(result) vorhanden sind)
         for (iterator = result.iterator(); iterator.hasNext();) {
             int KNR = (int) iterator3.next();
             rowData[0] = KNR;
@@ -593,10 +703,9 @@ public class ReportMainGUI extends javax.swing.JFrame {
             long BNR = (long) iterator.next();
             rowData[1] = BNR;
 
-            iterator2.hasNext();
             double SumEuro = (double) iterator2.next();
             rowData[2] = SumEuro;
-
+            // Zeile der Tabelle hinzufügen
             model.addRow(rowData);
         }
     }
