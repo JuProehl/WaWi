@@ -44,12 +44,12 @@ public class CheckTest {
     @Test
     public void testIstNegativ_int() {
         System.out.println("istNegativ");
-        int wert = 0;
-        Boolean expResult = null;
+        int wert = -1;
+        Boolean expResult = true;
         Boolean result = Check.istNegativ(wert);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -58,12 +58,13 @@ public class CheckTest {
     @Test
     public void testIstNegativ_ArrayList() {
         System.out.println("istNegativ");
-        ArrayList<Integer> list = null;
-        Boolean expResult = null;
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(-1);
+        Boolean expResult = true;
         Boolean result = Check.istNegativ(list);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
     
 }
