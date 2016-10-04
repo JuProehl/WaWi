@@ -5,6 +5,7 @@
  */
 package customermanagement;
 
+import entity.Kund;
 import gui.WaWiMainGUI;
 import lists.KundList;
 
@@ -77,10 +78,25 @@ public class customerGUI extends javax.swing.JFrame {
         });
 
         buttonAnlegen.setText("Kunden anlegen");
+        buttonAnlegen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAnlegenActionPerformed(evt);
+            }
+        });
 
         buttonBearbeiten.setText("Kunden bearbeiten");
+        buttonBearbeiten.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonBearbeitenActionPerformed(evt);
+            }
+        });
 
         buttonLoeschen.setText("Kunden löschen");
+        buttonLoeschen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonLoeschenActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -148,6 +164,19 @@ public class customerGUI extends javax.swing.JFrame {
         tabelleaktualisieren();
     }//GEN-LAST:event_buttonAktualisierenActionPerformed
 
+    private void buttonAnlegenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAnlegenActionPerformed
+        EditOKKundenAnlegen AnlegenGUI = new EditOKKundenAnlegen(this);
+        AnlegenGUI.setVisible(true);
+    }//GEN-LAST:event_buttonAnlegenActionPerformed
+
+    private void buttonBearbeitenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBearbeitenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonBearbeitenActionPerformed
+
+    private void buttonLoeschenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoeschenActionPerformed
+        deleteaufrufen();
+    }//GEN-LAST:event_buttonLoeschenActionPerformed
+
     // Methode tabelleausgaben
     // Ruft die Methode KundenInTabelleAusgeben des Objektes Kundenliste auf
     // Der Methode wird die Tabelle tableKunden übergeben
@@ -159,7 +188,7 @@ public class customerGUI extends javax.swing.JFrame {
     // Methode tabelleaktualisieren
     // Ruft die Methoden tabelleHolen auf
     // Ruft die Methoden tabelleausgeben auf
-    private void tabelleaktualisieren() {
+    public void tabelleaktualisieren() {
         tabelleHolen();
         tabelleausgeben();
     }
@@ -170,6 +199,25 @@ public class customerGUI extends javax.swing.JFrame {
     private void tabelleHolen() {
         this.Kundenliste.TabelleHolen();
     }
+    
+    
+   private void deleteaufrufen(){
+       try{
+        int row = tableKunden.getSelectedRow();
+        int KNr = Kundenliste.getKNr(row);
+        Kund kunden = new Kund();
+        int i = kunden.UpdateKundenFree("DELETE FROM KUND WHERE KNr=" + KNr);
+        if(i == 1){
+            general.Message.showSuccess("Erfolgreich!", "Dantensatz mit der Artikelnummer " + KNr + " wurde gelöscht!");
+        } else {
+            general.Message.showError("Fehler", "Datensatz konnte nicht gelöscht werden!");
+        }
+        tabelleHolen();
+        tabelleausgeben();
+       } catch (ArrayIndexOutOfBoundsException e) {
+           general.Message.showError("Fehler", "Bitte Zeile auswählen!");
+       }
+   }
 
     /**
      * @param args the command line arguments
