@@ -5,11 +5,14 @@
  */
 package report;
 
+import com.toedter.calendar.JDateChooser;
 import entity.Arti;
 import entity.Best;
 import general.Print;
 import gui.WaWiMainGUI;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -402,6 +405,8 @@ public class ReportMainGUI extends javax.swing.JFrame {
         jDateChooserBis.setEnabled(true);
         jButtonVolumenOK.setEnabled(true);
         buttonCancelVolumen.setEnabled(true);
+        
+        this.setDefaultDates(jDateChooserVon, jDateChooserBis);
     }//GEN-LAST:event_buttonShowOrdersActionPerformed
 
     //Methode buttonShowCritStockActionPerformed
@@ -640,6 +645,8 @@ public class ReportMainGUI extends javax.swing.JFrame {
         jDateChooserBis.setEnabled(true);
         jButtonVolumenOK.setEnabled(true);
         buttonCancelVolumen.setEnabled(true);
+        
+        this.setDefaultDates(jDateChooserVon, jDateChooserBis);
     }//GEN-LAST:event_buttonVolumenCustomerActionPerformed
     //Methode ermittleBestellvolumen 
     //Methode zum Anzeigen/Ermitteln des Bestellvolumens(€ und Menge)über einen
@@ -728,6 +735,14 @@ public class ReportMainGUI extends javax.swing.JFrame {
             // Zeile der Tabelle hinzufügen
             model.addRow(rowData);
         }
+    }
+    private void setDefaultDates(JDateChooser von, JDateChooser bis){
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.MONTH, -1);
+        Date datelastmonth = cal.getTime();
+        
+        von.setDate(datelastmonth);
+        bis.setDate(Calendar.getInstance().getTime());
     }
 
     /**
