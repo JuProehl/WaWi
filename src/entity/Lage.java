@@ -90,7 +90,8 @@ public class Lage {
         this.maxmenge = maxmenge;
     }
     
-    public int UpdateArtikelFree(String str) {
+    
+       public int UpdateLageFree(String str) {
         DB_Connect con = new DB_Connect();
         return con.simpleConnect(str);
     }

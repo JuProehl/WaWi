@@ -94,6 +94,10 @@ public class LageList {
          
          return MaxMenge ;
      }
+        
+        public int getsize(){
+            return result.size();
+        }
      
      
      

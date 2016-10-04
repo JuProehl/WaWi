@@ -42,6 +42,13 @@ public class ArtiList {
             model.addRow(rowData);
         }
     }
+    
+        public ArtiList(String Befehl) {
+        
+        database.DB_Connect con = new database.DB_Connect();
+        result = con.Connect(Befehl);
+
+    }
 
     public void TabelleHolen() {
         database.DB_Connect con = new database.DB_Connect();
@@ -79,6 +86,7 @@ public class ArtiList {
         Arti Artikel = (Arti) result.get(row);
         return Artikel.getLage().getLNr();
     }
+    
         public double getVKPreis(int row) {
 
         Arti Artikel = (Arti) result.get(row);

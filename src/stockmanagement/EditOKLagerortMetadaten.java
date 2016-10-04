@@ -8,6 +8,8 @@ package stockmanagement;
 import entity.Arti;
 import entity.Lage;
 import java.util.ArrayList;
+import lists.ArtiList;
+import lists.LageList;
 
 /**
  *
@@ -20,6 +22,7 @@ public class EditOKLagerortMetadaten extends javax.swing.JFrame {
     Integer Regal;
     Integer Fach;
     Integer MaxMenge;
+    ArtiList ArtiListe;
 
     /**
      * Creates new form LagerfachEditGUI
@@ -35,6 +38,8 @@ public class EditOKLagerortMetadaten extends javax.swing.JFrame {
         this.Regal = Regal;
         this.Fach = Fach;
         this.MaxMenge = MaxMenge;
+        String str = "FROM Arti Where F_LNr = " + LNR;
+        ArtiListe = new ArtiList(str);
 
         Label_LNR.setText(this.LNR.toString());
         tfFach.setText(this.Fach.toString());
@@ -167,6 +172,96 @@ public class EditOKLagerortMetadaten extends javax.swing.JFrame {
 
     private void bearbeiten() {
         
+        Integer EditRegal = 0;
+        Integer EditFach = 0;
+        Integer EditmaxMenge = 0;
+        Boolean succes = true;
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        Lage lager = new Lage();
+        LageList LagerList;
+        int ArtiBestandsmenge = 0;
+        
+          try {
+            EditRegal = Integer.parseInt(tfRegal.getText());
+            EditFach = Integer.parseInt(tfFach.getText());
+            EditmaxMenge = Integer.parseInt(tfmaxMenge.getText());
+            
+
+        } catch (NumberFormatException e) {
+            general.Message.showError("Fehler!", "Bitte nur Zahlen eingeben");
+            succes = false;
+        }
+          
+        LagerList = new LageList("FROM Lage Where Regal = " + EditRegal + " and Fach = " + EditFach);
+          
+          if(succes){
+              list.add(EditFach);
+              list.add(EditRegal);
+              list.add(EditmaxMenge);
+              
+              if(!general.Check.istNegativ(list)){
+                  String UpdateString = "UPDATE Lage SET";
+                  
+                  try{
+                      
+                      ArtiBestandsmenge = ArtiListe.getBESTANDSMENGE(0);
+                      
+                  } catch(IndexOutOfBoundsException e){
+                      
+                  }
+                  
+                  if (EditmaxMenge >= ArtiBestandsmenge) {
+                      
+                      if(LagerList.getsize() == 0){
+                      
+                      if (!(this.Fach.equals(EditFach) )) {
+                                UpdateString = UpdateString + " Fach=" + EditFach;
+                            }
+                      
+                      if (!(this.Regal.equals(EditRegal))){
+                          if(!(this.Fach.equals(EditFach))){
+                              UpdateString = UpdateString + ",Regal=" + EditRegal;
+                          } else {
+                              UpdateString = UpdateString + " Regal=" + EditRegal;
+                          }
+                        }
+                      } else {
+                          if(!(this.Fach.equals(EditFach)) || !(this.Regal.equals(EditRegal))){
+                          general.Message.showError("Fehler!", "Die Lagerplatzkommbination ist schon vergeben! Die Lagerplatznummer lautet " + LagerList.getLNr(0));
+                        }
+                      }
+                      
+                      if(!(this.MaxMenge.equals(EditmaxMenge))) {
+                          if(!(this.Fach.equals(EditFach)) || !(this.Regal.equals(EditRegal))){
+                             UpdateString = UpdateString + ",maxmenge=" + EditmaxMenge; 
+                          } else {
+                              UpdateString = UpdateString + " maxmenge=" + EditmaxMenge;
+                          }
+                      }
+                      if(!UpdateString.equals("UPDATE Lage SET")){
+                          UpdateString = UpdateString + " WHERE LNr=" + this.LNR.toString();
+                         int wert = lager.UpdateLageFree(UpdateString);
+                         try{
+                            if(!(this.Fach.equals(EditFach)) || !(this.Regal.equals(EditRegal))){
+                                general.Message.showSuccess("Erfolgreich", "Die Aktualisierung war Erfolgreich!\nAchtung! Der Artikel \"" + ArtiListe.getBezeichnung(0) + "\" mit der Nummer " + ArtiListe.getANR(0) + " liegt nun in einem neuen Fach!");
+                            }
+                         } catch(IndexOutOfBoundsException e) {
+                             
+                         }
+                         setVisible(false);
+                         lagergui.TabelleHolen();
+                         lagergui.Tabelleausgeben();
+                      }
+                      
+                      
+                      
+                      
+                      
+                  } else {
+                      general.Message.showError("Fehler", "Die maximale Fachmenge darf nicht kleiner sein, als der vorhandene Inhalt in dem Fach!"); 
+                  }
+              } 
+          }
 
     }
 

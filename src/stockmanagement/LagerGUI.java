@@ -235,7 +235,7 @@ public class LagerGUI extends javax.swing.JFrame {
         int j = con.simpleConnect("SELECT F_LNR FROM Arti WHERE F_LNR=" + LNR);
        if(j == 0){
         Lage lager = new Lage();
-        int i = lager.UpdateArtikelFree("DELETE FROM LAGE WHERE LNR=" + LNR);
+        int i = lager.UpdateLageFree("DELETE FROM LAGE WHERE LNR=" + LNR);
         if(i == 1){
             general.Message.showSuccess("Erfolgreich!", "Dantensatz mit der Lagernummer " + LNR + " wurde gelöscht!");
         } else {

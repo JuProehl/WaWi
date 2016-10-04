@@ -294,7 +294,7 @@ public class EditOKArtikelMetadaten extends javax.swing.JFrame {
                         }
 
                         if (!(this.VKPreis.equals(EditVKPreis))) {
-                            if (LNRCHECK) {
+                            if (LNRCHECK || !(this.Bezeichnung.equals(EditBezeichnung)) || !(this.kritMenge.equals(EditkritMenge))) {
                                 UpdateString = UpdateString + ",VK_Preis='" + EditVKPreis + "'";
                             } else {
                                 UpdateString = UpdateString + " VK_Preis='" + EditVKPreis + "'";
