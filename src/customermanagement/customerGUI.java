@@ -170,7 +170,7 @@ public class customerGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonAnlegenActionPerformed
 
     private void buttonBearbeitenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBearbeitenActionPerformed
-        // TODO add your handling code here:
+        bearbeitenaufrufen();
     }//GEN-LAST:event_buttonBearbeitenActionPerformed
 
     private void buttonLoeschenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoeschenActionPerformed
@@ -200,6 +200,23 @@ public class customerGUI extends javax.swing.JFrame {
         this.Kundenliste.TabelleHolen();
     }
     
+    
+     private void bearbeitenaufrufen(){
+         try{
+        int row = tableKunden.getSelectedRow();
+        int KNR = Kundenliste.getKNr(row);
+        String Nachname = Kundenliste.getNachname(row);
+        String Vorname = Kundenliste.getVorname(row);
+        String Strasse = Kundenliste.getStrasse(row);
+        Integer Hausnummer = Kundenliste.getHausnummer(row);
+        Integer PLZ = Kundenliste.getPLZ(row);
+        String Ort = Kundenliste.getOrt(row);
+        EditOKKundenMetaDaten metadatengui = new EditOKKundenMetaDaten(this,KNR,Nachname,Vorname,Strasse,Hausnummer,PLZ,Ort);
+         metadatengui.setVisible(true);
+       } catch (ArrayIndexOutOfBoundsException e) {
+           general.Message.showError("Fehler", "Bitte Zeile auswählen!");
+       }
+   }
     
    private void deleteaufrufen(){
        try{
