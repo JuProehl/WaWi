@@ -48,10 +48,10 @@ public class ArtiListTest {
     /**
      * Test of ArtikelInTabelleAusgeben method, of class ArtiList.
      */
-    @Ignore("Test schwierig") @Test
+    @Test
     public void testArtikelInTabelleAusgeben() {
         System.out.println("ArtikelInTabelleAusgeben");
-        JTable Table1 = null;
+        JTable Table1 = new JTable();
         instance.ArtikelInTabelleAusgeben(Table1);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
