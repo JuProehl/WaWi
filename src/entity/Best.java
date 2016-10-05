@@ -38,9 +38,20 @@ public class Best {
 	}
 
         
-        public int UpdateStatus(int nummer) {
+        public void UpdateStatus(String status) {
         DB_Connect con = new DB_Connect();
-        return con.simpleConnect("UPDATE Best SET STATUS = 'inArbeit' WHERE BNR = " + Integer.toString(nummer));
+        switch(status){
+        case "inArbeit":
+            con.simpleConnect("UPDATE Best SET STATUS = 'inArbeit' WHERE BNR = " + Integer.toString(this.BNR));
+            break;
+        case "offen":
+            con.simpleConnect("UPDATE Best SET STATUS = 'offen' WHERE BNR = " + Integer.toString(this.BNR));
+            break;
+        case "Abgeschlossen":
+            con.simpleConnect("UPDATE Best SET STATUS = 'Abgeschlossen' WHERE BNR = " + Integer.toString(this.BNR));
+            break;
+        default:
+        } 
     } 
               
     // Getter und Setter

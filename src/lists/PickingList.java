@@ -5,6 +5,7 @@
  */
 package lists;
 
+import database.DB_Connect;
 import entity.Arti;
 import entity.Best;
 import entity.Kund;
@@ -34,7 +35,7 @@ public class PickingList {
         database.DB_Connect con = new database.DB_Connect();
         /*result = con.Connect("FROM Kund k JOIN k.best best WHERE best.BNR = 1");*/
         //nicht auf 40 begrenzen!!!!
-        result = con.Connect("FROM K_BA kba WHERE kba.best.STATUS = 'offen' and ROWNUM <= 40 ORDER BY kba.best.BESTELLDATUM ASC ,kba.best.BNR ASC, kba.POSITION ASC");
+        result = con.Connect("FROM K_BA kba WHERE kba.best.STATUS = 'offen' ORDER BY kba.best.BESTELLDATUM ASC ,kba.best.BNR ASC, kba.POSITION ASC");
     }
 
     public void showTable(JTable Table1, ArrayList pickingListArrayget) {
@@ -60,11 +61,15 @@ public class PickingList {
     }
 
     public ArrayList buildPickinglist() {
+        Best bestellung = new Best();
         int artikelinPickingList = 0;
         int letzteBNR = 0;
         boolean ignoreBNR = false;
         this.buildZaehlerArti();
-
+        
+        
+        
+        
         for (Object o : result) {
             K_BA k_ba = (K_BA) o;
             if (k_ba.getBest().getBNR() != letzteBNR) {
@@ -76,6 +81,7 @@ public class PickingList {
                             K_BA tk_ba = (K_BA) i;
                             if (k_ba.getBest().getBNR() == tk_ba.getBest().getBNR()) {
                                 pickingListArray.add(tk_ba);
+                                k_ba.getBest().UpdateStatus("inArbeit");
                                 this.updateZaehlerArti(tk_ba);
                             }
                         }
@@ -94,6 +100,7 @@ public class PickingList {
                             //Position zur PickingList hinzufügen
 
                             pickingListArray.add(k_ba);
+                            k_ba.getBest().UpdateStatus("inArbeit");
                             this.updateZaehlerArti(k_ba);
                         } else {
                             ignoreBNR = true;
@@ -107,11 +114,10 @@ public class PickingList {
             } else if (!ignoreBNR) {
                 //Positionen einer geprüften Bestellung werden zum Array hinzugefügt
                 pickingListArray.add(k_ba);
+                k_ba.getBest().UpdateStatus("inArbeit");
                 this.updateZaehlerArti(k_ba);
             }
-
-            Best bestellung = new Best();
-            //bestellung.UpdateStatus(letzteBNR);
+            
 
         }
         return pickingListArray;
@@ -160,4 +166,16 @@ public class PickingList {
             }
         }
     }
+    
+    
+    public void resetStatusAllBEST(){
+        System.out.println(pickingListArray);
+        for(K_BA i : pickingListArray){
+            i.getBest().UpdateStatus("offen");
+        }
+        
+        
+    }
+    
+    
 }

@@ -14,7 +14,6 @@ import java.util.ArrayList;
  * @author Markus
  */
 public class picklistGUI extends javax.swing.JFrame {
-    ArrayList<K_BA> pickingListArray = new ArrayList<>();
     PickingList pickinglist = new PickingList();
     
     
@@ -41,7 +40,7 @@ public class picklistGUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         buttonReady = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         buttonBack.setText("Zurück");
         buttonBack.addActionListener(new java.awt.event.ActionListener() {
@@ -130,6 +129,7 @@ public class picklistGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBackActionPerformed
+        pickinglist.resetStatusAllBEST();
         setVisible(false);
         LagerverwaltungGUI lagerGUI = new LagerverwaltungGUI();
         lagerGUI.setVisible(true);
@@ -149,9 +149,7 @@ public class picklistGUI extends javax.swing.JFrame {
         pickinglist.showTable(tablePicklist, pickinglist.buildPickinglist());
     }
 
-    public void buildPickingList() {
-        
-    }
+
    
     
     /**
