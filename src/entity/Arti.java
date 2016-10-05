@@ -40,8 +40,16 @@ public class Arti {
     double VK_Preis;
 
     // Konstruktor der Klasse Arti
-    public Arti() {
-        super();
+    public Arti(){
+        
+    }
+    // Einfache Anlage ohne Objektreferenzen
+    public Arti(int anr, String bezeichnung, int bestandsmenge, int krit_menge, double VK_Preis) {
+        this.ANR = anr;
+        this.BEZEICHNUNG = bezeichnung;
+        this.BESTANDSMENGE = bestandsmenge;
+        this.krit_Menge = krit_menge;
+        this.VK_Preis = VK_Preis;
     }
 
     // Methode UpdateArtikelAdd
@@ -271,6 +279,11 @@ public class Arti {
      */
     public void setLage(Lage lage) {
         this.lage = lage;
+    }
+    
+    public Arti clone(){
+        Arti arti = new Arti(this.ANR, this.BEZEICHNUNG, this.BESTANDSMENGE, this.krit_Menge, this.VK_Preis);       
+        return arti;
     }
 
 }

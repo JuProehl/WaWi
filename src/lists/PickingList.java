@@ -21,9 +21,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PickingList {
 
-    ArrayList<Integer> BestAusPList = new ArrayList<>();
-    ArrayList<K_BA> pickingListArray = new ArrayList<>();
-    List result;
+    private ArrayList<Arti> zaehlerArti = new ArrayList<>();
+    private ArrayList<Integer> BestAusPList = new ArrayList<>();
+    private ArrayList<K_BA> pickingListArray = new ArrayList<>();
+    private List result;
 
     public PickingList() {
         this.getData();
@@ -32,6 +33,7 @@ public class PickingList {
     public void getData() {
         database.DB_Connect con = new database.DB_Connect();
         /*result = con.Connect("FROM Kund k JOIN k.best best WHERE best.BNR = 1");*/
+        //nicht auf 40 begrenzen!!!!
         result = con.Connect("FROM K_BA kba WHERE kba.best.STATUS = 'offen' and ROWNUM <= 40 ORDER BY kba.best.BESTELLDATUM ASC ,kba.best.BNR ASC, kba.POSITION ASC");
     }
 
@@ -60,36 +62,52 @@ public class PickingList {
     public ArrayList buildPickinglist() {
         int artikelinPickingList = 0;
         int letzteBNR = 0;
+        boolean ignoreBNR = false;
+        this.buildZaehlerArti();
+
         for (Object o : result) {
             K_BA k_ba = (K_BA) o;
             if (k_ba.getBest().getBNR() != letzteBNR) {
                 //neue Bestellung
-                if (artikelinPickingList == 0 && anzahlAtikelproBest(k_ba.getBest().getBNR()) > 100) {
+                if (artikelinPickingList == 0 && anzahlArtikelproBest(k_ba.getBest().getBNR()) > 100) {
                     //Einzelner großer ältester Auftrag 
-                    for (Object i : result) {
-                        K_BA tk_ba = (K_BA) i;
-                        if (k_ba.getBest().getBNR() == tk_ba.getBest().getBNR()) {
-                            pickingListArray.add(tk_ba);
+                    if (checkBestand(k_ba.getBest().getBNR())) {
+                        for (Object i : result) {
+                            K_BA tk_ba = (K_BA) i;
+                            if (k_ba.getBest().getBNR() == tk_ba.getBest().getBNR()) {
+                                pickingListArray.add(tk_ba);
+                                this.updateZaehlerArti(tk_ba);
+                            }
                         }
-                    }
-                    return pickingListArray;
-                } else if (anzahlAtikelproBest(k_ba.getBest().getBNR()) <= 100) {
-                    int nachImportBest = artikelinPickingList + anzahlAtikelproBest(k_ba.getBest().getBNR());
-                    if (nachImportBest < 150) {
-                        //Ist nach dem Import dieses neuen Auftrags die Summe der Artikel in der PickingList kleiner als 100?
-                        artikelinPickingList += anzahlAtikelproBest(k_ba.getBest().getBNR());
-                        //Position zur PickingList hinzufügen
-                        pickingListArray.add(k_ba);
+                        return pickingListArray;
+                    } else {
                         letzteBNR = k_ba.getBest().getBNR();
+                        ignoreBNR = true;
+                    }
+                } else if (anzahlArtikelproBest(k_ba.getBest().getBNR()) <= 100) {
+                    int nachImportBest = artikelinPickingList + anzahlArtikelproBest(k_ba.getBest().getBNR());
+                    if (nachImportBest < 150) {
+                        //Ist nach dem Import dieses neuen Auftrags die Summe der Artikel in der PickingList kleiner als 150?
+                        ignoreBNR = false;
+                        if (checkBestand(k_ba.getBest().getBNR())) {
+                            artikelinPickingList += anzahlArtikelproBest(k_ba.getBest().getBNR());
+                            //Position zur PickingList hinzufügen
 
+                            pickingListArray.add(k_ba);
+                            this.updateZaehlerArti(k_ba);
+                        } else {
+                            ignoreBNR = true;
+                        }
+                        letzteBNR = k_ba.getBest().getBNR();
                     } else if (artikelinPickingList > 120) {
                         return pickingListArray;
                     }
                 }
 
-            } else {
+            } else if (!ignoreBNR) {
                 //Positionen einer geprüften Bestellung werden zum Array hinzugefügt
                 pickingListArray.add(k_ba);
+                this.updateZaehlerArti(k_ba);
             }
 
             Best bestellung = new Best();
@@ -99,53 +117,47 @@ public class PickingList {
         return pickingListArray;
     }
 
-    public int anzahlAtikelproBest(int BNR) {
+    public int anzahlArtikelproBest(int bnr) {
         int artikelinBest = 0;
         for (Object o : result) {
             K_BA k_ba = (K_BA) o;
-            if (BNR == k_ba.getBest().getBNR()) {
+            if (bnr == k_ba.getBest().getBNR()) {
                 artikelinBest += k_ba.getANZAHL();
             }
         }
         return artikelinBest;
     }
 
-    public ArrayList<K_BA> keineArtiImBestand(ArrayList<K_BA> pickingListArray) {
-        for (Object i : pickingListArray) {
-            K_BA k_ba = (K_BA) i;
-            int anzahlAller = zaehleArtiinPL(pickingListArray, k_ba.getArti().getANR());
-            if (anzahlAller > k_ba.getArti().getBESTANDSMENGE()) {
-                BestAusPList.add(k_ba.getBest().getBNR());
-            }
-        }
-        return allePOSdieserBestloeschen(pickingListArray, BestAusPList);
-    }
-
-    public int zaehleArtiinPL(ArrayList<K_BA> pickingListArray, int checkarti) {
-        int anzahl = 0;
-        for (Object i : pickingListArray) {
-            K_BA k_ba = (K_BA) i;
-            if (checkarti == k_ba.getArti().getANR()) {
-                anzahl += k_ba.getANZAHL();
-            }
-        }
-        return anzahl;
-    }
-
-    private ArrayList<K_BA> allePOSdieserBestloeschen(ArrayList<K_BA> pickingListArray, ArrayList<Integer> BNRArray) {
-        ArrayList<K_BA> pickingListArrayNew = new ArrayList<>(pickingListArray);
-        for (Object i : pickingListArray) {
-            K_BA k_ba = (K_BA) i;
-            for (Object j : BNRArray) {
-                if (j.equals(k_ba.getBest().getBNR())) {
-                    pickingListArrayNew.remove(i);
-                    System.out.println(k_ba.getBest().getBNR() + ", " + k_ba.getArti().getBEZEICHNUNG() + ", " +  k_ba.getANZAHL()  + ", " + k_ba.getArti().getBESTANDSMENGE());
-
-                    
+    private boolean checkBestand(int bnr) {
+        for (Object o : result) {
+            K_BA k_ba = (K_BA) o;
+            if (bnr == k_ba.getBest().getBNR()) {
+                for (Arti i : zaehlerArti) {
+                    if (k_ba.getArti().getANR() == i.getANR() && k_ba.getANZAHL() > i.getBESTANDSMENGE()) {
+                        //Bestand reicht für die Bestellung bnr in mindestens einer POS nicht aus
+                        return false;
+                    }
                 }
             }
         }
-        return pickingListArrayNew;
+        //Bestand reich für alle POS der Bestellung bnr aus
+        return true;
     }
 
+    private void updateZaehlerArti(K_BA k_ba) {
+        for (Arti j : zaehlerArti) {
+            if (j.getANR() == k_ba.getArti().getANR()) {
+                j.setBESTANDSMENGE(j.getBESTANDSMENGE() - k_ba.getANZAHL());
+            }
+        }
+    }
+
+    private void buildZaehlerArti() {
+        for (Object o : result) {
+            K_BA k_ba = (K_BA) o;
+            if (!zaehlerArti.contains(k_ba.getArti())) {
+                zaehlerArti.add(k_ba.getArti().clone());
+            }
+        }
+    }
 }

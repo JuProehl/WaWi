@@ -146,7 +146,7 @@ public class picklistGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonPrintActionPerformed
 
     public void showTable() {
-        pickinglist.showTable(tablePicklist, pickinglist.keineArtiImBestand(pickinglist.buildPickinglist()));
+        pickinglist.showTable(tablePicklist, pickinglist.buildPickinglist());
     }
 
     public void buildPickingList() {
