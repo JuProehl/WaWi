@@ -54,7 +54,6 @@ public class picklistGUI extends javax.swing.JFrame {
         buttonPrint = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         buttonReady = new javax.swing.JButton();
-        buttonPrintEtiketten = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -101,11 +100,9 @@ public class picklistGUI extends javax.swing.JFrame {
         jLabel1.setText("Picklist");
 
         buttonReady.setText("Abschließen");
-
-        buttonPrintEtiketten.setText("Etiketten (Kann dann weg)");
-        buttonPrintEtiketten.addActionListener(new java.awt.event.ActionListener() {
+        buttonReady.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonPrintEtikettenActionPerformed(evt);
+                buttonReadyActionPerformed(evt);
             }
         });
 
@@ -121,13 +118,11 @@ public class picklistGUI extends javax.swing.JFrame {
                         .addComponent(buttonReady, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 851, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(buttonBack)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 458, Short.MAX_VALUE)
-                        .addComponent(buttonPrintEtiketten)
-                        .addGap(72, 72, 72)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(buttonPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -137,10 +132,9 @@ public class picklistGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(buttonPrint, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
-                    .addComponent(buttonBack)
-                    .addComponent(buttonPrintEtiketten, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonBack))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -171,10 +165,9 @@ public class picklistGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buttonPrintActionPerformed
 
-    // Button zum Etiketten drucken // Kann wieder weg sobald bei abschließen mit drin
-    private void buttonPrintEtikettenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPrintEtikettenActionPerformed
+    private void buttonReadyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReadyActionPerformed
       printEtiketten();
-    }//GEN-LAST:event_buttonPrintEtikettenActionPerformed
+    }//GEN-LAST:event_buttonReadyActionPerformed
 
     
     // Diese Methode aufrufen bei Abschließen der Picklist
@@ -209,8 +202,6 @@ public class picklistGUI extends javax.swing.JFrame {
                 rowData[4] = Kunde.getPLZ();
                 rowData[5] = Kunde.getOrt();
 
-                //DefaultTableModel model = (DefaultTableModel) tablePicklist.getModel();
-                // model.addRow(rowData);
                 Anschrift = "" + rowData[0] + " " + rowData[1] + "\n"
                         + rowData[2] + " " + rowData[3] + "\n"
                         + rowData[4] + " " + rowData[5];
@@ -274,7 +265,6 @@ public class picklistGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonBack;
     private javax.swing.JButton buttonPrint;
-    private javax.swing.JButton buttonPrintEtiketten;
     private javax.swing.JButton buttonReady;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
