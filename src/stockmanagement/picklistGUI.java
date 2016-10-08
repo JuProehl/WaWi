@@ -166,10 +166,9 @@ public class picklistGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonPrintActionPerformed
 
     private void buttonReadyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReadyActionPerformed
-      printEtiketten();
+        printEtiketten();
     }//GEN-LAST:event_buttonReadyActionPerformed
 
-    
     // Diese Methode aufrufen bei Abschließen der Picklist
     // beachtet dass der Dialog nur aufploppt wenn man PDF druckt
     // bei "realer" verwendet würde er es so auf dem drucker feuern.
@@ -180,35 +179,49 @@ public class picklistGUI extends javax.swing.JFrame {
         List Adress;
         String Anschrift = "";
         List KNRlist;
-
+        int nummer;
+        
         for (int i = 0; i < rowCount; i++) {
-            bnr[i] = Integer.parseInt(tablePicklist.getModel().getValueAt(i, 0).toString());
-            KNRlist = getKNR(bnr[i]);
+            nummer = Integer.parseInt(tablePicklist.getModel().getValueAt(i, 0).toString());
+            boolean wert = false;
 
-            Iterator iterator;
-            iterator = KNRlist.iterator();
-            int KNR = (int) iterator.next();
+            for (int j = 0; j < bnr.length-1; j++) {
 
-            Adress = getAdress(KNR);
+                if (bnr[j] == nummer) {
+                    // System.out.println("Zahl " + eingabe + " ist in der Menge vorhanden.");
+                    wert = true;
+                }
+            }
+            if (wert == false) {
+                bnr[i] = nummer;
+                KNRlist = getKNR(bnr[i]);
 
-            Object[] rowData = new Object[6];
+                Iterator iterator;
+                iterator = KNRlist.iterator();
+                int KNR = (int) iterator.next();
 
-            for (iterator = Adress.iterator(); iterator.hasNext();) {
-                Kund Kunde = (Kund) iterator.next();
-                rowData[0] = Kunde.getVorname();
-                rowData[1] = Kunde.getNachname();
-                rowData[2] = Kunde.getStrasse();
-                rowData[3] = Kunde.getHausnummer();
-                rowData[4] = Kunde.getPLZ();
-                rowData[5] = Kunde.getOrt();
+                Adress = getAdress(KNR);
 
-                Anschrift = "" + rowData[0] + " " + rowData[1] + "\n"
-                        + rowData[2] + " " + rowData[3] + "\n"
-                        + rowData[4] + " " + rowData[5];
-              
-                //general.Message.showError("", Anschrift);
-                etikettenprint.CreatePages(Anschrift);
-            }                             
+                Object[] rowData = new Object[6];
+
+                for (iterator = Adress.iterator(); iterator.hasNext();) {
+                    Kund Kunde = (Kund) iterator.next();
+                    rowData[0] = Kunde.getVorname();
+                    rowData[1] = Kunde.getNachname();
+                    rowData[2] = Kunde.getStrasse();
+                    rowData[3] = Kunde.getHausnummer();
+                    rowData[4] = Kunde.getPLZ();
+                    rowData[5] = Kunde.getOrt();
+
+                    Anschrift = "" + rowData[0] + " " + rowData[1] + "\n"
+                            + rowData[2] + " " + rowData[3] + "\n"
+                            + rowData[4] + " " + rowData[5];
+
+                    //general.Message.showError("", Anschrift);
+                    etikettenprint.CreatePages(Anschrift);
+                }
+            }
+
         }
     }
 
