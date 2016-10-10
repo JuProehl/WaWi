@@ -169,9 +169,17 @@ public class PickingList {
     
     
     public void resetStatusAllBEST(){
-        System.out.println(pickingListArray);
         for(K_BA i : pickingListArray){
             i.getBest().UpdateStatus("offen");
+        }
+        
+        
+    }
+
+    public void setAbgeschlossen(ArrayList rowPickingList) {
+        for (Object j : rowPickingList) {
+            K_BA k_ba = (K_BA) j;
+            k_ba.getBest().UpdateStatus("Abgeschlossen");
         }
         
         

@@ -29,8 +29,9 @@ import javax.swing.table.DefaultTableModel;
  * @author Markus
  */
 public class picklistGUI extends javax.swing.JFrame {
-
+    ArrayList rowPickingList;
     PickingList pickinglist = new PickingList();
+    
 
     /**
      * Creates new form picklistGUIShow
@@ -166,9 +167,18 @@ public class picklistGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonPrintActionPerformed
 
     private void buttonReadyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReadyActionPerformed
-        printEtiketten();
+        picklistFinischGUI picklistFinischGUI = new picklistFinischGUI(this);
+        picklistFinischGUI.setVisible(true);
+        
+        //pickinglist.setAbgeschlossen(rowPickingList);
+        //printEtiketten();
     }//GEN-LAST:event_buttonReadyActionPerformed
-
+    
+    public void pickListReady(){
+        pickinglist.setAbgeschlossen(rowPickingList);
+        printEtiketten();
+    }
+    
     // Diese Methode aufrufen bei Abschließen der Picklist
     // beachtet dass der Dialog nur aufploppt wenn man PDF druckt
     // bei "realer" verwendet würde er es so auf dem drucker feuern.
@@ -236,9 +246,10 @@ public class picklistGUI extends javax.swing.JFrame {
     }
 
     public void showTable() {
-        pickinglist.showTable(tablePicklist, pickinglist.buildPickinglist());
+        rowPickingList = pickinglist.buildPickinglist();
+        pickinglist.showTable(tablePicklist,rowPickingList);
     }
-
+    
     /**
      * @param args the command line arguments
      */
