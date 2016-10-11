@@ -32,13 +32,13 @@ public class ArtiList {
         model.setRowCount(0);
 
         for (Iterator iterator = result.iterator(); iterator.hasNext();) {
-            Arti Artikel = (Arti) iterator.next();
-            rowData[0] = Artikel.getANR();
-            rowData[1] = Artikel.getBEZEICHNUNG();
-            rowData[2] = Artikel.getBESTANDSMENGE();
-            rowData[3] = Artikel.getKrit_Menge();
-            rowData[4] = Artikel.getLage().getLNr();
-            rowData[5] = Artikel.getVK_Preis();
+            Arti artikel = (Arti) iterator.next();
+            rowData[0] = artikel.getANR();
+            rowData[1] = artikel.getBEZEICHNUNG();
+            rowData[2] = artikel.getBESTANDSMENGE();
+            rowData[3] = artikel.getKrit_Menge();
+            rowData[4] = artikel.getLage().getLNr();
+            rowData[5] = artikel.getVK_Preis();
             model.addRow(rowData);
         }
     }
@@ -47,7 +47,6 @@ public class ArtiList {
 
         database.DB_Connect con = new database.DB_Connect();
         result = con.Connect(Befehl);
-
     }
 
     public void TabelleHolen() {
@@ -57,43 +56,43 @@ public class ArtiList {
 
     public Integer getANR(int row) {
 
-        Arti Artikel = (Arti) result.get(row);
-        return Artikel.getANR();
+        Arti artikel = (Arti) result.get(row);
+        return artikel.getANR();
     }
 
     public String getBezeichnung(int row) {
 
-        Arti Artikel = (Arti) result.get(row);
-        return Artikel.getBEZEICHNUNG();
+        Arti artikel = (Arti) result.get(row);
+        return artikel.getBEZEICHNUNG();
     }
 
     public Integer getBESTANDSMENGE(int row) {
 
-        Arti Artikel = (Arti) result.get(row);
-        return Artikel.getBESTANDSMENGE();
+        Arti artikel = (Arti) result.get(row);
+        return artikel.getBESTANDSMENGE();
     }
 
     public Integer getKrit_Menge(int row) {
 
-        Arti Artikel = (Arti) result.get(row);
-        return Artikel.getKrit_Menge();
+        Arti artikel = (Arti) result.get(row);
+        return artikel.getKrit_Menge();
     }
 
     public Integer getF_LNR(int row) {
 
-        Arti Artikel = (Arti) result.get(row);
-        return Artikel.getLage().getLNr();
+        Arti artikel = (Arti) result.get(row);
+        return artikel.getLage().getLNr();
     }
 
     public double getVKPreis(int row) {
 
-        Arti Artikel = (Arti) result.get(row);
-        return Artikel.getVK_Preis();
+        Arti artikel = (Arti) result.get(row);
+        return artikel.getVK_Preis();
     }
 
     public Arti getArti(int row) {
 
-        Arti Artikel = (Arti) result.get(row);
-        return Artikel;
+        Arti artikel = (Arti) result.get(row);
+        return artikel;
     }
 }

@@ -97,7 +97,7 @@ public class Arti {
         DB_Connect con = new DB_Connect();
         return con.simpleConnect(str);
     }
-    
+
     // Methode loescheArtikel
     // Artikel Löschkennzeichen setzen
     // Stellt eine Verbindung zur Datenbabk her und

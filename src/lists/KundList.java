@@ -45,14 +45,14 @@ public class KundList {
         model.setRowCount(0);
 
         for (Iterator iterator = result.iterator(); iterator.hasNext();) {
-            Kund Kunde = (Kund) iterator.next();
-            rowData[0] = Kunde.getKNr();
-            rowData[1] = Kunde.getNachname();
-            rowData[2] = Kunde.getVorname();
-            rowData[3] = Kunde.getStrasse();
-            rowData[4] = Kunde.getHausnummer();
-            rowData[5] = Kunde.getPLZ();
-            rowData[6] = Kunde.getOrt();
+            Kund kunde = (Kund) iterator.next();
+            rowData[0] = kunde.getKNr();
+            rowData[1] = kunde.getNachname();
+            rowData[2] = kunde.getVorname();
+            rowData[3] = kunde.getStrasse();
+            rowData[4] = kunde.getHausnummer();
+            rowData[5] = kunde.getPLZ();
+            rowData[6] = kunde.getOrt();
 
             model.addRow(rowData);
         }
@@ -60,57 +60,49 @@ public class KundList {
 
     public Integer getKNr(int row) {
 
-        Kund Kunde = (Kund) result.get(row);
-        int KNr = Kunde.getKNr();
-
-        return KNr;
+        Kund kunde = (Kund) result.get(row);
+        return kunde.getKNr();
     }
 
     public String getNachname(int row) {
 
-        Kund Kunde = (Kund) result.get(row);
-        String Nachname = Kunde.getNachname();
-
-        return Nachname;
+        Kund kunde = (Kund) result.get(row);
+        return kunde.getNachname();
     }
 
     public String getVorname(int row) {
 
-        Kund Kunde = (Kund) result.get(row);
-        String Vorname = Kunde.getVorname();
-
-        return Vorname;
+        Kund kunde = (Kund) result.get(row);
+        return kunde.getVorname();
     }
 
     public String getStrasse(int row) {
 
-        Kund Kunde = (Kund) result.get(row);
-        String Strasse = Kunde.getStrasse();
-
-        return Strasse;
+        Kund kunde = (Kund) result.get(row);
+        return kunde.getStrasse();
     }
 
     public Integer getHausnummer(int row) {
 
-        Kund Kunde = (Kund) result.get(row);
-        int Hausnummer = Kunde.getHausnummer();
-
-        return Hausnummer;
+        Kund kunde = (Kund) result.get(row);
+        return kunde.getHausnummer();
     }
 
     public Integer getPLZ(int row) {
 
-        Kund Kunde = (Kund) result.get(row);
-        int PLZ = Kunde.getPLZ();
-
-        return PLZ;
+        Kund kunde = (Kund) result.get(row);
+        return kunde.getPLZ();
     }
 
     public String getOrt(int row) {
 
-        Kund Kunde = (Kund) result.get(row);
-        String Ort = Kunde.getOrt();
+        Kund kunde = (Kund) result.get(row);
+        return kunde.getOrt();
+    }
 
-        return Ort;
+    public Kund getKund(int row) {
+
+        Kund kunde = (Kund) result.get(row);
+        return kunde;
     }
 }

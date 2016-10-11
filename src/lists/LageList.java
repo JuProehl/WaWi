@@ -17,88 +17,77 @@ import javax.swing.table.DefaultTableModel;
  * @author matthias
  */
 public class LageList {
-    
+
     List result;
 
     public LageList() {
-        
-        database.DB_Connect con = new database.DB_Connect();
-        result = con.Connect("FROM Lage ORDER BY LNR");
+
+        TabelleHolen();
 
     }
-    
+
     public LageList(String Befehl) {
-        
+
         database.DB_Connect con = new database.DB_Connect();
         result = con.Connect(Befehl);
 
     }
-    
-   
-    
-     public void TabelleHolen() {
-        
+
+    public void TabelleHolen() {
+
         database.DB_Connect con = new database.DB_Connect();
         result = con.Connect("FROM Lage ORDER BY LNR");
 
     }
-    
-     public void LagerInTabelleAusgeben(JTable Table1){
-        
+
+    public void LagerInTabelleAusgeben(JTable Table1) {
+
         DefaultTableModel model = (DefaultTableModel) Table1.getModel();
         Object rowData[] = new Object[4];
         model.setRowCount(0);
-        
-        	for ( Iterator iterator = result.iterator(); iterator.hasNext();){
-		Lage Lager = (Lage) iterator.next();
-                rowData[0] = Lager.getLNr();
-                rowData[1] = Lager.getRegal();
-                rowData[2] = Lager.getFach();
-                rowData[3] = Lager.getMaxmenge();
-                model.addRow(rowData);             
-                }
- } 
-     
-     public Integer getLNr(int row){
-        
-         
-         Lage Lager = (Lage) result.get(row);
-         int LNr = Lager.getLNr();
-         
-         return LNr ;
-     }
-     
-      public Integer getRegal(int row){
-        
-         
-         Lage Lager = (Lage) result.get(row);
-         int Regal = Lager.getRegal();
-         
-         return Regal ;
-     }
-      
-       public Integer getFach(int row){
-        
-         
-         Lage Lager = (Lage) result.get(row);
-         int Fach = Lager.getFach();
-         
-         return Fach ;
-     }
-       
-        public Integer getMaxMenge(int row){
-        
-         
-         Lage Lager = (Lage) result.get(row);
-         int MaxMenge = Lager.getMaxmenge();
-         
-         return MaxMenge ;
-     }
-        
-        public int getsize(){
-            return result.size();
+
+        for (Iterator iterator = result.iterator(); iterator.hasNext();) {
+            Lage lager = (Lage) iterator.next();
+            rowData[0] = lager.getLNr();
+            rowData[1] = lager.getRegal();
+            rowData[2] = lager.getFach();
+            rowData[3] = lager.getMaxmenge();
+            model.addRow(rowData);
         }
-     
-     
-     
+    }
+
+    public Integer getLNr(int row) {
+
+        Lage lager = (Lage) result.get(row);
+        return lager.getLNr();
+    }
+
+    public Integer getRegal(int row) {
+
+        Lage lager = (Lage) result.get(row);
+        return lager.getRegal();
+    }
+
+    public Integer getFach(int row) {
+
+        Lage lager = (Lage) result.get(row);
+        return lager.getFach();
+    }
+
+    public Integer getMaxMenge(int row) {
+
+        Lage lager = (Lage) result.get(row);
+        return lager.getMaxmenge();
+    }
+
+    public Lage getLage(int row) {
+
+        Lage lager = (Lage) result.get(row);
+        return lager;
+    }
+
+    public int getsize() {
+        return result.size();
+    }
+
 }

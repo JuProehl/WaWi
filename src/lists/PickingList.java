@@ -1,11 +1,8 @@
 package lists;
 
-import database.DB_Connect;
 import entity.Arti;
 import entity.Best;
-import entity.Kund;
 import entity.K_BA;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ArrayList;
 import javax.swing.JTable;

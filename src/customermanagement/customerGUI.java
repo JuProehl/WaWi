@@ -199,42 +199,33 @@ public class customerGUI extends javax.swing.JFrame {
     private void tabelleHolen() {
         this.Kundenliste.TabelleHolen();
     }
-    
-    
-     private void bearbeitenaufrufen(){
-         try{
-        int row = tableKunden.getSelectedRow();
-        int KNR = Kundenliste.getKNr(row);
-        String Nachname = Kundenliste.getNachname(row);
-        String Vorname = Kundenliste.getVorname(row);
-        String Strasse = Kundenliste.getStrasse(row);
-        Integer Hausnummer = Kundenliste.getHausnummer(row);
-        Integer PLZ = Kundenliste.getPLZ(row);
-        String Ort = Kundenliste.getOrt(row);
-        EditOKKundenMetaDaten metadatengui = new EditOKKundenMetaDaten(this,KNR,Nachname,Vorname,Strasse,Hausnummer,PLZ,Ort);
-         metadatengui.setVisible(true);
-       } catch (ArrayIndexOutOfBoundsException e) {
-           general.Message.showError("Fehler", "Bitte Zeile auswählen!");
-       }
-   }
-    
-   private void deleteaufrufen(){
-       try{
-        int row = tableKunden.getSelectedRow();
-        int KNr = Kundenliste.getKNr(row);
-        Kund kunden = new Kund();
-        int i = kunden.UpdateKundenFree("DELETE FROM KUND WHERE KNr=" + KNr);
-        if(i == 1){
-            general.Message.showSuccess("Erfolgreich!", "Dantensatz mit der Artikelnummer " + KNr + " wurde gelöscht!");
-        } else {
-            general.Message.showError("Fehler", "Datensatz konnte nicht gelöscht werden!");
+
+    private void bearbeitenaufrufen() {
+        try {
+            int row = tableKunden.getSelectedRow();
+            EditOKKundenMetaDaten metadatengui = new EditOKKundenMetaDaten(this, Kundenliste.getKund(row));
+            metadatengui.setVisible(true);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            general.Message.showError("Fehler", "Bitte Zeile auswählen!");
         }
-        tabelleHolen();
-        tabelleausgeben();
-       } catch (ArrayIndexOutOfBoundsException e) {
-           general.Message.showError("Fehler", "Bitte Zeile auswählen!");
-       }
-   }
+    }
+
+    private void deleteaufrufen() {
+        try {
+            int row = tableKunden.getSelectedRow();
+            int KNr = Kundenliste.getKNr(row);
+            int i = Kundenliste.getKund(row).loescheKund();
+            if (i == 1) {
+                general.Message.showSuccess("Erfolgreich!", "Dantensatz mit der Kundennummer " + KNr + " wurde gelöscht!");
+            } else {
+                general.Message.showError("Fehler", "Datensatz konnte nicht gelöscht werden!");
+            }
+            tabelleHolen();
+            tabelleausgeben();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            general.Message.showError("Fehler", "Bitte Zeile auswählen!");
+        }
+    }
 
     /**
      * @param args the command line arguments
