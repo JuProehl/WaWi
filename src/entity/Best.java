@@ -3,6 +3,7 @@ package entity;
 
 import database.DB_Connect;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -48,7 +49,8 @@ public class Best {
             con.simpleConnect("UPDATE Best SET STATUS = 'offen' WHERE BNR = " + this.BNR);
             break;
         case "Abgeschlossen":
-            con.simpleConnect("UPDATE Best SET STATUS = 'Abgeschlossen' WHERE BNR = " + this.BNR);
+            con.simpleConnect("UPDATE Best SET STATUS = 'Abgeschlossen' WHERE BNR = " + Integer.toString(this.BNR));
+            con.simpleConnect("UPDATE Best SET ABSCHLUSSDATUM = '" + new SimpleDateFormat("dd-MM-yy").format(new java.util.Date()) + "' WHERE BNR = " + Integer.toString(this.BNR));
             break;
         default:
         }     
