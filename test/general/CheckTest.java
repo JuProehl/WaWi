@@ -59,7 +59,11 @@ public class CheckTest {
     public void testIstNegativ_ArrayList() {
         System.out.println("istNegativ");
         ArrayList<Integer> list = new ArrayList<>();
+        list.add(1);
         list.add(-1);
+        list.add(-999);
+        list.add(156);
+        list.add(-8);
         Boolean expResult = true;
         Boolean result = Check.istNegativ(list);
         assertEquals(expResult, result);
