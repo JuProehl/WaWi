@@ -8,30 +8,30 @@ package stockmanagement;
 import entity.Arti;
 import java.awt.event.KeyEvent;
 
-
 /**
  *
  * @author matthias
  */
 public class EditOKArtikelAuslagern extends javax.swing.JFrame {
 
-    
     int ANR;
     Integer AktMenge;
     ArtikelbestandGUI Artikelbestand;
+
     /**
      * Creates new form AuslagernEditOkGUI_
      */
     public EditOKArtikelAuslagern() {
         initComponents();
     }
-    
+
     public EditOKArtikelAuslagern(int ANR, int AktMenge, ArtikelbestandGUI ArtikelBestand) {
         initComponents();
         this.ANR = ANR;
         this.AktMenge = AktMenge;
         this.Artikelbestand = ArtikelBestand;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -130,33 +130,33 @@ public class EditOKArtikelAuslagern extends javax.swing.JFrame {
     }//GEN-LAST:event_JButton_OKKeyPressed
 
     private void JTF_MengeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTF_MengeKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             auslagern();
         }
-        if(evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             setVisible(false);
         }
     }//GEN-LAST:event_JTF_MengeKeyPressed
 
-    private void auslagern(){
+    private void auslagern() {
         try {
-        Integer MinusMenge = Integer.parseInt(JTF_Menge.getText()); 
-        if (!general.Check.istNegativ(MinusMenge)){ 
-            if(MinusMenge <= AktMenge){   
-                Arti artikel = new Arti();
-                int i = artikel.UpdateArtikelAdd(-Integer.parseInt(JTF_Menge.getText()), ANR);
-                Artikelbestand.tabelleHolen();
-                Artikelbestand.tabelleausgeben();
-                setVisible(false);
-            } else {
-             general.Message.showError("Eingabefehler", "Zu wenig Einheiten vorhanden! Es sind nur " + AktMenge.toString() + " Einheiten vorhanden!" );
+            Integer MinusMenge = Integer.parseInt(JTF_Menge.getText());
+            if (!general.Check.istNegativ(MinusMenge)) {
+                if (MinusMenge <= AktMenge) {
+                    Arti artikel = new Arti();
+                    int i = artikel.UpdateArtikelAdd(-Integer.parseInt(JTF_Menge.getText()), ANR);
+                    Artikelbestand.tabelleHolen();
+                    Artikelbestand.tabelleausgeben();
+                    setVisible(false);
+                } else {
+                    general.Message.showError("Eingabefehler", "Zu wenig Einheiten vorhanden! Es sind nur " + AktMenge.toString() + " Einheiten vorhanden!");
                 }
             }
-       } catch (NumberFormatException e) {
-          general.Message.showError("Eingabefehler", "Eingaben überprüfen!");
+        } catch (NumberFormatException e) {
+            general.Message.showError("Eingabefehler", "Eingaben überprüfen!");
         }
-    }    
-    
+    }
+
     /**
      * @param args the command line arguments
      */

@@ -9,9 +9,6 @@ package stockmanagement;
  *
  * @author matthias
  */
-
-
-
 import entity.Arti;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -23,14 +20,15 @@ public class EditOKArtikelKorrektur extends javax.swing.JFrame {
     int LNr;
     LageList LagerListe;
     ArtikelbestandGUI Artikelbestand;
+
     /**
      * Creates new form KorrekturEditOKGUI
      */
     public EditOKArtikelKorrektur() {
         initComponents();
     }
-    
-        public EditOKArtikelKorrektur(int ANR, int LNr, ArtikelbestandGUI ArtikelBestand) {
+
+    public EditOKArtikelKorrektur(int ANR, int LNr, ArtikelbestandGUI ArtikelBestand) {
         initComponents();
         this.ANR = ANR;
         this.LNr = LNr;
@@ -130,12 +128,12 @@ public class EditOKArtikelKorrektur extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JTF_MengeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTF_MengeKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             korrigieren();
         }
-        
-           if(evt.getKeyCode()==KeyEvent.VK_ESCAPE){
-             setVisible(false);
+
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            setVisible(false);
         }
     }//GEN-LAST:event_JTF_MengeKeyPressed
 
@@ -156,29 +154,28 @@ public class EditOKArtikelKorrektur extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JTF_MengeActionPerformed
 
-    
-    
-    private void korrigieren(){
+    private void korrigieren() {
         Integer MaxMenge = LagerListe.getMaxMenge(0);
         ArrayList<Integer> Zahlen = new ArrayList<Integer>();
         try {
-        Integer NewMenge = Integer.parseInt(JTF_Menge.getText()); 
-        Zahlen.add(NewMenge);
-        if (!general.Check.istNegativ(Zahlen)){ 
-            if(NewMenge <= MaxMenge){   
-                Arti artikel = new Arti();
-                int i = artikel.UpdateArtikelSetNew(Integer.parseInt(JTF_Menge.getText()), ANR);
-                Artikelbestand.tabelleHolen();
-                Artikelbestand.tabelleausgeben();
-                setVisible(false);
-            } else {
-             general.Message.showError("Eingabefehler", "Maximale Menge überschritten! Die maximale Menge beträgt " + MaxMenge + " Einheiten!");
+            Integer NewMenge = Integer.parseInt(JTF_Menge.getText());
+            Zahlen.add(NewMenge);
+            if (!general.Check.istNegativ(Zahlen)) {
+                if (NewMenge <= MaxMenge) {
+                    Arti artikel = new Arti();
+                    int i = artikel.UpdateArtikelSetNew(Integer.parseInt(JTF_Menge.getText()), ANR);
+                    Artikelbestand.tabelleHolen();
+                    Artikelbestand.tabelleausgeben();
+                    setVisible(false);
+                } else {
+                    general.Message.showError("Eingabefehler", "Maximale Menge überschritten! Die maximale Menge beträgt " + MaxMenge + " Einheiten!");
                 }
             }
-       } catch (NumberFormatException e) {
-          general.Message.showError("Eingabefehler", "Eingaben überprüfen!");
+        } catch (NumberFormatException e) {
+            general.Message.showError("Eingabefehler", "Eingaben überprüfen!");
         }
     }
+
     /**
      * @param args the command line arguments
      */

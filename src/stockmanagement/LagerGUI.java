@@ -6,13 +6,9 @@
 package stockmanagement;
 
 import database.DB_Connect;
-import lists.ArtiList;
 import entity.Arti;
-import entity.Kund;
 import entity.Lage;
-import java.awt.event.KeyEvent;
 import java.util.*;
-import javax.swing.table.DefaultTableModel;
 import lists.LageList;
 
 /**
@@ -225,7 +221,7 @@ public class LagerGUI extends javax.swing.JFrame {
 
             DB_Connect con = new DB_Connect();
             int j = con.simpleConnect("SELECT F_LNR FROM Arti WHERE F_LNR=" + lnr);
-            if (j == 0) {   
+            if (j == 0) {
                 int i = lage.deleteLage();
                 if (i == 1) {
                     general.Message.showSuccess("Erfolgreich!", "Dantensatz mit der Lagernummer " + lnr + " wurde gelöscht!");

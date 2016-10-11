@@ -5,7 +5,6 @@
  */
 package stockmanagement;
 
-import entity.Arti;
 import entity.Lage;
 import java.util.ArrayList;
 import lists.ArtiList;

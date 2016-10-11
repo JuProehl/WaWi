@@ -5,32 +5,30 @@
  */
 package stockmanagement;
 
-import database.DB_Connect;
 import lists.LageList;
 import entity.Arti;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
-
 
 /**
  *
  * @author matthias
  */
 public class EditOKArtikelEinlagern extends javax.swing.JFrame {
-    
+
     int ANR;
     int LNr;
     int AktMenge;
     LageList LagerListe;
     ArtikelbestandGUI Artikelbestand;
+
     /**
      * Creates new form NewJFrame
      */
     public EditOKArtikelEinlagern() {
         initComponents();
     }
-    
+
     public EditOKArtikelEinlagern(int ANR, int LNr, int AktMenge, ArtikelbestandGUI ArtikelBestand) {
         initComponents();
         this.ANR = ANR;
@@ -132,46 +130,46 @@ public class EditOKArtikelEinlagern extends javax.swing.JFrame {
 
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
         setVisible(false);
-       
+
     }//GEN-LAST:event_jButtonBackActionPerformed
 
     private void JButton_OKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JButton_OKKeyPressed
-       
+
     }//GEN-LAST:event_JButton_OKKeyPressed
 
     private void JTF_MengeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTF_MengeKeyPressed
-         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             einlagern();
-        } 
-         if(evt.getKeyCode()==KeyEvent.VK_ESCAPE){
-             setVisible(false);
+        }
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            setVisible(false);
         }
     }//GEN-LAST:event_JTF_MengeKeyPressed
 
-    private void einlagern(){
+    private void einlagern() {
         Integer MaxMenge = LagerListe.getMaxMenge(0);
         ArrayList<Integer> Zahlen = new ArrayList<Integer>();
         try {
-        Integer PlusMenge = Integer.parseInt(JTF_Menge.getText()); 
-        Zahlen.add(PlusMenge);
-        if (!general.Check.istNegativ(Zahlen)){ 
-            if(PlusMenge+AktMenge <= MaxMenge){   
-                Arti artikel = new Arti();
-                int i = artikel.UpdateArtikelAdd(Integer.parseInt(JTF_Menge.getText()), ANR);
-                Artikelbestand.tabelleHolen();
-                Artikelbestand.tabelleausgeben();
-                setVisible(false);
-            } else {
-                int moeglicheMenge = MaxMenge-AktMenge;
-             general.Message.showError("Eingabefehler", "Maximale Menge überschritten! Es können nur " + moeglicheMenge + " Einheiten eingelagert werden!");
+            Integer PlusMenge = Integer.parseInt(JTF_Menge.getText());
+            Zahlen.add(PlusMenge);
+            if (!general.Check.istNegativ(Zahlen)) {
+                if (PlusMenge + AktMenge <= MaxMenge) {
+                    Arti artikel = new Arti();
+                    int i = artikel.UpdateArtikelAdd(Integer.parseInt(JTF_Menge.getText()), ANR);
+                    Artikelbestand.tabelleHolen();
+                    Artikelbestand.tabelleausgeben();
+                    setVisible(false);
+                } else {
+                    int moeglicheMenge = MaxMenge - AktMenge;
+                    general.Message.showError("Eingabefehler", "Maximale Menge überschritten! Es können nur " + moeglicheMenge + " Einheiten eingelagert werden!");
                 }
             }
-       } catch (NumberFormatException e) {
-          general.Message.showError("Eingabefehler", "Eingaben überprüfen!");
+        } catch (NumberFormatException e) {
+            general.Message.showError("Eingabefehler", "Eingaben überprüfen!");
         }
-       
+
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -207,12 +205,9 @@ public class EditOKArtikelEinlagern extends javax.swing.JFrame {
             public void run() {
                 new EditOKArtikelEinlagern().setVisible(true);
             }
-           
+
         });
-        
-        
-       
-   
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

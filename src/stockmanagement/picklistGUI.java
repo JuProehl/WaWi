@@ -3,29 +3,19 @@ package stockmanagement;
 
 //Bibliotheken import
 import database.DB_Connect;
-import entity.K_BA;
 import entity.Kund;
 import general.Print;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintWriter;
 import lists.PickingList;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Objects;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.stream.Collectors;
-import javax.print.PrintException;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Markus
  */
 public class picklistGUI extends javax.swing.JFrame {
+
     //Klassen Variablen Deklaration
     ArrayList rowPickingList;
     PickingList pickinglist = new PickingList();

@@ -6,11 +6,7 @@
 package stockmanagement;
 
 import lists.ArtiList;
-import entity.Arti;
-import entity.Kund;
 import java.awt.event.KeyEvent;
-import java.util.*;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
