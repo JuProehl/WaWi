@@ -10,7 +10,9 @@ package stockmanagement;
  * @author JProehl
  */
 public class picklistFinischGUI extends javax.swing.JFrame {
+
     picklistGUI higherGUI;
+
     /**
      * Creates new form picklistFinischGUI
      */

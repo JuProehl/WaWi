@@ -5,12 +5,9 @@
  */
 package customermanagement;
 
-import stockmanagement.*;
 import database.DB_Connect;
-import entity.Arti;
 import entity.Kund;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,21 +18,20 @@ public class EditOKKundenAnlegen extends javax.swing.JFrame {
 
     Integer KNR;
     customerGUI customerGUI;
-    
+
     /**
      * Creates new form ArtikelAnlegenEditOK
      */
     public EditOKKundenAnlegen() {
         initComponents();
     }
-    
-    public EditOKKundenAnlegen(customerGUI customerGUI){
+
+    public EditOKKundenAnlegen(customerGUI customerGUI) {
         initComponents();
         KNR = nextKNR();
         this.customerGUI = customerGUI;
         Label_KNR.setText(KNR.toString());
-        
-        
+
     }
 
     /**
@@ -210,7 +206,7 @@ public class EditOKKundenAnlegen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonArtikelAnlegenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonArtikelAnlegenActionPerformed
-    anlegen();
+        anlegen();
     }//GEN-LAST:event_buttonArtikelAnlegenActionPerformed
 
     private void buttonAbbrechenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAbbrechenActionPerformed
@@ -236,108 +232,96 @@ public class EditOKKundenAnlegen extends javax.swing.JFrame {
     private void tfNachnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNachnameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfNachnameActionPerformed
-     
-    private void abfangenKey(java.awt.event.KeyEvent evt){
-          if(evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+
+    private void abfangenKey(java.awt.event.KeyEvent evt) {
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             setVisible(false);
         }
-         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             anlegen();
         }
     }
-    
-    private void anlegen(){
 
-        String Name;
-        String Vorname;
-        String Straße;
-        String Hausnummer;
-        String PLZ;
-        String Ort;
-        
-        Name = tfNachname.getText();
-        Vorname = tfVorname.getText();
-        Straße = tfStraße.getText();
-        Hausnummer = tfHausnummer.getText();
-        PLZ = tfPLZ.getText();
-        Ort = tfOrt.getText();
+    private void anlegen() {
+
+        String Name = tfNachname.getText();
+        String Vorname = tfVorname.getText();
+        String Straße = tfStraße.getText();
+        String Hausnummer = tfHausnummer.getText();
+        String PLZ = tfPLZ.getText();
+        String Ort = tfOrt.getText();
         Kund Kunde = new Kund();
         String ErrorText = "Eingabe erfolderlich von: ";
         int Erroranzahl = 0;
-        
-        
-        if(Name.isEmpty()){
+
+        if (Name.isEmpty()) {
             ErrorText = ErrorText + "Nachname";
             Erroranzahl++;
         }
-        
-        if(Vorname.isEmpty()){
-            if(Erroranzahl == 0){
+
+        if (Vorname.isEmpty()) {
+            if (Erroranzahl == 0) {
                 ErrorText = ErrorText + "Vorname";
             } else {
                 ErrorText = ErrorText + ", Vorname";
             }
             Erroranzahl++;
         }
-        if(Straße.isEmpty()){
-            if(Erroranzahl == 0){
+        if (Straße.isEmpty()) {
+            if (Erroranzahl == 0) {
                 ErrorText = ErrorText + "Straße";
             } else {
                 ErrorText = ErrorText + ", Straße";
             }
             Erroranzahl++;
         }
-        
-        if(Hausnummer.isEmpty()){
-            if(Erroranzahl == 0){
+
+        if (Hausnummer.isEmpty()) {
+            if (Erroranzahl == 0) {
                 ErrorText = ErrorText + "Hausnummer";
             } else {
                 ErrorText = ErrorText + ", Hausnummer";
             }
             Erroranzahl++;
         }
-        if(PLZ.isEmpty()){
-            if(Erroranzahl == 0){
+        if (PLZ.isEmpty()) {
+            if (Erroranzahl == 0) {
                 ErrorText = ErrorText + "PLZ";
             } else {
                 ErrorText = ErrorText + ", PLZ";
             }
             Erroranzahl++;
         }
-        if(Ort.isEmpty()){
-            if(Erroranzahl == 0){
+        if (Ort.isEmpty()) {
+            if (Erroranzahl == 0) {
                 ErrorText = ErrorText + "Ort";
             } else {
                 ErrorText = ErrorText + ", Ort";
             }
             Erroranzahl++;
         }
-            
-        if (Erroranzahl == 0){
-        Kunde.InsertKunde(KNR, Name, Vorname, Straße, Hausnummer, PLZ, Ort);
-        customerGUI.tabelleaktualisieren();
-        this.setVisible(false);  
+
+        if (Erroranzahl == 0) {
+            Kunde.InsertKunde(KNR, Name, Vorname, Straße, Hausnummer, PLZ, Ort);
+            customerGUI.tabelleaktualisieren();
+            this.setVisible(false);
         } else {
             general.Message.showError("Fehler", ErrorText);
         }
-        
-        
 
-        
-        
     }
-    
-       private Integer nextKNR(){
-       
-            
+
+    private Integer nextKNR() {
+
         DB_Connect con = new DB_Connect();
         List list = con.Connect("SELECT max(K.KNr) FROM Kund K");
         System.out.println(list);
-     
+
         Integer MaxKNR = (Integer) list.get(0);
         MaxKNR = MaxKNR + 1;
         return MaxKNR;
-   }
+    }
+
     /**
      * @param args the command line arguments
      */

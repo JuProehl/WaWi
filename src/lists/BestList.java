@@ -27,7 +27,6 @@ public class BestList {
 
     public BestList(String str) {
         TabelleHolen(str);
-        
 
     }
 
@@ -36,7 +35,7 @@ public class BestList {
         this.con = new database.DB_Connect();
         result = con.Connect("FROM Best ORDER BY BNr");
     }
-    
+
     public void TabelleHolen(String Befehl) {
 
         this.con = new database.DB_Connect();
@@ -50,12 +49,12 @@ public class BestList {
         model.setRowCount(0);
 
         for (Iterator iterator = result.iterator(); iterator.hasNext();) {
-            Best Bestellung = (Best) iterator.next();
-            rowData[0] = Bestellung.getBNR();
-            rowData[1] = Bestellung.getkund().getKNr();
-            rowData[2] = Bestellung.getBESTELLDATUM();
-            rowData[3] = Bestellung.getSTATUS();
-            rowData[4] = Bestellung.getABSCHLUSSDATUM();
+            Best bestellung = (Best) iterator.next();
+            rowData[0] = bestellung.getBNR();
+            rowData[1] = bestellung.getkund().getKNr();
+            rowData[2] = bestellung.getBESTELLDATUM();
+            rowData[3] = bestellung.getSTATUS();
+            rowData[4] = bestellung.getABSCHLUSSDATUM();
 
             model.addRow(rowData);
         }
@@ -63,43 +62,37 @@ public class BestList {
 
     public Integer getBNR(int row) {
 
-        Best Bestellung = (Best) result.get(row);
-        int BNr = Bestellung.getBNR();
-
-        return BNr;
+        Best bestellung = (Best) result.get(row);
+        return bestellung.getBNR();
     }
 
     public Integer getKNr(int row) {
 
-        Best Bestellung = (Best) result.get(row);
-        int KNr = Bestellung.getkund().getKNr();
-
-        return KNr;
+        Best bestellung = (Best) result.get(row);
+        return bestellung.getkund().getKNr();
     }
 
     public Date getBESTELLDATUM(int row) {
 
-        Best Bestellung = (Best) result.get(row);
-        Date BESTELLDATUM = Bestellung.getBESTELLDATUM();
-
-        return BESTELLDATUM;
+        Best bestellung = (Best) result.get(row);
+        return bestellung.getBESTELLDATUM();
     }
 
     public String getSTATUS(int row) {
 
-        Best Bestellung = (Best) result.get(row);
-        String STATUS = Bestellung.getSTATUS();
-
-        return STATUS;
+        Best bestellung = (Best) result.get(row);
+        return bestellung.getSTATUS();
     }
 
     public Date getABSCHLUSSDATUM(int row) {
-
-        Best Bestellung = (Best) result.get(row);
-        Date ABSCHLUSSDATUM = Bestellung.getABSCHLUSSDATUM();
-
-        return ABSCHLUSSDATUM;
+        Best bestellung = (Best) result.get(row);
+        return bestellung.getABSCHLUSSDATUM();
     }
 
-    
+    public Best getBest(int row) {
+
+        Best bestellung = (Best) result.get(row);
+        return bestellung;
+    }
+
 }

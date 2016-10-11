@@ -20,22 +20,21 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
     Integer ANR;
     String checkPreis;
     ArtikelbestandGUI artikelbestand;
-    
+
     /**
      * Creates new form ArtikelAnlegenEditOK
      */
     public EditOKArtikelAnlegen() {
         initComponents();
     }
-    
-    public EditOKArtikelAnlegen(ArtikelbestandGUI artikelbestand){
+
+    public EditOKArtikelAnlegen(ArtikelbestandGUI artikelbestand) {
         initComponents();
         ANR = nextANR();
         this.artikelbestand = artikelbestand;
         Label_Artikelnummer.setText(ANR.toString());
         this.checkPreis = "";
-        
-        
+
     }
 
     /**
@@ -192,7 +191,7 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonArtikelAnlegenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonArtikelAnlegenActionPerformed
-    anlegen();
+        anlegen();
     }//GEN-LAST:event_buttonArtikelAnlegenActionPerformed
 
     private void buttonAbbrechenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAbbrechenActionPerformed
@@ -214,26 +213,26 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
     private void tfBezKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfBezKeyPressed
         abfangenKey(evt);
     }//GEN-LAST:event_tfBezKeyPressed
-     
-    private void abfangenKey(java.awt.event.KeyEvent evt){
-          if(evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+
+    private void abfangenKey(java.awt.event.KeyEvent evt) {
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             setVisible(false);
         }
-         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             anlegen();
         }
     }
-    
-    private void anlegen(){
-            ArrayList<Integer> list = new ArrayList<Integer>();
+
+    private void anlegen() {
+        ArrayList<Integer> list = new ArrayList<Integer>();
         boolean success = true;
         try {
             list.add(Integer.parseInt(tfBestandsmenge.getText()));
             list.add(Integer.parseInt(tfKrit.getText()));
-            list.add(Integer.parseInt(tfLNR.getText()));  
-            
+            list.add(Integer.parseInt(tfLNR.getText()));
+
             this.checkPreis = tfVKPreis.getText().replace(".", ",");
-            
+
         } catch (NumberFormatException e) {
             general.Message.showError("Eingabefehler", "Eingaben überprüfen!");
             success = false;
@@ -243,46 +242,46 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
             if (!general.Check.istNegativ(list)) {
                 Arti artikel = new Arti();
                 int i = artikel.InsertArtikel(ANR, tfBez.getText(),
-                    Integer.parseInt(tfBestandsmenge.getText()), Integer.parseInt(tfKrit.getText()),
-                    Integer.parseInt(tfLNR.getText()), this.checkPreis);
+                        Integer.parseInt(tfBestandsmenge.getText()), Integer.parseInt(tfKrit.getText()),
+                        Integer.parseInt(tfLNR.getText()), this.checkPreis);
                 switch (i) {
                     case 1:
-                    general.Message.showSuccess("", "Anlage erfolgreich!");
+                        general.Message.showSuccess("", "Anlage erfolgreich!");
                         setVisible(false);
                         artikelbestand.tabelleHolen();
                         artikelbestand.tabelleausgeben();
-                    break;
+                        break;
                     case 2:
-                    general.Message.showError("", "Artikel existiert bereits!");
-                    break;
+                        general.Message.showError("", "Artikel existiert bereits!");
+                        break;
                     case 3:
-                    general.Message.showError("", "Lagerort existiert nicht!");
-                    break;
+                        general.Message.showError("", "Lagerort existiert nicht!");
+                        break;
                     case 4:
-                    general.Message.showError("", "Lagerort bereits vergeben!");
-                    break;
+                        general.Message.showError("", "Lagerort bereits vergeben!");
+                        break;
                     case 5:
-                    general.Message.showError("", "Kritische Menge ist zu groß! Die Fachmenge ist kleiner als die kritische Menge"); 
-                    break;
+                        general.Message.showError("", "Kritische Menge ist zu groß! Die Fachmenge ist kleiner als die kritische Menge");
+                        break;
                     case 6:
-                    general.Message.showError("", "Bestand kann nicht in das Fach eingelagert werden, da das Fach zu klein ist!");
-                    break;
+                        general.Message.showError("", "Bestand kann nicht in das Fach eingelagert werden, da das Fach zu klein ist!");
+                        break;
                 }
             }
         }
     }
-    
-       private Integer nextANR(){
-       
-            
+
+    private Integer nextANR() {
+
         DB_Connect con = new DB_Connect();
         List list = con.Connect("SELECT max(A.ANR) FROM Arti A");
         System.out.println(list);
-     
+
         Integer MaxANR = (Integer) list.get(0);
         MaxANR = MaxANR + 1;
         return MaxANR;
-   }
+    }
+
     /**
      * @param args the command line arguments
      */

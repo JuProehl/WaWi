@@ -18,22 +18,22 @@ import static org.junit.Assert.*;
  * @author Marc Czolbe
  */
 public class CheckTest {
-    
+
     public CheckTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -59,12 +59,16 @@ public class CheckTest {
     public void testIstNegativ_ArrayList() {
         System.out.println("istNegativ");
         ArrayList<Integer> list = new ArrayList<>();
+        list.add(1);
         list.add(-1);
+        list.add(-999);
+        list.add(156);
+        list.add(-8);
         Boolean expResult = true;
         Boolean result = Check.istNegativ(list);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
-    
+
 }

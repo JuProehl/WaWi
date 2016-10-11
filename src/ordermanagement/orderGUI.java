@@ -177,22 +177,22 @@ public class orderGUI extends javax.swing.JFrame {
 
     private void Button_FilteranwendenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_FilteranwendenActionPerformed
         String SelectString = "FROM Best";
-        if(CBOffen.isSelected()){
-            if(SelectString.equals("FROM Best")){
+        if (CBOffen.isSelected()) {
+            if (SelectString.equals("FROM Best")) {
                 SelectString = SelectString + " Where STATUS = 'offen'";
             }
         }
 
-        if(CBInArbeit.isSelected()){
-            if(SelectString.equals("FROM Best")){
+        if (CBInArbeit.isSelected()) {
+            if (SelectString.equals("FROM Best")) {
                 SelectString = SelectString + " Where STATUS = 'inArbeit'";
             } else {
                 SelectString = SelectString + " OR STATUS = 'inArbeit'";
             }
         }
 
-        if(CBGeschlossen.isSelected()){
-            if(SelectString.equals("FROM Best")){
+        if (CBGeschlossen.isSelected()) {
+            if (SelectString.equals("FROM Best")) {
                 SelectString = SelectString + " Where STATUS = 'Abgeschlossen'";
             } else {
                 SelectString = SelectString + " OR STATUS = 'Abgeschlossen'";
@@ -204,7 +204,7 @@ public class orderGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_Button_FilteranwendenActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         statusAktualisieren();
+        statusAktualisieren();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Methode tabelleausgaben
@@ -229,21 +229,17 @@ public class orderGUI extends javax.swing.JFrame {
     private void tabelleHolen() {
         this.BestellListe.TabelleHolen();
     }
-    
-    
-    private void statusAktualisieren(){
-        try{
-        int row = tableBest.getSelectedRow();
-        int BNR = BestellListe.getBNR(row);
-        String Status = BestellListe.getSTATUS(row);
-        EditOKStatusAktualisieren StatusGUI = new EditOKStatusAktualisieren(this,BNR,Status);
-        StatusGUI.setVisible(true);
-        
-       } catch (ArrayIndexOutOfBoundsException e) {
-           general.Message.showError("Fehler", "Bitte Zeile auswählen!");
-       }
+
+    private void statusAktualisieren() {
+        try {
+            int row = tableBest.getSelectedRow();
+            EditOKStatusAktualisieren StatusGUI = new EditOKStatusAktualisieren(this, BestellListe.getBest(row));
+            StatusGUI.setVisible(true);
+
+        } catch (ArrayIndexOutOfBoundsException e) {
+            general.Message.showError("Fehler", "Bitte Zeile auswählen!");
+        }
     }
-    
 
     /**
      * @param args the command line arguments

@@ -10,7 +10,6 @@ import org.hibernate.query.Query;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import java.util.*;
 
-
 // Klasse DB_Connect
 // Stellt die Verbindung zur Datenbank her
 // und führt Datenbankabfragen durch

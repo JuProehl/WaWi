@@ -3,25 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package stockmanagement;
 
 import database.DB_Connect;
-import lists.ArtiList;
 import entity.Arti;
-import entity.Kund;
 import entity.Lage;
-import java.awt.event.KeyEvent;
 import java.util.*;
-import javax.swing.table.DefaultTableModel;
 import lists.LageList;
+
 /**
  *
  * @author Markus
  */
 public class LagerGUI extends javax.swing.JFrame {
-    
-     LageList LagerListe = new LageList();
+
+    LageList LagerListe = new LageList();
 
     /**
      * Creates new form ArtikelbestandGUI
@@ -171,14 +167,14 @@ public class LagerGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonBackActionPerformed
 
     private void buttonAktualisierenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAktualisierenActionPerformed
-       TabelleHolen();
-       Tabelleausgeben();
-        
-        
+        TabelleHolen();
+        Tabelleausgeben();
+
+
     }//GEN-LAST:event_buttonAktualisierenActionPerformed
 
     private void tableLagerbestandKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableLagerbestandKeyPressed
-      
+
     }//GEN-LAST:event_tableLagerbestandKeyPressed
 
     private void buttonAktualisierenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buttonAktualisierenKeyPressed
@@ -186,75 +182,66 @@ public class LagerGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonAktualisierenKeyPressed
 
     private void jButton_bearbeitenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_bearbeitenActionPerformed
-            bearbeitenaufrufen();
+        bearbeitenaufrufen();
     }//GEN-LAST:event_jButton_bearbeitenActionPerformed
 
     private void jButton_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_deleteActionPerformed
-      deleteaufrufen();
+        deleteaufrufen();
     }//GEN-LAST:event_jButton_deleteActionPerformed
 
     private void jButton_anlegenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_anlegenActionPerformed
-       EditOKLagerortAnlegen anlegenGUI = new EditOKLagerortAnlegen(this);
-       anlegenGUI.setVisible(true);
+        EditOKLagerortAnlegen anlegenGUI = new EditOKLagerortAnlegen(this);
+        anlegenGUI.setVisible(true);
     }//GEN-LAST:event_jButton_anlegenActionPerformed
 
-    
-   public void Tabelleausgeben(){
-       LagerListe.LagerInTabelleAusgeben(tableLagerbestand);
-   }
-   
-   public void TabelleHolen(){
-       LagerListe.TabelleHolen();
-   }
-   
-   
-   private void bearbeitenaufrufen(){
-         try{
-        int row = tableLagerbestand.getSelectedRow();
-        int LNR = LagerListe.getLNr(row);
-        int Fach = LagerListe.getFach(row);
-        int Regal = LagerListe.getRegal(row);
-        int MaxMenge = LagerListe.getMaxMenge(row);
-        EditOKLagerortMetadaten metadatengui = new EditOKLagerortMetadaten(this,LNR,Regal,Fach,MaxMenge);
-         metadatengui.setVisible(true);
-       } catch (ArrayIndexOutOfBoundsException e) {
-           general.Message.showError("Fehler", "Bitte Zeile auswählen!");
-       }
-   }
-   
-   
-      private void deleteaufrufen(){
-          
+    public void Tabelleausgeben() {
+        LagerListe.LagerInTabelleAusgeben(tableLagerbestand);
+    }
 
-          
-       try{
-        int row = tableLagerbestand.getSelectedRow();
-        int LNR = LagerListe.getLNr(row);
-        
-        DB_Connect con = new DB_Connect();
-        int j = con.simpleConnect("SELECT F_LNR FROM Arti WHERE F_LNR=" + LNR);
-       if(j == 0){
-        Lage lager = new Lage();
-        int i = lager.UpdateLageFree("DELETE FROM LAGE WHERE LNR=" + LNR);
-        if(i == 1){
-            general.Message.showSuccess("Erfolgreich!", "Dantensatz mit der Lagernummer " + LNR + " wurde gelöscht!");
-        } else {
-            general.Message.showError("Fehler", "Datensatz konnte nicht gelöscht werden!");
+    public void TabelleHolen() {
+        LagerListe.TabelleHolen();
+    }
+
+    private void bearbeitenaufrufen() {
+        try {
+            int row = tableLagerbestand.getSelectedRow();
+            EditOKLagerortMetadaten metadatengui = new EditOKLagerortMetadaten(this, LagerListe.getLage(row));
+            metadatengui.setVisible(true);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            general.Message.showError("Fehler", "Bitte Zeile auswählen!");
         }
-        TabelleHolen();
-        Tabelleausgeben();
-       } else {
-           
-           Arti arti = new Arti();
-           List artilist = con.Connect("FROM Arti WHERE F_LNR=" + LNR);
-           arti = (Arti) artilist.get(0);
-           general.Message.showError("Fehler!", "Es ist noch ein Artikel mit der Artikelnummer " + arti.getANR() + " und der Bezeichnung '" + arti.getBEZEICHNUNG() + "' dem Lagerort zugeordnet. ");
-       }
-       } catch (ArrayIndexOutOfBoundsException e) {
-           general.Message.showError("Fehler", "Bitte Zeile auswählen!");
-       }
-   }
-    
+    }
+
+    private void deleteaufrufen() {
+
+        try {
+            int row = tableLagerbestand.getSelectedRow();
+            Lage lage = LagerListe.getLage(row);
+            int lnr = lage.getLNr();
+
+            DB_Connect con = new DB_Connect();
+            int j = con.simpleConnect("SELECT F_LNR FROM Arti WHERE F_LNR=" + lnr);
+            if (j == 0) {
+                int i = lage.deleteLage();
+                if (i == 1) {
+                    general.Message.showSuccess("Erfolgreich!", "Dantensatz mit der Lagernummer " + lnr + " wurde gelöscht!");
+                } else {
+                    general.Message.showError("Fehler", "Datensatz konnte nicht gelöscht werden!");
+                }
+                TabelleHolen();
+                Tabelleausgeben();
+            } else {
+
+                Arti arti = new Arti();
+                List artilist = con.Connect("FROM Arti WHERE F_LNR=" + lnr);
+                arti = (Arti) artilist.get(0);
+                general.Message.showError("Fehler!", "Es ist noch ein Artikel mit der Artikelnummer " + arti.getANR() + " und der Bezeichnung '" + arti.getBEZEICHNUNG() + "' dem Lagerort zugeordnet. ");
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            general.Message.showError("Fehler", "Bitte Zeile auswählen!");
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -282,13 +269,12 @@ public class LagerGUI extends javax.swing.JFrame {
         }
         //</editor-fold>  
         //</editor-fold>  
-        
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LagerGUI().setVisible(true);
-            }  
+            }
         });
     }
 

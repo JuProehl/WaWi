@@ -13,32 +13,31 @@ import entity.Best;
  */
 public class EditOKStatusAktualisieren extends javax.swing.JFrame {
 
-    Integer BNR;
+    Best best;
     String Status;
     orderGUI orderGUI;
-    
+
     /**
      * Creates new form EditOKStatusAktualisieren
      */
-    
     public EditOKStatusAktualisieren() {
-        initComponents(); 
-    }
-    
-    public EditOKStatusAktualisieren(orderGUI orderGUI,Integer BNR,String Status) {
         initComponents();
-        this.BNR = BNR;
-        this.Status = Status;
+    }
+
+    public EditOKStatusAktualisieren(orderGUI orderGUI, Best best) {
+        initComponents();
+        this.best = best;
+        this.Status = best.getSTATUS();
         this.orderGUI = orderGUI;
-        
-        jLabel3.setText(BNR.toString());
-        if(Status.equals("offen")){
+
+        jLabel3.setText(Integer.toString(best.getBNR()));
+        if (Status.equals("offen")) {
             RBOffen.setSelected(true);
         }
-        if(Status.equals("in Arbeit")){
+        if (Status.equals("in Arbeit")) {
             RBInArbeit.setSelected(true);
         }
-        if(Status.equals("abgeschlossen")){
+        if (Status.equals("abgeschlossen")) {
             RBGeschlossen.setSelected(true);
         }
     }
@@ -144,38 +143,37 @@ public class EditOKStatusAktualisieren extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-       Statusaktualisieren();
+        Statusaktualisieren();
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         setVisible(false);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
-    
-    private void Statusaktualisieren(){
+    private void Statusaktualisieren() {
         String newStatus = "";
-        
-        if(RBOffen.isSelected()){
+
+        if (RBOffen.isSelected()) {
             newStatus = "offen";
         }
-        if(RBGeschlossen.isSelected()){
+        if (RBGeschlossen.isSelected()) {
             newStatus = "Abgeschlossen";
         }
-        if(RBInArbeit.isSelected()){
+        if (RBInArbeit.isSelected()) {
             newStatus = "inArbeit";
         }
-        
-        if(!Status.equals(newStatus) && !newStatus.equals("")){
-            Best best = new Best();
-            best.UpdateStatus(BNR, newStatus);
+
+        if (!Status.equals(newStatus) && !newStatus.equals("")) {
+            this.best.UpdateStatus(newStatus);
             orderGUI.tabelleaktualisieren();
         }
         setVisible(false);
     }
-    
+
     /**
      * @param args the command line arguments
      */

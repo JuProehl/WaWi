@@ -14,7 +14,6 @@ import stockmanagement.LagerverwaltungGUI;
  *
  * @author Markus
  */
-
 // Klasse WaWiMainGUI
 // Hauptmenü des Warenwirtschaftssystems
 // Von diesem Hauptmenü gelangt man in die Unterbereiche:
@@ -169,7 +168,7 @@ public class WaWiMainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonKundenverwaltungActionPerformed
 
     private void buttonBestellverwaltungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBestellverwaltungActionPerformed
-       setVisible(false);
+        setVisible(false);
         // Objekt der Klasse customerGUI erzeugen
         orderGUI oGUI = new orderGUI();
         oGUI.setVisible(true);

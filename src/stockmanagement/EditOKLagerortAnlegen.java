@@ -15,26 +15,24 @@ import java.util.List;
  * @author matthias
  */
 public class EditOKLagerortAnlegen extends javax.swing.JFrame {
-    
+
     Integer LNR;
     LagerGUI lagergui;
 
     /**
      * Creates new form LagerortAnlagenEditOK
      */
-    
-    
     public EditOKLagerortAnlegen() {
 
-   
     }
+
     public EditOKLagerortAnlegen(LagerGUI lagergui) {
 
         initComponents();
         LNR = nextLNR();
         this.lagergui = lagergui;
         Label_Lagerortnummer.setText(LNR.toString());
-   
+
     }
 
     /**
@@ -147,7 +145,7 @@ public class EditOKLagerortAnlegen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonLagerAnlegenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLagerAnlegenActionPerformed
-            anlegen();
+        anlegen();
     }//GEN-LAST:event_buttonLagerAnlegenActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -189,8 +187,8 @@ public class EditOKLagerortAnlegen extends javax.swing.JFrame {
             }
         });
     }
-    
-   public void anlegen(){
+
+    public void anlegen() {
         ArrayList<Integer> list = new ArrayList<Integer>();
         boolean success = true;
         try {
@@ -205,37 +203,35 @@ public class EditOKLagerortAnlegen extends javax.swing.JFrame {
             if (!general.Check.istNegativ(list)) {
                 Lage ort = new Lage();
                 int i = ort.InsertLagerort(LNR, Integer.parseInt(tfRegal.getText()),
-                    Integer.parseInt(tfFach.getText()), Integer.parseInt(tfmaxMenge.getText()));
+                        Integer.parseInt(tfFach.getText()), Integer.parseInt(tfmaxMenge.getText()));
                 switch (i) {
                     case 1:
-                    setVisible(false);
-                    general.Message.showSuccess("", "Anlage erfolgreich!");
-                    lagergui.TabelleHolen();
-                    lagergui.Tabelleausgeben();
-                    break;
+                        setVisible(false);
+                        general.Message.showSuccess("", "Anlage erfolgreich!");
+                        lagergui.TabelleHolen();
+                        lagergui.Tabelleausgeben();
+                        break;
                     case 2:
-                    general.Message.showError("", "Lagerort existiert bereits!");
-                    break;
+                        general.Message.showError("", "Lagerort existiert bereits!");
+                        break;
                     case 3:
-                    general.Message.showError("", "Regal-Fach-Kombination bereits vergeben!");
-                    break;
+                        general.Message.showError("", "Regal-Fach-Kombination bereits vergeben!");
+                        break;
                 }
             }
         }
-   }
-   
-   
-   public Integer nextLNR(){
-       
-            
+    }
+
+    public Integer nextLNR() {
+
         DB_Connect con = new DB_Connect();
         List list = con.Connect("SELECT max(L.LNr) FROM Lage L");
         System.out.println(list);
-     
+
         Integer MaxLNR = (Integer) list.get(0);
         MaxLNR = MaxLNR + 1;
         return MaxLNR;
-   }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label_Lagerortnummer;

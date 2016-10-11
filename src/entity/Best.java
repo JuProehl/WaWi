@@ -1,8 +1,8 @@
 package entity;
 
-
 import database.DB_Connect;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,51 +16,50 @@ import javax.persistence.Table;
 @Table(name = "Best")
 
 public class Best {
-	@Id
-	@Column(name = "BNR")
-	private int BNR;
-	@Column(name = "BESTELLDATUM")
-	private Date BESTELLDATUM;
-        @ManyToOne
-	@JoinColumn(name="F_KNR")
-	private Kund kund;
-        @Column(name = "STATUS")
-	private String STATUS;
-        @Column(name = "ABSCHLUSSDATUM")
-	private Date ABSCHLUSSDATUM;
-        @OneToMany
-        @JoinColumn(name = "F_BNR")
-        private List<K_BA> k_ba;
-	
-        // Konstruktor der Klasse Best
-	public Best() {
-		super();
-	}
 
-        
-        public void UpdateStatus(String status) {
+    @Id
+    @Column(name = "BNR")
+    private int BNR;
+    @Column(name = "BESTELLDATUM")
+    private Date BESTELLDATUM;
+    @ManyToOne
+    @JoinColumn(name = "F_KNR")
+    private Kund kund;
+    @Column(name = "STATUS")
+    private String STATUS;
+    @Column(name = "ABSCHLUSSDATUM")
+    private Date ABSCHLUSSDATUM;
+    @OneToMany
+    @JoinColumn(name = "F_BNR")
+    private List<K_BA> k_ba;
+
+    // Konstruktor der Klasse Best
+    public Best() {
+        super();
+    }
+
+    public void UpdateStatus(String status) {
         DB_Connect con = new DB_Connect();
-        switch(status){
-        case "inArbeit":
-            con.simpleConnect("UPDATE Best SET STATUS = 'inArbeit' WHERE BNR = " + Integer.toString(this.BNR));
-            break;
-        case "offen":
-            con.simpleConnect("UPDATE Best SET STATUS = 'offen' WHERE BNR = " + Integer.toString(this.BNR));
-            break;
-        case "Abgeschlossen":
-            con.simpleConnect("UPDATE Best SET STATUS = 'Abgeschlossen' WHERE BNR = " + Integer.toString(this.BNR));
-            break;
-        default:
-        }     
-    } 
-      
+        switch (status) {
+            case "inArbeit":
+                con.simpleConnect("UPDATE Best SET STATUS = 'inArbeit' WHERE BNR = " + this.BNR);
+                break;
+            case "offen":
+                con.simpleConnect("UPDATE Best SET STATUS = 'offen' WHERE BNR = " + this.BNR);
+                break;
+            case "Abgeschlossen":
+                con.simpleConnect("UPDATE Best SET STATUS = 'Abgeschlossen' WHERE BNR = " + this.BNR);
+                con.simpleConnect("UPDATE Best SET ABSCHLUSSDATUM = '" + new SimpleDateFormat("dd-MM-yy").format(new java.util.Date()) + "' WHERE BNR = " + this.BNR);
+                break;
+            default:
+        }
+    }
 
-public void UpdateStatus(int BNR,String Status) {
+    public void UpdateStatus(int BNR, String Status) {
         DB_Connect con = new DB_Connect();
         con.simpleConnect("UPDATE Best SET STATUS = '" + Status + "' WHERE BNR = " + BNR);
 
-    }      
-
+    }
 
     // Getter und Setter
     /**
@@ -145,5 +144,5 @@ public void UpdateStatus(int BNR,String Status) {
      */
     public void setK_ba(List<K_BA> k_ba) {
         this.k_ba = k_ba;
-    }   		
+    }
 }

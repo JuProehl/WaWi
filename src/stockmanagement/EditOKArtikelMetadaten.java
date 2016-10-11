@@ -8,7 +8,6 @@ package stockmanagement;
 import entity.Arti;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import lists.LageList;
 
 /**
@@ -47,7 +46,7 @@ public class EditOKArtikelMetadaten extends javax.swing.JFrame {
         JTF_Bezeichnung.setText(Bezeichnung);
         JTF_kritMenge.setText(this.kritMenge.toString());
         JTF_LagerOrt.setText(this.LNr.toString());
-        JTF_VkPreis.setText(""+preis);
+        JTF_VkPreis.setText("" + preis);
     }
 
     /**

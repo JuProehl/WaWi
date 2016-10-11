@@ -3,22 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package stockmanagement;
 
 import lists.ArtiList;
-import entity.Arti;
-import entity.Kund;
 import java.awt.event.KeyEvent;
-import java.util.*;
-import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Markus
  */
 public class ArtikelbestandGUI extends javax.swing.JFrame {
-    
-     ArtiList ArtikelListe = new ArtiList();
+
+    ArtiList ArtikelListe = new ArtiList();
 
     /**
      * Creates new form ArtikelbestandGUI
@@ -209,7 +205,7 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonAktualisierenActionPerformed
 
     private void jButton_EinlagernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_EinlagernActionPerformed
-      einlagernAufrufen();
+        einlagernAufrufen();
     }//GEN-LAST:event_jButton_EinlagernActionPerformed
 
     private void tableArtikelbestandKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableArtikelbestandKeyPressed
@@ -229,138 +225,141 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_KorrekturActionPerformed
 
     private void jButton_MetaDatenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_MetaDatenActionPerformed
-    bearbeitenAufrufen();
+        bearbeitenAufrufen();
     }//GEN-LAST:event_jButton_MetaDatenActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-       deleteaufrufen();
+        deleteaufrufen();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void JButton_AnlegenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButton_AnlegenActionPerformed
-      anlegenAufrufen();
+        anlegenAufrufen();
     }//GEN-LAST:event_JButton_AnlegenActionPerformed
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         abfangenKey(evt);
     }//GEN-LAST:event_formKeyPressed
 
-    
-    
-   private void abfangenKey(java.awt.event.KeyEvent evt){
-         if(evt.getKeyCode()==KeyEvent.VK_F1){
+    private void abfangenKey(java.awt.event.KeyEvent evt) {
+        if (evt.getKeyCode() == KeyEvent.VK_F1) {
             einlagernAufrufen();
         }
-         if(evt.getKeyCode()==KeyEvent.VK_F2){
+        if (evt.getKeyCode() == KeyEvent.VK_F2) {
             auslagernAufrufen();
         }
-         if(evt.getKeyCode()==KeyEvent.VK_F3){
+        if (evt.getKeyCode() == KeyEvent.VK_F3) {
             korriegierenAufrufen();
         }
-          if(evt.getKeyCode()==KeyEvent.VK_F4){
+        if (evt.getKeyCode() == KeyEvent.VK_F4) {
             bearbeitenAufrufen();
         }
-           if(evt.getKeyCode()==KeyEvent.VK_F5){
-           tabelleaktualisieren();
+        if (evt.getKeyCode() == KeyEvent.VK_F5) {
+            tabelleaktualisieren();
         }
-            if(evt.getKeyCode()==KeyEvent.VK_F6){
+        if (evt.getKeyCode() == KeyEvent.VK_F6) {
             deleteaufrufen();
         }
-            if(evt.getKeyCode()==KeyEvent.VK_F7){
+        if (evt.getKeyCode() == KeyEvent.VK_F7) {
             anlegenAufrufen();
         }
-       
-   } 
-    
-   public void tabelleausgeben(){
-       ArtikelListe.ArtikelInTabelleAusgeben(tableArtikelbestand);
-   }
-   
-   public void tabelleHolen(){
-       ArtikelListe.TabelleHolen();
-   }
-   
-   public void tabelleaktualisieren(){
-       tabelleHolen();
-       tabelleausgeben();
-   }
-   
-   private void einlagernAufrufen(){
-        try{
-        int row = tableArtikelbestand.getSelectedRow();
-        int ANR = ArtikelListe.getANR(row);
-        int LNr = ArtikelListe.getF_LNR(row);
-        int AktMenge = ArtikelListe.getBESTANDSMENGE(row);
-        EditOKArtikelEinlagern EinlagernGUI = new EditOKArtikelEinlagern(ANR,LNr,AktMenge, this);
-        EinlagernGUI.setVisible(true);
-       } catch (ArrayIndexOutOfBoundsException e) {
-           general.Message.showError("Fehler", "Bitte Zeile auswählen!");
-       }
-   }
-   
-     private void auslagernAufrufen(){
-        try{
-        int row = tableArtikelbestand.getSelectedRow();
-        int ANR = ArtikelListe.getANR(row);
-        int AktMenge = ArtikelListe.getBESTANDSMENGE(row);
-        EditOKArtikelAuslagern AuslagernGUI = new EditOKArtikelAuslagern(ANR,AktMenge, this);
-        AuslagernGUI.setVisible(true);
-       } catch (ArrayIndexOutOfBoundsException e) {
-           general.Message.showError("Fehler", "Bitte Zeile auswählen!");
-       }
-   }
-    
-      private void korriegierenAufrufen(){
-        try{
-        int row = tableArtikelbestand.getSelectedRow();
-        int ANR = ArtikelListe.getANR(row);
-        int LNr = ArtikelListe.getF_LNR(row);
-        int AktMenge = ArtikelListe.getBESTANDSMENGE(row);
-        EditOKArtikelKorrektur KorrekturGUI = new EditOKArtikelKorrektur(ANR,LNr, this);
-        KorrekturGUI.setVisible(true);
-       } catch (ArrayIndexOutOfBoundsException e) {
-           general.Message.showError("Fehler", "Bitte Zeile auswählen!");
-       }
-   }  
-      
-   private void bearbeitenAufrufen(){
-       
-          try{
-        int row = tableArtikelbestand.getSelectedRow();
-        int ANR = ArtikelListe.getANR(row);
-        int LNr = ArtikelListe.getF_LNR(row);
-        String Bez = ArtikelListe.getBezeichnung(row);
-        int kritMenge = ArtikelListe.getKrit_Menge(row);
-        double preis = ArtikelListe.getVKPreis(row);
-        EditOKArtikelMetadaten MetaDatenGUI = new EditOKArtikelMetadaten(ANR,LNr,Bez,kritMenge,this, preis);
-         MetaDatenGUI.setVisible(true);
-       } catch (ArrayIndexOutOfBoundsException e) {
-           general.Message.showError("Fehler", "Bitte Zeile auswählen!");
-       }
-       
-      
-   }
-   
-   private void deleteaufrufen(){
-       try{
-        int row = tableArtikelbestand.getSelectedRow();
-        int i = ArtikelListe.getArti(row).loescheArtikel();
-        if(i == 1){
-            general.Message.showSuccess("Erfolgreich!", "Dantensatz mit der Artikelnummer " + ArtikelListe.getANR(row) + " wurde gelöscht!");
-        } else {
-            general.Message.showError("Fehler", "Datensatz konnte nicht gelöscht werden!");
-        }
+
+    }
+
+    public void tabelleausgeben() {
+        ArtikelListe.ArtikelInTabelleAusgeben(tableArtikelbestand);
+    }
+
+    public void tabelleHolen() {
+        ArtikelListe.TabelleHolen();
+    }
+
+    public void tabelleaktualisieren() {
         tabelleHolen();
         tabelleausgeben();
-       } catch (ArrayIndexOutOfBoundsException e) {
-           general.Message.showError("Fehler", "Bitte Zeile auswählen!");
-       }
-   }
-   
-   private void anlegenAufrufen(){
-      EditOKArtikelAnlegen anlegen = new EditOKArtikelAnlegen(this);
-      anlegen.setVisible(true);
-   }
-    
+    }
+
+    private void einlagernAufrufen() {
+        try {
+            int row = tableArtikelbestand.getSelectedRow();
+            int ANR = ArtikelListe.getANR(row);
+            int LNr = ArtikelListe.getF_LNR(row);
+            int AktMenge = ArtikelListe.getBESTANDSMENGE(row);
+            EditOKArtikelEinlagern EinlagernGUI = new EditOKArtikelEinlagern(ANR, LNr, AktMenge, this);
+            EinlagernGUI.setVisible(true);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            general.Message.showError("Fehler", "Bitte Zeile auswählen!");
+        }
+    }
+
+    private void auslagernAufrufen() {
+        try {
+            int row = tableArtikelbestand.getSelectedRow();
+            int ANR = ArtikelListe.getANR(row);
+            int AktMenge = ArtikelListe.getBESTANDSMENGE(row);
+            EditOKArtikelAuslagern AuslagernGUI = new EditOKArtikelAuslagern(ANR, AktMenge, this);
+            AuslagernGUI.setVisible(true);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            general.Message.showError("Fehler", "Bitte Zeile auswählen!");
+        }
+    }
+
+    private void korriegierenAufrufen() {
+        try {
+            int row = tableArtikelbestand.getSelectedRow();
+            int ANR = ArtikelListe.getANR(row);
+            int LNr = ArtikelListe.getF_LNR(row);
+            int AktMenge = ArtikelListe.getBESTANDSMENGE(row);
+            EditOKArtikelKorrektur KorrekturGUI = new EditOKArtikelKorrektur(ANR, LNr, this);
+            KorrekturGUI.setVisible(true);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            general.Message.showError("Fehler", "Bitte Zeile auswählen!");
+        }
+    }
+
+    private void bearbeitenAufrufen() {
+
+        try {
+            int row = tableArtikelbestand.getSelectedRow();
+            int ANR = ArtikelListe.getANR(row);
+            int LNr = ArtikelListe.getF_LNR(row);
+            String Bez = ArtikelListe.getBezeichnung(row);
+            int kritMenge = ArtikelListe.getKrit_Menge(row);
+            double preis = ArtikelListe.getVKPreis(row);
+            EditOKArtikelMetadaten MetaDatenGUI = new EditOKArtikelMetadaten(ANR, LNr, Bez, kritMenge, this, preis);
+            MetaDatenGUI.setVisible(true);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            general.Message.showError("Fehler", "Bitte Zeile auswählen!");
+        }
+
+    }
+
+    private void deleteaufrufen() {
+        try {
+            int row = tableArtikelbestand.getSelectedRow();
+            int i = ArtikelListe.getArti(row).loescheArtikel();
+            switch (i) {
+                case 2:
+                    general.Message.showError("Fehler", "Artikel mit Bestand können nicht gelöscht werden!");
+                    break;
+                case 1:
+                    general.Message.showSuccess("Erfolgreich!", "Dantensatz mit der Artikelnummer " + ArtikelListe.getANR(row) + " wurde gelöscht!");
+                    break;
+                default:
+                    general.Message.showError("Fehler", "Datensatz konnte nicht gelöscht werden!");
+                    break;
+            }
+            tabelleHolen();
+            tabelleausgeben();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            general.Message.showError("Fehler", "Bitte Zeile auswählen!");
+        }
+    }
+
+    private void anlegenAufrufen() {
+        EditOKArtikelAnlegen anlegen = new EditOKArtikelAnlegen(this);
+        anlegen.setVisible(true);
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -387,13 +386,12 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ArtikelbestandGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>  
-        
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ArtikelbestandGUI().setVisible(true);
-            }  
+            }
         });
     }
 
