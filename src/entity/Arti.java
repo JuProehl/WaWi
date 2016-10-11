@@ -38,11 +38,14 @@ public class Arti {
     private List<K_BA> k_ba;
     @Column(name = "VK_Preis")
     double VK_Preis;
+    @Column(name = "LOESCHKENNZEICHEN")
+    char LOESCHKENNZEICHEN;
 
     // Konstruktor der Klasse Arti
-    public Arti(){
-        
+    public Arti() {
+
     }
+
     // Einfache Anlage ohne Objektreferenzen
     public Arti(int anr, String bezeichnung, int bestandsmenge, int krit_menge, double VK_Preis) {
         this.ANR = anr;
@@ -93,6 +96,17 @@ public class Arti {
     public int UpdateArtikelFree(String str) {
         DB_Connect con = new DB_Connect();
         return con.simpleConnect(str);
+    }
+    
+    // Methode loescheArtikel
+    // Artikel Löschkennzeichen setzen
+    // Stellt eine Verbindung zur Datenbabk her und
+    // setzt unter Ausführung eines SQL-Statements das Löschkennzeichen eines Artikels.
+    // Rückgabewert int
+    // gibt die Anzahl betroffener Zeilen nach Ausführung des SQL-Statements zurück   
+    public int loescheArtikel() {
+        DB_Connect con = new DB_Connect();
+        return con.simpleConnect("UPDATE Arti SET LOESCHKENNZEICHEN = 'X' WHERE ANR = " + ANR);
     }
 
     // Methode Bestandskorrektur
@@ -280,9 +294,9 @@ public class Arti {
     public void setLage(Lage lage) {
         this.lage = lage;
     }
-    
-    public Arti clone(){
-        Arti arti = new Arti(this.ANR, this.BEZEICHNUNG, this.BESTANDSMENGE, this.krit_Menge, this.VK_Preis);       
+
+    public Arti clone() {
+        Arti arti = new Arti(this.ANR, this.BEZEICHNUNG, this.BESTANDSMENGE, this.krit_Menge, this.VK_Preis);
         return arti;
     }
 

@@ -42,9 +42,9 @@ public class ArtiList {
             model.addRow(rowData);
         }
     }
-    
-        public ArtiList(String Befehl) {
-        
+
+    public ArtiList(String Befehl) {
+
         database.DB_Connect con = new database.DB_Connect();
         result = con.Connect(Befehl);
 
@@ -58,9 +58,7 @@ public class ArtiList {
     public Integer getANR(int row) {
 
         Arti Artikel = (Arti) result.get(row);
-        int ANR = Artikel.getANR();
-
-        return ANR;
+        return Artikel.getANR();
     }
 
     public String getBezeichnung(int row) {
@@ -86,11 +84,16 @@ public class ArtiList {
         Arti Artikel = (Arti) result.get(row);
         return Artikel.getLage().getLNr();
     }
-    
-        public double getVKPreis(int row) {
+
+    public double getVKPreis(int row) {
 
         Arti Artikel = (Arti) result.get(row);
         return Artikel.getVK_Preis();
     }
 
+    public Arti getArti(int row) {
+
+        Arti Artikel = (Arti) result.get(row);
+        return Artikel;
+    }
 }

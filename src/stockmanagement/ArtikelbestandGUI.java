@@ -71,7 +71,7 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -343,11 +343,9 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
    private void deleteaufrufen(){
        try{
         int row = tableArtikelbestand.getSelectedRow();
-        int ANR = ArtikelListe.getANR(row);
-        Arti artikel = new Arti();
-        int i = artikel.UpdateArtikelFree("DELETE FROM ARTI WHERE ANR=" + ANR);
+        int i = ArtikelListe.getArti(row).loescheArtikel();
         if(i == 1){
-            general.Message.showSuccess("Erfolgreich!", "Dantensatz mit der Artikelnummer " + ANR + " wurde gelöscht!");
+            general.Message.showSuccess("Erfolgreich!", "Dantensatz mit der Artikelnummer " + ArtikelListe.getANR(row) + " wurde gelöscht!");
         } else {
             general.Message.showError("Fehler", "Datensatz konnte nicht gelöscht werden!");
         }
