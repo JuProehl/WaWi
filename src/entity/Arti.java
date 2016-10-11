@@ -106,7 +106,11 @@ public class Arti {
     // gibt die Anzahl betroffener Zeilen nach Ausführung des SQL-Statements zurück   
     public int loescheArtikel() {
         DB_Connect con = new DB_Connect();
-        return con.simpleConnect("UPDATE Arti SET LOESCHKENNZEICHEN = 'X' WHERE ANR = " + ANR);
+        // Nur Artikel ohne Bestand löschen
+        if (BESTANDSMENGE > 0) {
+            return 2;
+        }
+        return con.simpleConnect("UPDATE Arti SET LOESCHKENNZEICHEN = 'X', F_LNR = NULL WHERE ANR = " + ANR);
     }
 
     // Methode Bestandskorrektur
