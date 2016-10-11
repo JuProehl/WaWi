@@ -51,9 +51,17 @@ public class Best {
             con.simpleConnect("UPDATE Best SET STATUS = 'Abgeschlossen' WHERE BNR = " + Integer.toString(this.BNR));
             break;
         default:
-        } 
+        }     
     } 
-              
+      
+
+public void UpdateStatus(int BNR,String Status) {
+        DB_Connect con = new DB_Connect();
+        con.simpleConnect("UPDATE Best SET STATUS = '" + Status + "' WHERE BNR = " + BNR);
+
+    }      
+
+
     // Getter und Setter
     /**
      * @return the BNR

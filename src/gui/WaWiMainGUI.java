@@ -6,6 +6,7 @@
 package gui;
 
 import customermanagement.customerGUI;
+import ordermanagement.orderGUI;
 import report.ReportMainGUI;
 import stockmanagement.LagerverwaltungGUI;
 
@@ -42,7 +43,7 @@ public class WaWiMainGUI extends javax.swing.JFrame {
         buttonLager = new javax.swing.JButton();
         labelWaWi = new javax.swing.JLabel();
         buttonKundenverwaltung = new javax.swing.JButton();
-        buttonBenutzerverwaltung = new javax.swing.JButton();
+        buttonBestellverwaltung = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menü");
@@ -79,9 +80,14 @@ public class WaWiMainGUI extends javax.swing.JFrame {
             }
         });
 
-        buttonBenutzerverwaltung.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        buttonBenutzerverwaltung.setText("Benutzerverwaltung");
-        buttonBenutzerverwaltung.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonBestellverwaltung.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        buttonBestellverwaltung.setText("Bestellverwaltung");
+        buttonBestellverwaltung.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonBestellverwaltung.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonBestellverwaltungActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,7 +98,7 @@ public class WaWiMainGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(buttonKundenverwaltung, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonReport, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonBenutzerverwaltung, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonBestellverwaltung, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonLager, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(60, 60, 60))
             .addComponent(labelWaWi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -105,7 +111,7 @@ public class WaWiMainGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(buttonLager)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttonBenutzerverwaltung)
+                .addComponent(buttonBestellverwaltung)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(buttonKundenverwaltung)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -162,6 +168,15 @@ public class WaWiMainGUI extends javax.swing.JFrame {
         cGUI.tabelleausgeben();
     }//GEN-LAST:event_buttonKundenverwaltungActionPerformed
 
+    private void buttonBestellverwaltungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBestellverwaltungActionPerformed
+       setVisible(false);
+        // Objekt der Klasse customerGUI erzeugen
+        orderGUI oGUI = new orderGUI();
+        oGUI.setVisible(true);
+        // Methode zum Ausgeben der Kundendaten aufrufen
+        oGUI.tabelleausgeben();
+    }//GEN-LAST:event_buttonBestellverwaltungActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -201,7 +216,7 @@ public class WaWiMainGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonBenutzerverwaltung;
+    private javax.swing.JButton buttonBestellverwaltung;
     private javax.swing.JButton buttonKundenverwaltung;
     private javax.swing.JButton buttonLager;
     private javax.swing.JButton buttonReport;
