@@ -5,12 +5,9 @@
  */
 package customermanagement;
 
-import stockmanagement.*;
 import database.DB_Connect;
-import entity.Arti;
 import entity.Kund;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -247,20 +244,13 @@ public class EditOKKundenAnlegen extends javax.swing.JFrame {
     }
     
     private void anlegen(){
-
-        String Name;
-        String Vorname;
-        String Straße;
-        String Hausnummer;
-        String PLZ;
-        String Ort;
         
-        Name = tfNachname.getText();
-        Vorname = tfVorname.getText();
-        Straße = tfStraße.getText();
-        Hausnummer = tfHausnummer.getText();
-        PLZ = tfPLZ.getText();
-        Ort = tfOrt.getText();
+        String Name = tfNachname.getText();
+        String Vorname = tfVorname.getText();
+        String Straße = tfStraße.getText();
+        String Hausnummer = tfHausnummer.getText();
+        String PLZ = tfPLZ.getText();
+        String Ort = tfOrt.getText();
         Kund Kunde = new Kund();
         String ErrorText = "Eingabe erfolderlich von: ";
         int Erroranzahl = 0;

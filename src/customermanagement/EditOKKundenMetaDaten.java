@@ -5,13 +5,8 @@
  */
 package customermanagement;
 
-import stockmanagement.*;
-import database.DB_Connect;
-import entity.Arti;
 import entity.Kund;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
