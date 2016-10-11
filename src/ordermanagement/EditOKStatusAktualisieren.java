@@ -34,10 +34,10 @@ public class EditOKStatusAktualisieren extends javax.swing.JFrame {
         if (Status.equals("offen")) {
             RBOffen.setSelected(true);
         }
-        if (Status.equals("in Arbeit")) {
+        if (Status.equals("inArbeit")) {
             RBInArbeit.setSelected(true);
         }
-        if (Status.equals("abgeschlossen")) {
+        if (Status.equals("Abgeschlossen")) {
             RBGeschlossen.setSelected(true);
         }
     }
