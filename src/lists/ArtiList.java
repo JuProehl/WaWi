@@ -52,7 +52,7 @@ public class ArtiList {
 
     public void TabelleHolen() {
         database.DB_Connect con = new database.DB_Connect();
-        result = con.Connect("FROM Arti ORDER BY ANR");
+        result = con.Connect("FROM Arti WHERE LOESCHKENNZEICHEN = ' ' ORDER BY ANR");
     }
 
     public Integer getANR(int row) {
