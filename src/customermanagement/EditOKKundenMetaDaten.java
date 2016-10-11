@@ -15,6 +15,7 @@ import java.awt.event.KeyEvent;
 public class EditOKKundenMetaDaten extends javax.swing.JFrame {
 
     customerGUI customerGUI;
+    Kund kunde;
     Integer KNR;
     String Nachname;
     String Vorname;
@@ -30,16 +31,17 @@ public class EditOKKundenMetaDaten extends javax.swing.JFrame {
         initComponents();
     }
 
-    public EditOKKundenMetaDaten(customerGUI customerGUI, int KNR, String Nachname, String Vorname, String Strasse, Integer Hausnummer, Integer PLZ, String Ort) {
+    public EditOKKundenMetaDaten(customerGUI customerGUI, Kund kunde) {
         initComponents();
-        this.KNR = KNR;
-        this.Nachname = Nachname;
-        this.Vorname = Vorname;
-        this.Strasse = Strasse;
-        this.Hausnummer = Hausnummer;
-        this.PLZ = PLZ;
-        this.Ort = Ort;
         this.customerGUI = customerGUI;
+        this.kunde = kunde;
+        this.KNR = kunde.getKNr();
+        this.Nachname = kunde.getNachname();
+        this.Vorname = kunde.getVorname();
+        this.Strasse = kunde.getStrasse();
+        this.Hausnummer = kunde.getHausnummer();
+        this.PLZ = kunde.getPLZ();
+        this.Ort = kunde.getOrt();
 
         Label_KNR.setText(this.KNR.toString());
         tfHausnummer.setText(Hausnummer.toString());
@@ -342,8 +344,7 @@ public class EditOKKundenMetaDaten extends javax.swing.JFrame {
         }
 
         if (!(Anzahl == 0)) {
-            UpdateString = UpdateString + " Where KNr = " + this.KNR.toString();
-            int wert = Kunde.UpdateKundenFree(UpdateString);
+            int wert = kunde.updateKund(UpdateString);
             customerGUI.tabelleaktualisieren();
             this.setVisible(false);
             general.Message.showSuccess("Fehler", SuccessText);

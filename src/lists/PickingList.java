@@ -5,12 +5,9 @@
  */
 package lists;
 
-import database.DB_Connect;
 import entity.Arti;
 import entity.Best;
-import entity.Kund;
 import entity.K_BA;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ArrayList;
 import javax.swing.JTable;
@@ -66,10 +63,7 @@ public class PickingList {
         int letzteBNR = 0;
         boolean ignoreBNR = false;
         this.buildZaehlerArti();
-        
-        
-        
-        
+
         for (Object o : result) {
             K_BA k_ba = (K_BA) o;
             if (k_ba.getBest().getBNR() != letzteBNR) {
@@ -117,7 +111,6 @@ public class PickingList {
                 k_ba.getBest().UpdateStatus("inArbeit");
                 this.updateZaehlerArti(k_ba);
             }
-            
 
         }
         return pickingListArray;
@@ -166,14 +159,12 @@ public class PickingList {
             }
         }
     }
-    
-    
-    public void resetStatusAllBEST(){
-        for(K_BA i : pickingListArray){
+
+    public void resetStatusAllBEST() {
+        for (K_BA i : pickingListArray) {
             i.getBest().UpdateStatus("offen");
         }
-        
-        
+
     }
 
     public void setAbgeschlossen(ArrayList rowPickingList) {
@@ -181,9 +172,7 @@ public class PickingList {
             K_BA k_ba = (K_BA) j;
             k_ba.getBest().UpdateStatus("Abgeschlossen");
         }
-        
-        
+
     }
-    
-    
+
 }

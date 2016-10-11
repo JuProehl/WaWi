@@ -114,8 +114,13 @@ public class Kund {
 
     }
 
-    public int UpdateKundenFree(String str) {
+    public int loescheKund(){
         DB_Connect con = new DB_Connect();
-        return con.simpleConnect(str);
+        return con.simpleConnect("DELETE FROM KUND WHERE KNr=" + KNr);
+    }
+    
+    public int updateKund(String str) {
+        DB_Connect con = new DB_Connect();
+        return con.simpleConnect(str + " WHERE KNr=" + KNr);
     }
 }

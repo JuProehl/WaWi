@@ -80,12 +80,12 @@ public class LageList {
         return lager.getMaxmenge();
     }
 
-    public Lage getLage(int row){
-        
+    public Lage getLage(int row) {
+
         Lage lager = (Lage) result.get(row);
         return lager;
     }
-    
+
     public int getsize() {
         return result.size();
     }

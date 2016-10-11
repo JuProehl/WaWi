@@ -47,7 +47,6 @@ public class ArtiList {
 
         database.DB_Connect con = new database.DB_Connect();
         result = con.Connect(Befehl);
-
     }
 
     public void TabelleHolen() {

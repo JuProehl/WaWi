@@ -89,10 +89,10 @@ public class BestList {
         return bestellung.getABSCHLUSSDATUM();
     }
 
-    public Best getBest(int row){
-        
+    public Best getBest(int row) {
+
         Best bestellung = (Best) result.get(row);
         return bestellung;
     }
-    
+
 }

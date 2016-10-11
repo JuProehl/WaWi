@@ -405,7 +405,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
         jDateChooserBis.setEnabled(true);
         jButtonVolumenOK.setEnabled(true);
         buttonCancelVolumen.setEnabled(true);
-        
+
         this.setDefaultDates(jDateChooserVon, jDateChooserBis);
     }//GEN-LAST:event_buttonShowOrdersActionPerformed
 
@@ -645,7 +645,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
         jDateChooserBis.setEnabled(true);
         jButtonVolumenOK.setEnabled(true);
         buttonCancelVolumen.setEnabled(true);
-        
+
         this.setDefaultDates(jDateChooserVon, jDateChooserBis);
     }//GEN-LAST:event_buttonVolumenCustomerActionPerformed
     //Methode ermittleBestellvolumen 
@@ -685,6 +685,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
             model.addRow(rowData);
         }
     }
+
     //Methode ermittleBestellvolumenKunden 
     //Methode zum Anzeigen/Ermitteln des Bestellvolumens(€ und Menge)über einen
     //eingebenen Zeitraum. Dies wird nach den Kunden gruppiert, sodass ersichtlich
@@ -736,11 +737,12 @@ public class ReportMainGUI extends javax.swing.JFrame {
             model.addRow(rowData);
         }
     }
-    private void setDefaultDates(JDateChooser von, JDateChooser bis){
+
+    private void setDefaultDates(JDateChooser von, JDateChooser bis) {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.MONTH, -1);
         Date datelastmonth = cal.getTime();
-        
+
         von.setDate(datelastmonth);
         bis.setDate(Calendar.getInstance().getTime());
     }
