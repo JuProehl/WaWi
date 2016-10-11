@@ -206,13 +206,20 @@ public class WaWiMainGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        try{
         database.DB_Connect.ConnectOpen();
-
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new WaWiMainGUI().setVisible(true);
             }
         });
+        
+        } catch (org.hibernate.service.spi.ServiceException e){
+            general.Message.showError("Fehler!", "Keine Datenbankverbindung!");
+        }
+
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
