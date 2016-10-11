@@ -42,13 +42,13 @@ public class Best {
         DB_Connect con = new DB_Connect();
         switch(status){
         case "inArbeit":
-            con.simpleConnect("UPDATE Best SET STATUS = 'inArbeit' WHERE BNR = " + Integer.toString(this.BNR));
+            con.simpleConnect("UPDATE Best SET STATUS = 'inArbeit' WHERE BNR = " + this.BNR);
             break;
         case "offen":
-            con.simpleConnect("UPDATE Best SET STATUS = 'offen' WHERE BNR = " + Integer.toString(this.BNR));
+            con.simpleConnect("UPDATE Best SET STATUS = 'offen' WHERE BNR = " + this.BNR);
             break;
         case "Abgeschlossen":
-            con.simpleConnect("UPDATE Best SET STATUS = 'Abgeschlossen' WHERE BNR = " + Integer.toString(this.BNR));
+            con.simpleConnect("UPDATE Best SET STATUS = 'Abgeschlossen' WHERE BNR = " + this.BNR);
             break;
         default:
         }     

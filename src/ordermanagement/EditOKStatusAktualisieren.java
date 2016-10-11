@@ -13,7 +13,7 @@ import entity.Best;
  */
 public class EditOKStatusAktualisieren extends javax.swing.JFrame {
 
-    Integer BNR;
+    Best best;
     String Status;
     orderGUI orderGUI;
     
@@ -25,13 +25,13 @@ public class EditOKStatusAktualisieren extends javax.swing.JFrame {
         initComponents(); 
     }
     
-    public EditOKStatusAktualisieren(orderGUI orderGUI,Integer BNR,String Status) {
+    public EditOKStatusAktualisieren(orderGUI orderGUI, Best best) {
         initComponents();
-        this.BNR = BNR;
-        this.Status = Status;
+        this.best = best;
+        this.Status = best.getSTATUS();
         this.orderGUI = orderGUI;
         
-        jLabel3.setText(BNR.toString());
+        jLabel3.setText(Integer.toString(best.getBNR()));
         if(Status.equals("offen")){
             RBOffen.setSelected(true);
         }
@@ -170,8 +170,7 @@ public class EditOKStatusAktualisieren extends javax.swing.JFrame {
         }
         
         if(!Status.equals(newStatus) && !newStatus.equals("")){
-            Best best = new Best();
-            best.UpdateStatus(BNR, newStatus);
+            this.best.UpdateStatus(newStatus);
             orderGUI.tabelleaktualisieren();
         }
         setVisible(false);

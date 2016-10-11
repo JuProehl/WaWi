@@ -234,9 +234,7 @@ public class orderGUI extends javax.swing.JFrame {
     private void statusAktualisieren(){
         try{
         int row = tableBest.getSelectedRow();
-        int BNR = BestellListe.getBNR(row);
-        String Status = BestellListe.getSTATUS(row);
-        EditOKStatusAktualisieren StatusGUI = new EditOKStatusAktualisieren(this,BNR,Status);
+        EditOKStatusAktualisieren StatusGUI = new EditOKStatusAktualisieren(this, BestellListe.getBest(row));
         StatusGUI.setVisible(true);
         
        } catch (ArrayIndexOutOfBoundsException e) {
