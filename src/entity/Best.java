@@ -49,8 +49,8 @@ public class Best {
             con.simpleConnect("UPDATE Best SET STATUS = 'offen' WHERE BNR = " + this.BNR);
             break;
         case "Abgeschlossen":
-            con.simpleConnect("UPDATE Best SET STATUS = 'Abgeschlossen' WHERE BNR = " + Integer.toString(this.BNR));
-            con.simpleConnect("UPDATE Best SET ABSCHLUSSDATUM = '" + new SimpleDateFormat("dd-MM-yy").format(new java.util.Date()) + "' WHERE BNR = " + Integer.toString(this.BNR));
+            con.simpleConnect("UPDATE Best SET STATUS = 'Abgeschlossen' WHERE BNR = " + this.BNR);
+            con.simpleConnect("UPDATE Best SET ABSCHLUSSDATUM = '" + new SimpleDateFormat("dd-MM-yy").format(new java.util.Date()) + "' WHERE BNR = " + this.BNR);
             break;
         default:
         }     
