@@ -11,24 +11,25 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "K_BA")
 
-public class K_BA implements Serializable{
-	@Id
-        @ManyToOne
-	@JoinColumn(name="F_BNR")
-	private Best best;
-        @Id
-	@Column(name = "POSITION")
-	private int POSITION;
-        @ManyToOne
-	@JoinColumn(name="F_ANR")
-        private Arti arti;
-        @Column(name = "ANZAHL")
-	private int ANZAHL;
-		
-        // Konstruktor der Klasse K_BA
-	public K_BA() {
-		super();
-	}
+public class K_BA implements Serializable {
+
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "F_BNR")
+    private Best best;
+    @Id
+    @Column(name = "POSITION")
+    private int POSITION;
+    @ManyToOne
+    @JoinColumn(name = "F_ANR")
+    private Arti arti;
+    @Column(name = "ANZAHL")
+    private int ANZAHL;
+
+    // Konstruktor der Klasse K_BA
+    public K_BA() {
+        super();
+    }
 
     // Getter und Setter
     /**
@@ -85,5 +86,5 @@ public class K_BA implements Serializable{
      */
     public void setBest(Best best) {
         this.best = best;
-    }   	
+    }
 }

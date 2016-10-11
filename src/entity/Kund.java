@@ -37,7 +37,6 @@ public class Kund {
         super();
     }
 
-    
     // Getter und Setter
     public int getKNr() {
         return KNr;
@@ -108,12 +107,13 @@ public class Kund {
     public void setBest(List<Best> best) {
         this.best = best;
     }
-    
-    public void InsertKunde(Integer KNr,String Name, String Vorname, String Straße, String Hausnummer, String PLZ, String Ort){
+
+    public void InsertKunde(Integer KNr, String Name, String Vorname, String Straße, String Hausnummer, String PLZ, String Ort) {
         DB_Connect con = new DB_Connect();
-        con.simpleConnect("INSERT INTO KUND (KNr,Nachname,Vorname,Strasse,Hausnummer,PLZ,Ort) VALUES ('" + KNr.toString() + "','" + Name + "','"+Vorname+ "','"+Straße+"','"+Hausnummer+"','"+PLZ+"','"+Ort+"')");
-        
+        con.simpleConnect("INSERT INTO KUND (KNr,Nachname,Vorname,Strasse,Hausnummer,PLZ,Ort) VALUES ('" + KNr.toString() + "','" + Name + "','" + Vorname + "','" + Straße + "','" + Hausnummer + "','" + PLZ + "','" + Ort + "')");
+
     }
+
     public int UpdateKundenFree(String str) {
         DB_Connect con = new DB_Connect();
         return con.simpleConnect(str);

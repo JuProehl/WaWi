@@ -14,23 +14,23 @@ import java.awt.event.KeyEvent;
  */
 public class EditOKKundenMetaDaten extends javax.swing.JFrame {
 
-customerGUI customerGUI;
-Integer KNR;
-String Nachname;
-String Vorname;
-String Strasse;
-Integer Hausnummer;
-Integer PLZ;
-String Ort;
-    
+    customerGUI customerGUI;
+    Integer KNR;
+    String Nachname;
+    String Vorname;
+    String Strasse;
+    Integer Hausnummer;
+    Integer PLZ;
+    String Ort;
+
     /**
      * Creates new form ArtikelAnlegenEditOK
      */
     public EditOKKundenMetaDaten() {
         initComponents();
     }
-    
-    public EditOKKundenMetaDaten(customerGUI customerGUI, int KNR, String Nachname, String Vorname,String Strasse, Integer Hausnummer, Integer PLZ, String Ort){
+
+    public EditOKKundenMetaDaten(customerGUI customerGUI, int KNR, String Nachname, String Vorname, String Strasse, Integer Hausnummer, Integer PLZ, String Ort) {
         initComponents();
         this.KNR = KNR;
         this.Nachname = Nachname;
@@ -40,7 +40,7 @@ String Ort;
         this.PLZ = PLZ;
         this.Ort = Ort;
         this.customerGUI = customerGUI;
-       
+
         Label_KNR.setText(this.KNR.toString());
         tfHausnummer.setText(Hausnummer.toString());
         tfNachname.setText(Nachname);
@@ -48,8 +48,7 @@ String Ort;
         tfPLZ.setText(PLZ.toString());
         tfStraße.setText(Strasse);
         tfVorname.setText(Vorname);
-                
-        
+
     }
 
     /**
@@ -224,7 +223,7 @@ String Ort;
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonArtikelAnlegenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonArtikelAnlegenActionPerformed
-    anlegen();
+        anlegen();
     }//GEN-LAST:event_buttonArtikelAnlegenActionPerformed
 
     private void buttonAbbrechenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAbbrechenActionPerformed
@@ -250,17 +249,17 @@ String Ort;
     private void tfNachnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNachnameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfNachnameActionPerformed
-     
-    private void abfangenKey(java.awt.event.KeyEvent evt){
-          if(evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+
+    private void abfangenKey(java.awt.event.KeyEvent evt) {
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             setVisible(false);
         }
-         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             anlegen();
         }
     }
-    
-    private void anlegen(){
+
+    private void anlegen() {
 
         String Name = "";
         String Vorname = "";
@@ -268,31 +267,30 @@ String Ort;
         Integer Hausnummer = 0;
         Integer PLZ = 0;
         String Ort = "";
-        try{
-        Name = tfNachname.getText();
-        Vorname = tfVorname.getText();
-        Straße = tfStraße.getText();
-        Hausnummer = Integer.parseInt(tfHausnummer.getText());
-        PLZ = Integer.parseInt(tfPLZ.getText());
-        Ort = tfOrt.getText();
-        } catch (NumberFormatException e){
+        try {
+            Name = tfNachname.getText();
+            Vorname = tfVorname.getText();
+            Straße = tfStraße.getText();
+            Hausnummer = Integer.parseInt(tfHausnummer.getText());
+            PLZ = Integer.parseInt(tfPLZ.getText());
+            Ort = tfOrt.getText();
+        } catch (NumberFormatException e) {
             general.Message.showError("Fehler", "Bitte für PLZ oder Hausnummer nur Zahlen eingeben!");
         }
-        
+
         Kund Kunde = new Kund();
         String SuccessText = "Folgende Elemente wurden aktualisiert: ";
         String UpdateString = "UPDATE KUND SET";
         int Anzahl = 0;
-        
-        
-        if(!(this.Nachname.equals(Name))){
+
+        if (!(this.Nachname.equals(Name))) {
             SuccessText = SuccessText + "Nachname";
             UpdateString = UpdateString + " Nachname = '" + Name + "'";
             Anzahl++;
         }
-        
-        if(!(this.Vorname.equals(Vorname))){
-            if(Anzahl == 0){
+
+        if (!(this.Vorname.equals(Vorname))) {
+            if (Anzahl == 0) {
                 SuccessText = SuccessText + "Vorname";
                 UpdateString = UpdateString + " Vorname = '" + Vorname + "'";
             } else {
@@ -301,8 +299,8 @@ String Ort;
             }
             Anzahl++;
         }
-        if(!(this.Strasse.equals(Straße))){
-            if(Anzahl == 0){
+        if (!(this.Strasse.equals(Straße))) {
+            if (Anzahl == 0) {
                 SuccessText = SuccessText + "Straße";
                 UpdateString = UpdateString + " Strasse = '" + Straße + "'";
             } else {
@@ -311,9 +309,9 @@ String Ort;
             }
             Anzahl++;
         }
-        
-        if(!(this.Hausnummer.equals(Hausnummer))){
-            if(Anzahl == 0){
+
+        if (!(this.Hausnummer.equals(Hausnummer))) {
+            if (Anzahl == 0) {
                 SuccessText = SuccessText + "Hausnummer";
                 UpdateString = UpdateString + " Hausnummer = " + Hausnummer;
             } else {
@@ -322,8 +320,8 @@ String Ort;
             }
             Anzahl++;
         }
-        if(!(this.PLZ.equals(PLZ))){
-            if(Anzahl == 0){
+        if (!(this.PLZ.equals(PLZ))) {
+            if (Anzahl == 0) {
                 SuccessText = SuccessText + "PLZ";
                 UpdateString = UpdateString + " PLZ = " + PLZ;
             } else {
@@ -332,8 +330,8 @@ String Ort;
             }
             Anzahl++;
         }
-        if(!(this.Ort.equals(Ort))){
-            if(Anzahl == 0){
+        if (!(this.Ort.equals(Ort))) {
+            if (Anzahl == 0) {
                 SuccessText = SuccessText + "Ort";
                 UpdateString = UpdateString + " Ort = '" + Ort + "'";
             } else {
@@ -342,24 +340,19 @@ String Ort;
             }
             Anzahl++;
         }
-            
-        if (!(Anzahl == 0)){
-        UpdateString = UpdateString + " Where KNr = " + this.KNR.toString();        
-        int wert = Kunde.UpdateKundenFree(UpdateString);
-        customerGUI.tabelleaktualisieren();
-        this.setVisible(false);
-        general.Message.showSuccess("Fehler", SuccessText);
+
+        if (!(Anzahl == 0)) {
+            UpdateString = UpdateString + " Where KNr = " + this.KNR.toString();
+            int wert = Kunde.UpdateKundenFree(UpdateString);
+            customerGUI.tabelleaktualisieren();
+            this.setVisible(false);
+            general.Message.showSuccess("Fehler", SuccessText);
         } else {
             this.setVisible(false);
             general.Message.showError("Fehler", "Es wurde nichts geändert!");
         }
-        
-        
 
-        
-        
     }
-    
 
     /**
      * @param args the command line arguments
