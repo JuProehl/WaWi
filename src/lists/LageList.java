@@ -43,7 +43,7 @@ public class LageList {
     public void LagerInTabelleAusgeben(JTable Table1) {
 
         DefaultTableModel model = (DefaultTableModel) Table1.getModel();
-        Object rowData[] = new Object[4];
+        Object rowData[] = new Object[5];
         model.setRowCount(0);
 
         for (Iterator iterator = result.iterator(); iterator.hasNext();) {
@@ -52,6 +52,11 @@ public class LageList {
             rowData[1] = lager.getRegal();
             rowData[2] = lager.getFach();
             rowData[3] = lager.getMaxmenge();
+            try{
+            rowData[4] = lager.getArti().getANR();
+            } catch(NullPointerException e){
+            rowData[4] = "";    
+            }
             model.addRow(rowData);
         }
     }

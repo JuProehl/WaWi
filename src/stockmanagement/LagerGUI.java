@@ -58,11 +58,11 @@ public class LagerGUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Lagernummer", "Regal", "Fach", "Fachgröße"
+                "Lagernummer", "Regal", "Fach", "Fachgröße", "ANR"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

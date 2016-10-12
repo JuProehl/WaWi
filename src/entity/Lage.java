@@ -6,6 +6,7 @@
 package entity;
 
 import database.DB_Connect;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -28,10 +29,11 @@ public class Lage {
     int Fach;
     @Column(name = "maxmenge")
     int maxmenge;
+    
 
     // Konstruktor der Klasse Lage
     public Lage() {
-        super();
+        super();   
     }
 
     public int InsertLagerort(int LNR, int regal, int fach, int max) {
@@ -84,6 +86,8 @@ public class Lage {
     public void setMaxmenge(int maxmenge) {
         this.maxmenge = maxmenge;
     }
+    
+   
 
     public int deleteLage() {
         DB_Connect con = new DB_Connect();
@@ -94,6 +98,20 @@ public class Lage {
         DB_Connect con = new DB_Connect();
         return con.simpleConnect(str + " WHERE LNr=" + this.LNr);
     }
+    
+    public Arti getArti(){
+        Arti arti = null ;
+        DB_Connect con = new DB_Connect();
+        List list = con.Connect("FROM Arti WHERE F_LNR = " + this.LNr);
+        try{
+        arti = (Arti) list.get(0);
+        } catch ( IndexOutOfBoundsException e){
+            System.out.println("Alles Scheiße!");
+        }
+        
+        
+        return arti;
+        } 
 
     /**
      * @return the arti
