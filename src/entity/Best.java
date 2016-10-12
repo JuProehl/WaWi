@@ -46,6 +46,7 @@ public class Best {
                 break;
             case "offen":
                 con.simpleConnect("UPDATE Best SET STATUS = 'offen' WHERE BNR = " + this.BNR);
+                con.simpleConnect("UPDATE Best SET ABSCHLUSSDATUM = '01-01-00' WHERE BNR = " + this.BNR);
                 break;
             case "Abgeschlossen":
                 con.simpleConnect("UPDATE Best SET STATUS = 'Abgeschlossen' WHERE BNR = " + this.BNR);

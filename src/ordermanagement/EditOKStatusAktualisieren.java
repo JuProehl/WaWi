@@ -14,7 +14,7 @@ import entity.Best;
 public class EditOKStatusAktualisieren extends javax.swing.JFrame {
 
     Best best;
-    String Status;
+    String status;
     orderGUI orderGUI;
 
     /**
@@ -27,17 +27,14 @@ public class EditOKStatusAktualisieren extends javax.swing.JFrame {
     public EditOKStatusAktualisieren(orderGUI orderGUI, Best best) {
         initComponents();
         this.best = best;
-        this.Status = best.getSTATUS();
+        this.status = best.getSTATUS();
         this.orderGUI = orderGUI;
 
         jLabel3.setText(Integer.toString(best.getBNR()));
-        if (Status.equals("offen")) {
+        if (status.equals("offen")) {
             RBOffen.setSelected(true);
         }
-        if (Status.equals("inArbeit")) {
-            RBInArbeit.setSelected(true);
-        }
-        if (Status.equals("Abgeschlossen")) {
+        if (status.equals("Abgeschlossen")) {
             RBGeschlossen.setSelected(true);
         }
     }
@@ -60,7 +57,6 @@ public class EditOKStatusAktualisieren extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         RBOffen = new javax.swing.JRadioButton();
-        RBInArbeit = new javax.swing.JRadioButton();
         RBGeschlossen = new javax.swing.JRadioButton();
         jToggleButton1 = new javax.swing.JToggleButton();
         jToggleButton2 = new javax.swing.JToggleButton();
@@ -73,9 +69,6 @@ public class EditOKStatusAktualisieren extends javax.swing.JFrame {
 
         buttonGroup1.add(RBOffen);
         RBOffen.setText("offen");
-
-        buttonGroup1.add(RBInArbeit);
-        RBInArbeit.setText("in Arbeit");
 
         buttonGroup1.add(RBGeschlossen);
         RBGeschlossen.setText("Abgeschlossen");
@@ -99,26 +92,22 @@ public class EditOKStatusAktualisieren extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addGap(29, 29, 29)
+                .addComponent(jLabel3))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel1))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2)
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jToggleButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jToggleButton2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(RBGeschlossen)
-                            .addComponent(RBOffen)
-                            .addComponent(RBInArbeit))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(RBGeschlossen)
+                    .addComponent(RBOffen)))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jToggleButton1)
+                .addGap(18, 18, 18)
+                .addComponent(jToggleButton2))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,14 +121,12 @@ public class EditOKStatusAktualisieren extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(RBOffen)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(RBInArbeit)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(RBGeschlossen)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jToggleButton1)
                     .addComponent(jToggleButton2))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -163,11 +150,8 @@ public class EditOKStatusAktualisieren extends javax.swing.JFrame {
         if (RBGeschlossen.isSelected()) {
             newStatus = "Abgeschlossen";
         }
-        if (RBInArbeit.isSelected()) {
-            newStatus = "inArbeit";
-        }
 
-        if (!Status.equals(newStatus) && !newStatus.equals("")) {
+        if (!status.equals(newStatus) && !newStatus.equals("")) {
             this.best.UpdateStatus(newStatus);
             orderGUI.tabelleaktualisieren();
         }
@@ -211,7 +195,6 @@ public class EditOKStatusAktualisieren extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton RBGeschlossen;
-    private javax.swing.JRadioButton RBInArbeit;
     private javax.swing.JRadioButton RBOffen;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
