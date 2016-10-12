@@ -106,7 +106,6 @@ public class Lage {
         try{
         arti = (Arti) list.get(0);
         } catch ( IndexOutOfBoundsException e){
-            System.out.println("Alles Scheiße!");
         }
         
         
