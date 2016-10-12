@@ -79,12 +79,12 @@ public class PickingList {
                         for (Object i : result) {
                             K_BA tk_ba = (K_BA) i;
                             if (k_ba.getBest().getBNR() == tk_ba.getBest().getBNR()) {
-                                pickingListArray.add(tk_ba); //Hinzufügen
+                                getPickingListArray().add(tk_ba); //Hinzufügen
                                 k_ba.getBest().UpdateStatus("inArbeit"); //Status in der DB
                                 this.updateZaehlerArti(tk_ba); //Bestandsberechnung für weite Bestellungen
                             }
                         }
-                        return pickingListArray; 
+                        return getPickingListArray(); 
                     } else { //Kein Bestand für großen Auftrag
                         letzteBNR = k_ba.getBest().getBNR(); //merken der geprüften BNR
                         ignoreBNR = true; //Marker zum ignorieren dieser BNR
@@ -97,7 +97,7 @@ public class PickingList {
                         ignoreBNR = false; //Rücksetzen der IgnorBNR Marke da eine neue bestellung geprüft wird
                         if (checkBestand(k_ba.getBest().getBNR())) { //Bestandsprüfung
                             artikelinPickingList += anzahlArtikelproBest(k_ba.getBest().getBNR()); //Zähler der Artikel in PList hochzählen
-                            pickingListArray.add(k_ba);//Hinzufügen
+                            getPickingListArray().add(k_ba);//Hinzufügen
                             k_ba.getBest().UpdateStatus("inArbeit");//Status in der DB
                             this.updateZaehlerArti(k_ba);//Bestandskorrektur für weite Bestellungen
                         } else { //Kein Bestand für diesen Auftrag
@@ -105,19 +105,19 @@ public class PickingList {
                         }
                         letzteBNR = k_ba.getBest().getBNR();//prüfung dieser BNR merken
                     } else if (artikelinPickingList > 120) { //PickingList füllen bis mindestens 120 und weniger als 150 Artikel enthalten sind
-                        return pickingListArray; //Rückgabe PList
+                        return getPickingListArray(); //Rückgabe PList
                     }
                 }
 
             } else if (!ignoreBNR) {
                 //Positionen einer geprüften Bestellung werden zum Array hinzugefügt wenn die Prüfung der BNR Positiv war
-                pickingListArray.add(k_ba);
+                getPickingListArray().add(k_ba);
                 k_ba.getBest().UpdateStatus("inArbeit");
                 this.updateZaehlerArti(k_ba);
             }
 
         }
-        return pickingListArray;
+        return getPickingListArray();
     }
 
     public int anzahlArtikelproBest(int bnr) {
@@ -170,7 +170,7 @@ public class PickingList {
 
     public void resetStatusAllBEST() {
         //setzt für das pickingListArray den Status offen in die DB wenn in der GUI zurück ansgewählt wird
-        for (K_BA i : pickingListArray) {
+        for (K_BA i : getPickingListArray()) {
             i.getBest().UpdateStatus("offen");
         }
 
@@ -183,6 +183,13 @@ public class PickingList {
             k_ba.getBest().UpdateStatus("Abgeschlossen");
         }
 
+    }
+
+    /**
+     * @return the pickingListArray
+     */
+    public ArrayList<K_BA> getPickingListArray() {
+        return pickingListArray;
     }
 
 }

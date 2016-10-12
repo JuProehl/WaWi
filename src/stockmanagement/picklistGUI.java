@@ -16,8 +16,7 @@ import java.util.List;
  */
 public class picklistGUI extends javax.swing.JFrame {
 
-    //Klassen Variablen Deklaration
-    ArrayList rowPickingList;
+    //Objekt Variablen Deklaration
     PickingList pickinglist = new PickingList();
 
     public picklistGUI() {
@@ -67,6 +66,7 @@ public class picklistGUI extends javax.swing.JFrame {
                 "BestellNr", "Position", "Bezeichnung", "Anzahl", "Bestand", "Regal", "Fach"
             }
         ));
+        tablePicklist.setEnabled(false);
         jScrollPane1.setViewportView(tablePicklist);
 
         buttonPrint.setText("Drucken");
@@ -166,7 +166,7 @@ public class picklistGUI extends javax.swing.JFrame {
     public void pickListReady() {
         //Methode die aus der picklistFinischGUI aufgerufen wird
         //aktuelle Picking Liste (ArrayList) an die Methode setAbgeschlossen übergeben und Methode aufrufen
-        pickinglist.setAbgeschlossen(rowPickingList);
+        pickinglist.setAbgeschlossen(pickinglist.getPickingListArray());
         //Aufruf der Methode printEtiketten
         printEtiketten();
     }
@@ -242,9 +242,8 @@ public class picklistGUI extends javax.swing.JFrame {
     public void showTable() {
         //Methode die aus der LagerverwaltungGUI aufgerufen wird
         //Initialisieren der Klassen Var "rowPickingList" durch aufrufen der picklinglist Klassenmethode buildPickingList
-        rowPickingList = pickinglist.buildPickinglist();
         //Übergabe der rowPickingList an die Methode showTable sowie der Tabelle der GUI in der die ArrayList angezeigt werden soll
-        pickinglist.showTable(tablePicklist, rowPickingList);
+        pickinglist.showTable(tablePicklist, pickinglist.buildPickinglist());
     }
 
     /**
