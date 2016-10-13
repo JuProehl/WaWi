@@ -34,6 +34,7 @@ public class picklistGUI extends javax.swing.JFrame {
         buttonPrint = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         buttonReady = new javax.swing.JButton();
+        showartipList = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -87,6 +88,13 @@ public class picklistGUI extends javax.swing.JFrame {
             }
         });
 
+        showartipList.setText("Artikel Summierung");
+        showartipList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showartipListActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -96,6 +104,8 @@ public class picklistGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(showartipList, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(buttonReady, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -119,7 +129,9 @@ public class picklistGUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonReady, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(showartipList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonReady, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -162,6 +174,13 @@ public class picklistGUI extends javax.swing.JFrame {
         //neues picklistFinischGUI Objekts auf Sichbar setzen
         picklistFinischGUI.setVisible(true);
     }//GEN-LAST:event_buttonReadyActionPerformed
+
+    private void showartipListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showartipListActionPerformed
+        // TODO add your handling code here:
+        picklistArtiSumGUI picklistArtiSumGUI = new picklistArtiSumGUI(pickinglist.getPickingListArray());
+        picklistArtiSumGUI.createAndshowTabel();
+        picklistArtiSumGUI.setVisible(true);
+    }//GEN-LAST:event_showartipListActionPerformed
 
     public void pickListReady() {
         //Methode die aus der picklistFinischGUI aufgerufen wird
@@ -288,6 +307,7 @@ public class picklistGUI extends javax.swing.JFrame {
     private javax.swing.JButton buttonReady;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton showartipList;
     private javax.swing.JTable tablePicklist;
     // End of variables declaration//GEN-END:variables
 }
