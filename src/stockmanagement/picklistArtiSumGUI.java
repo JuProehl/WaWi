@@ -7,6 +7,7 @@ package stockmanagement;
 
 import entity.Arti;
 import entity.K_BA;
+import general.Print;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -88,6 +89,11 @@ public class picklistArtiSumGUI extends javax.swing.JFrame {
         });
 
         jButtonPrint.setText("Drucken");
+        jButtonPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPrintActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -130,6 +136,21 @@ public class picklistArtiSumGUI extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButtonEndActionPerformed
 
+    private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
+        // TODO add your handling code here:
+        // Drucken Button
+        //neues Print Objekt 
+        Print drucken = new Print("PickingList");
+        //Prüfung ob in der PickingList tabelle Daten vorhanden sind
+        if (jTableArtiList.getColumnCount() > 0) {
+            //JA --> Seiten des Print Objekts erzeugen
+            drucken.CreatePages(jTableArtiList);
+        } else {
+            //NEIN --> Fehlermeldung "Keine Daten!"
+            general.Message.showError("", "Keine Daten!");
+        }
+    }//GEN-LAST:event_jButtonPrintActionPerformed
+
     public void createAndshowTabel() {
         Arti tmp;
         boolean sorted = false;
@@ -142,28 +163,10 @@ public class picklistArtiSumGUI extends javax.swing.JFrame {
         Collections.sort(artiPickingList, new Comparator<Arti>() {
             public int compare(Arti a1, Arti a2) {
                 int flip = 0;
-                flip = Integer.valueOf(a1.getLage().getRegal()).compareTo(a2.getLage().getRegal());
+                flip = Integer.valueOf(a1.getLage().getRegal() * 1000000 + a1.getLage().getFach()).compareTo(a2.getLage().getRegal()* 1000000 + a2.getLage().getFach());
                 return flip;
             }
         });
-
-        for (int i = 0; i < artiPickingList.size() - 1; i++) {
-            if (i+1 == artiPickingList.get(i + 1).getLage().getRegal()) {
-                while (!sorted) {
-                    sorted = true;
-                    for (int j = 0; j < artiPickingList.size() - 1; j++) {
-                        if (i+1 == artiPickingList.get(j + 1).getLage().getRegal() && artiPickingList.get(j).getLage().getFach() > artiPickingList.get(j + 1).getLage().getFach()) {
-                            tmp = artiPickingList.get(j + 1);
-                            artiPickingList.set(j + 1, artiPickingList.get(j));
-                            artiPickingList.set(j, tmp);
-                            sorted = false;
-                        }
-                    }
-                }
-            }
-
-        }
-
         this.showTable();
     }
 
