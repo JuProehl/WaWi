@@ -74,9 +74,30 @@ public class Print {
             JTextArea tf = new JTextArea(4, 10);
             tf.setText(anschrift);
             tf.print(this.header, this.footer, false, this.service, this.pset, true);
+        } catch (java.awt.print.PrinterException e) {
+            System.err.format("Fehler beim Drucken", e.getMessage());
+        }
+    }
+    
+    
+    public void CreatePages (String anschrift, JTable table){
+        try {
+
+            JTextArea tf = new JTextArea(4, 10);
+            tf.setText(anschrift);
+            tf.print(this.header, this.footer, false, this.service, this.pset, true);
+        } catch (java.awt.print.PrinterException e) {
+            System.err.format("Fehler beim Drucken", e.getMessage());
+        }
+        
+        try {
+            // Druckkontext aufrufen
+            // Für den Druck wird der Header und Footer angefügt
+            table.print(JTable.PrintMode.FIT_WIDTH, header, footer, false, pset, true, service);
 
         } catch (java.awt.print.PrinterException e) {
             System.err.format("Fehler beim Drucken", e.getMessage());
         }
     }
+    
 }

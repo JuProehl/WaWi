@@ -140,7 +140,7 @@ public class picklistArtiSumGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         // Drucken Button
         //neues Print Objekt 
-        Print drucken = new Print("PickingList");
+        Print drucken = new Print("Artikel der aktuellen PickingList");
         //Prüfung ob in der PickingList tabelle Daten vorhanden sind
         if (jTableArtiList.getColumnCount() > 0) {
             //JA --> Seiten des Print Objekts erzeugen
