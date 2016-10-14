@@ -162,9 +162,7 @@ public class picklistArtiSumGUI extends javax.swing.JFrame {
         }
         Collections.sort(artiPickingList, new Comparator<Arti>() {
             public int compare(Arti a1, Arti a2) {
-                int flip = 0;
-                flip = Integer.valueOf(a1.getLage().getRegal() * 1000000 + a1.getLage().getFach()).compareTo(a2.getLage().getRegal()* 1000000 + a2.getLage().getFach());
-                return flip;
+                return Integer.valueOf(a1.getLage().getRegal() * 1000000 + a1.getLage().getFach()).compareTo(a2.getLage().getRegal()* 1000000 + a2.getLage().getFach());
             }
         });
         this.showTable();
