@@ -5,6 +5,7 @@
  */
 package general;
 
+import java.awt.print.Printable;
 import java.text.MessageFormat;
 import javax.print.PrintService;
 import javax.print.PrintServiceLookup;
@@ -94,7 +95,12 @@ public class Print {
             // Druckkontext aufrufen
             // Für den Druck wird der Header und Footer angefügt
             table.print(JTable.PrintMode.FIT_WIDTH, header, footer, false, pset, true, service);
-
+            
+            
+            JTextArea tf = new JTextArea(4, 10);
+            tf.setText(anschrift);
+            Printable page = table.getPrintable(JTable.PrintMode.NORMAL, header, footer);
+            
         } catch (java.awt.print.PrinterException e) {
             System.err.format("Fehler beim Drucken", e.getMessage());
         }
