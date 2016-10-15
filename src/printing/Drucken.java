@@ -29,14 +29,15 @@ public class Drucken {
         for (Object kba : pickList) {
             K_BA k_ba = (K_BA) kba;
             if (!printedBnr.contains(Integer.valueOf(k_ba.getBest().getBNR()))) {
-                String ueberschrift = "Lieferschein der HandyTyp GmbH";
+                String ueberschrift = "Lieferschein";
+                String unterUeberschrift = "Der HandyTyp GmbH & Co. KG";
                 String unsereAdresse = "Smartway Drive 151 ● Silicon Valley 424242 ● USA";
 
                 String adresse_z1 = k_ba.getBest().getkund().getVorname() + " " + k_ba.getBest().getkund().getNachname();
                 String adresse_z2 = k_ba.getBest().getkund().getStrasse() + " " + k_ba.getBest().getkund().getHausnummer();
                 String adresse_z3 = k_ba.getBest().getkund().getPLZ() + " " + k_ba.getBest().getkund().getOrt();
 
-                printJob.setPrintable(new PrintObj(ueberschrift, unsereAdresse, adresse_z1, adresse_z2, adresse_z3, k_ba.getBest().getBNR(), pickList));
+                printJob.setPrintable(new PrintObj(ueberschrift, unterUeberschrift, unsereAdresse, adresse_z1, adresse_z2, adresse_z3, k_ba.getBest().getBNR(), pickList));
 
                 if (printJob.printDialog()) {
                     try {
