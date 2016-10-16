@@ -102,7 +102,7 @@ public class orderGUI extends javax.swing.JFrame {
             }
         });
 
-        jButtonAED.setText("Adressetikett Drucken");
+        jButtonAED.setText("Lieferschein Drucken");
         jButtonAED.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAEDActionPerformed(evt);
@@ -124,7 +124,7 @@ public class orderGUI extends javax.swing.JFrame {
                         .addComponent(buttonAktualisieren)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1)

@@ -35,7 +35,7 @@
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="jScrollPane1" pref="636" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="644" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -202,7 +202,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButtonAED">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Adressetikett Drucken"/>
+        <Property name="text" type="java.lang.String" value="Lieferschein Drucken"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAEDActionPerformed"/>
