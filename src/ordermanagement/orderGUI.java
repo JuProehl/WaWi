@@ -5,7 +5,9 @@
  */
 package ordermanagement;
 
+import database.DB_Connect;
 import gui.WaWiMainGUI;
+import java.util.List;
 import lists.BestList;
 
 /**
@@ -318,8 +320,15 @@ public class orderGUI extends javax.swing.JFrame {
     private void druckeEtikett() {
         try {
             int row = tableBest.getSelectedRow();
+            DB_Connect con = new DB_Connect();
+            List result = con.Connect("FROM Lief WHERE F_BNR = " + BestellListe.getBest(row).getBNR());
+            System.out.println(result);
+            if (result.isEmpty()) {
+                general.Message.showError("Fehler", "Keine Lieferung zur ausgewählten Bestellung vorhanden!");
+            }else{
             EditOKEtikettGUI EtikettGUI = new EditOKEtikettGUI(this, BestellListe.getBest(row));
             EtikettGUI.setVisible(true);
+            }
         } catch (ArrayIndexOutOfBoundsException e) {
             general.Message.showError("Fehler", "Bitte Zeile auswählen!");
         }

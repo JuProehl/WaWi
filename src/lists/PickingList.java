@@ -3,6 +3,7 @@ package lists;
 import entity.Arti;
 import entity.Best;
 import entity.K_BA;
+import entity.Lief;
 import java.util.List;
 import java.util.ArrayList;
 import javax.swing.JTable;
@@ -84,7 +85,7 @@ public class PickingList {
                                 this.updateZaehlerArti(tk_ba); //Bestandsberechnung für weite Bestellungen
                             }
                         }
-                        return getPickingListArray(); 
+                        return getPickingListArray();
                     } else { //Kein Bestand für großen Auftrag
                         letzteBNR = k_ba.getBest().getBNR(); //merken der geprüften BNR
                         ignoreBNR = true; //Marker zum ignorieren dieser BNR
@@ -177,10 +178,18 @@ public class PickingList {
     }
 
     public void setAbgeschlossen(ArrayList rowPickingList) {
+        ArrayList<Integer> bestellungen = new ArrayList<>();
         //Status der BNR auf Abgeschlossen setzen wenn der MA die Artikel aus dem Lager gesammelt hat.
         for (Object j : rowPickingList) {
             K_BA k_ba = (K_BA) j;
-            k_ba.getBest().UpdateStatus("Abgeschlossen");
+            //Einmal pro Bestellung
+            if (!bestellungen.contains(k_ba.getBest().getBNR())) {
+                bestellungen.add(k_ba.getBest().getBNR());
+                k_ba.getBest().UpdateStatus("Abgeschlossen");
+                //Für jede abgeschlossene Bestellung entsprechende Lieferung anlegen
+                Lief lief = k_ba.getBest().createLief();
+            }
+
         }
 
     }

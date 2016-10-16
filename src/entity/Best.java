@@ -32,6 +32,9 @@ public class Best {
     @OneToMany
     @JoinColumn(name = "F_BNR")
     private List<K_BA> k_ba;
+    @OneToMany
+    @JoinColumn(name = "LIFNR")
+    private List<Lief> lief;
 
     // Konstruktor der Klasse Best
     public Best() {
@@ -60,6 +63,10 @@ public class Best {
         DB_Connect con = new DB_Connect();
         con.simpleConnect("UPDATE Best SET STATUS = '" + Status + "' WHERE BNR = " + BNR);
 
+    }
+    
+    public Lief createLief(){
+        return Lief.create(this);
     }
 
     // Getter und Setter
@@ -146,4 +153,11 @@ public class Best {
     public void setK_ba(List<K_BA> k_ba) {
         this.k_ba = k_ba;
     }
+
+    /**
+     * @return the lief
+     */
+    //public List<Lief> getLief() {
+      //  return lief;
+    //}
 }

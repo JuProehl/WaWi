@@ -184,9 +184,7 @@ public class EditOKEtikettGUI extends javax.swing.JFrame {
         PrinterJob printJob = PrinterJob.getPrinterJob();
         Drucken drucken = new Drucken();
         drucken.buildAndprintLieferschein((K_BA) bestPos.get(0), printJob, bestPos);
-        
-        
-        
+                
         //ALte Etiketten Nachdrucken
         /*Print etikettenprint = new Print();
 
