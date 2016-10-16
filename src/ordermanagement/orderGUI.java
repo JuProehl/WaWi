@@ -318,7 +318,7 @@ public class orderGUI extends javax.swing.JFrame {
     private void druckeEtikett() {
         try {
             int row = tableBest.getSelectedRow();
-            EditOKEtikettGUI EtikettGUI = new EditOKEtikettGUI(this, BestellListe.getBest(row).getkund());
+            EditOKEtikettGUI EtikettGUI = new EditOKEtikettGUI(this, BestellListe.getBest(row));
             EtikettGUI.setVisible(true);
         } catch (ArrayIndexOutOfBoundsException e) {
             general.Message.showError("Fehler", "Bitte Zeile auswählen!");

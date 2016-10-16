@@ -23,19 +23,14 @@ import lists.PickingList;
  */
 public class PrintObj implements Printable {
 
-    String ueberschrift = "";
-    String unterUeberschrift = "";
-    String unsereAdresse = "";
+
     String adress_z1 = "";
     String adress_z2 = "";
     String adress_z3 = "";
     ArrayList picklist;
     int bnr = 0;
 
-    public PrintObj(String ueberschrift, String unterUeberschrift, String unsereAdresse, String adress_z1, String adress_z2, String adress_z3, int bnr, ArrayList pickList) {
-        this.ueberschrift = ueberschrift;
-        this.unsereAdresse = unsereAdresse;
-        this.unterUeberschrift = unterUeberschrift;
+    public PrintObj(String adress_z1, String adress_z2, String adress_z3, int bnr, ArrayList pickList) {
         this.adress_z1 = adress_z1;
         this.adress_z2 = adress_z2;
         this.adress_z3 = adress_z3;
@@ -52,9 +47,9 @@ public class PrintObj implements Printable {
         Graphics2D g2d = (Graphics2D) g;
         g2d.translate(pf.getImageableX(), pf.getImageableY());
 
-        g2d.drawString(ueberschrift, 273, 90);
-        g2d.drawString(unterUeberschrift, 210, 113);
-        g2d.drawString(unsereAdresse, 162, 126);
+        g2d.drawString("Lieferschein", 273, 90);
+        g2d.drawString("Der HandyTyp GmbH & Co. KG", 210, 113);
+        g2d.drawString("Smartway Drive 151 ● Silicon Valley 424242 ● USA", 162, 126);
 
         g2d.drawString(adress_z1, 90, 188);
         g2d.drawString(adress_z2, 90, 201);
@@ -97,7 +92,7 @@ public class PrintObj implements Printable {
             }
         }
         g2d.drawString("__________________________________________________________________", 90, 710);
-        g2d.drawString(unterUeberschrift, 90, 740);
+        g2d.drawString("Der HandyTyp GmbH & Co. KG", 90, 740);
         g2d.drawString("Smartway Drive 151", 90, 753);
         g2d.drawString("Silicon Valley 424242 USA", 90, 766);
         g2d.drawString("Telefon:", 90, 779);

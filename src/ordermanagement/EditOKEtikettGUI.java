@@ -6,25 +6,30 @@
 package ordermanagement;
 
 import entity.Best;
+import entity.K_BA;
 import entity.Kund;
 import general.Print;
+import java.awt.print.PrinterJob;
+import java.util.ArrayList;
+import java.util.List;
+import printing.Drucken;
 
 /**
  *
  * @author JProehl
  */
 public class EditOKEtikettGUI extends javax.swing.JFrame {
-
-    Kund kund;
+    ArrayList bestPos = new ArrayList();
+    Best best;
     orderGUI higherGUI;
 
     /**
      * Creates new form picklistFinischGUI
      */
-    public EditOKEtikettGUI(orderGUI higherGUI, Kund kund) {
+    public EditOKEtikettGUI(orderGUI higherGUI, Best best) {
         initComponents();
         this.higherGUI = higherGUI;
-        this.kund = kund;
+        this.best = best;
     }
 
     /**
@@ -51,11 +56,11 @@ public class EditOKEtikettGUI extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Möchten Sie das");
+        jLabel2.setText("Möchten Sie den");
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Adressetikett ausdrucken?");
+        jLabel3.setText("Lieferschein nachdrucken?");
 
         jButtonYes.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonYes.setText("Ja...");
@@ -166,13 +171,30 @@ public class EditOKEtikettGUI extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void nachdruckenEtiketten() {
-        Print etikettenprint = new Print();
+        //neue Datenbank Verbindung
+        database.DB_Connect con = new database.DB_Connect();
+        //abrufen der Kreuztabelle K_BA alles Bestellungen die offen sind, Sortiert nach dem Bestelldatum, nach der Bestellnummer und nach der Position
+        List result = con.Connect("FROM K_BA kba WHERE kba.best.BNR = '" + best.getBNR() + "' ORDER BY kba.POSITION ASC");
+        
+        for (Object i : result) {
+            K_BA k_ba = (K_BA) i;
+            bestPos.add(k_ba);
+        }
+        
+        PrinterJob printJob = PrinterJob.getPrinterJob();
+        Drucken drucken = new Drucken();
+        drucken.buildAndprintLieferschein((K_BA) bestPos.get(0), printJob, bestPos);
+        
+        
+        
+        //ALte Etiketten Nachdrucken
+        /*Print etikettenprint = new Print();
 
         String anschrift = "" + kund.getVorname() + " " + kund.getNachname() + "\n"
                 + kund.getStrasse() + " " + kund.getHausnummer() + "\n"
                 + kund.getPLZ() + " " + kund.getOrt();
 
-        etikettenprint.CreatePages(anschrift);
+        etikettenprint.CreatePages(anschrift);*/
 
     }
 }

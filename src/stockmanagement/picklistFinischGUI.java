@@ -49,7 +49,7 @@ public class picklistFinischGUI extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("und die Adressetiketten ausdrucken?");
+        jLabel3.setText("und die Lieferscheine drucken?");
 
         jButtonYes.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonYes.setText("Ja...");
