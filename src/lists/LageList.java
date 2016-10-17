@@ -7,6 +7,7 @@ package lists;
 
 import entity.Arti;
 import entity.Lage;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.JTable;
@@ -59,6 +60,23 @@ public class LageList {
             }
             model.addRow(rowData);
         }
+    }
+    
+    
+    public ArrayList<String> getLeereLagerorte(){
+        ArrayList<String> list = new ArrayList<String>();
+        
+        for (Iterator iterator = result.iterator(); iterator.hasNext();) {
+            Lage lager = (Lage) iterator.next();
+            
+            try{
+            int ANr = lager.getArti().getANR();
+            } catch(NullPointerException e){
+               list.add(String.valueOf(lager.getLNr()));
+            }
+            
+        }
+        return list;
     }
 
     public Integer getLNr(int row) {

@@ -10,6 +10,7 @@ import entity.Arti;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
+import lists.LageList;
 
 /**
  *
@@ -34,6 +35,7 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
         this.artikelbestand = artikelbestand;
         Label_Artikelnummer.setText(ANR.toString());
         this.checkPreis = "";
+        
 
     }
 
@@ -54,13 +56,13 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
         tfBez = new javax.swing.JTextField();
         tfBestandsmenge = new javax.swing.JTextField();
         tfKrit = new javax.swing.JTextField();
-        tfLNR = new javax.swing.JTextField();
         labelANR = new javax.swing.JLabel();
         labelMenge = new javax.swing.JLabel();
         labelBEZ = new javax.swing.JLabel();
         Label_Artikelnummer = new javax.swing.JLabel();
         labelVKPreis = new javax.swing.JLabel();
         tfVKPreis = new javax.swing.JTextField();
+        CB_LNr = new javax.swing.JComboBox<>();
 
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -102,12 +104,6 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
             }
         });
 
-        tfLNR.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tfLNRKeyPressed(evt);
-            }
-        });
-
         labelANR.setText("Artikelnummer:");
 
         labelMenge.setText("Bestandsmenge:");
@@ -115,6 +111,12 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
         labelBEZ.setText("Bezeichnung:");
 
         labelVKPreis.setText("Verkaufspreis:");
+
+        CB_LNr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_LNrActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -146,8 +148,8 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
                             .addComponent(tfBestandsmenge, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
                             .addComponent(tfKrit, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
                             .addComponent(tfBez, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                            .addComponent(tfLNR, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                            .addComponent(tfVKPreis))))
+                            .addComponent(tfVKPreis)
+                            .addComponent(CB_LNr, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -159,7 +161,7 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelANR)
                     .addComponent(Label_Artikelnummer))
-                .addGap(16, 16, 16)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfBez, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelBEZ))
@@ -171,15 +173,17 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfKrit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelKrit))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfLNR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelA_LNR))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelA_LNR)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(CB_LNr, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                        .addGap(2, 2, 2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfVKPreis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelVKPreis))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonAbbrechen)
                     .addComponent(buttonArtikelAnlegen))
@@ -198,10 +202,6 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_buttonAbbrechenActionPerformed
 
-    private void tfLNRKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfLNRKeyPressed
-        abfangenKey(evt);
-    }//GEN-LAST:event_tfLNRKeyPressed
-
     private void tfKritKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfKritKeyPressed
         abfangenKey(evt);
     }//GEN-LAST:event_tfKritKeyPressed
@@ -213,6 +213,10 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
     private void tfBezKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfBezKeyPressed
         abfangenKey(evt);
     }//GEN-LAST:event_tfBezKeyPressed
+
+    private void CB_LNrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_LNrActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CB_LNrActionPerformed
 
     private void abfangenKey(java.awt.event.KeyEvent evt) {
         if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
@@ -229,7 +233,7 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
         try {
             list.add(Integer.parseInt(tfBestandsmenge.getText()));
             list.add(Integer.parseInt(tfKrit.getText()));
-            list.add(Integer.parseInt(tfLNR.getText()));
+            list.add(Integer.parseInt(CB_LNr.getSelectedItem().toString()));
 
             this.checkPreis = tfVKPreis.getText().replace(".", ",");
 
@@ -243,7 +247,7 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
                 Arti artikel = new Arti();
                 int i = artikel.InsertArtikel(ANR, tfBez.getText(),
                         Integer.parseInt(tfBestandsmenge.getText()), Integer.parseInt(tfKrit.getText()),
-                        Integer.parseInt(tfLNR.getText()), this.checkPreis);
+                        Integer.parseInt(CB_LNr.getSelectedItem().toString()), this.checkPreis);
                 switch (i) {
                     case 1:
                         general.Message.showSuccess("", "Anlage erfolgreich!");
@@ -282,6 +286,35 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
         return MaxANR;
     }
 
+    
+    
+    public Boolean aufbauenderCB_LNr(){
+        LageList lagerlist = new LageList();
+        System.out.println(CB_LNr.getItemCount());
+        Boolean r = true;
+        try{
+        ArrayList<String> list = lagerlist.getLeereLagerorte();
+        list.forEach((temp) -> {
+            CB_LNr.addItem(temp);
+		});
+        r = true;
+        } catch(NullPointerException e){
+            
+        }
+        
+        if( CB_LNr.getItemCount() == 0){
+          general.Message.showError("Fehler!", "Keine freien Lagerplätze! Bitte zuvor Lagerplätze anlegen!");
+           EditOKLagerortAnlegen lageranlegen = new EditOKLagerortAnlegen();
+           lageranlegen.setVisible(true);
+           r = false;  
+            } 
+         
+        
+        return r;
+    }
+        
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -319,6 +352,7 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> CB_LNr;
     private javax.swing.JLabel Label_Artikelnummer;
     private javax.swing.JButton buttonAbbrechen;
     private javax.swing.JButton buttonArtikelAnlegen;
@@ -332,7 +366,6 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
     private javax.swing.JTextField tfBestandsmenge;
     private javax.swing.JTextField tfBez;
     private javax.swing.JTextField tfKrit;
-    private javax.swing.JTextField tfLNR;
     private javax.swing.JTextField tfVKPreis;
     // End of variables declaration//GEN-END:variables
 }

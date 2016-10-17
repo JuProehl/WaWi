@@ -357,7 +357,10 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
 
     private void anlegenAufrufen() {
         EditOKArtikelAnlegen anlegen = new EditOKArtikelAnlegen(this);
-        anlegen.setVisible(true);
+        if(anlegen.aufbauenderCB_LNr()){
+            anlegen.setVisible(true);
+        }
+        
     }
 
     /**

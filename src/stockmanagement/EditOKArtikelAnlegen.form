@@ -56,8 +56,8 @@
                           <Component id="tfBestandsmenge" alignment="0" pref="110" max="32767" attributes="0"/>
                           <Component id="tfKrit" alignment="0" pref="110" max="32767" attributes="0"/>
                           <Component id="tfBez" alignment="0" pref="110" max="32767" attributes="0"/>
-                          <Component id="tfLNR" alignment="0" pref="110" max="32767" attributes="0"/>
                           <Component id="tfVKPreis" alignment="0" max="32767" attributes="0"/>
+                          <Component id="CB_LNr" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -75,7 +75,7 @@
                   <Component id="labelANR" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Label_Artikelnummer" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="tfBez" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="labelBEZ" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -90,17 +90,20 @@
                   <Component id="tfKrit" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="labelKrit" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="tfLNR" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="labelA_LNR" alignment="3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="labelA_LNR" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="CB_LNr" pref="28" max="32767" attributes="0"/>
+                      <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="tfVKPreis" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="labelVKPreis" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="7" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="buttonAbbrechen" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="buttonArtikelAnlegen" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -157,11 +160,6 @@
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfKritKeyPressed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="tfLNR">
-      <Events>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfLNRKeyPressed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JLabel" name="labelANR">
       <Properties>
         <Property name="text" type="java.lang.String" value="Artikelnummer:"/>
@@ -185,6 +183,19 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfVKPreis">
+    </Component>
+    <Component class="javax.swing.JComboBox" name="CB_LNr">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CB_LNrActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

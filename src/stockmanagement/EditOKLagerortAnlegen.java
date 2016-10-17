@@ -23,7 +23,9 @@ public class EditOKLagerortAnlegen extends javax.swing.JFrame {
      * Creates new form LagerortAnlagenEditOK
      */
     public EditOKLagerortAnlegen() {
-
+        initComponents();
+        LNR = nextLNR();
+        Label_Lagerortnummer.setText(LNR.toString());
     }
 
     public EditOKLagerortAnlegen(LagerGUI lagergui) {
@@ -208,8 +210,12 @@ public class EditOKLagerortAnlegen extends javax.swing.JFrame {
                     case 1:
                         setVisible(false);
                         general.Message.showSuccess("", "Anlage erfolgreich!");
+                        try{
                         lagergui.TabelleHolen();
                         lagergui.Tabelleausgeben();
+                        } catch(NullPointerException e){
+                            
+                        }
                         break;
                     case 2:
                         general.Message.showError("", "Lagerort existiert bereits!");
