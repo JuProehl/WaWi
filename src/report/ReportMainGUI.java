@@ -227,8 +227,8 @@ public class ReportMainGUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jDateChooserVon, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jDateChooserBis, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,14 +302,14 @@ public class ReportMainGUI extends javax.swing.JFrame {
     //Übergabeparameter: Button-Clickevent
     private void buttonShowArticlelistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonShowArticlelistActionPerformed
         // Spaltennamen der Tabelle
-        String[] columnnames = {"Artikelnummer ", "Bezeichnung", "Bestandsmenge"};
+        String[] columnnames = {"Artikelnummer ", "Bezeichnung", "Bestandsmenge","Krit. Bestand"};
         // Methode zum Setzen der Spaltennamen der Tabelle aufrufen
         setColumnnames(columnnames);
         // Aufruf der Methode Connect; Übergabe des SQL-Statements an die Methode
         // RÜckgabewerte der Methode wird result zugewiesen
-        result = connect("From Arti");
+        result = connect("From Arti order by ANR asc");
 
-        Object rowData[] = new Object[3];
+        Object rowData[] = new Object[4];
 
         // result enthält Ergebnisse der SQL-Abfrage
         // diese Ergebnisse werden nun Zeile für Zeile ausgegeben bis keine
@@ -321,6 +321,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
             rowData[0] = Artikel.getANR();
             rowData[1] = Artikel.getBEZEICHNUNG();
             rowData[2] = Artikel.getBESTANDSMENGE();
+            rowData[3] = Artikel.getKrit_Menge();
             // Zeile der Tabelle hinzufügen
             model.addRow(rowData);
         }
@@ -523,7 +524,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
 
             long sumArtikel = (long) iterator.next();
             rowData[2] = sumArtikel;
-            // Zeile der Tabelle hinzufügen
+            // Zeile der Tabelle hinzufügenr
             model.addRow(rowData);
         }
         for (int i = 0; i < model.getRowCount(); i++) {
