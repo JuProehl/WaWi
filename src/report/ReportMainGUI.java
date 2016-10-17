@@ -458,10 +458,10 @@ public class ReportMainGUI extends javax.swing.JFrame {
         setColumnnames(columnnames);
         // Aufruf der Methode Connect; Übergabe des SQL-Statements an die Methode
         // RÜckgabewerte der Methode wird result zugewiesen
-        result = connect("select sum(ANZAHL) as summe from K_BA WHERE best.STATUS = 'abgeschlossen' group by arti order by summe desc");
+        result = connect("select sum(ANZAHL) as summe from K_BA WHERE best.STATUS = 'Abgeschlossen' group by arti order by summe desc");
         // Aufruf der Methode Connect; Übergabe des SQL-Statements an die Methode
         // RÜckgabewerte der Methode wird result2 zugewiesen
-        result2 = connect("select arti.ANR from K_BA WHERE best.STATUS = 'abgeschlossen' group by arti order by sum(ANZAHL) desc");
+        result2 = connect("select arti.ANR from K_BA WHERE best.STATUS = 'Abgeschlossen' group by arti order by sum(ANZAHL) desc");
 
         Object rowData[] = new Object[3];
 
@@ -507,10 +507,10 @@ public class ReportMainGUI extends javax.swing.JFrame {
         setColumnnames(columnnames);
         // Aufruf der Methode Connect; Übergabe des SQL-Statements an die Methode
         // RÜckgabewerte der Methode wird result zugewiesen
-        result = connect("select sum(ANZAHL) as summe from K_BA WHERE best.STATUS = 'abgeschlossen' group by arti order by summe asc");
+        result = connect("select sum(ANZAHL) as summe from K_BA WHERE best.STATUS = 'Abgeschlossen' group by arti order by summe asc");
         // Aufruf der Methode Connect; Übergabe des SQL-Statements an die Methode
         // RÜckgabewerte der Methode wird result2 zugewiesen
-        result2 = connect("select arti.ANR from K_BA WHERE best.STATUS = 'abgeschlossen' group by arti order by sum(ANZAHL) asc");
+        result2 = connect("select arti.ANR from K_BA WHERE best.STATUS = 'Abgeschlossen' group by arti order by sum(ANZAHL) asc");
 
         Object rowData[] = new Object[3];
         iterator = result.iterator();

@@ -5,7 +5,9 @@
  */
 package ordermanagement;
 
+import database.DB_Connect;
 import gui.WaWiMainGUI;
+import java.util.List;
 import lists.BestList;
 
 /**
@@ -49,6 +51,8 @@ public class orderGUI extends javax.swing.JFrame {
         CBGeschlossen = new javax.swing.JCheckBox();
         Button_Filteranwenden = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButtonAED = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,10 +97,17 @@ public class orderGUI extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Status aktualisieren");
+        jButton1.setText("Status ändern");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButtonAED.setText("Lieferschein Drucken");
+        jButtonAED.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAEDActionPerformed(evt);
             }
         });
 
@@ -115,7 +126,7 @@ public class orderGUI extends javax.swing.JFrame {
                         .addComponent(buttonAktualisieren)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1)
@@ -123,7 +134,9 @@ public class orderGUI extends javax.swing.JFrame {
                             .addComponent(CBInArbeit)
                             .addComponent(CBGeschlossen)
                             .addComponent(Button_Filteranwenden, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonAED, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jSeparator1))
                         .addGap(11, 11, 11))))
         );
         layout.setVerticalGroup(
@@ -148,7 +161,11 @@ public class orderGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Button_Filteranwenden)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)))
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonAED)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -207,6 +224,11 @@ public class orderGUI extends javax.swing.JFrame {
         statusAktualisieren();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButtonAEDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAEDActionPerformed
+        // TODO add your handling code here:
+        druckeEtikett();
+    }//GEN-LAST:event_jButtonAEDActionPerformed
+
     // Methode tabelleausgaben
     // Ruft die Methode KundenInTabelleAusgeben des Objektes Kundenliste auf
     // Der Methode wird die Tabelle tableKunden übergeben
@@ -241,6 +263,8 @@ public class orderGUI extends javax.swing.JFrame {
         }
     }
 
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -285,10 +309,30 @@ public class orderGUI extends javax.swing.JFrame {
     private javax.swing.JButton buttonAktualisieren;
     private javax.swing.JButton buttonBack;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonAED;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel labelCM;
     private javax.swing.JTable tableBest;
     // End of variables declaration//GEN-END:variables
+
+    private void druckeEtikett() {
+        try {
+            int row = tableBest.getSelectedRow();
+            DB_Connect con = new DB_Connect();
+            List result = con.Connect("FROM Lief WHERE F_BNR = " + BestellListe.getBest(row).getBNR());
+            System.out.println(result);
+            if (result.isEmpty()) {
+                general.Message.showError("Fehler", "Keine Lieferung zur ausgewählten Bestellung vorhanden!");
+            }else{
+            EditOKEtikettGUI EtikettGUI = new EditOKEtikettGUI(this, BestellListe.getBest(row));
+            EtikettGUI.setVisible(true);
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            general.Message.showError("Fehler", "Bitte Zeile auswählen!");
+        }
+        
+    }
 
 }

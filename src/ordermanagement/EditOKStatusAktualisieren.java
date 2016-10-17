@@ -61,7 +61,9 @@ public class EditOKStatusAktualisieren extends javax.swing.JFrame {
         jToggleButton1 = new javax.swing.JToggleButton();
         jToggleButton2 = new javax.swing.JToggleButton();
 
-        jLabel1.setText("Status aktualisieren");
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Status ändern");
 
         jLabel2.setText("Bestellnummer:");
 
@@ -92,14 +94,6 @@ public class EditOKStatusAktualisieren extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addGap(29, 29, 29)
-                .addComponent(jLabel3))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel1))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(RBGeschlossen)
@@ -108,6 +102,13 @@ public class EditOKStatusAktualisieren extends javax.swing.JFrame {
                 .addComponent(jToggleButton1)
                 .addGap(18, 18, 18)
                 .addComponent(jToggleButton2))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabel2)
+                    .addGap(29, 29, 29)
+                    .addComponent(jLabel3)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

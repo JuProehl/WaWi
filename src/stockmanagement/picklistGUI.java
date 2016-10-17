@@ -9,6 +9,7 @@ import lists.PickingList;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import printing.Drucken;
 
 /**
  *
@@ -16,8 +17,7 @@ import java.util.List;
  */
 public class picklistGUI extends javax.swing.JFrame {
 
-    //Klassen Variablen Deklaration
-    ArrayList rowPickingList;
+    //Objekt Variablen Deklaration
     PickingList pickinglist = new PickingList();
 
     public picklistGUI() {
@@ -35,6 +35,7 @@ public class picklistGUI extends javax.swing.JFrame {
         buttonPrint = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         buttonReady = new javax.swing.JButton();
+        showartipList = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -67,6 +68,7 @@ public class picklistGUI extends javax.swing.JFrame {
                 "BestellNr", "Position", "Bezeichnung", "Anzahl", "Bestand", "Regal", "Fach"
             }
         ));
+        tablePicklist.setEnabled(false);
         jScrollPane1.setViewportView(tablePicklist);
 
         buttonPrint.setText("Drucken");
@@ -87,6 +89,13 @@ public class picklistGUI extends javax.swing.JFrame {
             }
         });
 
+        showartipList.setText("Artikel Summierung");
+        showartipList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showartipListActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -96,6 +105,8 @@ public class picklistGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(showartipList, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(buttonReady, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -119,7 +130,9 @@ public class picklistGUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonReady, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(showartipList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonReady, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -163,12 +176,24 @@ public class picklistGUI extends javax.swing.JFrame {
         picklistFinischGUI.setVisible(true);
     }//GEN-LAST:event_buttonReadyActionPerformed
 
+    private void showartipListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showartipListActionPerformed
+        // TODO add your handling code here:
+        picklistArtiSumGUI picklistArtiSumGUI = new picklistArtiSumGUI(pickinglist.getPickingListArray());
+        picklistArtiSumGUI.createAndshowTabel();
+        picklistArtiSumGUI.setVisible(true);
+    }//GEN-LAST:event_showartipListActionPerformed
+
     public void pickListReady() {
         //Methode die aus der picklistFinischGUI aufgerufen wird
         //aktuelle Picking Liste (ArrayList) an die Methode setAbgeschlossen übergeben und Methode aufrufen
-        pickinglist.setAbgeschlossen(rowPickingList);
+        pickinglist.setAbgeschlossen(pickinglist.getPickingListArray());
         //Aufruf der Methode printEtiketten
-        printEtiketten();
+        
+        Drucken drucken = new Drucken();
+        drucken.druckeLieferschein(pickinglist.getPickingListArray());
+        
+        //Alter Etiketten Aufruf
+        //printEtiketten();
     }
 
     // Diese Methode aufrufen bei Abschließen der Picklist
@@ -242,9 +267,8 @@ public class picklistGUI extends javax.swing.JFrame {
     public void showTable() {
         //Methode die aus der LagerverwaltungGUI aufgerufen wird
         //Initialisieren der Klassen Var "rowPickingList" durch aufrufen der picklinglist Klassenmethode buildPickingList
-        rowPickingList = pickinglist.buildPickinglist();
         //Übergabe der rowPickingList an die Methode showTable sowie der Tabelle der GUI in der die ArrayList angezeigt werden soll
-        pickinglist.showTable(tablePicklist, rowPickingList);
+        pickinglist.showTable(tablePicklist, pickinglist.buildPickinglist());
     }
 
     /**
@@ -289,6 +313,7 @@ public class picklistGUI extends javax.swing.JFrame {
     private javax.swing.JButton buttonReady;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton showartipList;
     private javax.swing.JTable tablePicklist;
     // End of variables declaration//GEN-END:variables
 }

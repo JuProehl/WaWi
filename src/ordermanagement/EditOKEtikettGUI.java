@@ -3,22 +3,33 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package stockmanagement;
+package ordermanagement;
+
+import entity.Best;
+import entity.K_BA;
+import entity.Kund;
+import general.Print;
+import java.awt.print.PrinterJob;
+import java.util.ArrayList;
+import java.util.List;
+import printing.Drucken;
 
 /**
  *
  * @author JProehl
  */
-public class picklistFinischGUI extends javax.swing.JFrame {
-
-    picklistGUI higherGUI;
+public class EditOKEtikettGUI extends javax.swing.JFrame {
+    ArrayList bestPos = new ArrayList();
+    Best best;
+    orderGUI higherGUI;
 
     /**
      * Creates new form picklistFinischGUI
      */
-    public picklistFinischGUI(picklistGUI higherGUI) {
+    public EditOKEtikettGUI(orderGUI higherGUI, Best best) {
         initComponents();
         this.higherGUI = higherGUI;
+        this.best = best;
     }
 
     /**
@@ -45,11 +56,11 @@ public class picklistFinischGUI extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Möchten Sie die Picking Liste abschließen ");
+        jLabel2.setText("Möchten Sie den");
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("und die Lieferscheine drucken?");
+        jLabel3.setText("Lieferschein nachdrucken?");
 
         jButtonYes.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonYes.setText("Ja...");
@@ -107,10 +118,7 @@ public class picklistFinischGUI extends javax.swing.JFrame {
     private void jButtonYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonYesActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        higherGUI.setVisible(false);
-        LagerverwaltungGUI LagerverwaltungGUI = new LagerverwaltungGUI();
-        LagerverwaltungGUI.setVisible(true);
-        higherGUI.pickListReady();
+        nachdruckenEtiketten();
     }//GEN-LAST:event_jButtonYesActionPerformed
 
     private void jButtonNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNoActionPerformed
@@ -135,14 +143,15 @@ public class picklistFinischGUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(picklistFinischGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditOKEtikettGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(picklistFinischGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditOKEtikettGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(picklistFinischGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditOKEtikettGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(picklistFinischGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditOKEtikettGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -160,4 +169,30 @@ public class picklistFinischGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
+
+    private void nachdruckenEtiketten() {
+        //neue Datenbank Verbindung
+        database.DB_Connect con = new database.DB_Connect();
+        //abrufen der Kreuztabelle K_BA alles Bestellungen die offen sind, Sortiert nach dem Bestelldatum, nach der Bestellnummer und nach der Position
+        List result = con.Connect("FROM K_BA kba WHERE kba.best.BNR = '" + best.getBNR() + "' ORDER BY kba.POSITION ASC");
+        
+        for (Object i : result) {
+            K_BA k_ba = (K_BA) i;
+            bestPos.add(k_ba);
+        }
+        
+        PrinterJob printJob = PrinterJob.getPrinterJob();
+        Drucken drucken = new Drucken();
+        drucken.buildAndprintLieferschein((K_BA) bestPos.get(0), printJob, bestPos);
+                
+        //ALte Etiketten Nachdrucken
+        /*Print etikettenprint = new Print();
+
+        String anschrift = "" + kund.getVorname() + " " + kund.getNachname() + "\n"
+                + kund.getStrasse() + " " + kund.getHausnummer() + "\n"
+                + kund.getPLZ() + " " + kund.getOrt();
+
+        etikettenprint.CreatePages(anschrift);*/
+
+    }
 }
