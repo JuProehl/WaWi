@@ -739,6 +739,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
         }
     }
 
+    // setzen des heutigen Datums in die Datumsauswahlfeldern "von" und "bis"
     private void setDefaultDates(JDateChooser von, JDateChooser bis) {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.MONTH, -1);

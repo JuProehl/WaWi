@@ -6,14 +6,9 @@
 package printing;
 
 import entity.K_BA;
-import java.awt.Graphics2D;
-import java.awt.HeadlessException;
-import java.awt.image.BufferedImage;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.util.ArrayList;
-import javax.swing.JTable;
-import javax.swing.table.JTableHeader;
 
 /**
  *
