@@ -5,7 +5,6 @@
  */
 package lists;
 
-import entity.Arti;
 import entity.Lage;
 import java.util.ArrayList;
 import java.util.Iterator;

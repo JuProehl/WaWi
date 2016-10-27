@@ -7,7 +7,6 @@ package gui;
 
 import customermanagement.customerGUI;
 import ordermanagement.orderGUI;
-import printing.Drucken;
 import report.ReportMainGUI;
 import stockmanagement.LagerverwaltungGUI;
 

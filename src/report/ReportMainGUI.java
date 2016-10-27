@@ -307,7 +307,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
         setColumnnames(columnnames);
         // Aufruf der Methode Connect; Übergabe des SQL-Statements an die Methode
         // RÜckgabewerte der Methode wird result zugewiesen
-        result = connect("From Arti order by ANR asc");
+        result = connect("From Arti WHERE LOESCHKENNZEICHEN = ' ' order by ANR asc");
 
         Object rowData[] = new Object[4];
 
@@ -426,7 +426,7 @@ public class ReportMainGUI extends javax.swing.JFrame {
         setColumnnames(columnnames);
         // Aufruf der Methode Connect; Übergabe des SQL-Statements an die Methode
         // RÜckgabewerte der Methode wird result zugewiesen
-        result = connect("From Arti WHERE BESTANDSMENGE <= KRIT_MENGE");
+        result = connect("From Arti WHERE LOESCHKENNZEICHEN = ' ' AND BESTANDSMENGE <= KRIT_MENGE");
 
         Object rowData[] = new Object[4];
         // result enthält Ergebnisse der SQL-Abfrage

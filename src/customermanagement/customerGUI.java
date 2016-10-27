@@ -5,7 +5,6 @@
  */
 package customermanagement;
 
-import entity.Kund;
 import gui.WaWiMainGUI;
 import lists.KundList;
 
