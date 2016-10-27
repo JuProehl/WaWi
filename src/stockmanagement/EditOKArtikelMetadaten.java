@@ -302,7 +302,7 @@ public class EditOKArtikelMetadaten extends javax.swing.JFrame {
                         }
                         if (!UpdateString.equals("UPDATE Arti SET")) {
 
-                            UpdateString = UpdateString + " WHERE ANr=" + this.ANR.toString();
+      
                             Integer returnwert = artikel.UpdateArtikelFree(UpdateString);
                             setVisible(false);
                             artikelbestand.tabelleHolen();

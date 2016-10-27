@@ -93,7 +93,7 @@ public class Arti {
     // gibt die Anzahl betroffener Zeilen nach Ausführung des SQL-Statements zurück   
     public int UpdateArtikelFree(String str) {
         DB_Connect con = new DB_Connect();
-        return con.simpleConnect(str);
+        return con.simpleConnect(str + " WHERE ANR = " + ANR);
     }
 
     // Methode loescheArtikel
