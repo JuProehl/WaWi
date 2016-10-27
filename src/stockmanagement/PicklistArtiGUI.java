@@ -11,8 +11,6 @@ import general.Print;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import javafx.print.Collation;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**

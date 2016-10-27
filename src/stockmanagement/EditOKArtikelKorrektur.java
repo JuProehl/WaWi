@@ -12,7 +12,6 @@ package stockmanagement;
 import entity.Arti;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import lists.LageList;
 
 public class EditOKArtikelKorrektur extends javax.swing.JFrame {
 
