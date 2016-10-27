@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -57,12 +56,6 @@ public class Best {
         }
     }
 
-    public void UpdateStatus(int BNR, String Status) {
-        DB_Connect con = new DB_Connect();
-        con.simpleConnect("UPDATE Best SET STATUS = '" + Status + "' WHERE BNR = " + BNR);
-
-    }
-    
     //Erstellt Lieferung zu Bestellung und gibt Referenz zurück
     public Lief createLief(){
         return Lief.create(this);
