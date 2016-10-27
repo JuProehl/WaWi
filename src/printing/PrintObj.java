@@ -60,7 +60,7 @@ public class PrintObj implements Printable {
         g2d.drawString("Menge", 125, 300);
         g2d.drawString("Art.-Nr.", 180, 300);
         g2d.drawString("Artikelbezeichnung", 240, 300);
-
+        //13 ist eine Gute Zeihlenhöhe um in die nächste Zeihle zu schreiben
         int range = 313;
         for (Object i : picklist) {
             K_BA k_ba = (K_BA) i;

@@ -150,6 +150,7 @@ public class PicklistArtiGUI extends javax.swing.JFrame {
             general.Message.showError("", "Keine Daten!");
         }
     }//GEN-LAST:event_jButtonPrintActionPerformed
+    
     public void createAndshowTabel() {
         for (Object i : aktuellePickList) {
             K_BA k_ba = (K_BA) i;
@@ -159,38 +160,12 @@ public class PicklistArtiGUI extends javax.swing.JFrame {
         }
         Collections.sort(artiPickingList, new Comparator<Arti>() {
             public int compare(Arti a1, Arti a2) {
-                return Integer.valueOf(a1.getLage().getRegal() * 1000000 + a1.getLage().getFach()).compareTo(a2.getLage().getRegal()* 1000000 + a2.getLage().getFach());
+                return Integer.valueOf(a1.getLage().getRegal() * 1000000 + a1.getLage().getFach()).compareTo
+                (a2.getLage().getRegal()* 1000000 + a2.getLage().getFach());
             }
         });
         this.showTable();
     }
-
-//    public void createAndshowTabel() {
-//        Arti tmp;
-//        boolean sorted = false;
-//        for (Object i : aktuellePickList) {
-//            K_BA k_ba = (K_BA) i;
-//            if (!artiPickingList.contains(anrtoArti(k_ba.getArti().getANR()))) {
-//                artiPickingList.add(k_ba.getArti());
-//            }
-//        }
-//        Collections.sort(artiPickingList, new Comparator<Arti>() {
-//            public int compare(Arti a1, Arti a2) {
-//                return Integer.valueOf(a1.getLage().getRegal() * 1000000 + a1.getLage().getFach()).compareTo(a2.getLage().getRegal()* 1000000 + a2.getLage().getFach());
-//            }
-//        });
-//        this.showTable();
-//    }
-//
-//    private Arti anrtoArti(int anr) {
-//        for (Object i : aktuellePickList) {
-//            K_BA k_ba = (K_BA) i;
-//            if (anr == k_ba.getArti().getANR()) {
-//                return k_ba.getArti();
-//            }
-//        }
-//        return null;
-//    }
 
     private void showTable() {
         //Methode die aus der picklistGUI aufgerufen wird zur Ausgabe einer ArrayList in der JTable GUI
