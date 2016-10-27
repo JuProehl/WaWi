@@ -196,63 +196,7 @@ public class PickinglistGUI extends javax.swing.JFrame {
         //printEtiketten();
     }
 
-    // Diese Methode aufrufen bei Abschließen der Picklist
-    // beachtet dass der Dialog nur aufploppt wenn man PDF druckt
-    // bei "realer" verwendet würde er es so auf dem drucker feuern.
-    private void printEtiketten() {
-        //Methode zum Drucken der Adress Etiketten
-        //Deklaration und Initialisierung einer Variable rowCount (Spaltenanzahl der ausgegebenen Tabelle)
-        int rowCount = tablePicklist.getModel().getRowCount();
-        //erzeugen eines neuen Print Objekts
-        Print etikettenprint = new Print();
-        //Int Array mit der Größe der Spaltenanzahl
-        int[] bnr = new int[rowCount];
-        List Adress;
-        String Anschrift = "";
-        List KNRlist;
-        int nummer;
 
-        for (int i = 0; i < rowCount; i++) {
-            nummer = Integer.parseInt(tablePicklist.getModel().getValueAt(i, 0).toString());
-            boolean wert = false;
-
-            for (int j = 0; j < bnr.length - 1; j++) {
-
-                if (bnr[j] == nummer) {
-                    wert = true;
-                }
-            }
-            if (wert == false) {
-                bnr[i] = nummer;
-                KNRlist = getKNR(bnr[i]);
-
-                Iterator iterator;
-                iterator = KNRlist.iterator();
-                int KNR = (int) iterator.next();
-
-                Adress = getAdress(KNR);
-
-                Object[] rowData = new Object[6];
-
-                for (iterator = Adress.iterator(); iterator.hasNext();) {
-                    Kund Kunde = (Kund) iterator.next();
-                    rowData[0] = Kunde.getVorname();
-                    rowData[1] = Kunde.getNachname();
-                    rowData[2] = Kunde.getStrasse();
-                    rowData[3] = Kunde.getHausnummer();
-                    rowData[4] = Kunde.getPLZ();
-                    rowData[5] = Kunde.getOrt();
-
-                    Anschrift = "" + rowData[0] + " " + rowData[1] + "\n"
-                            + rowData[2] + " " + rowData[3] + "\n"
-                            + rowData[4] + " " + rowData[5];
-
-                    etikettenprint.CreatePages(Anschrift);
-                }
-            }
-
-        }
-    }
 
     private List getKNR(int bnr) {
         DB_Connect con = new DB_Connect();
