@@ -1,17 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package customermanagement;
 
+// Bibliotheken import
 import entity.Kund;
 import java.awt.event.KeyEvent;
 
-/**
- *
- * @author matthias
- */
+// Klasse zum Ändern der Metadaten von Kunden
 public class EditOKKundenMetaDaten extends javax.swing.JFrame {
 
     customerGUI customerGUI;
