@@ -218,7 +218,7 @@ public class EditOKKundenMetaDaten extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonArtikelAnlegenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonArtikelAnlegenActionPerformed
-        anlegen();
+        bearbeiten();
     }//GEN-LAST:event_buttonArtikelAnlegenActionPerformed
 
     private void buttonAbbrechenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAbbrechenActionPerformed
@@ -250,11 +250,14 @@ public class EditOKKundenMetaDaten extends javax.swing.JFrame {
             setVisible(false);
         }
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            anlegen();
+            bearbeiten();
         }
     }
-
-    private void anlegen() {
+    
+    //die Methode bearbeiten, kann einen Kunden in der Datenbank bearbeiten
+    //Werte die nur Zahlen enthalten dürfen werden zuvor auf Negativität und Zahlen überprüft
+    //abschließend wird, wenn etwas geändert wurde, die Änderung in die Datenbank geschrieben
+    private void bearbeiten() {
 
         String Name = "";
         String Vorname = "";

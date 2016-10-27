@@ -142,6 +142,9 @@ public class EditOKStatusAktualisieren extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
+    
+    //Methode Status aktualisieren kann den Status in der Datenbank 
+    //neu setzten, je nachdem wie der Radiobutton gesetzt wurde
     private void Statusaktualisieren() {
         String newStatus = "";
 
