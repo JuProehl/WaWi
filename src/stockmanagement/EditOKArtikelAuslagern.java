@@ -149,7 +149,8 @@ public class EditOKArtikelAuslagern extends javax.swing.JFrame {
                     Artikelbestand.tabelleausgeben();
                     setVisible(false);
                 } else {
-                    general.Message.showError("Eingabefehler", "Zu wenig Einheiten vorhanden! Es sind nur " + AktMenge.toString() + " Einheiten vorhanden!");
+                    general.Message.showError("Eingabefehler", "Zu wenig Einheiten vorhanden! Es sind nur " 
+                                                + AktMenge.toString() + " Einheiten vorhanden!");
                 }
             }
         } catch (NumberFormatException e) {
