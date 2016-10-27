@@ -17,8 +17,8 @@ LagerGUI:   Fenster, in dem die Lagerortliste (LageList) angezeigt wird.
 EditOKLagerortAnlegen: Lagerortanlage über GUI, Eingabe der Daten und Prüfung auf Vollständigkeit.
 EditOKLagerortMetaDaten: Änderung der Metadaten von Lagerorten
 
-PicklistGUI:    Fenster, in dem die Pickliste(PickingList) angezeigt wird.
+PickinglistGUI:    Fenster, in dem die Pickliste(PickingList) angezeigt wird.
                 Enthält Methoden zum Drucken und zum Abschließen der Pickliste.
                 Zudem kann die Liste auch nach Artikeln sortiert angezeigt werden:
-PicklistArtiSumGUI: Pickliste nach Artikeln sortiert, Methode zum drucken der Tabelle.
+PicklistArtiGUI: Pickliste nach Artikeln sortiert, Methode zum drucken der Tabelle.
 PicklistFinishGUI:  Bestätigung, ob Pickliste wirklich abgeschlossen werden soll.
