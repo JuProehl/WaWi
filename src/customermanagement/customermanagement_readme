@@ -1,0 +1,6 @@
+Paket customermanagement enthält Klassen, über die der Benutzer Kunden verwalten kann.
+customerGUI:    Hauptfenster, in dem die Kundenliste (KundList) angezeigt wird.
+                Enthält Methoden zum Bearbeiten, Anlegen und Löschen von Kunden,
+                sowie zur Aktualisierung der Anzeige
+EditOKKundenAnlegen: Kundenanlage über GUI, Eingabe der Daten und Prüfung auf Vollständigkeit.
+EditOKKundenMetaDaten: Änderung der Metadaten von Kunden

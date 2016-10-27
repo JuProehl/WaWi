@@ -1,0 +1,24 @@
+Paket stockmanagement enthät Klassen, über die der Benutzer Artikel und Lagerorte verwalten
+und Picklisten generieren und abschließen kann.
+Aufteilung in 3 Hauptfenster, die vom Auswahlfenster LagerverwaltungGUI erreicht werden können.
+
+ArtikelbestandGUI:  Artikelverwaltung, Anzeige der Artikelliste (ArtiList) 
+                    Enthält Methoden zur Bearbeitung, zum Löschen und zum Anlegen von Artikeln.
+                    Zum Einlagern, Auslagern und zur Korrektur von Bestandsmengen, sowie Metadaten.
+EditOKArtikelAnlegen:   Artikelanlage über GUI, Eingabe der Daten und Prüfung auf Vollständigkeit.
+EditOKArtikelMetadaten: Änderung der Metadaten von Artikeln.
+EditOKArtikelEinlagern: Eingabe der Einlagerungsmenge -> Einlagern
+EditOKArtikelAuslagern: Eingabe der Auslagerungsmenge -> Auslagern
+EditOKArtikelKorrektur: Eingabe des neuen Lagerbestands -> Bestandskorrektur
+
+LagerGUI:   Fenster, in dem die Lagerortliste (LageList) angezeigt wird.
+            Enthält Methoden zum Bearbeiten, Anlegen und Löschen von Lagerorten,
+            sowie zur Aktualisierung der Anzeige
+EditOKLagerortAnlegen: Lagerortanlage über GUI, Eingabe der Daten und Prüfung auf Vollständigkeit.
+EditOKLagerortMetaDaten: Änderung der Metadaten von Lagerorten
+
+PicklistGUI:    Fenster, in dem die Pickliste(PickingList) angezeigt wird.
+                Enthält Methoden zum Drucken und zum Abschließen der Pickliste.
+                Zudem kann die Liste auch nach Artikeln sortiert angezeigt werden:
+PicklistArtiSumGUI: Pickliste nach Artikeln sortiert, Methode zum drucken der Tabelle.
+PicklistFinishGUI:  Bestätigung, ob Pickliste wirklich abgeschlossen werden soll.

@@ -1,0 +1,2 @@
+Testpaket general enthält eine Klasse CheckTest, die einen einfachen JUnit-Test
+für die Klasse general.Check implementiert.
