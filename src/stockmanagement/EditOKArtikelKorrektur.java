@@ -148,7 +148,9 @@ public class EditOKArtikelKorrektur extends javax.swing.JFrame {
     private void JTF_MengeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTF_MengeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JTF_MengeActionPerformed
-
+    //korrigieren der eingegeben Anzahl an Artikeln in die Datenbank
+    //vorher Check ob der Wert Negativ ist bzw. ob eine Zahl eingegeben wurde
+    //Außerdem wird geprüft, ob die eingegebene Anzahl größer ist, als die Größe des Lagerfachs
     private void korrigieren() {
         Integer MaxMenge = artikel.getLage().getMaxmenge();
         ArrayList<Integer> Zahlen = new ArrayList<Integer>();

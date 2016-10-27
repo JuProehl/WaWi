@@ -11,7 +11,7 @@ import java.awt.event.KeyEvent;
 
 /**
  *
- * @author Markus
+ * @author Matthias
  */
 public class ArtikelbestandGUI extends javax.swing.JFrame {
 

@@ -236,6 +236,10 @@ public class EditOKArtikelMetadaten extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_JTF_LagerOrtKeyPressed
 
+        //bearbeiten der Metadaten des Artikels
+        //Überprüfung ob Zahlen negativ sind und ob in die Edit Felder auch mit Zahlen gefühlt werden.
+        //Wenn alle Überprüfungen abgeschlossen sind, wird ein UpdateSting aufgebaut um die Felder, die sich
+        //geändert haben, zu aktualisieren.
     private void bearbeiten() {
         Integer EditLNr = 0;
         Integer EditkritMenge = 0;
@@ -263,7 +267,6 @@ public class EditOKArtikelMetadaten extends javax.swing.JFrame {
 
                 String EditBezeichnung = JTF_Bezeichnung.getText();
                 String UpdateString = "UPDATE Arti SET";
-                String ShowString;
 
                 if (EditkritMenge <= LagerListe.getMaxMenge(0)) {
 

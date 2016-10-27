@@ -189,7 +189,8 @@ public class EditOKLagerortAnlegen extends javax.swing.JFrame {
             }
         });
     }
-
+        //anlegen eines neuen Lagerortes
+        //zuvor wird überprüft ob die eingegeben Werte Zahlen sind und ob die Werte positiv sind
     public void anlegen() {
         ArrayList<Integer> list = new ArrayList<Integer>();
         boolean success = true;
@@ -227,7 +228,7 @@ public class EditOKLagerortAnlegen extends javax.swing.JFrame {
             }
         }
     }
-
+        //Methode zum Abrufen der nächsten freien Lagernummer
     public Integer nextLNR() {
 
         DB_Connect con = new DB_Connect();

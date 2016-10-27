@@ -171,6 +171,12 @@ public class EditOKLagerortMetadaten extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_buttonAbbrechenActionPerformed
 
+    
+        //Methode zum bearbeiten der Regal/Fach Kombination
+        //Zuvor wird überprüft, ob die Eingaben positiv sind und ob die überhaupt Zahlen eingebgen wurden.
+        //Bevor die Datenbank aktualisiert wird, findet noch eine Überprüfung statt, ob die Regal/Fach-Kombination 
+        //bereits vorhanden ist
+        //Abschließend wird die Tabelle aktualisiert und die GUI geschlossen
     private void bearbeiten() {
 
         Integer EditRegal = 0;
