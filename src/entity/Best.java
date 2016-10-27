@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -32,9 +33,6 @@ public class Best {
     @OneToMany
     @JoinColumn(name = "F_BNR")
     private List<K_BA> k_ba;    //zugehörige Bestellpositionen
-    @OneToMany
-    @JoinColumn(name = "LIFNR")
-    private List<Lief> lief;    //zugehörige Lieferungen
 
     // Konstruktor der Klasse Best
     public Best() {
@@ -65,6 +63,7 @@ public class Best {
 
     }
     
+    //Erstellt Lieferung zu Bestellung und gibt Referenz zurück
     public Lief createLief(){
         return Lief.create(this);
     }
@@ -154,10 +153,4 @@ public class Best {
         this.k_ba = k_ba;
     }
 
-    /**
-     * @return the lief
-     */
-    //public List<Lief> getLief() {
-      //  return lief;
-    //}
 }
