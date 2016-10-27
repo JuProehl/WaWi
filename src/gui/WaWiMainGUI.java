@@ -49,7 +49,7 @@ public class WaWiMainGUI extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(800, 600));
 
         buttonReport.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        buttonReport.setText("Report");
+        buttonReport.setText("Reporting");
         buttonReport.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

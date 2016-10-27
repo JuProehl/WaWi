@@ -25,9 +25,7 @@ public class Drucken {
         for (Object kba : pickList) {
             K_BA k_ba = (K_BA) kba;
             if (!printedBnr.contains(k_ba.getBest().getBNR())) {
-
                 buildAndprintLieferschein(k_ba, printJob, pickList);
-
                 printedBnr.add(k_ba.getBest().getBNR());
             }
         }
