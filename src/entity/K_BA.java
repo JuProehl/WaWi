@@ -16,15 +16,15 @@ public class K_BA implements Serializable {
     @Id
     @ManyToOne
     @JoinColumn(name = "F_BNR")
-    private Best best;
+    private Best best;  //Bestellung, zu der die Position gehört
     @Id
     @Column(name = "POSITION")
-    private int POSITION;
+    private int POSITION;   //Positionsnummer
     @ManyToOne
     @JoinColumn(name = "F_ANR")
-    private Arti arti;
+    private Arti arti;  //zugeordneter Artikel
     @Column(name = "ANZAHL")
-    private int ANZAHL;
+    private int ANZAHL; //Anzahl der Artikel, die bestellt wurden
 
     // Konstruktor der Klasse K_BA
     public K_BA() {

@@ -22,13 +22,13 @@ public class Lage {
 
     @Id
     @Column(name = "LNr")
-    int LNr;
+    int LNr;    //Lagernummer
     @Column(name = "Regal")
-    int Regal;
+    int Regal;  //Nummer des Regals
     @Column(name = "Fach")
-    int Fach;
+    int Fach;   //Nummer des Fachs im Regal
     @Column(name = "maxmenge")
-    int maxmenge;
+    int maxmenge;   //Maximale Menge, die von diesem Lagerort gehalten werden kann
     
 
     // Konstruktor der Klasse Lage

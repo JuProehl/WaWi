@@ -21,25 +21,25 @@ public class Arti {
     // Primärschlussel ANR der Tabelle Arti (Artikel)
     @Id
     @Column(name = "ANR")
-    int ANR;
+    int ANR;    //Artikelnummer
     @Column(name = "BEZEICHNUNG")
-    String BEZEICHNUNG;
+    String BEZEICHNUNG; //Bezeichnung des Artikels
     @Column(name = "BESTANDSMENGE")
-    int BESTANDSMENGE;
+    int BESTANDSMENGE;  //im Bestand zur Verfügung stehende Menge des Artikels
     @Column(name = "krit_Menge")
-    int krit_Menge;
+    int krit_Menge; //kritischer Lagerbestand
     // Fremdschlüssel F_LNR (Lagernummer)
     @OneToOne
     @JoinColumn(name = "F_LNR")
-    private Lage lage;
+    private Lage lage;  //Lagerort, dem der Artikel zugewiesen ist
     // Fremdschlüssel F_ANR (Artikelnummer)
     @OneToMany
     @JoinColumn(name = "F_ANR")
-    private List<K_BA> k_ba;
+    private List<K_BA> k_ba;    //Bestellpositionen, in denen der Artikel vorhanden ist
     @Column(name = "VK_Preis")
-    double VK_Preis;
+    double VK_Preis;    //Listenpreis
     @Column(name = "LOESCHKENNZEICHEN")
-    char LOESCHKENNZEICHEN;
+    char LOESCHKENNZEICHEN; //Löschkennzeichen, Artikel wird nicht mehr verkauft
 
     // Konstruktor der Klasse Arti
     public Arti() {

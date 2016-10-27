@@ -27,12 +27,12 @@ public class Lief {
 
     @Id
     @Column(name = "LIFNR")
-    private int LIFNR;
+    private int LIFNR; //Liefernummer
     @ManyToOne
     @JoinColumn(name = "F_BNR")
-    private Best best;
+    private Best best;  //zugeordnete Bestellung
     @Column(name = "LIEFERUNGSDATUM")
-    private Date LIEFERUNGSDATUM;
+    private Date LIEFERUNGSDATUM;   //Datum an dem die Lieferung angelegt wurde
 
     //Factory
     static Lief create(Best best) {

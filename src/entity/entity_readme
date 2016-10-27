@@ -1,0 +1,12 @@
+Paket entity enthält die Entitätsklassen für den Datenbankzugriff via Hibernate.
+Die Namen der Klassen entsprechen dabei den Namen der Tabellen in der Datenbank
+und sind wie folgt aufzuschlüsseln:
+Arti:   Artikelstammsatz
+Best:   Bestellungen
+K_BA:   Bestellpositionen: Kreuztabelle, die die n:m Beziehung zwischen 
+        Artikel und Bestellungen auflöst
+Kund:   Kundenstammsatz
+Lage:   Lagerorte
+Lief:   Lieferungen
+
+Die Beziehungen zwischen den Tabellen können dem ERM entnommen werden.

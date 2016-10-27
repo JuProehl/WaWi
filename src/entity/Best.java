@@ -19,22 +19,22 @@ public class Best {
 
     @Id
     @Column(name = "BNR")
-    private int BNR;
+    private int BNR;    //Bestellnummer
     @Column(name = "BESTELLDATUM")
-    private Date BESTELLDATUM;
+    private Date BESTELLDATUM;  //Datum, an dem die Bestellung aufgegeben wurde
     @ManyToOne
     @JoinColumn(name = "F_KNR")
-    private Kund kund;
+    private Kund kund;  //Kunde, der die Bestellung aufgegeben hat 
     @Column(name = "STATUS")
-    private String STATUS;
+    private String STATUS;  //Bestellstatus
     @Column(name = "ABSCHLUSSDATUM")
-    private Date ABSCHLUSSDATUM;
+    private Date ABSCHLUSSDATUM;    //Datum, an dem der Bestellstatus auf abgeschlossen gesetzt wurde
     @OneToMany
     @JoinColumn(name = "F_BNR")
-    private List<K_BA> k_ba;
+    private List<K_BA> k_ba;    //zugehörige Bestellpositionen
     @OneToMany
     @JoinColumn(name = "LIFNR")
-    private List<Lief> lief;
+    private List<Lief> lief;    //zugehörige Lieferungen
 
     // Konstruktor der Klasse Best
     public Best() {

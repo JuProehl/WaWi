@@ -16,22 +16,22 @@ public class Kund {
 
     @Id
     @Column(name = "KNR")
-    private int KNr;
+    private int KNr;    //Kundennummer
     @Column(name = "NACHNAME")
-    private String Nachname;
+    private String Nachname;    //Nachname
     @Column(name = "VORNAME")
-    private String Vorname;
-    @Column(name = "STRASSE")
-    private String Strasse;
+    private String Vorname; //Vorname
+    @Column(name = "STRASSE")   
+    private String Strasse; //Straße
     @Column(name = "HAUSNUMMER")
-    private int Hausnummer;
+    private int Hausnummer; //Hausnummer
     @Column(name = "PLZ")
-    private int PLZ;
+    private int PLZ;    //Postleitzahl
     @Column(name = "ORT")
-    private String Ort;
+    private String Ort; //Ort
     @OneToMany
     @JoinColumn(name = "F_KNR")
-    private List<Best> best;
+    private List<Best> best;    //Vom Kunden aufgegebene Bestellungen
 
     public Kund() {
         super();
