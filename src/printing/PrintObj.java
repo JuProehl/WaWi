@@ -23,7 +23,6 @@ import lists.PickingList;
  */
 public class PrintObj implements Printable {
 
-
     String adress_z1 = "";
     String adress_z2 = "";
     String adress_z3 = "";
@@ -38,6 +37,12 @@ public class PrintObj implements Printable {
         this.picklist = pickList;
     }
 
+    /**
+     * Überschreiben der print Methode
+     * 
+     * Positionierung der einzelnen Felder auf Basis von x und y Koordinaten
+     * @author JProehl
+     */
     @Override
     public int print(Graphics g, PageFormat pf, int page)
             throws PrinterException {
@@ -99,17 +104,15 @@ public class PrintObj implements Printable {
         g2d.drawString("+1 (0)12345 / 134322", 140, 779);
         g2d.drawString("Telefax:", 90, 792);
         g2d.drawString("+1 (0)12345 / 134323", 140, 792);
-        
-        
+
         g2d.drawString("Bankverbindungen:", 330, 753);
         g2d.drawString("Commerzbank AG", 330, 766);
         g2d.drawString("IBAN US02 7896 6786 3753 6787 00", 330, 779);
         g2d.drawString("BIC COBADEFFXXX", 330, 792);
-        
+
         g2d.drawString("Geschäftsführer:", 273, 810);
         g2d.drawString("Marc Czolbe, Matthias Escher, Markus Overberg, Julian Pröhl", 140, 823);
-        
-        
+
         return PAGE_EXISTS;
     }
 

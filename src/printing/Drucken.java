@@ -17,7 +17,9 @@ import java.util.ArrayList;
 public class Drucken {
 
     /**
-     * @param args the command line arguments
+     * Erzeugt aus der übergebenen PickingList eine ArrayList die jede BNR der pickinglist nur einmal führt.
+     * Anschließend wir für jedes element der pickList eine Methode aufgerufen die den Druck des Lieferscheins einleitet.
+     * @param pickList
      */
     public void druckeLieferschein(ArrayList pickList) {
         PrinterJob printJob = PrinterJob.getPrinterJob();
@@ -31,6 +33,15 @@ public class Drucken {
         }
     }
 
+    
+    /**
+     * Aufbau des Adressblocks aus dem übergebene k_ba.
+     * Übergabe an die Methode setPrintable der Klasse Prinable.
+     * Drucken des Printable.
+     * @param k_ba
+     * @param printJob
+     * @param posList
+     */
     public void buildAndprintLieferschein(K_BA k_ba, PrinterJob printJob, ArrayList posList) {
         String adresse_z1 = k_ba.getBest().getkund().getVorname() + " " + k_ba.getBest().getkund().getNachname();
         String adresse_z2 = k_ba.getBest().getkund().getStrasse() + " " + k_ba.getBest().getkund().getHausnummer();
