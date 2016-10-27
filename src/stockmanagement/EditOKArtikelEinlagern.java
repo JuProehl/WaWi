@@ -16,11 +16,8 @@ import java.util.ArrayList;
  */
 public class EditOKArtikelEinlagern extends javax.swing.JFrame {
 
-    int ANR;
-    int LNr;
-    int AktMenge;
-    LageList LagerListe;
     ArtikelbestandGUI Artikelbestand;
+    Arti artikel;
 
     /**
      * Creates new form NewJFrame
@@ -29,14 +26,10 @@ public class EditOKArtikelEinlagern extends javax.swing.JFrame {
         initComponents();
     }
 
-    public EditOKArtikelEinlagern(int ANR, int LNr, int AktMenge, ArtikelbestandGUI ArtikelBestand) {
+    public EditOKArtikelEinlagern(Arti artikel, ArtikelbestandGUI ArtikelBestand) {
         initComponents();
-        this.ANR = ANR;
-        this.LNr = LNr;
-        this.AktMenge = AktMenge;
+        this.artikel = artikel;
         this.Artikelbestand = ArtikelBestand;
-        String str = "FROM Lage Where LNr = " + LNr;
-        LagerListe = new LageList(str);
     }
 
     /**
@@ -145,22 +138,23 @@ public class EditOKArtikelEinlagern extends javax.swing.JFrame {
             setVisible(false);
         }
     }//GEN-LAST:event_JTF_MengeKeyPressed
-
+    //einlagern der eingegeben Anzahl an Artikel in die Datenbank
+    //vorher Check ob der Wert Negativ ist bzw. ob eine Zahl eingegeben wurde
+    //Außerdem wird geprüft, ob das Lagerfach bereits voll ist
     private void einlagern() {
-        Integer MaxMenge = LagerListe.getMaxMenge(0);
+        Integer MaxMenge = artikel.getLage().getMaxmenge();
         ArrayList<Integer> Zahlen = new ArrayList<Integer>();
         try {
             Integer PlusMenge = Integer.parseInt(JTF_Menge.getText());
             Zahlen.add(PlusMenge);
             if (!general.Check.istNegativ(Zahlen)) {
-                if (PlusMenge + AktMenge <= MaxMenge) {
-                    Arti artikel = new Arti();
-                    int i = artikel.UpdateArtikelAdd(Integer.parseInt(JTF_Menge.getText()), ANR);
+                if (PlusMenge + artikel.getBESTANDSMENGE() <= MaxMenge) {
+                    int i = artikel.UpdateArtikel(Integer.parseInt(JTF_Menge.getText()));
                     Artikelbestand.tabelleHolen();
                     Artikelbestand.tabelleausgeben();
                     setVisible(false);
                 } else {
-                    int moeglicheMenge = MaxMenge - AktMenge;
+                    int moeglicheMenge = MaxMenge - artikel.getBESTANDSMENGE();
                     general.Message.showError("Eingabefehler", "Maximale Menge überschritten! Es können nur " + moeglicheMenge + " Einheiten eingelagert werden!");
                 }
             }

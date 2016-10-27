@@ -236,7 +236,8 @@ public class EditOKKundenAnlegen extends javax.swing.JFrame {
             anlegen();
         }
     }
-
+    //die Methode anlegen, kann einen neuen Kunden in die Datenbank schreiben
+    //Werte die nur Zahlen enthalten dürfen werden zuvor auf Negativität und Zahlen überprüft
     private void anlegen() {
 
         String Name = tfNachname.getText();

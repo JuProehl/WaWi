@@ -120,7 +120,7 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+        //neue PickingList generieren und GUI öffnen
     private void buttonPicklistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPicklistActionPerformed
         setVisible(false);
         PickinglistGUI pickshowGUI = new PickinglistGUI();
@@ -128,20 +128,20 @@ public class LagerverwaltungGUI extends javax.swing.JFrame {
         pickshowGUI.showTable();
         //pickshowGUI.buildPickingList();
     }//GEN-LAST:event_buttonPicklistActionPerformed
-
+    //zurück zum Startfenster
     private void buttonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBackActionPerformed
         setVisible(false);
         WaWiMainGUI wawiGUI = new WaWiMainGUI();
         wawiGUI.setVisible(true);
     }//GEN-LAST:event_buttonBackActionPerformed
-
+    //ArtikelbestandGUI öffnen
     private void buttonBestandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBestandActionPerformed
         setVisible(false);
         ArtikelbestandGUI bestandGUI = new ArtikelbestandGUI();
         bestandGUI.setVisible(true);
         bestandGUI.tabelleausgeben();
     }//GEN-LAST:event_buttonBestandActionPerformed
-
+    //Lagerübersicht öffnen
     private void buttonLagerplatzActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLagerplatzActionPerformed
         setVisible(false);
         LagerGUI lagerGUI = new LagerGUI();

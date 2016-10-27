@@ -5,12 +5,13 @@
  */
 package stockmanagement;
 
+import entity.Arti;
 import lists.ArtiList;
 import java.awt.event.KeyEvent;
 
 /**
  *
- * @author Markus
+ * @author Matthias
  */
 public class ArtikelbestandGUI extends javax.swing.JFrame {
 
@@ -264,75 +265,68 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
         }
 
     }
-
+    //Tabelle in die die GUI ausgeben
     public void tabelleausgeben() {
         ArtikelListe.ArtikelInTabelleAusgeben(tableArtikelbestand);
     }
-
+    //ArtikelListe neu aus der Datenbank holen
     public void tabelleHolen() {
         ArtikelListe.TabelleHolen();
     }
-
+    //holen und ausgeben in einem Schritt
     public void tabelleaktualisieren() {
         tabelleHolen();
         tabelleausgeben();
     }
 
+    
+    //Aufrufen der Einlagern GUI mit der ausgewählten Zeile 
     private void einlagernAufrufen() {
         try {
             int row = tableArtikelbestand.getSelectedRow();
-            int ANR = ArtikelListe.getANR(row);
-            int LNr = ArtikelListe.getF_LNR(row);
-            int AktMenge = ArtikelListe.getBESTANDSMENGE(row);
-            EditOKArtikelEinlagern EinlagernGUI = new EditOKArtikelEinlagern(ANR, LNr, AktMenge, this);
+            Arti artikel = ArtikelListe.getArti(row);
+            EditOKArtikelEinlagern EinlagernGUI = new EditOKArtikelEinlagern(artikel, this);
             EinlagernGUI.setVisible(true);
         } catch (ArrayIndexOutOfBoundsException e) {
             general.Message.showError("Fehler", "Bitte Zeile auswählen!");
         }
     }
-
+    //Aufrufen der Auslagern GUI mit der ausgewählten Zeile 
     private void auslagernAufrufen() {
         try {
             int row = tableArtikelbestand.getSelectedRow();
-            int ANR = ArtikelListe.getANR(row);
-            int AktMenge = ArtikelListe.getBESTANDSMENGE(row);
-            EditOKArtikelAuslagern AuslagernGUI = new EditOKArtikelAuslagern(ANR, AktMenge, this);
+            Arti artikel = ArtikelListe.getArti(row);
+            EditOKArtikelAuslagern AuslagernGUI = new EditOKArtikelAuslagern(artikel, this);
             AuslagernGUI.setVisible(true);
         } catch (ArrayIndexOutOfBoundsException e) {
             general.Message.showError("Fehler", "Bitte Zeile auswählen!");
         }
     }
-
+    //Aufrufen der Bestandkorrektur GUI mit der ausgewählten Zeile 
     private void korriegierenAufrufen() {
         try {
             int row = tableArtikelbestand.getSelectedRow();
-            int ANR = ArtikelListe.getANR(row);
-            int LNr = ArtikelListe.getF_LNR(row);
-            int AktMenge = ArtikelListe.getBESTANDSMENGE(row);
-            EditOKArtikelKorrektur KorrekturGUI = new EditOKArtikelKorrektur(ANR, LNr, this);
+            Arti artikel = ArtikelListe.getArti(row);
+            EditOKArtikelKorrektur KorrekturGUI = new EditOKArtikelKorrektur(artikel, this);
             KorrekturGUI.setVisible(true);
         } catch (ArrayIndexOutOfBoundsException e) {
             general.Message.showError("Fehler", "Bitte Zeile auswählen!");
         }
     }
-
+    //Aufrufen der Metadaten GUI mit der ausgewählten Zeile 
     private void bearbeitenAufrufen() {
 
         try {
             int row = tableArtikelbestand.getSelectedRow();
-            int ANR = ArtikelListe.getANR(row);
-            int LNr = ArtikelListe.getF_LNR(row);
-            String Bez = ArtikelListe.getBezeichnung(row);
-            int kritMenge = ArtikelListe.getKrit_Menge(row);
-            double preis = ArtikelListe.getVKPreis(row);
-            EditOKArtikelMetadaten MetaDatenGUI = new EditOKArtikelMetadaten(ANR, LNr, Bez, kritMenge, this, preis);
+            Arti artikel = ArtikelListe.getArti(row);
+            EditOKArtikelMetadaten MetaDatenGUI = new EditOKArtikelMetadaten(artikel, this);
             MetaDatenGUI.setVisible(true);
         } catch (ArrayIndexOutOfBoundsException e) {
             general.Message.showError("Fehler", "Bitte Zeile auswählen!");
         }
 
     }
-
+    //Löschen aufrufen mit der ausgewählten Zeile
     private void deleteaufrufen() {
         try {
             int row = tableArtikelbestand.getSelectedRow();
@@ -354,7 +348,7 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
             general.Message.showError("Fehler", "Bitte Zeile auswählen!");
         }
     }
-
+    //aufrufen der Anlegen GUI
     private void anlegenAufrufen() {
         EditOKArtikelAnlegen anlegen = new EditOKArtikelAnlegen(this);
         if(anlegen.aufbauenderCB_LNr()){

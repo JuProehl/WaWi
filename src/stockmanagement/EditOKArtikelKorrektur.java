@@ -16,9 +16,7 @@ import lists.LageList;
 
 public class EditOKArtikelKorrektur extends javax.swing.JFrame {
 
-    int ANR;
-    int LNr;
-    LageList LagerListe;
+    Arti artikel;
     ArtikelbestandGUI Artikelbestand;
 
     /**
@@ -28,13 +26,10 @@ public class EditOKArtikelKorrektur extends javax.swing.JFrame {
         initComponents();
     }
 
-    public EditOKArtikelKorrektur(int ANR, int LNr, ArtikelbestandGUI ArtikelBestand) {
+    public EditOKArtikelKorrektur(Arti artikel, ArtikelbestandGUI ArtikelBestand) {
         initComponents();
-        this.ANR = ANR;
-        this.LNr = LNr;
+        this.artikel = artikel;
         this.Artikelbestand = ArtikelBestand;
-        String str = "FROM Lage Where LNr = " + LNr;
-        LagerListe = new LageList(str);
     }
 
     /**
@@ -153,17 +148,18 @@ public class EditOKArtikelKorrektur extends javax.swing.JFrame {
     private void JTF_MengeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTF_MengeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JTF_MengeActionPerformed
-
+    //korrigieren der eingegeben Anzahl an Artikeln in die Datenbank
+    //vorher Check ob der Wert Negativ ist bzw. ob eine Zahl eingegeben wurde
+    //Außerdem wird geprüft, ob die eingegebene Anzahl größer ist, als die Größe des Lagerfachs
     private void korrigieren() {
-        Integer MaxMenge = LagerListe.getMaxMenge(0);
+        Integer MaxMenge = artikel.getLage().getMaxmenge();
         ArrayList<Integer> Zahlen = new ArrayList<Integer>();
         try {
             Integer NewMenge = Integer.parseInt(JTF_Menge.getText());
             Zahlen.add(NewMenge);
             if (!general.Check.istNegativ(Zahlen)) {
                 if (NewMenge <= MaxMenge) {
-                    Arti artikel = new Arti();
-                    int i = artikel.UpdateArtikelSetNew(Integer.parseInt(JTF_Menge.getText()), ANR);
+                    int i = artikel.UpdateArtikelSetNew(Integer.parseInt(JTF_Menge.getText()));
                     Artikelbestand.tabelleHolen();
                     Artikelbestand.tabelleausgeben();
                     setVisible(false);

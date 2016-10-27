@@ -190,7 +190,8 @@ public class customerGUI extends javax.swing.JFrame {
     private void tabelleHolen() {
         this.Kundenliste.TabelleHolen();
     }
-
+    //Methode bearbeitenaufrufen
+    //Die Kunden bearbeiten GUI wird mit dem Kunden Obkejt aufgerufen
     private void bearbeitenaufrufen() {
         try {
             int row = tableKunden.getSelectedRow();
@@ -200,7 +201,9 @@ public class customerGUI extends javax.swing.JFrame {
             general.Message.showError("Fehler", "Bitte Zeile auswählen!");
         }
     }
-
+    
+    //Methode deleteaufrufen
+    //Der aktuell ausgewählte Kunde wird gelöscht
     private void deleteaufrufen() {
         try {
             int row = tableKunden.getSelectedRow();

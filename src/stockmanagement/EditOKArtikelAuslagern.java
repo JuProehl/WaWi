@@ -15,7 +15,7 @@ import java.awt.event.KeyEvent;
 public class EditOKArtikelAuslagern extends javax.swing.JFrame {
 
     int ANR;
-    Integer AktMenge;
+    Arti artikel;
     ArtikelbestandGUI Artikelbestand;
 
     /**
@@ -25,11 +25,10 @@ public class EditOKArtikelAuslagern extends javax.swing.JFrame {
         initComponents();
     }
 
-    public EditOKArtikelAuslagern(int ANR, int AktMenge, ArtikelbestandGUI ArtikelBestand) {
+    public EditOKArtikelAuslagern(Arti artikel, ArtikelbestandGUI Artikelbestand) {
         initComponents();
-        this.ANR = ANR;
-        this.AktMenge = AktMenge;
-        this.Artikelbestand = ArtikelBestand;
+        this.Artikelbestand = Artikelbestand;
+        this.artikel = artikel;
     }
 
     /**
@@ -137,19 +136,21 @@ public class EditOKArtikelAuslagern extends javax.swing.JFrame {
             setVisible(false);
         }
     }//GEN-LAST:event_JTF_MengeKeyPressed
-
+    //auslagern der eingegeben Anzahl an Artikel aus der Datenbank
+    //vorher Check ob der Wert Negativ ist bzw. ob eine Zahl eingegeben wurde
+    //Außerdem wird geprüft, ob genug Artikel vorhanden sind
     private void auslagern() {
         try {
             Integer MinusMenge = Integer.parseInt(JTF_Menge.getText());
             if (!general.Check.istNegativ(MinusMenge)) {
-                if (MinusMenge <= AktMenge) {
-                    Arti artikel = new Arti();
-                    int i = artikel.UpdateArtikelAdd(-Integer.parseInt(JTF_Menge.getText()), ANR);
+                if (MinusMenge <= artikel.getBESTANDSMENGE()) {
+                    int i = artikel.UpdateArtikel(-Integer.parseInt(JTF_Menge.getText()));
                     Artikelbestand.tabelleHolen();
                     Artikelbestand.tabelleausgeben();
                     setVisible(false);
                 } else {
-                    general.Message.showError("Eingabefehler", "Zu wenig Einheiten vorhanden! Es sind nur " + AktMenge.toString() + " Einheiten vorhanden!");
+                    general.Message.showError("Eingabefehler", "Zu wenig Einheiten vorhanden! Es sind nur " 
+                           + Integer.valueOf(artikel.getBESTANDSMENGE()).toString() + " Einheiten vorhanden!");
                 }
             }
         } catch (NumberFormatException e) {

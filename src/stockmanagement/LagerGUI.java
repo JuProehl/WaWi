@@ -194,14 +194,15 @@ public class LagerGUI extends javax.swing.JFrame {
         anlegenGUI.setVisible(true);
     }//GEN-LAST:event_jButton_anlegenActionPerformed
 
+        //Lagerliste in die Tabelle ausgeben
     public void Tabelleausgeben() {
         LagerListe.LagerInTabelleAusgeben(tableLagerbestand);
     }
-
+        //Lagerliste aktualisieren
     public void TabelleHolen() {
         LagerListe.TabelleHolen();
     }
-
+        //Aufrufen der GUI zum bearbeiten eines Lagerfachs
     private void bearbeitenaufrufen() {
         try {
             int row = tableLagerbestand.getSelectedRow();
@@ -211,7 +212,9 @@ public class LagerGUI extends javax.swing.JFrame {
             general.Message.showError("Fehler", "Bitte Zeile auswählen!");
         }
     }
-
+        //Aufrufen der Löschenmethode, um ein Lagerfach zu löschen 
+        //Auswahl durch auswählen der Zeile
+        //Überprüfung ob noch ein Artikel mit dem Lagerfach verknüpft ist
     private void deleteaufrufen() {
 
         try {

@@ -217,7 +217,7 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
     private void CB_LNrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_LNrActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CB_LNrActionPerformed
-
+ 
     private void abfangenKey(java.awt.event.KeyEvent evt) {
         if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             setVisible(false);
@@ -226,15 +226,16 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
             anlegen();
         }
     }
-
+    //anlegen eines neuen Artikels
     private void anlegen() {
         ArrayList<Integer> list = new ArrayList<Integer>();
         boolean success = true;
+        //Check ob Zahlen eingeben wurden und Zahlen zum Array hinzufügen
         try {
             list.add(Integer.parseInt(tfBestandsmenge.getText()));
             list.add(Integer.parseInt(tfKrit.getText()));
             list.add(Integer.parseInt(CB_LNr.getSelectedItem().toString()));
-
+            
             this.checkPreis = tfVKPreis.getText().replace(".", ",");
 
         } catch (NumberFormatException e) {
@@ -243,7 +244,9 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
 
         }
         if (success) {
+            //Check ob Zahlen negativ sind
             if (!general.Check.istNegativ(list)) {
+                //Neuer Artikel anlegen und in die Datenbank einfügen
                 Arti artikel = new Arti();
                 int i = artikel.InsertArtikel(ANR, tfBez.getText(),
                         Integer.parseInt(tfBestandsmenge.getText()), Integer.parseInt(tfKrit.getText()),
@@ -275,6 +278,7 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
         }
     }
 
+        //Nächsten verfügbare Artikelnummer generieren
     private Integer nextANR() {
 
         DB_Connect con = new DB_Connect();
@@ -287,10 +291,9 @@ public class EditOKArtikelAnlegen extends javax.swing.JFrame {
     }
 
     
-    
+    //Alle freien Lagerplätze in die Auswahlliste einfügen
     public Boolean aufbauenderCB_LNr(){
         LageList lagerlist = new LageList();
-        System.out.println(CB_LNr.getItemCount());
         Boolean r = true;
         try{
         ArrayList<String> list = lagerlist.getLeereLagerorte();

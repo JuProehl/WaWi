@@ -252,6 +252,8 @@ public class orderGUI extends javax.swing.JFrame {
         this.BestellListe.TabelleHolen();
     }
 
+    // Methode statusAktualisieren
+    // startet die Status aktualisieren GUI und übergibt das Bestellungsojekt anhand der ausgewählten Zeile
     private void statusAktualisieren() {
         try {
             int row = tableBest.getSelectedRow();
