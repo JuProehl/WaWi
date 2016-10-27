@@ -16,9 +16,7 @@ import lists.LageList;
 
 public class EditOKArtikelKorrektur extends javax.swing.JFrame {
 
-    int ANR;
-    int LNr;
-    LageList LagerListe;
+    Arti artikel;
     ArtikelbestandGUI Artikelbestand;
 
     /**
@@ -28,13 +26,10 @@ public class EditOKArtikelKorrektur extends javax.swing.JFrame {
         initComponents();
     }
 
-    public EditOKArtikelKorrektur(int ANR, int LNr, ArtikelbestandGUI ArtikelBestand) {
+    public EditOKArtikelKorrektur(Arti artikel, ArtikelbestandGUI ArtikelBestand) {
         initComponents();
-        this.ANR = ANR;
-        this.LNr = LNr;
+        this.artikel = artikel;
         this.Artikelbestand = ArtikelBestand;
-        String str = "FROM Lage Where LNr = " + LNr;
-        LagerListe = new LageList(str);
     }
 
     /**
@@ -155,15 +150,14 @@ public class EditOKArtikelKorrektur extends javax.swing.JFrame {
     }//GEN-LAST:event_JTF_MengeActionPerformed
 
     private void korrigieren() {
-        Integer MaxMenge = LagerListe.getMaxMenge(0);
+        Integer MaxMenge = artikel.getLage().getMaxmenge();
         ArrayList<Integer> Zahlen = new ArrayList<Integer>();
         try {
             Integer NewMenge = Integer.parseInt(JTF_Menge.getText());
             Zahlen.add(NewMenge);
             if (!general.Check.istNegativ(Zahlen)) {
                 if (NewMenge <= MaxMenge) {
-                    Arti artikel = new Arti();
-                    int i = artikel.UpdateArtikelSetNew(Integer.parseInt(JTF_Menge.getText()), ANR);
+                    int i = artikel.UpdateArtikelSetNew(Integer.parseInt(JTF_Menge.getText()));
                     Artikelbestand.tabelleHolen();
                     Artikelbestand.tabelleausgeben();
                     setVisible(false);

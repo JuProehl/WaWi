@@ -23,6 +23,7 @@ public class EditOKArtikelMetadaten extends javax.swing.JFrame {
     String VKPreis;
     ArtikelbestandGUI artikelbestand;
     LageList LagerListe;
+    Arti artikel;
 
     /**
      * Creates new form MetaDatenEditOKGUI
@@ -31,22 +32,23 @@ public class EditOKArtikelMetadaten extends javax.swing.JFrame {
         initComponents();
     }
 
-    public EditOKArtikelMetadaten(int ANr, int LNr, String Bezeichnung, int kritMenge, ArtikelbestandGUI Artikelbestand, double preis) {
+    public EditOKArtikelMetadaten(Arti artikel, ArtikelbestandGUI Artikelbestand) {
         initComponents();
-        this.ANR = ANr;
-        this.LNr = LNr;
-        this.Bezeichnung = Bezeichnung;
-        this.kritMenge = kritMenge;
+        this.ANR = artikel.getANR();
+        this.LNr = artikel.getLage().getLNr();
+        this.Bezeichnung = artikel.getBEZEICHNUNG();
+        this.kritMenge = artikel.getKrit_Menge();
         this.artikelbestand = Artikelbestand;
-        this.VKPreis = "" + preis;
+        this.VKPreis = "" + artikel.getVK_Preis();
         String str = "FROM Lage Where LNr = " + LNr;
         LagerListe = new LageList(str);
+        this.artikel = artikel;
 
         Label_ANR_Set.setText(this.ANR.toString());
         JTF_Bezeichnung.setText(Bezeichnung);
         JTF_kritMenge.setText(this.kritMenge.toString());
         JTF_LagerOrt.setText(this.LNr.toString());
-        JTF_VkPreis.setText("" + preis);
+        JTF_VkPreis.setText("" + this.VKPreis);
     }
 
     /**
@@ -240,7 +242,6 @@ public class EditOKArtikelMetadaten extends javax.swing.JFrame {
         String EditVKPreis = "";
         Boolean succes = true;
         ArrayList<Integer> list = new ArrayList<Integer>();
-        Arti artikel = new Arti();
         Boolean LNRCHECK = false;
 
         try {

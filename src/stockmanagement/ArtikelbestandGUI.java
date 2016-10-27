@@ -285,14 +285,8 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
     private void einlagernAufrufen() {
         try {
             int row = tableArtikelbestand.getSelectedRow();
-            Arti Artikel = ArtikelListe.getArti(row);  
-            
-            int ANR = ArtikelListe.getANR(row);
-            int LNr = ArtikelListe.getF_LNR(row);
-            int AktMenge = ArtikelListe.getBESTANDSMENGE(row);
-            
-            
-            EditOKArtikelEinlagern EinlagernGUI = new EditOKArtikelEinlagern(Artikel, this);
+            Arti artikel = ArtikelListe.getArti(row);
+            EditOKArtikelEinlagern EinlagernGUI = new EditOKArtikelEinlagern(artikel, this);
             EinlagernGUI.setVisible(true);
         } catch (ArrayIndexOutOfBoundsException e) {
             general.Message.showError("Fehler", "Bitte Zeile auswählen!");
@@ -302,9 +296,8 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
     private void auslagernAufrufen() {
         try {
             int row = tableArtikelbestand.getSelectedRow();
-            int ANR = ArtikelListe.getANR(row);
-            int AktMenge = ArtikelListe.getBESTANDSMENGE(row);
-            EditOKArtikelAuslagern AuslagernGUI = new EditOKArtikelAuslagern(ANR, AktMenge, this);
+            Arti artikel = ArtikelListe.getArti(row);
+            EditOKArtikelAuslagern AuslagernGUI = new EditOKArtikelAuslagern(artikel, this);
             AuslagernGUI.setVisible(true);
         } catch (ArrayIndexOutOfBoundsException e) {
             general.Message.showError("Fehler", "Bitte Zeile auswählen!");
@@ -314,10 +307,8 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
     private void korriegierenAufrufen() {
         try {
             int row = tableArtikelbestand.getSelectedRow();
-            int ANR = ArtikelListe.getANR(row);
-            int LNr = ArtikelListe.getF_LNR(row);
-            int AktMenge = ArtikelListe.getBESTANDSMENGE(row);
-            EditOKArtikelKorrektur KorrekturGUI = new EditOKArtikelKorrektur(ANR, LNr, this);
+            Arti artikel = ArtikelListe.getArti(row);
+            EditOKArtikelKorrektur KorrekturGUI = new EditOKArtikelKorrektur(artikel, this);
             KorrekturGUI.setVisible(true);
         } catch (ArrayIndexOutOfBoundsException e) {
             general.Message.showError("Fehler", "Bitte Zeile auswählen!");
@@ -328,12 +319,8 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
 
         try {
             int row = tableArtikelbestand.getSelectedRow();
-            int ANR = ArtikelListe.getANR(row);
-            int LNr = ArtikelListe.getF_LNR(row);
-            String Bez = ArtikelListe.getBezeichnung(row);
-            int kritMenge = ArtikelListe.getKrit_Menge(row);
-            double preis = ArtikelListe.getVKPreis(row);
-            EditOKArtikelMetadaten MetaDatenGUI = new EditOKArtikelMetadaten(ANR, LNr, Bez, kritMenge, this, preis);
+            Arti artikel = ArtikelListe.getArti(row);
+            EditOKArtikelMetadaten MetaDatenGUI = new EditOKArtikelMetadaten(artikel, this);
             MetaDatenGUI.setVisible(true);
         } catch (ArrayIndexOutOfBoundsException e) {
             general.Message.showError("Fehler", "Bitte Zeile auswählen!");

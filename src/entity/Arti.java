@@ -55,22 +55,15 @@ public class Arti {
         this.VK_Preis = VK_Preis;
     }
 
-    // Methode UpdateArtikelAdd
+    // Methode UpdateArtikel
     // Artikel einlagern
     // Stellt eine Verbindung zur Datenbabk her und
     // lagert unter Ausführung eines SQL-Statements 
     // eine übergebene Menge von Artikeln ein.
-    // Übergabeparameter: int amount, int nummer
+    // Übergabeparameter: int amount
     // amount: einzulagernde Menge
-    // nummer: Artikelnummer des einzulagernden Artikels
     // Rückgabewert int
     // gibt die Anzahl betroffener Zeilen nach Ausführung des SQL-Statements zurück
-    public int UpdateArtikelAdd(int amount, int nummer) {
-        DB_Connect con = new DB_Connect();
-        return con.simpleConnect("UPDATE Arti SET BESTANDSMENGE = BESTANDSMENGE + " + Integer.toString(amount) + " WHERE ANR = " + Integer.toString(nummer));
-    }
-    
-    
     public int UpdateArtikel(int amount) {
         DB_Connect con = new DB_Connect();
         return con.simpleConnect("UPDATE Arti SET BESTANDSMENGE = BESTANDSMENGE + " + Integer.toString(amount) + " WHERE ANR = " + ANR);
@@ -81,14 +74,13 @@ public class Arti {
     // Stellt eine Verbindung zur Datenbabk her und
     // setzt unter Ausführung eines SQL-Statements
     // die Bestandsmenge eines Artikels.
-    // Übergabeparameter: int amount, int nummer
+    // Übergabeparameter: int amount
     // amount: neue Bestandmenge
-    // nummer: Artikelnummer des zu korrigierenden Artikels
     // Rückgabewert int
     // gibt die Anzahl betroffener Zeilen nach Ausführung des SQL-Statements zurück
-    public int UpdateArtikelSetNew(int amount, int nummer) {
+    public int UpdateArtikelSetNew(int amount) {
         DB_Connect con = new DB_Connect();
-        return con.simpleConnect("UPDATE Arti SET BESTANDSMENGE = " + Integer.toString(amount) + " WHERE ANR = " + Integer.toString(nummer));
+        return con.simpleConnect("UPDATE Arti SET BESTANDSMENGE = " + Integer.toString(amount) + " WHERE ANR = " + ANR);
     }
 
     // Methode UpdateArtikelFree
@@ -119,33 +111,7 @@ public class Arti {
         return con.simpleConnect("UPDATE Arti SET LOESCHKENNZEICHEN = 'X', F_LNR = NULL WHERE ANR = " + ANR);
     }
 
-    // Methode Bestandskorrektur
-    // Artikel Bestandskorrektur
-    // Stellt eine Verbindung zur Datenbabk her und
-    // setzt unter Ausführung eines SQL-Statements die Bestandsmenge eines Artikels.
-    // Übergabeparameter: int bestandsmenge, int nummer
-    // amount: neue Bestandmenge
-    // nummer: Artikelnummer des zu korrigierenden Artikels
-    // Rückgabewert int
-    // gibt die Anzahl betroffener Zeilen nach Ausführung des SQL-Statements zurück 
-    public int Bestandskorrektur(int bestandsmenge, int nummer) {
-        DB_Connect con = new DB_Connect();
-        return con.simpleConnect("UPDATE Arti SET BESTANDSMENGE = " + Integer.toString(bestandsmenge) + " WHERE ANR = " + Integer.toString(nummer));
-    }
 
-    // Methode Auslagern
-    // Artikel auslagern
-    // Stellt eine Verbindung zur Datenbabk her und
-    // lagert unter Ausführung eines SQL-Statements die übergebene Menge eines Artikels aus.
-    // Übergabeparameter: int amount, int nummer
-    // amount: auszulagernde Menge
-    // nummer: Artikelnummer des zu korrigierenden Artikels
-    // Rückgabewert int
-    // gibt die Anzahl betroffener Zeilen nach Ausführung des SQL-Statements zurück
-    public int Auslagern(int amount, int nummer) {
-        DB_Connect con = new DB_Connect();
-        return con.simpleConnect("UPDATE Arti SET BESTANDSMENGE = BESTANDSMENGE - " + Integer.toString(amount) + " WHERE ANR = " + Integer.toString(nummer));
-    }
 
     // Methode InsertArtikel
     // Artikel anlegen
