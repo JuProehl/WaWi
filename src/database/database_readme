@@ -1,0 +1,4 @@
+Paket database enthält zum einen die Konfigurationsdatei für Hibernate,
+in der die Verbindungsdaten für die Datenbank und das Mapping der 
+Entitätsklassen enthalten ist. Weitere Klasse ist
+DB_Connect: Stellt Methoden zum Datenbankzugriff mittels Hibernate bereit.

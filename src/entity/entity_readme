@@ -10,3 +10,6 @@ Lage:   Lagerorte
 Lief:   Lieferungen
 
 Die Beziehungen zwischen den Tabellen können dem ERM entnommen werden.
+
+Die einzelnen Klassen enthalten zudem Methoden zur Verwaltung ihrer entsprechenden Tabellen
+in der Datenbank (bspw. Bestellstatus aktualisieren).

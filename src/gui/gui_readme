@@ -1,0 +1,7 @@
+Paket gui enthält die Klasse WaWiMainGUI. Diese Klasse enthält die erste GUI,
+die dem Benutzer beim Start des Programms angezeigt wird.
+Von hier kann in die Artikelverwaltung (stockmanagement), die Bestellverwaltung (ordermanagement),
+Kundenverwaltung (customermanagement) und die Reports (report) gesprungen werden.
+
+Als Einstiegspunkt enthält diese Klasse zudem die Methode main, in der zum Start
+des Programms die Datenbankverbindung hergestellt wird, die von allen anderen Klassen genutzt wird.

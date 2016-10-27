@@ -1,0 +1,6 @@
+Paket ordermanagement enthält Klassen, über die der Benutzer Bestellungen verwalten kann.
+orderGUI:   Hauptfenster, in dem die Bestellliste (BestList) angezeigt wird.
+            Enthält Methoden zur Anwendung von Filtern, Ändern der Bestellstatus,
+            Nachdrucken von Lieferscheinen und Aktualisierung der Anzeige.
+EditOKEtikettGUI: Bestätigung, ob Lieferschein wirklich gedruckt werden soll.
+EditOKStatusAktualisieren: Wahlfenster, auf was der Bestellstatus geändert werden soll.
