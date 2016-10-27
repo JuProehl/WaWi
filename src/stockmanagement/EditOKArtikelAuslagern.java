@@ -136,7 +136,9 @@ public class EditOKArtikelAuslagern extends javax.swing.JFrame {
             setVisible(false);
         }
     }//GEN-LAST:event_JTF_MengeKeyPressed
-
+    //auslagern der eingegeben Anzahl an Artikel aus der Datenbank
+    //vorher Check ob der Wert Negativ ist bzw. ob eine Zahl eingegeben wurde
+    //Außerdem wird geprüft, ob genug Artikel vorhanden sind
     private void auslagern() {
         try {
             Integer MinusMenge = Integer.parseInt(JTF_Menge.getText());

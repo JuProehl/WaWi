@@ -265,23 +265,22 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
         }
 
     }
-
+    //Tabelle in die die GUI ausgeben
     public void tabelleausgeben() {
         ArtikelListe.ArtikelInTabelleAusgeben(tableArtikelbestand);
     }
-
+    //ArtikelListe neu aus der Datenbank holen
     public void tabelleHolen() {
         ArtikelListe.TabelleHolen();
     }
-
+    //holen und ausgeben in einem Schritt
     public void tabelleaktualisieren() {
         tabelleHolen();
         tabelleausgeben();
     }
 
     
-    //Methode einlagernAufrufen liest die aktuelle 
-    //
+    //Aufrufen der Einlagern GUI mit der ausgewählten Zeile 
     private void einlagernAufrufen() {
         try {
             int row = tableArtikelbestand.getSelectedRow();
@@ -292,7 +291,7 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
             general.Message.showError("Fehler", "Bitte Zeile auswählen!");
         }
     }
-
+    //Aufrufen der Auslagern GUI mit der ausgewählten Zeile 
     private void auslagernAufrufen() {
         try {
             int row = tableArtikelbestand.getSelectedRow();
@@ -303,7 +302,7 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
             general.Message.showError("Fehler", "Bitte Zeile auswählen!");
         }
     }
-
+    //Aufrufen der Bestandkorrektur GUI mit der ausgewählten Zeile 
     private void korriegierenAufrufen() {
         try {
             int row = tableArtikelbestand.getSelectedRow();
@@ -314,7 +313,7 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
             general.Message.showError("Fehler", "Bitte Zeile auswählen!");
         }
     }
-
+    //Aufrufen der Metadaten GUI mit der ausgewählten Zeile 
     private void bearbeitenAufrufen() {
 
         try {
@@ -327,7 +326,7 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
         }
 
     }
-
+    //Löschen aufrufen mit der ausgewählten Zeile
     private void deleteaufrufen() {
         try {
             int row = tableArtikelbestand.getSelectedRow();
@@ -349,7 +348,7 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
             general.Message.showError("Fehler", "Bitte Zeile auswählen!");
         }
     }
-
+    //aufrufen der Anlegen GUI
     private void anlegenAufrufen() {
         EditOKArtikelAnlegen anlegen = new EditOKArtikelAnlegen(this);
         if(anlegen.aufbauenderCB_LNr()){

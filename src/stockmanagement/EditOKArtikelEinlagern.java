@@ -138,7 +138,9 @@ public class EditOKArtikelEinlagern extends javax.swing.JFrame {
             setVisible(false);
         }
     }//GEN-LAST:event_JTF_MengeKeyPressed
-
+    //einlagern der eingegeben Anzahl an Artikel in die Datenbank
+    //vorher Check ob der Wert Negativ ist bzw. ob eine Zahl eingegeben wurde
+    //Außerdem wird geprüft, ob das Lagerfach bereits voll ist
     private void einlagern() {
         Integer MaxMenge = artikel.getLage().getMaxmenge();
         ArrayList<Integer> Zahlen = new ArrayList<Integer>();
