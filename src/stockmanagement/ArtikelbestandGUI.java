@@ -5,6 +5,7 @@
  */
 package stockmanagement;
 
+import entity.Arti;
 import lists.ArtiList;
 import java.awt.event.KeyEvent;
 
@@ -278,13 +279,20 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
         tabelleausgeben();
     }
 
+    
+    //Methode einlagernAufrufen liest die aktuelle 
+    //
     private void einlagernAufrufen() {
         try {
             int row = tableArtikelbestand.getSelectedRow();
+            Arti Artikel = ArtikelListe.getArti(row);  
+            
             int ANR = ArtikelListe.getANR(row);
             int LNr = ArtikelListe.getF_LNR(row);
             int AktMenge = ArtikelListe.getBESTANDSMENGE(row);
-            EditOKArtikelEinlagern EinlagernGUI = new EditOKArtikelEinlagern(ANR, LNr, AktMenge, this);
+            
+            
+            EditOKArtikelEinlagern EinlagernGUI = new EditOKArtikelEinlagern(Artikel, this);
             EinlagernGUI.setVisible(true);
         } catch (ArrayIndexOutOfBoundsException e) {
             general.Message.showError("Fehler", "Bitte Zeile auswählen!");

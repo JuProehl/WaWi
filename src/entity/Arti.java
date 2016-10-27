@@ -69,6 +69,12 @@ public class Arti {
         DB_Connect con = new DB_Connect();
         return con.simpleConnect("UPDATE Arti SET BESTANDSMENGE = BESTANDSMENGE + " + Integer.toString(amount) + " WHERE ANR = " + Integer.toString(nummer));
     }
+    
+    
+    public int UpdateArtikel(int amount) {
+        DB_Connect con = new DB_Connect();
+        return con.simpleConnect("UPDATE Arti SET BESTANDSMENGE = BESTANDSMENGE + " + Integer.toString(amount) + " WHERE ANR = " + ANR);
+    }
 
     // Methode UpdateArtikelSetNew
     // Artikel Bestandskorrektur
