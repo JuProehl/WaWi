@@ -1,0 +1,13 @@
+Paket lists enthält Klassen zur Verwaltung von Listen. Die jeweiligen Listen
+enthalten Methoden zum Import der Datensätze aus der Datenbank,
+zum Ausliefern einzelner Werte aus einer Reihe und zur Aufbereitung für die
+Ausgabe in der GUI.
+ArtiList: Liste von Artikeln (ohne Löschkennzeichen)
+BestList: Liste von Bestellungen
+KundList: Liste von Kunden
+LageList: Liste von Lagerorten
+PickingList: Pickliste
+
+PickingList enthält noch zusätzliche Logik zur Erstellung der Pickliste und 
+zur Verwaltung der Auftragsstatus (in Arbeit bei Abarbeitung und abgeschlossen
+bei Abschluss der Pickliste durch den Lagermitarbeiter)

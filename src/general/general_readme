@@ -1,0 +1,7 @@
+Paket general enthält funktionsübergreifende Klassen.
+Check enthält Methoden zur Überprüfung von Daten (bisher nur Überprüfung von
+Negativeingaben).
+Message nutzt JOptionPane, um Methoden zur Ausgabe von Fehler- und Erfolgsmeldungen
+via Dialogbox bereitzustellen.
+Print stellt Methoden zum Drucken von Tabellen bereit und nutzt dabei die
+Java Print Service API.

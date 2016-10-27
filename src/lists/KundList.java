@@ -21,8 +21,7 @@ public class KundList {
     database.DB_Connect con;
 
     public KundList() {
-        this.con = new database.DB_Connect();
-        this.result = con.Connect("FROM Kund ORDER BY KNR");
+        this.TabelleHolen();
     }
 
     public KundList(String Befehl) {
