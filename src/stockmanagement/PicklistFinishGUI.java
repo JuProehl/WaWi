@@ -11,12 +11,12 @@ package stockmanagement;
  */
 public class PicklistFinishGUI extends javax.swing.JFrame {
 
-    PicklistGUI higherGUI;
+    PickinglistGUI higherGUI;
 
     /**
      * Creates new form picklistFinischGUI
      */
-    public PicklistFinishGUI(PicklistGUI higherGUI) {
+    public PicklistFinishGUI(PickinglistGUI higherGUI) {
         initComponents();
         this.higherGUI = higherGUI;
     }

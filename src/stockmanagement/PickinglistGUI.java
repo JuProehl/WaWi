@@ -15,12 +15,12 @@ import printing.Drucken;
  *
  * @author Markus
  */
-public class PicklistGUI extends javax.swing.JFrame {
+public class PickinglistGUI extends javax.swing.JFrame {
 
     //Objekt Variablen Deklaration
     PickingList pickinglist = new PickingList();
 
-    public PicklistGUI() {
+    public PickinglistGUI() {
         //Konstruktor
         initComponents();
     }
@@ -170,7 +170,7 @@ public class PicklistGUI extends javax.swing.JFrame {
 
     private void buttonReadyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReadyActionPerformed
         //Abschließen Button
-        //erzeugen eines neuen PicklistFinishGUI Objekts mit übergabe des PicklistGUI Objekts an den Konstruktor
+        //erzeugen eines neuen PicklistFinishGUI Objekts mit übergabe des PickinglistGUI Objekts an den Konstruktor
         PicklistFinishGUI picklistFinischGUI = new PicklistFinishGUI(this);
         //neues PicklistFinishGUI Objekts auf Sichbar setzen
         picklistFinischGUI.setVisible(true);
@@ -178,7 +178,7 @@ public class PicklistGUI extends javax.swing.JFrame {
 
     private void showartipListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showartipListActionPerformed
         // TODO add your handling code here:
-        PicklistArtiSumGUI picklistArtiSumGUI = new PicklistArtiSumGUI(pickinglist.getPickingListArray());
+        PicklistArtiGUI picklistArtiSumGUI = new PicklistArtiGUI(pickinglist.getPickingListArray());
         picklistArtiSumGUI.createAndshowTabel();
         picklistArtiSumGUI.setVisible(true);
     }//GEN-LAST:event_showartipListActionPerformed
@@ -288,14 +288,18 @@ public class PicklistGUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PicklistGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PickinglistGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PicklistGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PickinglistGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PicklistGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PickinglistGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PicklistGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PickinglistGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -304,7 +308,7 @@ public class PicklistGUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PicklistGUI().setVisible(true);
+                new PickinglistGUI().setVisible(true);
             }
         });
     }
