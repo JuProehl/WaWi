@@ -1,19 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package customermanagement;
 
+//Bibliotheken import
 import database.DB_Connect;
 import entity.Kund;
 import java.awt.event.KeyEvent;
 import java.util.List;
 
-/**
- *
- * @author matthias
- */
+// Klasse zur Kundenanlage über GUI, 
+// Eingabe der Daten und Prüfung auf Vollständigkeit.
 public class EditOKKundenAnlegen extends javax.swing.JFrame {
 
     Integer KNR;
@@ -26,6 +20,7 @@ public class EditOKKundenAnlegen extends javax.swing.JFrame {
         initComponents();
     }
 
+    //Konstruktor 
     public EditOKKundenAnlegen(customerGUI customerGUI) {
         initComponents();
         KNR = nextKNR();

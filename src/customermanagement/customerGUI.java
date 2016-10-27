@@ -1,17 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package customermanagement;
 
+// Bibliotheken import
 import gui.WaWiMainGUI;
 import lists.KundList;
 
-/**
- *
- * @author Markus
- */
 // Klasse CustomerGUI
 // Enthält Methoden zum Anzeigen und Bearbeiten von Kundendaten
 public class customerGUI extends javax.swing.JFrame {
