@@ -42,7 +42,7 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
         jButton_Auslagern = new javax.swing.JButton();
         jButton_Korrektur = new javax.swing.JButton();
         jButton_MetaDaten = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        jButton_Delete = new javax.swing.JButton();
         JButton_Anlegen = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -90,11 +90,6 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
                 buttonAktualisierenActionPerformed(evt);
             }
         });
-        buttonAktualisieren.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                buttonAktualisierenKeyPressed(evt);
-            }
-        });
 
         jButton_Einlagern.setText("Einlagern (F1)");
         jButton_Einlagern.addActionListener(new java.awt.event.ActionListener() {
@@ -124,10 +119,10 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("Löschen (F6)");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jButton_Delete.setText("Löschen (F6)");
+        jButton_Delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jButton_DeleteActionPerformed(evt);
             }
         });
 
@@ -160,7 +155,7 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
                             .addComponent(jButton_Auslagern, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton_Einlagern, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton_MetaDaten, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton_Delete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(JButton_Anlegen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -184,7 +179,7 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton_MetaDaten)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton5)
+                        .addComponent(jButton_Delete)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(JButton_Anlegen)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -213,10 +208,6 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
         abfangenKey(evt);
     }//GEN-LAST:event_tableArtikelbestandKeyPressed
 
-    private void buttonAktualisierenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buttonAktualisierenKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonAktualisierenKeyPressed
-
     private void jButton_AuslagernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AuslagernActionPerformed
         auslagernAufrufen();
     }//GEN-LAST:event_jButton_AuslagernActionPerformed
@@ -229,9 +220,9 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
         bearbeitenAufrufen();
     }//GEN-LAST:event_jButton_MetaDatenActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jButton_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DeleteActionPerformed
         deleteaufrufen();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_jButton_DeleteActionPerformed
 
     private void JButton_AnlegenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButton_AnlegenActionPerformed
         anlegenAufrufen();
@@ -396,8 +387,8 @@ public class ArtikelbestandGUI extends javax.swing.JFrame {
     private javax.swing.JButton JButton_Anlegen;
     private javax.swing.JButton buttonAktualisieren;
     private javax.swing.JButton buttonBack;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton_Auslagern;
+    private javax.swing.JButton jButton_Delete;
     private javax.swing.JButton jButton_Einlagern;
     private javax.swing.JButton jButton_Korrektur;
     private javax.swing.JButton jButton_MetaDaten;

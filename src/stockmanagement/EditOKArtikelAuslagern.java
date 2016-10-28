@@ -63,11 +63,6 @@ public class EditOKArtikelAuslagern extends javax.swing.JFrame {
                 JButton_OKActionPerformed(evt);
             }
         });
-        JButton_OK.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                JButton_OKKeyPressed(evt);
-            }
-        });
 
         JTF_Menge.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -123,10 +118,6 @@ public class EditOKArtikelAuslagern extends javax.swing.JFrame {
     private void JButton_OKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButton_OKActionPerformed
         auslagern();
     }//GEN-LAST:event_JButton_OKActionPerformed
-
-    private void JButton_OKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JButton_OKKeyPressed
-
-    }//GEN-LAST:event_JButton_OKKeyPressed
 
     private void JTF_MengeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTF_MengeKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {

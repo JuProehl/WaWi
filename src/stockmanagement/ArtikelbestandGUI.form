@@ -45,7 +45,7 @@
                           <Component id="jButton_Auslagern" alignment="0" max="32767" attributes="0"/>
                           <Component id="jButton_Einlagern" alignment="0" max="32767" attributes="0"/>
                           <Component id="jButton_MetaDaten" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jButton5" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jButton_Delete" alignment="0" max="32767" attributes="0"/>
                           <Component id="JButton_Anlegen" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -75,7 +75,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton_MetaDaten" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton5" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton_Delete" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="JButton_Anlegen" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -169,7 +169,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAktualisierenActionPerformed"/>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="buttonAktualisierenKeyPressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton_Einlagern">
@@ -204,12 +203,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_MetaDatenActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton5">
+    <Component class="javax.swing.JButton" name="jButton_Delete">
       <Properties>
         <Property name="text" type="java.lang.String" value="L&#xf6;schen (F6)"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_DeleteActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="JButton_Anlegen">

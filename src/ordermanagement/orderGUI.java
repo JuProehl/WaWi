@@ -225,7 +225,7 @@ public class orderGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonAEDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAEDActionPerformed
-        // TODO add your handling code here:
+
         druckeEtikett();
     }//GEN-LAST:event_jButtonAEDActionPerformed
 
