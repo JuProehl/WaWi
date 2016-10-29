@@ -1,3 +1,7 @@
+
+// von Julian Pröhl, Matthias Escher
+// von Markus Overberg, Marc Czolbe
+
 Paket ordermanagement enthält Klassen, über die der Benutzer Bestellungen verwalten kann.
 orderGUI:   Hauptfenster, in dem die Bestellliste (BestList) angezeigt wird.
             Enthält Methoden zur Anwendung von Filtern, Ändern der Bestellstatus,

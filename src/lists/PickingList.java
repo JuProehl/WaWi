@@ -1,3 +1,6 @@
+
+// von Julian Pröhl, Matthias Escher
+// von Markus Overberg, Marc Czolbe
 package lists;
 
 import entity.Arti;
@@ -9,10 +12,6 @@ import java.util.ArrayList;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Marc Czolbe
- */
 public class PickingList {
 
     //Deklaration der Klassenvariablen

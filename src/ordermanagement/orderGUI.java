@@ -1,8 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+
 package ordermanagement;
 
 import database.DB_Connect;
@@ -10,10 +7,9 @@ import gui.WaWiMainGUI;
 import java.util.List;
 import lists.BestList;
 
-/**
- *
- * @author Matthias
- */
+// von Julian Pröhl, Matthias Escher
+// von Markus Overberg, Marc Czolbe
+
 // Klasse CustomerGUI
 // Enthält Methoden zum Anzeigen und Bearbeiten von Kundendaten
 public class orderGUI extends javax.swing.JFrame {

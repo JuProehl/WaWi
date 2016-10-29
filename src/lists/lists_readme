@@ -1,3 +1,6 @@
+
+// von Julian Pröhl, Matthias Escher
+// von Markus Overberg, Marc Czolbe
 Paket lists enthält Klassen zur Verwaltung von Listen. Die jeweiligen Listen
 enthalten Methoden zum Import der Datensätze aus der Datenbank,
 zum Ausliefern einzelner Werte aus einer Reihe und zur Aufbereitung für die

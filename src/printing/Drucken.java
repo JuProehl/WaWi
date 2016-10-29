@@ -1,8 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+// von Julian Pröhl, Matthias Escher
+// von Markus Overberg, Marc Czolbe
 package printing;
 
 import entity.K_BA;
@@ -10,10 +8,6 @@ import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.util.ArrayList;
 
-/**
- *
- * @author JProehl
- */
 public class Drucken {
 
     /**

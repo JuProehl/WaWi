@@ -1,2 +1,4 @@
-Paket report enthält die Klasse ReportMainGUI, das über Auswahlbuttons verschiedene Reports
-zur Anzeige und zum Druck bereitstellt.
+// von Julian Pröhl, Matthias Escher
+// von Markus Overberg, Marc Czolbe
+Paket report enthält die Klasse ReportMainGUI, das über Auswahlbuttons 
+verschiedene Reports zur Anzeige und zum Druck bereitstellt.

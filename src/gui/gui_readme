@@ -1,3 +1,6 @@
+
+// von Julian Pröhl, Matthias Escher
+// von Markus Overberg, Marc Czolbe
 Paket gui enthält die Klasse WaWiMainGUI. Diese Klasse enthält die erste GUI,
 die dem Benutzer beim Start des Programms angezeigt wird.
 Von hier kann in die Artikelverwaltung (stockmanagement), die Bestellverwaltung (ordermanagement),

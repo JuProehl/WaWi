@@ -1,23 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+
 package ordermanagement;
 
 import entity.Best;
 import entity.K_BA;
-import entity.Kund;
-import general.Print;
 import java.awt.print.PrinterJob;
 import java.util.ArrayList;
 import java.util.List;
 import printing.Drucken;
 
-/**
- *
- * @author JProehl
- */
+// von Julian Pröhl, Matthias Escher
+// von Markus Overberg, Marc Czolbe
+
 public class EditOKEtikettGUI extends javax.swing.JFrame {
     ArrayList bestPos = new ArrayList();
     Best best;

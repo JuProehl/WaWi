@@ -1,8 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+// von Julian Pröhl, Matthias Escher
+// von Markus Overberg, Marc Czolbe
 package report;
 
 import com.toedter.calendar.JDateChooser;
@@ -17,10 +15,6 @@ import java.util.Iterator;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Markus
- */
 // Klasse ReportMainGUI
 // Enthält Methoden zum Erstellen von Reports.
 // Die Reports sollen nützliche Informatioen für u. a. die Geschäftsführung

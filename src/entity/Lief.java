@@ -1,8 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+// von Julian Pröhl, Matthias Escher
+// von Markus Overberg, Marc Czolbe
 package entity;
 
 import database.DB_Connect;
@@ -16,10 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-/**
- *
- * @author Marc Czolbe
- */
+
 @Entity
 @Table(name = "Lief")
 

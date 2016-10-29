@@ -1,20 +1,17 @@
+
+// von Julian Pröhl, Matthias Escher
+// von Markus Overberg, Marc Czolbe
+
 //Package import 
 package stockmanagement;
 
 //Bibliotheken import
 import database.DB_Connect;
-import entity.Kund;
 import general.Print;
 import lists.PickingList;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import printing.Drucken;
 
-/**
- *
- * @author Markus
- */
 public class PickinglistGUI extends javax.swing.JFrame {
 
     //Objekt Variablen Deklaration

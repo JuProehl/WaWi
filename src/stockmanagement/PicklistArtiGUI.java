@@ -1,8 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+// von Julian Pröhl, Matthias Escher
+// von Markus Overberg, Marc Czolbe
 package stockmanagement;
 
 import entity.Arti;
@@ -13,10 +11,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author JProehl
- */
 public class PicklistArtiGUI extends javax.swing.JFrame {
 
     ArrayList aktuellePickList;

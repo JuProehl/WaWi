@@ -1,8 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+// von Julian Pröhl, Matthias Escher
+// von Markus Overberg, Marc Czolbe
 package stockmanagement;
 
 import database.DB_Connect;
@@ -12,10 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import lists.LageList;
 
-/**
- *
- * @author matthias
- */
 public class EditOKArtikelAnlegen extends javax.swing.JFrame {
 
     Integer ANR;

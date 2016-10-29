@@ -1,3 +1,6 @@
+
+// von Julian Pröhl, Matthias Escher
+// von Markus Overberg, Marc Czolbe
 package entity;
 
 import java.io.Serializable;

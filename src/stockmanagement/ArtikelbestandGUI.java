@@ -1,18 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+// von Julian Pröhl, Matthias Escher
+// von Markus Overberg, Marc Czolbe
 package stockmanagement;
 
 import entity.Arti;
 import lists.ArtiList;
 import java.awt.event.KeyEvent;
 
-/**
- *
- * @author Matthias
- */
 public class ArtikelbestandGUI extends javax.swing.JFrame {
 
     ArtiList ArtikelListe = new ArtiList();

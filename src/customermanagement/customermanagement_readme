@@ -1,3 +1,7 @@
+
+// von Julian Pröhl, Matthias Escher
+// von Markus Overberg, Marc Czolbe
+
 Paket customermanagement enthält Klassen, über die der Benutzer Kunden verwalten kann.
 customerGUI:    Hauptfenster, in dem die Kundenliste (KundList) angezeigt wird.
                 Enthält Methoden zum Bearbeiten, Anlegen und Löschen von Kunden,

@@ -1,3 +1,5 @@
+// von Julian Pröhl, Matthias Escher
+// von Markus Overberg, Marc Czolbe
 Die Klasse Drucken.java wird benutzt um den Lieferscheidruck vorzubreiten und die nötigen Daten für den Druck zu selektieren.
 Anschließend wird ein neues PrintObj mit den vorbereiteten Daten erzeugt. Diese Objekts stammten aus dem AWT Framework.
 

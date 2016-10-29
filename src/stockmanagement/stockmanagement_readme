@@ -1,3 +1,7 @@
+
+// von Julian Pröhl, Matthias Escher
+// von Markus Overberg, Marc Czolbe
+
 Paket stockmanagement enthät Klassen, über die der Benutzer Artikel und Lagerorte verwalten
 und Picklisten generieren und abschließen kann.
 Aufteilung in 3 Hauptfenster, die vom Auswahlfenster LagerverwaltungGUI erreicht werden können.

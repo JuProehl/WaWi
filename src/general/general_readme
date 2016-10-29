@@ -1,3 +1,6 @@
+
+// von Julian Pröhl, Matthias Escher
+// von Markus Overberg, Marc Czolbe
 Paket general enthält funktionsübergreifende Klassen.
 Check enthält Methoden zur Überprüfung von Daten (bisher nur Überprüfung von
 Negativeingaben).
